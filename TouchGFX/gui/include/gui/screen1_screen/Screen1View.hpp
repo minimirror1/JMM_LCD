@@ -11,6 +11,12 @@ public:
     virtual ~Screen1View() {}
     virtual void setupScreen();
     virtual void tearDownScreen();
+
+    void setCountMonitorItem();
+private:
+    Monitor_Item *monitor_item[10];
+    int monitorCnt;
+
 protected:
 };
 

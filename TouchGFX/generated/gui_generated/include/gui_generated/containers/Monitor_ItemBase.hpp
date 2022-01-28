@@ -8,7 +8,7 @@
 #include <touchgfx/containers/Container.hpp>
 #include <touchgfx/containers/progress_indicators/CircleProgress.hpp>
 #include <touchgfx/widgets/canvas/PainterRGB565Bitmap.hpp>
-#include <touchgfx/widgets/TextArea.hpp>
+#include <touchgfx/widgets/TextAreaWithWildcard.hpp>
 #include <touchgfx/widgets/Button.hpp>
 
 class Monitor_ItemBase : public touchgfx::Container
@@ -26,13 +26,24 @@ protected:
     /*
      * Member Declarations
      */
-    touchgfx::CircleProgress circleProgress1;
-    touchgfx::PainterRGB565Bitmap circleProgress1Painter;
-    touchgfx::TextArea textArea1;
-    touchgfx::CircleProgress circleProgress2;
-    touchgfx::PainterRGB565Bitmap circleProgress2Painter;
+    touchgfx::CircleProgress posiProgress;
+    touchgfx::PainterRGB565Bitmap posiProgressPainter;
+    touchgfx::TextAreaWithOneWildcard posi;
     touchgfx::Button button1;
-    touchgfx::TextArea textArea2;
+    touchgfx::TextAreaWithTwoWildcards id;
+    touchgfx::TextAreaWithOneWildcard slot;
+
+    /*
+     * Wildcard Buffers
+     */
+    static const uint16_t POSI_SIZE = 10;
+    touchgfx::Unicode::UnicodeChar posiBuffer[POSI_SIZE];
+    static const uint16_t IDBUFFER1_SIZE = 10;
+    touchgfx::Unicode::UnicodeChar idBuffer1[IDBUFFER1_SIZE];
+    static const uint16_t IDBUFFER2_SIZE = 10;
+    touchgfx::Unicode::UnicodeChar idBuffer2[IDBUFFER2_SIZE];
+    static const uint16_t SLOT_SIZE = 10;
+    touchgfx::Unicode::UnicodeChar slotBuffer[SLOT_SIZE];
 
 private:
 

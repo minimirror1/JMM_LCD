@@ -10,51 +10,51 @@ Monitor_ItemBase::Monitor_ItemBase() :
     buttonCallback(this, &Monitor_ItemBase::buttonCallbackHandler)
 {
     setWidth(90);
-    setHeight(100);
-    circleProgress1.setXY(2, 2);
-    circleProgress1.setProgressIndicatorPosition(0, 0, 86, 45);
-    circleProgress1.setRange(0, 4095);
-    circleProgress1.setCenter(43, 44);
-    circleProgress1.setRadius(50);
-    circleProgress1.setLineWidth(0);
-    circleProgress1.setStartEndAngle(-90, 90);
-    circleProgress1.setBackground(touchgfx::Bitmap(BITMAP_CIRCLE_INDICATOR_BG_LINE_HALF_ID));
-    circleProgress1Painter.setBitmap(touchgfx::Bitmap(BITMAP_CIRCLE_INDICATOR_FILL_LINE_HALF_ID));
-    circleProgress1.setPainter(circleProgress1Painter);
-    circleProgress1.setValue(2048);
+    setHeight(120);
+    posiProgress.setXY(2, 22);
+    posiProgress.setProgressIndicatorPosition(0, 0, 86, 45);
+    posiProgress.setRange(0, 4095);
+    posiProgress.setCenter(43, 44);
+    posiProgress.setRadius(50);
+    posiProgress.setLineWidth(0);
+    posiProgress.setStartEndAngle(-90, 90);
+    posiProgress.setBackground(touchgfx::Bitmap(BITMAP_CIRCLE_INDICATOR_BG_LINE_HALF_ID));
+    posiProgressPainter.setBitmap(touchgfx::Bitmap(BITMAP_CIRCLE_INDICATOR_FILL_LINE_HALF_ID));
+    posiProgress.setPainter(posiProgressPainter);
+    posiProgress.setValue(2048);
 
-    textArea1.setXY(20, 35);
-    textArea1.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
-    textArea1.setLinespacing(0);
-    textArea1.setTypedText(touchgfx::TypedText(T___SINGLEUSE_EB07));
+    posi.setPosition(0, 55, 90, 31);
+    posi.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
+    posi.setLinespacing(0);
+    Unicode::snprintf(posiBuffer, POSI_SIZE, "%s", touchgfx::TypedText(T_NUM_DEFAULT).getText());
+    posi.setWildcard(posiBuffer);
+    posi.setTypedText(touchgfx::TypedText(T___SINGLEUSE_EB07));
 
-    circleProgress2.setXY(0, 0);
-    circleProgress2.setProgressIndicatorPosition(0, 0, 104, 104);
-    circleProgress2.setRange(0, 100);
-    circleProgress2.setCenter(52, 52);
-    circleProgress2.setRadius(50);
-    circleProgress2.setLineWidth(0);
-    circleProgress2.setStartEndAngle(0, 360);
-    circleProgress2.setBackground(touchgfx::Bitmap(BITMAP_DARK_PROGRESSINDICATORS_BG_MEDIUM_CIRCLE_INDICATOR_BG_FULL_ID));
-    circleProgress2Painter.setBitmap(touchgfx::Bitmap(BITMAP_DARK_PROGRESSINDICATORS_FILL_MEDIUM_CIRCLE_INDICATOR_FILL_FULL_ID));
-    circleProgress2.setPainter(circleProgress2Painter);
-    circleProgress2.setValue(60);
-    circleProgress2.setVisible(false);
-
-    button1.setXY(2, 66);
+    button1.setXY(2, 86);
     button1.setBitmaps(touchgfx::Bitmap(BITMAP_ID_ID), touchgfx::Bitmap(BITMAP_ID_ID));
     button1.setAction(buttonCallback);
 
-    textArea2.setPosition(2, 71, 86, 25);
-    textArea2.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
-    textArea2.setLinespacing(0);
-    textArea2.setTypedText(touchgfx::TypedText(T___SINGLEUSE_IPZ3));
+    id.setPosition(2, 91, 86, 25);
+    id.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
+    id.setLinespacing(0);
+    touchgfx::Unicode::snprintf(idBuffer1, IDBUFFER1_SIZE, "%s", touchgfx::TypedText(T_NUM_DEFAULT).getText());
+    id.setWildcard1(idBuffer1);
+    touchgfx::Unicode::snprintf(idBuffer2, IDBUFFER2_SIZE, "%s", touchgfx::TypedText(T_NUM_DEFAULT).getText());
+    id.setWildcard2(idBuffer2);
+    id.setTypedText(touchgfx::TypedText(T___SINGLEUSE_IPZ3));
 
-    add(circleProgress1);
-    add(textArea1);
-    add(circleProgress2);
+    slot.setPosition(0, 0, 92, 25);
+    slot.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
+    slot.setLinespacing(0);
+    Unicode::snprintf(slotBuffer, SLOT_SIZE, "%s", touchgfx::TypedText(T_NUM_SMALL).getText());
+    slot.setWildcard(slotBuffer);
+    slot.setTypedText(touchgfx::TypedText(T___SINGLEUSE_ZRUA));
+
+    add(posiProgress);
+    add(posi);
     add(button1);
-    add(textArea2);
+    add(id);
+    add(slot);
 }
 
 void Monitor_ItemBase::initialize()
