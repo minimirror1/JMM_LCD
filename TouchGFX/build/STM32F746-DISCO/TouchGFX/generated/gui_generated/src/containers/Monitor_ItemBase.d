@@ -1,7 +1,6 @@
-TouchGFX/build/STM32F746-DISCO/TouchGFX/gui/src/containers/CustomContainer1.o: \
- TouchGFX/gui/src/containers/CustomContainer1.cpp \
- TouchGFX/gui/include/gui/containers/CustomContainer1.hpp \
- TouchGFX/generated/gui_generated/include/gui_generated/containers/CustomContainer1Base.hpp \
+TouchGFX/build/STM32F746-DISCO/TouchGFX/generated/gui_generated/src/containers/Monitor_ItemBase.o: \
+ TouchGFX/generated/gui_generated/src/containers/Monitor_ItemBase.cpp \
+ TouchGFX/generated/gui_generated/include/gui_generated/containers/Monitor_ItemBase.hpp \
  TouchGFX/gui/include/gui/common/FrontendApplication.hpp \
  TouchGFX/generated/gui_generated/include/gui_generated/common/FrontendApplicationBase.hpp \
  Middlewares/ST/touchgfx/framework/include/mvp/MVPApplication.hpp \
@@ -62,11 +61,12 @@ TouchGFX/build/STM32F746-DISCO/TouchGFX/gui/src/containers/CustomContainer1.o: \
  Middlewares/ST/touchgfx/framework/include/touchgfx/TypedText.hpp \
  Middlewares/ST/touchgfx/framework/include/touchgfx/Texts.hpp \
  Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/Button.hpp \
- Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/AbstractButton.hpp
+ Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/AbstractButton.hpp \
+ TouchGFX/generated/images/include/BitmapDatabase.hpp \
+ TouchGFX/generated/texts/include/texts/TextKeysAndLanguages.hpp \
+ Middlewares/ST/touchgfx/framework/include/touchgfx/Color.hpp
 
-TouchGFX/gui/include/gui/containers/CustomContainer1.hpp:
-
-TouchGFX/generated/gui_generated/include/gui_generated/containers/CustomContainer1Base.hpp:
+TouchGFX/generated/gui_generated/include/gui_generated/containers/Monitor_ItemBase.hpp:
 
 TouchGFX/gui/include/gui/common/FrontendApplication.hpp:
 
@@ -189,3 +189,9 @@ Middlewares/ST/touchgfx/framework/include/touchgfx/Texts.hpp:
 Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/Button.hpp:
 
 Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/AbstractButton.hpp:
+
+TouchGFX/generated/images/include/BitmapDatabase.hpp:
+
+TouchGFX/generated/texts/include/texts/TextKeysAndLanguages.hpp:
+
+Middlewares/ST/touchgfx/framework/include/touchgfx/Color.hpp:

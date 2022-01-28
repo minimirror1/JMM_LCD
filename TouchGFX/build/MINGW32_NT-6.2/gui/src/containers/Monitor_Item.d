@@ -1,6 +1,7 @@
-build/MINGW32_NT-6.2/generated/gui_generated/src/containers/CustomContainer1Base.o: \
- generated/gui_generated/src/containers/CustomContainer1Base.cpp \
- generated/gui_generated/include/gui_generated/containers/CustomContainer1Base.hpp \
+build/MINGW32_NT-6.2/gui/src/containers/Monitor_Item.o: \
+ gui/src/containers/Monitor_Item.cpp \
+ gui/include/gui/containers/Monitor_Item.hpp \
+ generated/gui_generated/include/gui_generated/containers/Monitor_ItemBase.hpp \
  gui/include/gui/common/FrontendApplication.hpp \
  generated/gui_generated/include/gui_generated/common/FrontendApplicationBase.hpp \
  ../Middlewares/ST/touchgfx/framework/include/mvp/MVPApplication.hpp \
@@ -61,12 +62,11 @@ build/MINGW32_NT-6.2/generated/gui_generated/src/containers/CustomContainer1Base
  ../Middlewares/ST/touchgfx/framework/include/touchgfx/TypedText.hpp \
  ../Middlewares/ST/touchgfx/framework/include/touchgfx/Texts.hpp \
  ../Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/Button.hpp \
- ../Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/AbstractButton.hpp \
- generated/images/include/BitmapDatabase.hpp \
- generated/texts/include/texts/TextKeysAndLanguages.hpp \
- ../Middlewares/ST/touchgfx/framework/include/touchgfx/Color.hpp
+ ../Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/AbstractButton.hpp
 
-generated/gui_generated/include/gui_generated/containers/CustomContainer1Base.hpp:
+gui/include/gui/containers/Monitor_Item.hpp:
+
+generated/gui_generated/include/gui_generated/containers/Monitor_ItemBase.hpp:
 
 gui/include/gui/common/FrontendApplication.hpp:
 
@@ -189,9 +189,3 @@ gui/include/gui/model/Model.hpp:
 ../Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/Button.hpp:
 
 ../Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/AbstractButton.hpp:
-
-generated/images/include/BitmapDatabase.hpp:
-
-generated/texts/include/texts/TextKeysAndLanguages.hpp:
-
-../Middlewares/ST/touchgfx/framework/include/touchgfx/Color.hpp:

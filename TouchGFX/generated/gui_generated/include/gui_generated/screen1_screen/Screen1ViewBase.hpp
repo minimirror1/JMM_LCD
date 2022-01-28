@@ -8,7 +8,7 @@
 #include <mvp/View.hpp>
 #include <gui/screen1_screen/Screen1Presenter.hpp>
 #include <touchgfx/widgets/Box.hpp>
-#include <gui/containers/CustomContainer1.hpp>
+#include <gui/containers/Monitor_Item.hpp>
 
 class Screen1ViewBase : public touchgfx::View<Screen1Presenter>
 {
@@ -26,7 +26,16 @@ protected:
      * Member Declarations
      */
     touchgfx::Box __background;
-    CustomContainer1 customContainer11;
+    Monitor_Item monitor_Item1;
+    Monitor_Item monitor_Item2;
+    Monitor_Item monitor_Item3;
+    Monitor_Item monitor_Item4;
+    Monitor_Item monitor_Item5;
+    Monitor_Item monitor_Item6;
+    Monitor_Item monitor_Item7;
+    Monitor_Item monitor_Item8;
+    Monitor_Item monitor_Item9;
+    Monitor_Item monitor_Item10;
 
 private:
 

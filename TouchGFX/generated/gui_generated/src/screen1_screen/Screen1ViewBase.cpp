@@ -14,13 +14,49 @@ Screen1ViewBase::Screen1ViewBase()
     __background.setPosition(0, 0, 480, 272);
     __background.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
 
-    customContainer11.setXY(0, 0);
+    monitor_Item1.setXY(15, 24);
+
+    monitor_Item2.setXY(105, 24);
+
+    monitor_Item3.setXY(195, 24);
+
+    monitor_Item4.setXY(285, 24);
+
+    monitor_Item5.setXY(375, 24);
+
+    monitor_Item6.setXY(15, 148);
+
+    monitor_Item7.setXY(105, 148);
+
+    monitor_Item8.setXY(195, 148);
+
+    monitor_Item9.setXY(285, 148);
+
+    monitor_Item10.setXY(375, 148);
 
     add(__background);
-    add(customContainer11);
+    add(monitor_Item1);
+    add(monitor_Item2);
+    add(monitor_Item3);
+    add(monitor_Item4);
+    add(monitor_Item5);
+    add(monitor_Item6);
+    add(monitor_Item7);
+    add(monitor_Item8);
+    add(monitor_Item9);
+    add(monitor_Item10);
 }
 
 void Screen1ViewBase::setupScreen()
 {
-    customContainer11.initialize();
+    monitor_Item1.initialize();
+    monitor_Item2.initialize();
+    monitor_Item3.initialize();
+    monitor_Item4.initialize();
+    monitor_Item5.initialize();
+    monitor_Item6.initialize();
+    monitor_Item7.initialize();
+    monitor_Item8.initialize();
+    monitor_Item9.initialize();
+    monitor_Item10.initialize();
 }

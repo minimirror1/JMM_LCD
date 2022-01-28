@@ -7,10 +7,93 @@
         "Components": [
           {
             "Type": "CustomContainerInstance",
-            "Name": "customContainer11",
+            "Name": "monitor_Item1",
+            "X": 15,
+            "Y": 24,
             "Width": 90,
             "Height": 100,
-            "CustomContainerDefinitionName": "CustomContainer1"
+            "CustomContainerDefinitionName": "Monitor_Item"
+          },
+          {
+            "Type": "CustomContainerInstance",
+            "Name": "monitor_Item2",
+            "X": 105,
+            "Y": 24,
+            "Width": 90,
+            "Height": 100,
+            "CustomContainerDefinitionName": "Monitor_Item"
+          },
+          {
+            "Type": "CustomContainerInstance",
+            "Name": "monitor_Item3",
+            "X": 195,
+            "Y": 24,
+            "Width": 90,
+            "Height": 100,
+            "CustomContainerDefinitionName": "Monitor_Item"
+          },
+          {
+            "Type": "CustomContainerInstance",
+            "Name": "monitor_Item4",
+            "X": 285,
+            "Y": 24,
+            "Width": 90,
+            "Height": 100,
+            "CustomContainerDefinitionName": "Monitor_Item"
+          },
+          {
+            "Type": "CustomContainerInstance",
+            "Name": "monitor_Item5",
+            "X": 375,
+            "Y": 24,
+            "Width": 90,
+            "Height": 100,
+            "CustomContainerDefinitionName": "Monitor_Item"
+          },
+          {
+            "Type": "CustomContainerInstance",
+            "Name": "monitor_Item6",
+            "X": 15,
+            "Y": 148,
+            "Width": 90,
+            "Height": 100,
+            "CustomContainerDefinitionName": "Monitor_Item"
+          },
+          {
+            "Type": "CustomContainerInstance",
+            "Name": "monitor_Item7",
+            "X": 105,
+            "Y": 148,
+            "Width": 90,
+            "Height": 100,
+            "CustomContainerDefinitionName": "Monitor_Item"
+          },
+          {
+            "Type": "CustomContainerInstance",
+            "Name": "monitor_Item8",
+            "X": 195,
+            "Y": 148,
+            "Width": 90,
+            "Height": 100,
+            "CustomContainerDefinitionName": "Monitor_Item"
+          },
+          {
+            "Type": "CustomContainerInstance",
+            "Name": "monitor_Item9",
+            "X": 285,
+            "Y": 148,
+            "Width": 90,
+            "Height": 100,
+            "CustomContainerDefinitionName": "Monitor_Item"
+          },
+          {
+            "Type": "CustomContainerInstance",
+            "Name": "monitor_Item10",
+            "X": 375,
+            "Y": 148,
+            "Width": 90,
+            "Height": 100,
+            "CustomContainerDefinitionName": "Monitor_Item"
           }
         ],
         "Interactions": [
@@ -138,7 +221,7 @@
     ],
     "CustomContainerDefinitions": [
       {
-        "Name": "CustomContainer1",
+        "Name": "Monitor_Item",
         "Width": 90,
         "Height": 100,
         "Components": [

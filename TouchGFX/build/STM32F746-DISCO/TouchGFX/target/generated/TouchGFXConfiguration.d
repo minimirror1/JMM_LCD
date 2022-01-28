@@ -53,8 +53,8 @@ TouchGFX/build/STM32F746-DISCO/TouchGFX/target/generated/TouchGFXConfiguration.o
  TouchGFX/gui/include/gui/model/ModelListener.hpp \
  Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/Box.hpp \
  Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/Widget.hpp \
- TouchGFX/gui/include/gui/containers/CustomContainer1.hpp \
- TouchGFX/generated/gui_generated/include/gui_generated/containers/CustomContainer1Base.hpp \
+ TouchGFX/gui/include/gui/containers/Monitor_Item.hpp \
+ TouchGFX/generated/gui_generated/include/gui_generated/containers/Monitor_ItemBase.hpp \
  Middlewares/ST/touchgfx/framework/include/touchgfx/containers/progress_indicators/CircleProgress.hpp \
  Middlewares/ST/touchgfx/framework/include/touchgfx/containers/progress_indicators/AbstractProgressIndicator.hpp \
  Middlewares/ST/touchgfx/framework/include/touchgfx/EasingEquations.hpp \
@@ -231,9 +231,9 @@ Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/Box.hpp:
 
 Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/Widget.hpp:
 
-TouchGFX/gui/include/gui/containers/CustomContainer1.hpp:
+TouchGFX/gui/include/gui/containers/Monitor_Item.hpp:
 
-TouchGFX/generated/gui_generated/include/gui_generated/containers/CustomContainer1Base.hpp:
+TouchGFX/generated/gui_generated/include/gui_generated/containers/Monitor_ItemBase.hpp:
 
 Middlewares/ST/touchgfx/framework/include/touchgfx/containers/progress_indicators/CircleProgress.hpp:
 
