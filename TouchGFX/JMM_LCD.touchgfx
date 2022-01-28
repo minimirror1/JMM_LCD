@@ -3,11 +3,248 @@
     "Screens": [
       {
         "Name": "Screen1",
-        "Components": [],
-        "Interactions": []
+        "CanvasBufferSize": 7200,
+        "Components": [
+          {
+            "Type": "CustomContainerInstance",
+            "Name": "customContainer11",
+            "Width": 90,
+            "Height": 100,
+            "CustomContainerDefinitionName": "CustomContainer1"
+          }
+        ],
+        "Interactions": [
+          {
+            "InteractionName": "Interaction1",
+            "Trigger": {
+              "Type": "TriggerClicked"
+            },
+            "Action": {
+              "Type": "ActionNone"
+            }
+          }
+        ]
+      },
+      {
+        "Name": "Screen2",
+        "CanvasBufferSize": 7200,
+        "Components": [
+          {
+            "Type": "CircleProgress",
+            "Name": "circleProgress1",
+            "X": 8,
+            "Y": 8,
+            "Width": 184,
+            "Height": 94,
+            "FileNameProgress": "__designer\\Dark_ProgressIndicators_fill_large_circle_indicator_fill_line_half.png",
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "CenterX": 92,
+            "CenterY": 94,
+            "Radius": 92,
+            "StartAngle": -90,
+            "EndAngle": 90,
+            "CapPrecision": "Butt",
+            "FileNameBackground": "__designer\\Dark_ProgressIndicators_bg_large_circle_indicator_bg_line_half.png",
+            "ProgressRangeMax": 4095,
+            "ProgressInitialValue": 2048
+          },
+          {
+            "Type": "TextArea",
+            "Name": "textArea1",
+            "X": 8,
+            "Y": 78,
+            "Width": 184,
+            "Height": 49,
+            "TextId": "__SingleUse_B2PI",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            }
+          },
+          {
+            "Type": "ToggleButton",
+            "Name": "toggleButton1",
+            "X": 345,
+            "Y": 8,
+            "Width": 128,
+            "Height": 38,
+            "Pressed": "__designer\\Dark_Togglebars_Toggle_round_large_button_On.png",
+            "Released": "__designer\\Dark_Togglebars_Toggle_round_large_button_Off.png",
+            "Style": "Style4"
+          },
+          {
+            "Type": "Button",
+            "Name": "button1",
+            "X": 15,
+            "Y": 127,
+            "Width": 170,
+            "Height": 60,
+            "Pressed": "__designer\\Dark_Buttons_Round_Edge_small_pressed.png",
+            "Released": "__designer\\Dark_Buttons_Round_Edge_small_pressed.png"
+          },
+          {
+            "Type": "TextArea",
+            "Name": "textArea1_1",
+            "X": 15,
+            "Y": 133,
+            "Width": 170,
+            "Height": 49,
+            "TextId": "__SingleUse_GQGE",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            }
+          },
+          {
+            "Type": "TextArea",
+            "Name": "textArea1_2",
+            "X": 240,
+            "Y": 15,
+            "Width": 80,
+            "Height": 25,
+            "TextId": "__SingleUse_IXXQ",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "AutoSize": true
+          }
+        ],
+        "Interactions": [
+          {
+            "InteractionName": "Interaction1",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "button1"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "Screen1"
+            }
+          }
+        ]
       }
     ],
-    "CustomContainerDefinitions": [],
+    "CustomContainerDefinitions": [
+      {
+        "Name": "CustomContainer1",
+        "Width": 90,
+        "Height": 100,
+        "Components": [
+          {
+            "Type": "CircleProgress",
+            "Name": "circleProgress1",
+            "X": 2,
+            "Y": 2,
+            "Width": 86,
+            "Height": 45,
+            "FileNameProgress": "progress\\circle_indicator_fill_line_half.png",
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "CenterX": 43,
+            "CenterY": 44,
+            "Radius": 50,
+            "StartAngle": -90,
+            "EndAngle": 90,
+            "CapPrecision": "Butt",
+            "FileNameBackground": "progress\\circle_indicator_bg_line_half.png",
+            "ProgressRangeMax": 4095,
+            "ProgressInitialValue": 2048
+          },
+          {
+            "Type": "TextArea",
+            "Name": "textArea1",
+            "X": 20,
+            "Y": 35,
+            "Width": 51,
+            "Height": 25,
+            "TextId": "__SingleUse_EB07",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "AutoSize": true
+          },
+          {
+            "Type": "CircleProgress",
+            "Name": "circleProgress2",
+            "Width": 104,
+            "Height": 104,
+            "Visible": false,
+            "FileNameProgress": "__designer\\Dark_ProgressIndicators_fill_medium_circle_indicator_fill_full.png",
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "CenterX": 52,
+            "CenterY": 52,
+            "Radius": 50,
+            "EndAngle": 360,
+            "CapPrecision": "Butt",
+            "Style": "Style5",
+            "FileNameBackground": "__designer\\Dark_ProgressIndicators_bg_medium_circle_indicator_bg_full.png",
+            "ProgressRangeMax": 100,
+            "ProgressInitialValue": 60
+          },
+          {
+            "Type": "Button",
+            "Name": "button1",
+            "X": 2,
+            "Y": 66,
+            "Width": 86,
+            "Height": 34,
+            "Pressed": "progress\\id.png",
+            "Released": "progress\\id.png"
+          },
+          {
+            "Type": "TextArea",
+            "Name": "textArea2",
+            "X": 2,
+            "Y": 71,
+            "Width": 86,
+            "Height": 25,
+            "TextId": "__SingleUse_IPZ3",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            }
+          }
+        ],
+        "Interactions": [
+          {
+            "InteractionName": "Interaction1",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "button1"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "Screen2"
+            }
+          }
+        ]
+      }
+    ],
     "Name": "JMM_LCD",
     "Resolution": {
       "Width": 480,
@@ -16,7 +253,7 @@
     "SelectedColorDepth": 16,
     "StartupScreenName": "Screen1",
     "SelectedStartupLanguage": "GB",
-    "Skin": "Blue",
+    "Skin": "Dark",
     "TouchGfxPath": "../Middlewares/ST/touchgfx",
     "UIPath": ".",
     "AvailableColorDepths": [

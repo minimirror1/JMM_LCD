@@ -6,11 +6,17 @@
 
 enum LANGUAGES
 {
+    GB,
     NUMBER_OF_LANGUAGES
 };
 
 enum TEXTS
 {
+    T___SINGLEUSE_EB07,
+    T___SINGLEUSE_IPZ3,
+    T___SINGLEUSE_IXXQ,
+    T___SINGLEUSE_GQGE,
+    T___SINGLEUSE_B2PI,
     NUMBER_OF_TEXT_KEYS
 };
 

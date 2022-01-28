@@ -3,17 +3,24 @@
 /*********************************************************************************/
 #include <gui_generated/screen1_screen/Screen1ViewBase.hpp>
 #include <touchgfx/Color.hpp>
+#include <touchgfx/canvas_widget_renderer/CanvasWidgetRenderer.hpp>
+
 
 Screen1ViewBase::Screen1ViewBase()
 {
 
+    touchgfx::CanvasWidgetRenderer::setupBuffer(canvasBuffer, CANVAS_BUFFER_SIZE);
+
     __background.setPosition(0, 0, 480, 272);
     __background.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
 
+    customContainer11.setXY(0, 0);
+
     add(__background);
+    add(customContainer11);
 }
 
 void Screen1ViewBase::setupScreen()
 {
-
+    customContainer11.initialize();
 }
