@@ -1,0 +1,18 @@
+!SESSION 2022-01-28 12:36:24.463 -----------------------------------------------
+eclipse.buildId=Version 1.8.0
+java.version=11.0.11
+java.vendor=AdoptOpenJDK
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=ko_KR
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 4 4 2022-01-28 12:36:43.897
+!MESSAGE CubeMX plugin appears to be active, Log4j initialization might be too late.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2022-01-28 12:36:43.959
+!MESSAGE Log4j initialized with config file D:\stm32_ws\board\JointManipulator_Master\JMM_LCD_V1\JMM_LCD\TouchGFX\workspace\.metadata\.log4j.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2022-01-28 12:36:48.534
+!MESSAGE Started RMI Server, listening on port 41337
+
+!ENTRY org.eclipse.cdt.core 1 0 2022-01-28 12:41:00.512
+!MESSAGE Indexed 'STM32F746G_DISCO' (125 sources, 334 headers) in 14.1 sec: 28,600 declarations; 114,303 references; 6 unresolved inclusions; 201 syntax errors; 2,471 unresolved names (1.7%)
