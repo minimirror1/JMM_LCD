@@ -24,6 +24,7 @@ void Screen1View::setupScreen()
     for (int i = 0; i < 10; i++)
     {
         monitor_item[i]->setSlotID(i);
+        monitor_item[i]->setId(5, i);
     }
 
 }
@@ -36,5 +37,13 @@ void Screen1View::tearDownScreen()
 void Screen1View::setCountMonitorItem()
 {
     monitorCnt++;
+}
+
+void Screen1View::setChangePosi(int gID, int sID, int value)
+{
+    for (int i = 0; i < 10; i++)
+    {
+        monitor_item[i]->setPosi_ID(gID, sID, value);
+    }
 }
 

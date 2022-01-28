@@ -17,8 +17,10 @@ public:
     //void setName();
 
     void setSlotID(int value);
-    void setPosi(int value);
+    
     void setId(int gID, int sID);
+
+    void setPosi_ID(int gID, int sID, int value);
 
 private:
     int slotID;
@@ -26,6 +28,7 @@ private:
     int groupID;
     int subID;
     
+    void setPosi(int value);
     void setPosiText(int value);
     void setPosiProgress(int value);
 

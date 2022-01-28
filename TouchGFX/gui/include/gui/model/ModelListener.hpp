@@ -14,6 +14,8 @@ public:
     {
         model = m;
     }
+
+    virtual void setChangePosi(int gID, int sID, int value) {}
 protected:
     Model* model;
 };

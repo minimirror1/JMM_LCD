@@ -27,6 +27,10 @@ public:
 
     virtual ~Screen1Presenter() {};
 
+
+//ModelListener override
+    void setChangePosi(int gID, int sID, int value);
+
 private:
     Screen1Presenter();
 

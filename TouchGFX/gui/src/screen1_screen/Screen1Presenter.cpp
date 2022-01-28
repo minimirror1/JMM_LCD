@@ -16,3 +16,9 @@ void Screen1Presenter::deactivate()
 {
 
 }
+
+//ModelListener override
+void Screen1Presenter::setChangePosi(int gID, int sID, int value)
+{
+    view.setChangePosi(gID, sID, value);
+}

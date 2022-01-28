@@ -14,6 +14,11 @@ public:
     }
 
     void tick();
+
+private:
+    int myTimer;
+    int testCnt;
+
 protected:
     ModelListener* modelListener;
 };

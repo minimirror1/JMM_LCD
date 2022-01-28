@@ -42,6 +42,13 @@ void Monitor_Item::setId(int gID, int sID)
     setIDText();
 }
 
+void Monitor_Item::setPosi_ID(int gID, int sID, int value)
+{
+
+    if ((groupID == gID) && (subID == sID))
+        setPosi(value);
+}
+
 void Monitor_Item::setPosiText(int value)
 {
     Unicode::snprintf(posiBuffer, POSI_SIZE, "%d", value);

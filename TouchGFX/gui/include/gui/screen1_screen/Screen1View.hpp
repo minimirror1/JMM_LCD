@@ -13,6 +13,10 @@ public:
     virtual void tearDownScreen();
 
     void setCountMonitorItem();
+
+
+ //Presenter callback
+    void setChangePosi(int gID, int sID, int value);
 private:
     Monitor_Item *monitor_item[10];
     int monitorCnt;
