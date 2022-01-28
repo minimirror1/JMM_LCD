@@ -594,3 +594,248 @@
 2022-01-28 12:44:12,728 [INFO] UtilMem:74 - End SaveConfig() Used Memory: 413587976 Bytes (685768704)
 2022-01-28 12:44:16,646 [INFO] UtilMem:74 - End SaveConfig() Used Memory: 492820992 Bytes (685768704)
 2022-01-28 12:44:17,302 [INFO] ProjectBuilder:1982 - IP not ready for code generation: STMicroelectronics.X-CUBE-TOUCHGFX.4.18.1
+2022-01-28 12:46:46,045 [INFO] UtilMem:74 - End SaveConfig() Used Memory: 498171552 Bytes (685768704)
+2022-01-28 12:46:46,660 [INFO] ProjectBuilder:1982 - IP not ready for code generation: STMicroelectronics.X-CUBE-TOUCHGFX.4.18.1
+2022-01-28 12:47:00,145 [ERROR] RtosPanel:553 - Can not restore the selected Tab for FREERTOS(A reason can be that the tab is no more available.)
+2022-01-28 12:47:06,052 [INFO] UtilMem:74 - End SaveConfig() Used Memory: 387300552 Bytes (685768704)
+2022-01-28 12:47:10,195 [INFO] UtilMem:74 - End SaveConfig() Used Memory: 391425432 Bytes (685768704)
+2022-01-28 12:47:14,028 [INFO] UtilMem:74 - End SaveConfig() Used Memory: 491023744 Bytes (685768704)
+2022-01-28 12:47:14,672 [INFO] ProjectBuilder:1982 - IP not ready for code generation: STMicroelectronics.X-CUBE-TOUCHGFX.4.18.1
+2022-01-28 12:47:21,193 [INFO] BlockDiagram:2740 - set Specific Code input for plugin: FREERTOS
+2022-01-28 12:47:21,194 [INFO] BlockDiagram:2740 - set Specific Code input for plugin: LTDC
+2022-01-28 12:47:21,195 [INFO] BlockDiagram:2740 - set Specific Code input for plugin: SYS
+2022-01-28 12:47:21,196 [INFO] BlockDiagram:2740 - set Specific Code input for plugin: RCC
+2022-01-28 12:47:21,196 [INFO] BlockDiagram:2740 - set Specific Code input for plugin: CRC
+2022-01-28 12:47:21,197 [INFO] BlockDiagram:2740 - set Specific Code input for plugin: I2C
+2022-01-28 12:47:21,197 [INFO] BlockDiagram:2740 - set Specific Code input for plugin: NVIC
+2022-01-28 12:47:21,197 [INFO] BlockDiagram:2740 - set Specific Code input for plugin: DMA2D
+2022-01-28 12:47:21,199 [INFO] BlockDiagram:2740 - set Specific Code input for plugin: USART
+2022-01-28 12:47:21,199 [INFO] BlockDiagram:2740 - set Specific Code input for plugin: CORTEX_M7
+2022-01-28 12:47:21,199 [INFO] BlockDiagram:2740 - set Specific Code input for plugin: FMC
+2022-01-28 12:47:21,203 [INFO] BlockDiagram:2740 - set Specific Code input for plugin: GPIO
+2022-01-28 12:47:21,204 [INFO] BlockDiagram:2740 - set Specific Code input for plugin: LIBJPEG
+2022-01-28 12:47:21,204 [INFO] BlockDiagram:2740 - set Specific Code input for plugin: QUADSPI
+2022-01-28 12:47:21,205 [INFO] BlockDiagram:2740 - set Specific Code input for plugin: STMicroelectronics.X-CUBE-TOUCHGFX.4.18.1
+2022-01-28 12:47:21,243 [INFO] CodeGenerator:663 - code generatio: config db path: C:/Users/shin/.stm32cubemx/databases/DB.6.0.30/db/
+2022-01-28 12:47:21,317 [WARN] IP:2107 - BooleanType not found: check if there is a RefParameter without a condition.
+2022-01-28 12:47:21,319 [WARN] IP:2107 - LayerIdx_L1 not found: check if there is a RefParameter without a condition.
+2022-01-28 12:47:24,768 [INFO] IP:3357 - RTE template : Target/mjpeg/tgfx_jpeg_utils_c.ftl
+2022-01-28 12:47:24,795 [INFO] CodeEngine:239 - oldGeneratedFile, D:\stm32_ws\board\JointManipulator_Master\JMM_LCD_V1\JMM_LCD\MXTmpFiles\license.tmp_save
+2022-01-28 12:47:25,312 [INFO] CodeEngine:257 - Generated code: D:\stm32_ws\board\JointManipulator_Master\JMM_LCD_V1\JMM_LCD\MXTmpFiles\license.tmp
+2022-01-28 12:47:25,608 [INFO] CodeEngine:239 - oldGeneratedFile, D:\stm32_ws\board\JointManipulator_Master\JMM_LCD_V1\JMM_LCD\MXTmpFiles\gpio.tmp_save
+2022-01-28 12:47:25,721 [INFO] CodeEngine:257 - Generated code: D:\stm32_ws\board\JointManipulator_Master\JMM_LCD_V1\JMM_LCD\MXTmpFiles\gpio.tmp
+2022-01-28 12:47:28,620 [INFO] Middleware:1388 - No code input for Bsp Dependency
+2022-01-28 12:47:28,636 [INFO] CodeEngine:239 - oldGeneratedFile, D:\stm32_ws\board\JointManipulator_Master\JMM_LCD_V1\JMM_LCD\MXTmpFiles\rtos_inc.tmp_save
+2022-01-28 12:47:28,732 [INFO] CodeEngine:257 - Generated code: D:\stm32_ws\board\JointManipulator_Master\JMM_LCD_V1\JMM_LCD\MXTmpFiles\rtos_inc.tmp
+2022-01-28 12:47:28,739 [INFO] CodeEngine:239 - oldGeneratedFile, D:\stm32_ws\board\JointManipulator_Master\JMM_LCD_V1\JMM_LCD\MXTmpFiles\rtos_kernelInit.tmp_save
+2022-01-28 12:47:28,834 [INFO] CodeEngine:257 - Generated code: D:\stm32_ws\board\JointManipulator_Master\JMM_LCD_V1\JMM_LCD\MXTmpFiles\rtos_kernelInit.tmp
+2022-01-28 12:47:28,840 [INFO] CodeEngine:239 - oldGeneratedFile, D:\stm32_ws\board\JointManipulator_Master\JMM_LCD_V1\JMM_LCD\MXTmpFiles\rtos_kernelStart.tmp_save
+2022-01-28 12:47:28,931 [INFO] CodeEngine:257 - Generated code: D:\stm32_ws\board\JointManipulator_Master\JMM_LCD_V1\JMM_LCD\MXTmpFiles\rtos_kernelStart.tmp
+2022-01-28 12:47:28,936 [INFO] CodeEngine:239 - oldGeneratedFile, D:\stm32_ws\board\JointManipulator_Master\JMM_LCD_V1\JMM_LCD\MXTmpFiles\rtos_typedefs.tmp_save
+2022-01-28 12:47:29,030 [INFO] CodeEngine:257 - Generated code: D:\stm32_ws\board\JointManipulator_Master\JMM_LCD_V1\JMM_LCD\MXTmpFiles\rtos_typedefs.tmp
+2022-01-28 12:47:29,037 [INFO] CodeEngine:239 - oldGeneratedFile, D:\stm32_ws\board\JointManipulator_Master\JMM_LCD_V1\JMM_LCD\MXTmpFiles\rtos_vars.tmp_save
+2022-01-28 12:47:29,110 [INFO] CodeEngine:257 - Generated code: D:\stm32_ws\board\JointManipulator_Master\JMM_LCD_V1\JMM_LCD\MXTmpFiles\rtos_vars.tmp
+2022-01-28 12:47:29,116 [INFO] CodeEngine:239 - oldGeneratedFile, D:\stm32_ws\board\JointManipulator_Master\JMM_LCD_V1\JMM_LCD\MXTmpFiles\rtos_pfp.tmp_save
+2022-01-28 12:47:29,190 [INFO] CodeEngine:257 - Generated code: D:\stm32_ws\board\JointManipulator_Master\JMM_LCD_V1\JMM_LCD\MXTmpFiles\rtos_pfp.tmp
+2022-01-28 12:47:29,197 [INFO] CodeEngine:239 - oldGeneratedFile, D:\stm32_ws\board\JointManipulator_Master\JMM_LCD_V1\JMM_LCD\MXTmpFiles\rtos_obj_creat.tmp_save
+2022-01-28 12:47:29,265 [INFO] CodeEngine:257 - Generated code: D:\stm32_ws\board\JointManipulator_Master\JMM_LCD_V1\JMM_LCD\MXTmpFiles\rtos_obj_creat.tmp
+2022-01-28 12:47:29,273 [INFO] CodeEngine:239 - oldGeneratedFile, D:\stm32_ws\board\JointManipulator_Master\JMM_LCD_V1\JMM_LCD\MXTmpFiles\rtos_default_thread.tmp_save
+2022-01-28 12:47:29,380 [INFO] CodeEngine:257 - Generated code: D:\stm32_ws\board\JointManipulator_Master\JMM_LCD_V1\JMM_LCD\MXTmpFiles\rtos_default_thread.tmp
+2022-01-28 12:47:29,387 [INFO] CodeEngine:239 - oldGeneratedFile, D:\stm32_ws\board\JointManipulator_Master\JMM_LCD_V1\JMM_LCD\MXTmpFiles\rtos_threads.tmp_save
+2022-01-28 12:47:29,448 [INFO] CodeEngine:257 - Generated code: D:\stm32_ws\board\JointManipulator_Master\JMM_LCD_V1\JMM_LCD\MXTmpFiles\rtos_threads.tmp
+2022-01-28 12:47:29,453 [INFO] Middleware:1388 - No code input for Bsp Dependency
+2022-01-28 12:47:29,460 [INFO] Middleware:1388 - No code input for Bsp Dependency
+2022-01-28 12:47:29,486 [INFO] CodeEngine:239 - oldGeneratedFile, D:\stm32_ws\board\JointManipulator_Master\JMM_LCD_V1\JMM_LCD\MXTmpFiles\SCB_CleanInvalidateDCache.tmp_save
+2022-01-28 12:47:29,552 [INFO] CodeEngine:257 - Generated code: D:\stm32_ws\board\JointManipulator_Master\JMM_LCD_V1\JMM_LCD\MXTmpFiles\SCB_CleanInvalidateDCache.tmp
+2022-01-28 12:47:29,565 [INFO] CodeEngine:239 - oldGeneratedFile, D:\stm32_ws\board\JointManipulator_Master\JMM_LCD_V1\JMM_LCD\MXTmpFiles\touchgfx_license.tmp_save
+2022-01-28 12:47:29,662 [INFO] CodeEngine:257 - Generated code: D:\stm32_ws\board\JointManipulator_Master\JMM_LCD_V1\JMM_LCD\MXTmpFiles\touchgfx_license.tmp
+2022-01-28 12:47:29,676 [INFO] CodeEngine:239 - oldGeneratedFile, D:\stm32_ws\board\JointManipulator_Master\JMM_LCD_V1\JMM_LCD\MXTmpFiles\touchgfx_gen_license.tmp_save
+2022-01-28 12:47:29,783 [INFO] CodeEngine:257 - Generated code: D:\stm32_ws\board\JointManipulator_Master\JMM_LCD_V1\JMM_LCD\MXTmpFiles\touchgfx_gen_license.tmp
+2022-01-28 12:47:29,803 [INFO] CodeEngine:239 - oldGeneratedFile, D:\stm32_ws\board\JointManipulator_Master\JMM_LCD_V1\JMM_LCD\MXTmpFiles\dma_16bpp_implementation.tmp_save
+2022-01-28 12:47:29,986 [INFO] CodeEngine:257 - Generated code: D:\stm32_ws\board\JointManipulator_Master\JMM_LCD_V1\JMM_LCD\MXTmpFiles\dma_16bpp_implementation.tmp
+2022-01-28 12:47:30,004 [INFO] CodeEngine:239 - oldGeneratedFile, D:\stm32_ws\board\JointManipulator_Master\JMM_LCD_V1\JMM_LCD\MXTmpFiles\oswrappers_cmsis.tmp_save
+2022-01-28 12:47:30,144 [INFO] CodeEngine:257 - Generated code: D:\stm32_ws\board\JointManipulator_Master\JMM_LCD_V1\JMM_LCD\MXTmpFiles\oswrappers_cmsis.tmp
+2022-01-28 12:47:30,215 [INFO] Middleware:1388 - No code input for Bsp Dependency
+2022-01-28 12:47:30,236 [INFO] CodeEngine:239 - oldGeneratedFile, D:\stm32_ws\board\JointManipulator_Master\JMM_LCD_V1\JMM_LCD\MXTmpFiles\rtos_inc.tmp_save
+2022-01-28 12:47:30,387 [INFO] CodeEngine:257 - Generated code: D:\stm32_ws\board\JointManipulator_Master\JMM_LCD_V1\JMM_LCD\MXTmpFiles\rtos_inc.tmp
+2022-01-28 12:47:30,399 [INFO] CodeEngine:239 - oldGeneratedFile, D:\stm32_ws\board\JointManipulator_Master\JMM_LCD_V1\JMM_LCD\MXTmpFiles\rtos_kernelInit.tmp_save
+2022-01-28 12:47:30,531 [INFO] CodeEngine:257 - Generated code: D:\stm32_ws\board\JointManipulator_Master\JMM_LCD_V1\JMM_LCD\MXTmpFiles\rtos_kernelInit.tmp
+2022-01-28 12:47:30,544 [INFO] CodeEngine:239 - oldGeneratedFile, D:\stm32_ws\board\JointManipulator_Master\JMM_LCD_V1\JMM_LCD\MXTmpFiles\rtos_kernelStart.tmp_save
+2022-01-28 12:47:30,679 [INFO] CodeEngine:257 - Generated code: D:\stm32_ws\board\JointManipulator_Master\JMM_LCD_V1\JMM_LCD\MXTmpFiles\rtos_kernelStart.tmp
+2022-01-28 12:47:30,689 [INFO] CodeEngine:239 - oldGeneratedFile, D:\stm32_ws\board\JointManipulator_Master\JMM_LCD_V1\JMM_LCD\MXTmpFiles\rtos_typedefs.tmp_save
+2022-01-28 12:47:30,812 [INFO] CodeEngine:257 - Generated code: D:\stm32_ws\board\JointManipulator_Master\JMM_LCD_V1\JMM_LCD\MXTmpFiles\rtos_typedefs.tmp
+2022-01-28 12:47:30,833 [INFO] CodeEngine:239 - oldGeneratedFile, D:\stm32_ws\board\JointManipulator_Master\JMM_LCD_V1\JMM_LCD\MXTmpFiles\rtos_vars.tmp_save
+2022-01-28 12:47:31,011 [INFO] CodeEngine:257 - Generated code: D:\stm32_ws\board\JointManipulator_Master\JMM_LCD_V1\JMM_LCD\MXTmpFiles\rtos_vars.tmp
+2022-01-28 12:47:31,029 [INFO] CodeEngine:239 - oldGeneratedFile, D:\stm32_ws\board\JointManipulator_Master\JMM_LCD_V1\JMM_LCD\MXTmpFiles\rtos_pfp.tmp_save
+2022-01-28 12:47:31,210 [INFO] CodeEngine:257 - Generated code: D:\stm32_ws\board\JointManipulator_Master\JMM_LCD_V1\JMM_LCD\MXTmpFiles\rtos_pfp.tmp
+2022-01-28 12:47:31,228 [INFO] CodeEngine:239 - oldGeneratedFile, D:\stm32_ws\board\JointManipulator_Master\JMM_LCD_V1\JMM_LCD\MXTmpFiles\rtos_obj_creat.tmp_save
+2022-01-28 12:47:31,398 [INFO] CodeEngine:257 - Generated code: D:\stm32_ws\board\JointManipulator_Master\JMM_LCD_V1\JMM_LCD\MXTmpFiles\rtos_obj_creat.tmp
+2022-01-28 12:47:31,414 [INFO] CodeEngine:239 - oldGeneratedFile, D:\stm32_ws\board\JointManipulator_Master\JMM_LCD_V1\JMM_LCD\MXTmpFiles\rtos_default_thread.tmp_save
+2022-01-28 12:47:31,794 [INFO] CodeEngine:257 - Generated code: D:\stm32_ws\board\JointManipulator_Master\JMM_LCD_V1\JMM_LCD\MXTmpFiles\rtos_default_thread.tmp
+2022-01-28 12:47:31,817 [INFO] CodeEngine:239 - oldGeneratedFile, D:\stm32_ws\board\JointManipulator_Master\JMM_LCD_V1\JMM_LCD\MXTmpFiles\rtos_threads.tmp_save
+2022-01-28 12:47:31,979 [INFO] CodeEngine:257 - Generated code: D:\stm32_ws\board\JointManipulator_Master\JMM_LCD_V1\JMM_LCD\MXTmpFiles\rtos_threads.tmp
+2022-01-28 12:47:31,998 [INFO] CodeEngine:239 - oldGeneratedFile, D:\stm32_ws\board\JointManipulator_Master\JMM_LCD_V1\JMM_LCD\Core\Inc\FreeRTOSConfig.h_save
+2022-01-28 12:47:32,196 [INFO] CodeEngine:257 - Generated code: D:\stm32_ws\board\JointManipulator_Master\JMM_LCD_V1\JMM_LCD\Core\Inc\FreeRTOSConfig.h
+2022-01-28 12:47:32,213 [INFO] CodeEngine:239 - oldGeneratedFile, D:\stm32_ws\board\JointManipulator_Master\JMM_LCD_V1\JMM_LCD\Core\Src\freertos.c_save
+2022-01-28 12:47:32,311 [INFO] CodeEngine:257 - Generated code: D:\stm32_ws\board\JointManipulator_Master\JMM_LCD_V1\JMM_LCD\Core\Src\freertos.c
+2022-01-28 12:47:32,335 [INFO] CodeEngine:239 - oldGeneratedFile, D:\stm32_ws\board\JointManipulator_Master\JMM_LCD_V1\JMM_LCD\MXTmpFiles\cortex.tmp_save
+2022-01-28 12:47:32,440 [INFO] CodeEngine:257 - Generated code: D:\stm32_ws\board\JointManipulator_Master\JMM_LCD_V1\JMM_LCD\MXTmpFiles\cortex.tmp
+2022-01-28 12:47:32,463 [INFO] CodeEngine:239 - oldGeneratedFile, D:\stm32_ws\board\JointManipulator_Master\JMM_LCD_V1\JMM_LCD\MXTmpFiles\mx_fmc_HC.tmp_save
+2022-01-28 12:47:32,840 [INFO] CodeEngine:257 - Generated code: D:\stm32_ws\board\JointManipulator_Master\JMM_LCD_V1\JMM_LCD\MXTmpFiles\mx_fmc_HC.tmp
+2022-01-28 12:47:32,854 [INFO] CodeEngine:239 - oldGeneratedFile, D:\stm32_ws\board\JointManipulator_Master\JMM_LCD_V1\JMM_LCD\MXTmpFiles\mx_fmc_GV.tmp_save
+2022-01-28 12:47:32,978 [INFO] CodeEngine:257 - Generated code: D:\stm32_ws\board\JointManipulator_Master\JMM_LCD_V1\JMM_LCD\MXTmpFiles\mx_fmc_GV.tmp
+2022-01-28 12:47:32,986 [INFO] CodeEngine:239 - oldGeneratedFile, D:\stm32_ws\board\JointManipulator_Master\JMM_LCD_V1\JMM_LCD\MXTmpFiles\mx_fmc_MSP.tmp_save
+2022-01-28 12:47:33,181 [INFO] CodeEngine:257 - Generated code: D:\stm32_ws\board\JointManipulator_Master\JMM_LCD_V1\JMM_LCD\MXTmpFiles\mx_fmc_MSP.tmp
+2022-01-28 12:47:33,190 [INFO] Middleware:1388 - No code input for Bsp Dependency
+2022-01-28 12:47:33,216 [INFO] CodeEngine:239 - oldGeneratedFile, D:\stm32_ws\board\JointManipulator_Master\JMM_LCD_V1\JMM_LCD\LIBJPEG\App\libjpeg.c_save
+2022-01-28 12:47:33,331 [INFO] CodeEngine:257 - Generated code: D:\stm32_ws\board\JointManipulator_Master\JMM_LCD_V1\JMM_LCD\LIBJPEG\App\libjpeg.c
+2022-01-28 12:47:33,345 [INFO] CodeEngine:239 - oldGeneratedFile, D:\stm32_ws\board\JointManipulator_Master\JMM_LCD_V1\JMM_LCD\LIBJPEG\App\libjpeg.h_save
+2022-01-28 12:47:33,420 [INFO] CodeEngine:257 - Generated code: D:\stm32_ws\board\JointManipulator_Master\JMM_LCD_V1\JMM_LCD\LIBJPEG\App\libjpeg.h
+2022-01-28 12:47:33,435 [INFO] CodeEngine:239 - oldGeneratedFile, D:\stm32_ws\board\JointManipulator_Master\JMM_LCD_V1\JMM_LCD\LIBJPEG\Target\jconfig.h_save
+2022-01-28 12:47:33,524 [INFO] CodeEngine:257 - Generated code: D:\stm32_ws\board\JointManipulator_Master\JMM_LCD_V1\JMM_LCD\LIBJPEG\Target\jconfig.h
+2022-01-28 12:47:33,538 [INFO] CodeEngine:239 - oldGeneratedFile, D:\stm32_ws\board\JointManipulator_Master\JMM_LCD_V1\JMM_LCD\LIBJPEG\Target\jmorecfg.h_save
+2022-01-28 12:47:33,931 [INFO] CodeEngine:257 - Generated code: D:\stm32_ws\board\JointManipulator_Master\JMM_LCD_V1\JMM_LCD\LIBJPEG\Target\jmorecfg.h
+2022-01-28 12:47:33,961 [INFO] CodeEngine:239 - oldGeneratedFile, D:\stm32_ws\board\JointManipulator_Master\JMM_LCD_V1\JMM_LCD\LIBJPEG\Target\jdata_conf.h_save
+2022-01-28 12:47:34,268 [INFO] CodeEngine:257 - Generated code: D:\stm32_ws\board\JointManipulator_Master\JMM_LCD_V1\JMM_LCD\LIBJPEG\Target\jdata_conf.h
+2022-01-28 12:47:34,282 [INFO] Middleware:1388 - No code input for Bsp Dependency
+2022-01-28 12:47:34,309 [INFO] CodeEngine:239 - oldGeneratedFile, D:\stm32_ws\board\JointManipulator_Master\JMM_LCD_V1\JMM_LCD\MXTmpFiles\SCB_CleanInvalidateDCache.tmp_save
+2022-01-28 12:47:34,464 [INFO] CodeEngine:257 - Generated code: D:\stm32_ws\board\JointManipulator_Master\JMM_LCD_V1\JMM_LCD\MXTmpFiles\SCB_CleanInvalidateDCache.tmp
+2022-01-28 12:47:34,477 [INFO] CodeEngine:239 - oldGeneratedFile, D:\stm32_ws\board\JointManipulator_Master\JMM_LCD_V1\JMM_LCD\MXTmpFiles\touchgfx_license.tmp_save
+2022-01-28 12:47:34,670 [INFO] CodeEngine:257 - Generated code: D:\stm32_ws\board\JointManipulator_Master\JMM_LCD_V1\JMM_LCD\MXTmpFiles\touchgfx_license.tmp
+2022-01-28 12:47:34,696 [INFO] CodeEngine:239 - oldGeneratedFile, D:\stm32_ws\board\JointManipulator_Master\JMM_LCD_V1\JMM_LCD\MXTmpFiles\touchgfx_gen_license.tmp_save
+2022-01-28 12:47:35,031 [INFO] CodeEngine:257 - Generated code: D:\stm32_ws\board\JointManipulator_Master\JMM_LCD_V1\JMM_LCD\MXTmpFiles\touchgfx_gen_license.tmp
+2022-01-28 12:47:35,070 [INFO] CodeEngine:239 - oldGeneratedFile, D:\stm32_ws\board\JointManipulator_Master\JMM_LCD_V1\JMM_LCD\MXTmpFiles\dma_16bpp_implementation.tmp_save
+2022-01-28 12:47:35,362 [INFO] CodeEngine:257 - Generated code: D:\stm32_ws\board\JointManipulator_Master\JMM_LCD_V1\JMM_LCD\MXTmpFiles\dma_16bpp_implementation.tmp
+2022-01-28 12:47:35,387 [INFO] CodeEngine:239 - oldGeneratedFile, D:\stm32_ws\board\JointManipulator_Master\JMM_LCD_V1\JMM_LCD\MXTmpFiles\oswrappers_cmsis.tmp_save
+2022-01-28 12:47:35,626 [INFO] CodeEngine:257 - Generated code: D:\stm32_ws\board\JointManipulator_Master\JMM_LCD_V1\JMM_LCD\MXTmpFiles\oswrappers_cmsis.tmp
+2022-01-28 12:47:35,654 [INFO] CodeEngine:239 - oldGeneratedFile, D:\stm32_ws\board\JointManipulator_Master\JMM_LCD_V1\JMM_LCD\TouchGFX\App\app_touchgfx.h_save
+2022-01-28 12:47:35,854 [INFO] CodeEngine:257 - Generated code: D:\stm32_ws\board\JointManipulator_Master\JMM_LCD_V1\JMM_LCD\TouchGFX\App\app_touchgfx.h
+2022-01-28 12:47:35,879 [INFO] CodeEngine:239 - oldGeneratedFile, D:\stm32_ws\board\JointManipulator_Master\JMM_LCD_V1\JMM_LCD\TouchGFX\ApplicationTemplate.touchgfx.part_save
+2022-01-28 12:47:36,117 [INFO] CodeEngine:257 - Generated code: D:\stm32_ws\board\JointManipulator_Master\JMM_LCD_V1\JMM_LCD\TouchGFX\ApplicationTemplate.touchgfx.part
+2022-01-28 12:47:36,151 [INFO] CodeEngine:239 - oldGeneratedFile, D:\stm32_ws\board\JointManipulator_Master\JMM_LCD_V1\JMM_LCD\TouchGFX\target\generated\TouchGFXConfiguration.cpp_save
+2022-01-28 12:47:36,374 [INFO] CodeEngine:257 - Generated code: D:\stm32_ws\board\JointManipulator_Master\JMM_LCD_V1\JMM_LCD\TouchGFX\target\generated\TouchGFXConfiguration.cpp
+2022-01-28 12:47:36,406 [INFO] CodeEngine:239 - oldGeneratedFile, D:\stm32_ws\board\JointManipulator_Master\JMM_LCD_V1\JMM_LCD\TouchGFX\target\generated\TouchGFXGeneratedHAL.hpp_save
+2022-01-28 12:47:36,553 [INFO] CodeEngine:257 - Generated code: D:\stm32_ws\board\JointManipulator_Master\JMM_LCD_V1\JMM_LCD\TouchGFX\target\generated\TouchGFXGeneratedHAL.hpp
+2022-01-28 12:47:36,584 [INFO] CodeEngine:239 - oldGeneratedFile, D:\stm32_ws\board\JointManipulator_Master\JMM_LCD_V1\JMM_LCD\TouchGFX\target\generated\TouchGFXGeneratedHAL.cpp_save
+2022-01-28 12:47:36,873 [INFO] CodeEngine:257 - Generated code: D:\stm32_ws\board\JointManipulator_Master\JMM_LCD_V1\JMM_LCD\TouchGFX\target\generated\TouchGFXGeneratedHAL.cpp
+2022-01-28 12:47:36,900 [INFO] CodeEngine:239 - oldGeneratedFile, D:\stm32_ws\board\JointManipulator_Master\JMM_LCD_V1\JMM_LCD\TouchGFX\target\TouchGFXHAL.hpp_save
+2022-01-28 12:47:37,158 [INFO] CodeEngine:257 - Generated code: D:\stm32_ws\board\JointManipulator_Master\JMM_LCD_V1\JMM_LCD\TouchGFX\target\TouchGFXHAL.hpp
+2022-01-28 12:47:37,182 [INFO] CodeEngine:239 - oldGeneratedFile, D:\stm32_ws\board\JointManipulator_Master\JMM_LCD_V1\JMM_LCD\TouchGFX\target\TouchGFXHAL.cpp_save
+2022-01-28 12:47:37,438 [INFO] CodeEngine:257 - Generated code: D:\stm32_ws\board\JointManipulator_Master\JMM_LCD_V1\JMM_LCD\TouchGFX\target\TouchGFXHAL.cpp
+2022-01-28 12:47:37,460 [INFO] CodeEngine:239 - oldGeneratedFile, D:\stm32_ws\board\JointManipulator_Master\JMM_LCD_V1\JMM_LCD\TouchGFX\target\STM32TouchController.hpp_save
+2022-01-28 12:47:37,686 [INFO] CodeEngine:257 - Generated code: D:\stm32_ws\board\JointManipulator_Master\JMM_LCD_V1\JMM_LCD\TouchGFX\target\STM32TouchController.hpp
+2022-01-28 12:47:37,711 [INFO] CodeEngine:239 - oldGeneratedFile, D:\stm32_ws\board\JointManipulator_Master\JMM_LCD_V1\JMM_LCD\TouchGFX\target\STM32TouchController.cpp_save
+2022-01-28 12:47:37,901 [INFO] CodeEngine:257 - Generated code: D:\stm32_ws\board\JointManipulator_Master\JMM_LCD_V1\JMM_LCD\TouchGFX\target\STM32TouchController.cpp
+2022-01-28 12:47:37,933 [INFO] CodeEngine:239 - oldGeneratedFile, D:\stm32_ws\board\JointManipulator_Master\JMM_LCD_V1\JMM_LCD\TouchGFX\target\generated\STM32DMA.hpp_save
+2022-01-28 12:47:38,143 [INFO] CodeEngine:257 - Generated code: D:\stm32_ws\board\JointManipulator_Master\JMM_LCD_V1\JMM_LCD\TouchGFX\target\generated\STM32DMA.hpp
+2022-01-28 12:47:38,168 [INFO] CodeEngine:239 - oldGeneratedFile, D:\stm32_ws\board\JointManipulator_Master\JMM_LCD_V1\JMM_LCD\TouchGFX\target\generated\STM32DMA.cpp_save
+2022-01-28 12:47:38,424 [INFO] CodeEngine:257 - Generated code: D:\stm32_ws\board\JointManipulator_Master\JMM_LCD_V1\JMM_LCD\TouchGFX\target\generated\STM32DMA.cpp
+2022-01-28 12:47:38,446 [INFO] CodeEngine:239 - oldGeneratedFile, D:\stm32_ws\board\JointManipulator_Master\JMM_LCD_V1\JMM_LCD\TouchGFX\target\generated\OSWrappers.cpp_save
+2022-01-28 12:47:38,686 [INFO] CodeEngine:257 - Generated code: D:\stm32_ws\board\JointManipulator_Master\JMM_LCD_V1\JMM_LCD\TouchGFX\target\generated\OSWrappers.cpp
+2022-01-28 12:47:38,713 [INFO] CodeEngine:239 - oldGeneratedFile, D:\stm32_ws\board\JointManipulator_Master\JMM_LCD_V1\JMM_LCD\TouchGFX\target\TouchGFXGPIO.cpp_save
+2022-01-28 12:47:38,921 [INFO] CodeEngine:257 - Generated code: D:\stm32_ws\board\JointManipulator_Master\JMM_LCD_V1\JMM_LCD\TouchGFX\target\TouchGFXGPIO.cpp
+2022-01-28 12:47:38,955 [INFO] CodeEngine:239 - oldGeneratedFile, D:\stm32_ws\board\JointManipulator_Master\JMM_LCD_V1\JMM_LCD\TouchGFX\target\generated\MJPEGDecoder.hpp_save
+2022-01-28 12:47:39,149 [INFO] CodeEngine:257 - Generated code: D:\stm32_ws\board\JointManipulator_Master\JMM_LCD_V1\JMM_LCD\TouchGFX\target\generated\MJPEGDecoder.hpp
+2022-01-28 12:47:39,184 [INFO] CodeEngine:239 - oldGeneratedFile, D:\stm32_ws\board\JointManipulator_Master\JMM_LCD_V1\JMM_LCD\TouchGFX\target\generated\DedicatedBufferVideoController.hpp_save
+2022-01-28 12:47:39,449 [INFO] CodeEngine:257 - Generated code: D:\stm32_ws\board\JointManipulator_Master\JMM_LCD_V1\JMM_LCD\TouchGFX\target\generated\DedicatedBufferVideoController.hpp
+2022-01-28 12:47:39,489 [INFO] CodeEngine:239 - oldGeneratedFile, D:\stm32_ws\board\JointManipulator_Master\JMM_LCD_V1\JMM_LCD\TouchGFX\target\generated\SoftwareMJPEGDecoder.cpp_save
+2022-01-28 12:47:39,743 [INFO] CodeEngine:257 - Generated code: D:\stm32_ws\board\JointManipulator_Master\JMM_LCD_V1\JMM_LCD\TouchGFX\target\generated\SoftwareMJPEGDecoder.cpp
+2022-01-28 12:47:39,767 [INFO] CodeEngine:239 - oldGeneratedFile, D:\stm32_ws\board\JointManipulator_Master\JMM_LCD_V1\JMM_LCD\TouchGFX\target\generated\SoftwareMJPEGDecoder.hpp_save
+2022-01-28 12:47:39,915 [INFO] CodeEngine:257 - Generated code: D:\stm32_ws\board\JointManipulator_Master\JMM_LCD_V1\JMM_LCD\TouchGFX\target\generated\SoftwareMJPEGDecoder.hpp
+2022-01-28 12:47:39,934 [INFO] CodeEngine:239 - oldGeneratedFile, D:\stm32_ws\board\JointManipulator_Master\JMM_LCD_V1\JMM_LCD\TouchGFX\App\app_touchgfx.c_save
+2022-01-28 12:47:40,160 [INFO] CodeEngine:257 - Generated code: D:\stm32_ws\board\JointManipulator_Master\JMM_LCD_V1\JMM_LCD\TouchGFX\App\app_touchgfx.c
+2022-01-28 12:47:40,254 [INFO] CodeEngine:239 - oldGeneratedFile, D:\stm32_ws\board\JointManipulator_Master\JMM_LCD_V1\JMM_LCD\Core\Src\stm32f7xx_it.c_save
+2022-01-28 12:47:40,621 [INFO] CodeEngine:257 - Generated code: D:\stm32_ws\board\JointManipulator_Master\JMM_LCD_V1\JMM_LCD\Core\Src\stm32f7xx_it.c
+2022-01-28 12:47:40,648 [INFO] CodeEngine:239 - oldGeneratedFile, D:\stm32_ws\board\JointManipulator_Master\JMM_LCD_V1\JMM_LCD\Core\Inc\stm32f7xx_it.h_save
+2022-01-28 12:47:40,859 [INFO] CodeEngine:257 - Generated code: D:\stm32_ws\board\JointManipulator_Master\JMM_LCD_V1\JMM_LCD\Core\Inc\stm32f7xx_it.h
+2022-01-28 12:47:40,917 [INFO] CodeEngine:239 - oldGeneratedFile, D:\stm32_ws\board\JointManipulator_Master\JMM_LCD_V1\JMM_LCD\MXTmpFiles\mx_fmc_HC.tmp_save
+2022-01-28 12:47:41,149 [INFO] CodeEngine:257 - Generated code: D:\stm32_ws\board\JointManipulator_Master\JMM_LCD_V1\JMM_LCD\MXTmpFiles\mx_fmc_HC.tmp
+2022-01-28 12:47:41,162 [INFO] CodeEngine:239 - oldGeneratedFile, D:\stm32_ws\board\JointManipulator_Master\JMM_LCD_V1\JMM_LCD\MXTmpFiles\mx_fmc_GV.tmp_save
+2022-01-28 12:47:41,400 [INFO] CodeEngine:257 - Generated code: D:\stm32_ws\board\JointManipulator_Master\JMM_LCD_V1\JMM_LCD\MXTmpFiles\mx_fmc_GV.tmp
+2022-01-28 12:47:41,438 [INFO] CodeEngine:239 - oldGeneratedFile, D:\stm32_ws\board\JointManipulator_Master\JMM_LCD_V1\JMM_LCD\MXTmpFiles\mx_fmc_MSP.tmp_save
+2022-01-28 12:47:41,740 [INFO] CodeEngine:257 - Generated code: D:\stm32_ws\board\JointManipulator_Master\JMM_LCD_V1\JMM_LCD\MXTmpFiles\mx_fmc_MSP.tmp
+2022-01-28 12:47:41,812 [INFO] CodeEngine:239 - oldGeneratedFile, D:\stm32_ws\board\JointManipulator_Master\JMM_LCD_V1\JMM_LCD\Core\Src\stm32f7xx_hal_msp.c_save
+2022-01-28 12:47:42,271 [INFO] CodeEngine:257 - Generated code: D:\stm32_ws\board\JointManipulator_Master\JMM_LCD_V1\JMM_LCD\Core\Src\stm32f7xx_hal_msp.c
+2022-01-28 12:47:42,283 [INFO] CodeEngine:239 - oldGeneratedFile, D:\stm32_ws\board\JointManipulator_Master\JMM_LCD_V1\JMM_LCD\MXTmpFiles\system.tmp_save
+2022-01-28 12:47:42,474 [INFO] CodeEngine:257 - Generated code: D:\stm32_ws\board\JointManipulator_Master\JMM_LCD_V1\JMM_LCD\MXTmpFiles\system.tmp
+2022-01-28 12:47:42,493 [INFO] CodeEngine:239 - oldGeneratedFile, D:\stm32_ws\board\JointManipulator_Master\JMM_LCD_V1\JMM_LCD\Core\Src\stm32f7xx_hal_timebase_tim.c_save
+2022-01-28 12:47:42,736 [INFO] CodeEngine:257 - Generated code: D:\stm32_ws\board\JointManipulator_Master\JMM_LCD_V1\JMM_LCD\Core\Src\stm32f7xx_hal_timebase_tim.c
+2022-01-28 12:47:42,776 [INFO] CodeEngine:239 - oldGeneratedFile, D:\stm32_ws\board\JointManipulator_Master\JMM_LCD_V1\JMM_LCD\Core\Inc\stm32f7xx_hal_conf.h_save
+2022-01-28 12:47:43,029 [INFO] CodeEngine:257 - Generated code: D:\stm32_ws\board\JointManipulator_Master\JMM_LCD_V1\JMM_LCD\Core\Inc\stm32f7xx_hal_conf.h
+2022-01-28 12:47:43,250 [INFO] CodeEngine:239 - oldGeneratedFile, D:\stm32_ws\board\JointManipulator_Master\JMM_LCD_V1\JMM_LCD\Core\Inc\main.h_save
+2022-01-28 12:47:43,426 [INFO] CodeEngine:257 - Generated code: D:\stm32_ws\board\JointManipulator_Master\JMM_LCD_V1\JMM_LCD\Core\Inc\main.h
+2022-01-28 12:47:43,454 [INFO] CodeEngine:239 - oldGeneratedFile, D:\stm32_ws\board\JointManipulator_Master\JMM_LCD_V1\JMM_LCD\Core\Src\main.c_save
+2022-01-28 12:47:44,032 [INFO] CodeEngine:257 - Generated code: D:\stm32_ws\board\JointManipulator_Master\JMM_LCD_V1\JMM_LCD\Core\Src\main.c
+2022-01-28 12:47:48,063 [INFO] ProjectBuilder:2589 - Time for Copy HAL[1] : 2045mS.
+2022-01-28 12:47:48,064 [ERROR] Middleware:2960 - Invalid RefComponent liste
+2022-01-28 12:47:48,064 [ERROR] Middleware:2960 - Invalid RefComponent liste
+2022-01-28 12:47:48,064 [ERROR] Middleware:2960 - Invalid RefComponent liste
+2022-01-28 12:47:48,064 [ERROR] Middleware:2960 - Invalid RefComponent liste
+2022-01-28 12:47:48,064 [ERROR] Middleware:2960 - Invalid RefComponent liste
+2022-01-28 12:47:48,064 [ERROR] Middleware:2960 - Invalid RefComponent liste
+2022-01-28 12:47:48,064 [ERROR] Middleware:2960 - Invalid RefComponent liste
+2022-01-28 12:47:48,065 [ERROR] Middleware:2960 - Invalid RefComponent liste
+2022-01-28 12:47:48,065 [ERROR] Middleware:2960 - Invalid RefComponent liste
+2022-01-28 12:47:48,065 [ERROR] Middleware:2960 - Invalid RefComponent liste
+2022-01-28 12:47:48,065 [ERROR] Middleware:2960 - Invalid RefComponent liste
+2022-01-28 12:47:48,065 [ERROR] Middleware:2960 - Invalid RefComponent liste
+2022-01-28 12:47:48,065 [ERROR] Middleware:2960 - Invalid RefComponent liste
+2022-01-28 12:47:48,066 [ERROR] Middleware:2960 - Invalid RefComponent liste
+2022-01-28 12:47:48,066 [ERROR] Middleware:2960 - Invalid RefComponent liste
+2022-01-28 12:47:48,066 [ERROR] Middleware:2960 - Invalid RefComponent liste
+2022-01-28 12:47:48,066 [ERROR] Middleware:2960 - Invalid RefComponent liste
+2022-01-28 12:47:48,066 [ERROR] Middleware:2960 - Invalid RefComponent liste
+2022-01-28 12:47:48,066 [ERROR] Middleware:2960 - Invalid RefComponent liste
+2022-01-28 12:47:48,066 [ERROR] Middleware:2960 - Invalid RefComponent liste
+2022-01-28 12:47:48,066 [ERROR] Middleware:2960 - Invalid RefComponent liste
+2022-01-28 12:47:48,067 [ERROR] Middleware:2960 - Invalid RefComponent liste
+2022-01-28 12:47:48,067 [ERROR] Middleware:2960 - Invalid RefComponent liste
+2022-01-28 12:47:48,067 [ERROR] Middleware:2960 - Invalid RefComponent liste
+2022-01-28 12:47:48,067 [ERROR] Middleware:2960 - Invalid RefComponent liste
+2022-01-28 12:47:48,067 [ERROR] Middleware:2960 - Invalid RefComponent liste
+2022-01-28 12:47:48,067 [ERROR] Middleware:2960 - Invalid RefComponent liste
+2022-01-28 12:47:48,067 [ERROR] Middleware:2960 - Invalid RefComponent liste
+2022-01-28 12:47:48,068 [ERROR] Middleware:2960 - Invalid RefComponent liste
+2022-01-28 12:47:48,068 [ERROR] Middleware:2960 - Invalid RefComponent liste
+2022-01-28 12:47:48,068 [ERROR] Middleware:2960 - Invalid RefComponent liste
+2022-01-28 12:47:48,068 [ERROR] Middleware:2960 - Invalid RefComponent liste
+2022-01-28 12:47:48,068 [ERROR] Middleware:2960 - Invalid RefComponent liste
+2022-01-28 12:47:48,068 [ERROR] Middleware:2960 - Invalid RefComponent liste
+2022-01-28 12:47:48,068 [ERROR] Middleware:2960 - Invalid RefComponent liste
+2022-01-28 12:47:48,069 [ERROR] Middleware:2960 - Invalid RefComponent liste
+2022-01-28 12:47:48,069 [ERROR] Middleware:2960 - Invalid RefComponent liste
+2022-01-28 12:47:48,069 [ERROR] Middleware:2960 - Invalid RefComponent liste
+2022-01-28 12:47:48,069 [ERROR] Middleware:2960 - Invalid RefComponent liste
+2022-01-28 12:47:48,069 [ERROR] Middleware:2960 - Invalid RefComponent liste
+2022-01-28 12:47:48,069 [ERROR] Middleware:2960 - Invalid RefComponent liste
+2022-01-28 12:47:48,069 [ERROR] Middleware:2960 - Invalid RefComponent liste
+2022-01-28 12:47:48,070 [ERROR] Middleware:2960 - Invalid RefComponent liste
+2022-01-28 12:47:48,070 [ERROR] Middleware:2960 - Invalid RefComponent liste
+2022-01-28 12:47:48,070 [ERROR] Middleware:2960 - Invalid RefComponent liste
+2022-01-28 12:47:48,070 [ERROR] Middleware:2960 - Invalid RefComponent liste
+2022-01-28 12:47:48,070 [ERROR] Middleware:2960 - Invalid RefComponent liste
+2022-01-28 12:47:48,070 [ERROR] Middleware:2960 - Invalid RefComponent liste
+2022-01-28 12:47:48,070 [ERROR] Middleware:2960 - Invalid RefComponent liste
+2022-01-28 12:47:48,071 [ERROR] Middleware:2960 - Invalid RefComponent liste
+2022-01-28 12:47:48,071 [ERROR] Middleware:2960 - Invalid RefComponent liste
+2022-01-28 12:47:48,071 [ERROR] Middleware:2960 - Invalid RefComponent liste
+2022-01-28 12:47:48,071 [ERROR] Middleware:2960 - Invalid RefComponent liste
+2022-01-28 12:47:48,071 [ERROR] Middleware:2960 - Invalid RefComponent liste
+2022-01-28 12:47:48,072 [ERROR] Middleware:2960 - Invalid RefComponent liste
+2022-01-28 12:47:48,072 [ERROR] Middleware:2960 - Invalid RefComponent liste
+2022-01-28 12:47:48,072 [ERROR] Middleware:2960 - Invalid RefComponent liste
+2022-01-28 12:47:48,072 [ERROR] Middleware:2960 - Invalid RefComponent liste
+2022-01-28 12:47:48,072 [ERROR] Middleware:2960 - Invalid RefComponent liste
+2022-01-28 12:47:48,072 [ERROR] Middleware:2960 - Invalid RefComponent liste
+2022-01-28 12:47:48,072 [ERROR] Middleware:2960 - Invalid RefComponent liste
+2022-01-28 12:47:48,072 [ERROR] Middleware:2960 - Invalid RefComponent liste
+2022-01-28 12:47:48,125 [INFO] ProjectBuilder:3665 - Project Generator version: 3.15.2
+2022-01-28 12:47:48,900 [INFO] ConfigFileManager:1273 - The Die is : DIE449
+2022-01-28 12:47:48,917 [INFO] ApiDbMcu:488 - Load IP Config File for FATFS
+2022-01-28 12:47:48,987 [INFO] ApiDbMcu:488 - Load IP Config File for LWIP
+2022-01-28 12:47:49,031 [INFO] ApiDbMcu:488 - Load IP Config File for MBEDTLS
+2022-01-28 12:47:49,070 [INFO] ApiDbMcu:488 - Load IP Config File for USB_DEVICE
+2022-01-28 12:47:49,083 [INFO] ApiDbMcu:488 - Load IP Config File for USB_HOST
+2022-01-28 12:47:53,583 [INFO] ProjectBuilder:3832 - Time for Generating toolchain IDE Files: 5456mS.
+2022-01-28 12:47:53,585 [INFO] ProjectBuilder:2461 - Time for Copy CMSIS : 0mS.
+2022-01-28 12:47:53,646 [INFO] ProjectBuilder:2461 - Time for Copy CMSIS : 0mS.

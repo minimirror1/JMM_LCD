@@ -81,6 +81,10 @@ public:
     {
         // Running in UI thread
 
+        // Lock mutex to wait for decoder thread to finish
+        MUTEX_LOCK(mutexBuffers);
+        MUTEX_UNLOCK(mutexBuffers);
+
         streams[handle].isActive = false;
 
         // If all handles are free, reset top pointer
@@ -121,6 +125,12 @@ public:
 
     void setVideoData(const Handle handle, const uint8_t* movie, const uint32_t length)
     {
+        assert(handle < no_streams);
+        Stream& stream = streams[handle];
+
+        // Reset stream frame number
+        stream.frameNumber = 0;
+
         mjpegDecoders[handle]->setVideoData(movie, length);
     }
 
@@ -232,14 +242,14 @@ public:
         // Running in UI thread
 
         // Check if we should invalidate in next frame
-        for (uint32_t i = 0; i < no_streams; i++)
+        for (uint32_t i = 0; i<no_streams; i++)
         {
             Stream& stream = streams[i];
             if (stream.isPlaying)
             {
                 if (decodeForNextTick(stream))
                 {
-                    stream.doInvalidateOnNextTick = true;
+                    stream.doDecode = true;
                 }
             }
         }
@@ -261,7 +271,7 @@ public:
     {
         // Running in Decoder thread!!
 
-        while (1)
+        while(1)
         {
             // Wait for synchronisation signal from UI thread
             SEM_WAIT(semDecode);
@@ -269,11 +279,21 @@ public:
             // Lock out the UI by taking the mutex
             MUTEX_LOCK(mutexBuffers);
 
+            // Update stream flags
+            for (uint32_t i = 0; i < no_streams; i++)
+            {
+                Stream& stream = streams[i];
+                if (stream.doDecode)
+                {
+                  stream.doInvalidateOnNextTick = true;
+                }
+            }
+
             // Now decode all streams marked for invalidation in next tick
             for (uint32_t i = 0; i < no_streams; i++)
             {
                 Stream& stream = streams[i];
-                if (stream.doInvalidateOnNextTick)
+                if (stream.doDecode)
                 {
                     MJPEGDecoder* const decoder = mjpegDecoders[i];
                     // Seek or increment video frame
@@ -282,6 +302,7 @@ public:
                         decoder->gotoFrame(stream.seek_to_frame);
                         stream.seek_to_frame = 0;
                     }
+
                     // Decode frame
                     stream.hasMoreFrames = decoder->decodeNextFrame((uint8_t*)decodeBuffers[i], width, height, stride);
                     stream.frameCount++;
@@ -295,6 +316,7 @@ public:
                     {
                         stream.frameNumber = 1;
                     }
+                    stream.doDecode = false;
                 }
             }
 
@@ -321,8 +343,8 @@ private:
     {
     public:
         Stream() : frameNumber(0), frameCount(0), tickCount(0), frame_rate_video(0), frame_rate_ticks(0),
-            seek_to_frame(0),
-            isActive(false), doInvalidateOnNextTick(false), hasMoreFrames(false), repeat(true) {}
+                   seek_to_frame(0),
+                   isActive(false), doInvalidateOnNextTick(false), hasMoreFrames(false), repeat(true), doDecode(false) {}
         uint32_t frameNumber;      // Video frame number shown
         uint32_t frameCount;       // Video frame counter (for frame rate)
         uint32_t tickCount;        // UI frames since play
@@ -334,6 +356,7 @@ private:
         bool doInvalidateOnNextTick;
         bool hasMoreFrames;
         bool repeat;
+        bool doDecode;
     };
 
     MJPEGDecoder* mjpegDecoders[no_streams];
@@ -371,6 +394,9 @@ private:
         {
             if (streams[i].isActive == false)
             {
+                // Reset stream parameters
+                streams[i] = Stream();
+
                 return static_cast<VideoController::Handle>(i);
             }
         }

@@ -7,8 +7,6 @@
 #define RGB565 0
 #define RGB888 1
 #define VIDEO_DECODE_FORMAT RGB565
-
-extern const unsigned char* frames[];
 namespace
 {
 struct JPEG_RGB
@@ -127,6 +125,10 @@ bool SoftwareMJPEGDecoder::decodeNextFrame(uint8_t* buffer, uint16_t buffer_widt
 
         // Advance to next frame
         currentMovieOffset += chunkSize;
+        if (chunkSize == 0) // Empty frame - Skip
+        {
+          currentMovieOffset += 8;
+        }
         currentMovieOffset = (currentMovieOffset + 1) & 0xFFFFFFFE; //pad to next word
 
         if (currentMovieOffset == lastFrameEnd)
@@ -169,7 +171,7 @@ bool SoftwareMJPEGDecoder::gotoNextFrame()
         const uint16_t STREAM0 = 0x3030;
         const uint16_t TYPEDC = 0x6364;
 
-        if (streamNo == STREAM0 && chunkType == TYPEDC)
+        if (streamNo == STREAM0 && chunkType == TYPEDC && chunkSize > 0)
         {
             // Found next frame
             return true;
@@ -526,10 +528,10 @@ void SoftwareMJPEGDecoder::getVideoInfo(touchgfx::VideoInformation* data)
 //#ifndef SIMULATOR
 //link libjpeg file operation to fileinput namespace
 extern "C" {
-    size_t jpeg_read_file(FILE* file, uint8_t* buf, uint32_t sizeofbuf)
-    {
-        assert(!"jpeg_read_file called with no implementation");
-        return 0;
-    }
+size_t jpeg_read_file(FILE* file, uint8_t* buf, uint32_t sizeofbuf)
+{
+    assert(!"jpeg_read_file called with no implementation");
+    return 0;
+}
 }
 //#endif
