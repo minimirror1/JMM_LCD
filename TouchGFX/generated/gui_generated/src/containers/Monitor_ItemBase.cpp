@@ -26,9 +26,7 @@ Monitor_ItemBase::Monitor_ItemBase() :
     posi.setPosition(0, 55, 90, 31);
     posi.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
     posi.setLinespacing(0);
-    Unicode::snprintf(posiBuffer, POSI_SIZE, "%s", touchgfx::TypedText(T_NUM_DEFAULT).getText());
-    posi.setWildcard(posiBuffer);
-    posi.setTypedText(touchgfx::TypedText(T___SINGLEUSE_EB07));
+    posi.setTypedText(touchgfx::TypedText(T___SINGLEUSE_VZTJ));
 
     button1.setXY(2, 86);
     button1.setBitmaps(touchgfx::Bitmap(BITMAP_ID_ID), touchgfx::Bitmap(BITMAP_ID_ID));
@@ -37,18 +35,12 @@ Monitor_ItemBase::Monitor_ItemBase() :
     id.setPosition(2, 91, 86, 25);
     id.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
     id.setLinespacing(0);
-    touchgfx::Unicode::snprintf(idBuffer1, IDBUFFER1_SIZE, "%s", touchgfx::TypedText(T_NUM_DEFAULT).getText());
-    id.setWildcard1(idBuffer1);
-    touchgfx::Unicode::snprintf(idBuffer2, IDBUFFER2_SIZE, "%s", touchgfx::TypedText(T_NUM_DEFAULT).getText());
-    id.setWildcard2(idBuffer2);
-    id.setTypedText(touchgfx::TypedText(T___SINGLEUSE_IPZ3));
+    id.setTypedText(touchgfx::TypedText(T___SINGLEUSE_V9I0));
 
     slot.setPosition(0, 0, 92, 25);
     slot.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
     slot.setLinespacing(0);
-    Unicode::snprintf(slotBuffer, SLOT_SIZE, "%s", touchgfx::TypedText(T_NUM_SMALL).getText());
-    slot.setWildcard(slotBuffer);
-    slot.setTypedText(touchgfx::TypedText(T___SINGLEUSE_ZRUA));
+    slot.setTypedText(touchgfx::TypedText(T___SINGLEUSE_QU5N));
 
     add(posiProgress);
     add(posi);

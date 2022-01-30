@@ -77,6 +77,10 @@ build/MINGW32_NT-6.2/generated/gui_generated/src/common/FrontendApplicationBase.
  generated/gui_generated/include/gui_generated/screen2_screen/Screen2ViewBase.hpp \
  gui/include/gui/screen2_screen/Screen2Presenter.hpp \
  ../Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/ToggleButton.hpp \
+ gui/include/gui/keyboard_screen/KeyboardView.hpp \
+ generated/gui_generated/include/gui_generated/keyboard_screen/KeyboardViewBase.hpp \
+ gui/include/gui/keyboard_screen/KeyboardPresenter.hpp \
+ ../Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/ButtonWithLabel.hpp \
  generated/texts/include/texts/TextKeysAndLanguages.hpp \
  ../Middlewares/ST/touchgfx/framework/include/platform/driver/lcd/LCD16bpp.hpp \
  ../Middlewares/ST/touchgfx/framework/include/touchgfx/Color.hpp \
@@ -237,6 +241,14 @@ generated/gui_generated/include/gui_generated/screen2_screen/Screen2ViewBase.hpp
 gui/include/gui/screen2_screen/Screen2Presenter.hpp:
 
 ../Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/ToggleButton.hpp:
+
+gui/include/gui/keyboard_screen/KeyboardView.hpp:
+
+generated/gui_generated/include/gui_generated/keyboard_screen/KeyboardViewBase.hpp:
+
+gui/include/gui/keyboard_screen/KeyboardPresenter.hpp:
+
+../Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/ButtonWithLabel.hpp:
 
 generated/texts/include/texts/TextKeysAndLanguages.hpp:
 

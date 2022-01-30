@@ -21,6 +21,9 @@ public:
     // Screen2
     void gotoScreen2ScreenNoTransition();
 
+    // Keyboard
+    void gotoKeyboardScreenNoTransition();
+
 protected:
     touchgfx::Callback<FrontendApplicationBase> transitionCallback;
     FrontendHeap& frontendHeap;
@@ -31,6 +34,9 @@ protected:
 
     // Screen2
     void gotoScreen2ScreenNoTransitionImpl();
+
+    // Keyboard
+    void gotoKeyboardScreenNoTransitionImpl();
 };
 
 #endif // FRONTENDAPPLICATIONBASE_HPP

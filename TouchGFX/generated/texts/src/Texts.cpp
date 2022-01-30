@@ -14,7 +14,7 @@ uint16_t touchgfx::Font::getStringWidth(const touchgfx::Unicode::UnicodeChar* te
 {
     va_list pArg;
     va_start(pArg, text);
-    uint16_t width = getStringWidthRTL(TEXT_DIRECTION_LTR, text, pArg);
+    uint16_t width = getStringWidthLTR(TEXT_DIRECTION_LTR, text, pArg);
     va_end(pArg);
     return width;
 }
@@ -23,14 +23,13 @@ uint16_t touchgfx::Font::getStringWidth(touchgfx::TextDirection textDirection, c
 {
     va_list pArg;
     va_start(pArg, text);
-    uint16_t width = getStringWidthRTL(textDirection, text, pArg);
+    uint16_t width = getStringWidthLTR(textDirection, text, pArg);
     va_end(pArg);
     return width;
 }
 
 touchgfx::Unicode::UnicodeChar touchgfx::TextProvider::getNextLigature(TextDirection direction)
 {
-    nextCharacters.replaceAt0(unicodeConverter(direction));
     if (fontGsubTable && nextCharacters.peekChar())
     {
         substituteGlyphs();
@@ -46,14 +45,13 @@ touchgfx::Unicode::UnicodeChar touchgfx::TextProvider::getNextLigature(TextDirec
 void touchgfx::TextProvider::initializeInternal()
 {
     fillInputBuffer();
-    unicodeConverterInit();
 }
 
 void touchgfx::LCD::drawString(touchgfx::Rect widgetArea, const touchgfx::Rect& invalidatedArea, const touchgfx::LCD::StringVisuals& stringVisuals, const touchgfx::Unicode::UnicodeChar* format, ...)
 {
     va_list pArg;
     va_start(pArg, format);
-    drawStringRTL(widgetArea, invalidatedArea, stringVisuals, format, pArg);
+    drawStringLTR(widgetArea, invalidatedArea, stringVisuals, format, pArg);
     va_end(pArg);
 }
 
@@ -62,9 +60,12 @@ extern const touchgfx::TypedText::TypedTextData* const typedTextDatabaseArray[];
 
 TEXT_LOCATION_FLASH_PRAGMA
 KEEP extern const touchgfx::Unicode::UnicodeChar texts_all_languages[] TEXT_LOCATION_FLASH_ATTRIBUTE = {
-    0x2, 0x2d, 0x2, 0x0, // @0 "<>-<>"
-    0x52, 0x65, 0x76, 0x65, 0x72, 0x73, 0x65, 0x0, // @4 "Reverse"
-    0x30, 0x0 // @12 "0"
+    0x2, 0x0, // @0 "<>"
+    0x4e, 0x65, 0x77, 0x20, 0x54, 0x65, 0x78, 0x74, 0x0, // @2 "New Text"
+    0x43, 0x61, 0x6e, 0x63, 0x65, 0x6c, 0x0, // @11 "Cancel"
+    0x31, 0x32, 0x33, 0x20, 0x0, // @18 "123 "
+    0x41, 0x42, 0x43, 0x0, // @23 "ABC"
+    0x4f, 0x4b, 0x0 // @27 "OK"
 };
 TEXT_LOCATION_FLASH_PRAGMA
 KEEP extern uint32_t const indicesGb[] TEXT_LOCATION_FLASH_ATTRIBUTE;

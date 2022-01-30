@@ -8,7 +8,7 @@
 #include <touchgfx/containers/Container.hpp>
 #include <touchgfx/containers/progress_indicators/CircleProgress.hpp>
 #include <touchgfx/widgets/canvas/PainterRGB565Bitmap.hpp>
-#include <touchgfx/widgets/TextAreaWithWildcard.hpp>
+#include <touchgfx/widgets/TextArea.hpp>
 #include <touchgfx/widgets/Button.hpp>
 
 class Monitor_ItemBase : public touchgfx::Container
@@ -36,22 +36,10 @@ protected:
      */
     touchgfx::CircleProgress posiProgress;
     touchgfx::PainterRGB565Bitmap posiProgressPainter;
-    touchgfx::TextAreaWithOneWildcard posi;
+    touchgfx::TextArea posi;
     touchgfx::Button button1;
-    touchgfx::TextAreaWithTwoWildcards id;
-    touchgfx::TextAreaWithOneWildcard slot;
-
-    /*
-     * Wildcard Buffers
-     */
-    static const uint16_t POSI_SIZE = 10;
-    touchgfx::Unicode::UnicodeChar posiBuffer[POSI_SIZE];
-    static const uint16_t IDBUFFER1_SIZE = 10;
-    touchgfx::Unicode::UnicodeChar idBuffer1[IDBUFFER1_SIZE];
-    static const uint16_t IDBUFFER2_SIZE = 10;
-    touchgfx::Unicode::UnicodeChar idBuffer2[IDBUFFER2_SIZE];
-    static const uint16_t SLOT_SIZE = 10;
-    touchgfx::Unicode::UnicodeChar slotBuffer[SLOT_SIZE];
+    touchgfx::TextArea id;
+    touchgfx::TextArea slot;
 
 private:
 

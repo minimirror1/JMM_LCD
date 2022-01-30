@@ -29,6 +29,10 @@
     <ClCompile Include="..\..\generated\simulator\src\video\SoftwareMJPEGDecoder.cpp"/>
     <ClCompile Include="..\..\gui\src\containers\Monitor_Item.cpp"/>
     <ClCompile Include="..\..\generated\gui_generated\src\containers\Monitor_ItemBase.cpp"/>
+    <ClCompile Include="..\..\gui\src\common\CustomKeyboard.cpp"/>
+    <ClCompile Include="..\..\gui\src\keyboard_screen\KeyboardPresenter.cpp"/>
+    <ClCompile Include="..\..\gui\src\keyboard_screen\KeyboardView.cpp"/>
+    <ClCompile Include="..\..\generated\gui_generated\src\keyboard_screen\KeyboardViewBase.cpp"/>
   </ItemGroup>
   <ItemGroup>
     <None Include="$(ApplicationRoot)\assets\texts\texts.xml"/>
@@ -187,6 +191,12 @@
     <ClInclude Include="..\..\generated\simulator\include\simulator\video\SoftwareMJPEGDecoder.hpp"/>
     <ClInclude Include="..\..\gui\include\gui\containers\Monitor_Item.hpp"/>
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\containers\Monitor_ItemBase.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\common\CustomKeyboard.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\common\KeyboardKeyMapping.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\common\KeyboardLayout.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\keyboard_screen\KeyboardPresenter.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\keyboard_screen\KeyboardView.hpp"/>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\keyboard_screen\KeyboardViewBase.hpp"/>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="$(ApplicationRoot)\generated\simulator\touchgfx.rc"/>

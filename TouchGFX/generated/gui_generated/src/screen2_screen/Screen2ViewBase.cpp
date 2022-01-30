@@ -32,9 +32,7 @@ Screen2ViewBase::Screen2ViewBase() :
     posi.setPosition(8, 78, 184, 49);
     posi.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
     posi.setLinespacing(0);
-    Unicode::snprintf(posiBuffer, POSI_SIZE, "%s", touchgfx::TypedText(T_NUM_LARGE).getText());
-    posi.setWildcard(posiBuffer);
-    posi.setTypedText(touchgfx::TypedText(T___SINGLEUSE_B2PI));
+    posi.setTypedText(touchgfx::TypedText(T___SINGLEUSE_OR2D));
 
     toggleButton1.setXY(345, 8);
     toggleButton1.setBitmaps(touchgfx::Bitmap(BITMAP_DARK_TOGGLEBARS_TOGGLE_ROUND_LARGE_BUTTON_OFF_ID), touchgfx::Bitmap(BITMAP_DARK_TOGGLEBARS_TOGGLE_ROUND_LARGE_BUTTON_ON_ID));
@@ -46,16 +44,21 @@ Screen2ViewBase::Screen2ViewBase() :
     id.setPosition(15, 133, 170, 49);
     id.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
     id.setLinespacing(0);
-    touchgfx::Unicode::snprintf(idBuffer1, IDBUFFER1_SIZE, "%s", touchgfx::TypedText(T_NUM_LARGE).getText());
-    id.setWildcard1(idBuffer1);
-    touchgfx::Unicode::snprintf(idBuffer2, IDBUFFER2_SIZE, "%s", touchgfx::TypedText(T_NUM_LARGE).getText());
-    id.setWildcard2(idBuffer2);
-    id.setTypedText(touchgfx::TypedText(T___SINGLEUSE_GQGE));
+    id.setTypedText(touchgfx::TypedText(T___SINGLEUSE_009U));
 
     textArea1_2.setXY(240, 15);
     textArea1_2.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
     textArea1_2.setLinespacing(0);
-    textArea1_2.setTypedText(touchgfx::TypedText(T___SINGLEUSE_IXXQ));
+    textArea1_2.setTypedText(touchgfx::TypedText(T___SINGLEUSE_7GSF));
+
+    test.setXY(290, 122);
+    test.setBitmaps(touchgfx::Bitmap(BITMAP_DARK_BUTTONS_ROUND_EDGE_SMALL_ID), touchgfx::Bitmap(BITMAP_DARK_BUTTONS_ROUND_EDGE_SMALL_PRESSED_ID));
+    test.setAction(buttonCallback);
+
+    textArea1.setXY(325, 78);
+    textArea1.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
+    textArea1.setLinespacing(0);
+    textArea1.setTypedText(touchgfx::TypedText(T___SINGLEUSE_8LPS));
 
     add(__background);
     add(posiProgress);
@@ -64,11 +67,21 @@ Screen2ViewBase::Screen2ViewBase() :
     add(button1);
     add(id);
     add(textArea1_2);
+    add(test);
+    add(textArea1);
 }
 
 void Screen2ViewBase::setupScreen()
 {
 
+}
+
+void Screen2ViewBase::keyboardSeletedVar(uint8_t value)
+{
+    //keyBoardSelected
+    //When keyboardSeletedVar is called call virtual function
+    //Call keyBoardSelected
+    keyBoardSelected(value);
 }
 
 void Screen2ViewBase::buttonCallbackHandler(const touchgfx::AbstractButton& src)
@@ -79,5 +92,17 @@ void Screen2ViewBase::buttonCallbackHandler(const touchgfx::AbstractButton& src)
         //When button1 clicked change screen to Screen1
         //Go to Screen1 with no screen transition
         application().gotoScreen1ScreenNoTransition();
+    }
+    else if (&src == &test)
+    {
+        //testButtonPressed
+        //When test clicked call keyboardSeletedVar on Screen2
+        //Call keyboardSeletedVar
+        keyboardSeletedVar(1);
+
+        //gotoKeyboard
+        //When testButtonPressed completed change screen to Keyboard
+        //Go to Keyboard with no screen transition
+        application().gotoKeyboardScreenNoTransition();
     }
 }

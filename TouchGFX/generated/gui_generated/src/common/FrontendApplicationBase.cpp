@@ -13,6 +13,8 @@
 #include <gui/screen1_screen/Screen1Presenter.hpp>
 #include <gui/screen2_screen/Screen2View.hpp>
 #include <gui/screen2_screen/Screen2Presenter.hpp>
+#include <gui/keyboard_screen/KeyboardView.hpp>
+#include <gui/keyboard_screen/KeyboardPresenter.hpp>
 
 using namespace touchgfx;
 
@@ -55,4 +57,17 @@ void FrontendApplicationBase::gotoScreen2ScreenNoTransition()
 void FrontendApplicationBase::gotoScreen2ScreenNoTransitionImpl()
 {
     touchgfx::makeTransition<Screen2View, Screen2Presenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
+}
+
+// Keyboard
+
+void FrontendApplicationBase::gotoKeyboardScreenNoTransition()
+{
+    transitionCallback = touchgfx::Callback<FrontendApplicationBase>(this, &FrontendApplication::gotoKeyboardScreenNoTransitionImpl);
+    pendingScreenTransitionCallback = &transitionCallback;
+}
+
+void FrontendApplicationBase::gotoKeyboardScreenNoTransitionImpl()
+{
+    touchgfx::makeTransition<KeyboardView, KeyboardPresenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
 }
