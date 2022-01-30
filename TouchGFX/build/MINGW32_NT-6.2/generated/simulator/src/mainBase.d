@@ -93,6 +93,7 @@ build/MINGW32_NT-6.2/generated/simulator/src/mainBase.o: \
  ../Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/canvas/CanvasWidget.hpp \
  ../Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/canvas/PainterRGB565Bitmap.hpp \
  ../Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/canvas/AbstractPainterRGB565.hpp \
+ ../Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/TextAreaWithWildcard.hpp \
  ../Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/TextArea.hpp \
  ../Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/Button.hpp \
  ../Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/AbstractButton.hpp \
@@ -100,6 +101,10 @@ build/MINGW32_NT-6.2/generated/simulator/src/mainBase.o: \
  generated/gui_generated/include/gui_generated/screen2_screen/Screen2ViewBase.hpp \
  gui/include/gui/screen2_screen/Screen2Presenter.hpp \
  ../Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/ToggleButton.hpp \
+ gui/include/gui/keyboard_screen/KeyboardView.hpp \
+ generated/gui_generated/include/gui_generated/keyboard_screen/KeyboardViewBase.hpp \
+ gui/include/gui/keyboard_screen/KeyboardPresenter.hpp \
+ ../Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/ButtonWithLabel.hpp \
  ../Middlewares/ST/touchgfx/framework/include/platform/driver/lcd/LCD16bpp.hpp \
  ../Middlewares/ST/touchgfx/framework/include/touchgfx/Color.hpp \
  ../Middlewares/ST/touchgfx/framework/include/touchgfx/lcd/LCD16DebugPrinter.hpp
@@ -290,6 +295,8 @@ generated/gui_generated/include/gui_generated/containers/Monitor_ItemBase.hpp:
 
 ../Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/canvas/AbstractPainterRGB565.hpp:
 
+../Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/TextAreaWithWildcard.hpp:
+
 ../Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/TextArea.hpp:
 
 ../Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/Button.hpp:
@@ -303,6 +310,14 @@ generated/gui_generated/include/gui_generated/screen2_screen/Screen2ViewBase.hpp
 gui/include/gui/screen2_screen/Screen2Presenter.hpp:
 
 ../Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/ToggleButton.hpp:
+
+gui/include/gui/keyboard_screen/KeyboardView.hpp:
+
+generated/gui_generated/include/gui_generated/keyboard_screen/KeyboardViewBase.hpp:
+
+gui/include/gui/keyboard_screen/KeyboardPresenter.hpp:
+
+../Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/ButtonWithLabel.hpp:
 
 ../Middlewares/ST/touchgfx/framework/include/platform/driver/lcd/LCD16bpp.hpp:
 

@@ -74,13 +74,10 @@ _typography$ = 8					; size = 2
 ; Line 10
 	movzx	eax, WORD PTR _typography$[ebp]
 	mov	DWORD PTR tv65[ebp], eax
-	cmp	DWORD PTR tv65[ebp], 0
-	je	SHORT $LN4@getFont
-	cmp	DWORD PTR tv65[ebp], 1
-	je	SHORT $LN5@getFont
-	cmp	DWORD PTR tv65[ebp], 2
-	je	SHORT $LN6@getFont
-	jmp	SHORT $LN7@getFont
+	cmp	DWORD PTR tv65[ebp], 5
+	ja	SHORT $LN10@getFont
+	mov	ecx, DWORD PTR tv65[ebp]
+	jmp	DWORD PTR $LN12@getFont[ecx*4]
 $LN4@getFont:
 ; Line 14
 	call	?getFonts@TypedTextDatabase@@YAPAPBVFont@touchgfx@@XZ ; TypedTextDatabase::getFonts
@@ -103,10 +100,31 @@ $LN6@getFont:
 	mov	eax, DWORD PTR [eax+ecx]
 	jmp	SHORT $LN1@getFont
 $LN7@getFont:
-; Line 22
+; Line 23
+	call	?getFonts@TypedTextDatabase@@YAPAPBVFont@touchgfx@@XZ ; TypedTextDatabase::getFonts
+	mov	ecx, 4
+	imul	edx, ecx, 3
+	mov	eax, DWORD PTR [eax+edx]
+	jmp	SHORT $LN1@getFont
+$LN8@getFont:
+; Line 26
+	call	?getFonts@TypedTextDatabase@@YAPAPBVFont@touchgfx@@XZ ; TypedTextDatabase::getFonts
+	mov	ecx, 4
+	shl	ecx, 2
+	mov	eax, DWORD PTR [eax+ecx]
+	jmp	SHORT $LN1@getFont
+$LN9@getFont:
+; Line 29
+	call	?getFonts@TypedTextDatabase@@YAPAPBVFont@touchgfx@@XZ ; TypedTextDatabase::getFonts
+	mov	ecx, 4
+	imul	edx, ecx, 5
+	mov	eax, DWORD PTR [eax+edx]
+	jmp	SHORT $LN1@getFont
+$LN10@getFont:
+; Line 31
 	xor	eax, eax
 $LN1@getFont:
-; Line 24
+; Line 33
 	pop	edi
 	pop	esi
 	pop	ebx
@@ -116,6 +134,13 @@ $LN1@getFont:
 	mov	esp, ebp
 	pop	ebp
 	ret	4
+$LN12@getFont:
+	DD	$LN4@getFont
+	DD	$LN5@getFont
+	DD	$LN6@getFont
+	DD	$LN7@getFont
+	DD	$LN8@getFont
+	DD	$LN9@getFont
 ?getFont@ApplicationFontProvider@@UAEPAVFont@touchgfx@@G@Z ENDP ; ApplicationFontProvider::getFont
 _TEXT	ENDS
 END

@@ -10,22 +10,19 @@
     <Text Id="AlphaMode" TypographyId="Mode" Alignment="Center" Direction="LTR">
       <Translation Language="GB">123 </Translation>
     </Text>
-    <Text Id="__SingleUse_VZTJ" TypographyId="Display" Alignment="Left" Direction="LTR">
-      <Translation Language="GB">New Text</Translation>
+    <Text Id="__SingleUse_VZTJ" TypographyId="Default" Alignment="Center" Direction="LTR">
+      <Translation Language="GB">&lt;value&gt;</Translation>
     </Text>
-    <Text Id="__SingleUse_V9I0" TypographyId="Display" Alignment="Left" Direction="LTR">
-      <Translation Language="GB">New Text</Translation>
+    <Text Id="__SingleUse_V9I0" TypographyId="Default" Alignment="Center" Direction="LTR">
+      <Translation Language="GB">&lt;value&gt;-&lt;value&gt;</Translation>
     </Text>
-    <Text Id="__SingleUse_QU5N" TypographyId="Display" Alignment="Left" Direction="LTR">
-      <Translation Language="GB">New Text</Translation>
+    <Text Id="__SingleUse_QU5N" TypographyId="Small" Alignment="Center" Direction="LTR">
+      <Translation Language="GB">&lt;value&gt;</Translation>
     </Text>
-    <Text Id="__SingleUse_OR2D" TypographyId="Display" Alignment="Left" Direction="LTR">
-      <Translation Language="GB">New Text</Translation>
+    <Text Id="__SingleUse_009U" TypographyId="Large" Alignment="Center" Direction="LTR">
+      <Translation Language="GB">&lt;value&gt;-&lt;value&gt;</Translation>
     </Text>
-    <Text Id="__SingleUse_009U" TypographyId="Display" Alignment="Left" Direction="LTR">
-      <Translation Language="GB">New Text</Translation>
-    </Text>
-    <Text Id="__SingleUse_7GSF" TypographyId="Display" Alignment="Left" Direction="LTR">
+    <Text Id="__SingleUse_7GSF" TypographyId="Default" Alignment="Left" Direction="LTR">
       <Translation Language="GB">New Text</Translation>
     </Text>
     <Text Id="__SingleUse_8MJ9" TypographyId="Display" Alignment="Center" Direction="LTR">
@@ -34,14 +31,20 @@
     <Text Id="__SingleUse_IT5X" TypographyId="Display" Alignment="Center" Direction="LTR">
       <Translation Language="GB">OK</Translation>
     </Text>
-    <Text Id="__SingleUse_8LPS" TypographyId="Display" Alignment="Left" Direction="LTR">
-      <Translation Language="GB">New Text</Translation>
-    </Text>
     <Text Id="Num_Default" TypographyId="Default" Alignment="Center" Direction="LTR">
       <Translation Language="GB" Alignment="Center">0</Translation>
     </Text>
-    <Text Id="ResourceId1" TypographyId="Default" Alignment="Left" Direction="LTR">
-      <Translation Language="GB">New Text</Translation>
+    <Text Id="Num_Small" TypographyId="Small" Alignment="Center" Direction="LTR">
+      <Translation Language="GB" Alignment="Center">0</Translation>
+    </Text>
+    <Text Id="Num_Large" TypographyId="Large" Alignment="Center" Direction="LTR">
+      <Translation Language="GB" Alignment="Center">0</Translation>
+    </Text>
+    <Text Id="__SingleUse_L0HY" TypographyId="Large" Alignment="Center" Direction="LTR">
+      <Translation Language="GB">&lt;value&gt;</Translation>
+    </Text>
+    <Text Id="__SingleUse_R1XS" TypographyId="Mode" Alignment="Left" Direction="LTR">
+      <Translation Language="GB">&lt;value&gt;</Translation>
     </Text>
   </Texts>
   <Typographies>

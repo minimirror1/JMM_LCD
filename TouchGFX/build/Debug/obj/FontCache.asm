@@ -11,10 +11,10 @@ INCLUDELIB OLDNAMES
 
 msvcjmc	SEGMENT
 __851B93AC_vcruntime_new@h DB 01H
-__723067ED_corecrt_memcpy_s@h DB 01H
-__0BEBFA14_corecrt_memory@h DB 01H
-__941A798F_corecrt_wstring@h DB 01H
-__A8C0DB57_string@h DB 01H
+__DEA533ED_corecrt_memcpy_s@h DB 01H
+__7F62496D_corecrt_memory@h DB 01H
+__BDB739A4_corecrt_wstring@h DB 01H
+__A36EFB11_string@h DB 01H
 __3F1E7DBE_types@hpp DB 01H
 __31EEE322_unicode@hpp DB 01H
 __CD7AD2A8_font@hpp DB 01H
@@ -1127,7 +1127,7 @@ _numberOfBytes$ = 12					; size = 4
 	call	@__CheckForDebuggerJustMyCode@4
 ; Line 420
 	mov	eax, DWORD PTR _this$[ebp]
-	cmp	DWORD PTR [eax+40], 0
+	cmp	DWORD PTR [eax+64], 0
 	je	SHORT $LN1@readData
 ; Line 422
 	mov	esi, esp
@@ -1136,10 +1136,10 @@ _numberOfBytes$ = 12					; size = 4
 	mov	ecx, DWORD PTR _out$[ebp]
 	push	ecx
 	mov	edx, DWORD PTR _this$[ebp]
-	mov	eax, DWORD PTR [edx+40]
+	mov	eax, DWORD PTR [edx+64]
 	mov	ecx, DWORD PTR _this$[ebp]
 	mov	edx, DWORD PTR [eax]
-	mov	ecx, DWORD PTR [ecx+40]
+	mov	ecx, DWORD PTR [ecx+64]
 	mov	eax, DWORD PTR [edx+16]
 	call	eax
 	cmp	esi, esp
@@ -1183,17 +1183,17 @@ _position$ = 8						; size = 4
 	call	@__CheckForDebuggerJustMyCode@4
 ; Line 412
 	mov	eax, DWORD PTR _this$[ebp]
-	cmp	DWORD PTR [eax+40], 0
+	cmp	DWORD PTR [eax+64], 0
 	je	SHORT $LN1@setPositio
 ; Line 414
 	mov	esi, esp
 	mov	eax, DWORD PTR _position$[ebp]
 	push	eax
 	mov	ecx, DWORD PTR _this$[ebp]
-	mov	edx, DWORD PTR [ecx+40]
+	mov	edx, DWORD PTR [ecx+64]
 	mov	eax, DWORD PTR _this$[ebp]
 	mov	edx, DWORD PTR [edx]
-	mov	ecx, DWORD PTR [eax+40]
+	mov	ecx, DWORD PTR [eax+64]
 	mov	eax, DWORD PTR [edx+12]
 	call	eax
 	cmp	esi, esp
@@ -1242,7 +1242,7 @@ _n$ = 8							; size = 4
 	call	@__CheckForDebuggerJustMyCode@4
 ; Line 386
 	mov	eax, DWORD PTR _this$[ebp]
-	mov	ecx, DWORD PTR [eax+44]
+	mov	ecx, DWORD PTR [eax+68]
 	mov	DWORD PTR _uc$[ebp], ecx
 ; Line 387
 	mov	DWORD PTR _i$4[ebp], 0
@@ -1407,14 +1407,14 @@ _string$ = 24						; size = 4
 ; Line 365
 	mov	eax, DWORD PTR _this$[ebp]
 	mov	ecx, DWORD PTR _this$[ebp]
-	mov	edx, DWORD PTR [ecx+36]
-	mov	DWORD PTR [eax+44], edx
+	mov	edx, DWORD PTR [ecx+60]
+	mov	DWORD PTR [eax+68], edx
 ; Line 366
 	mov	eax, DWORD PTR _this$[ebp]
-	mov	ecx, DWORD PTR [eax+44]
+	mov	ecx, DWORD PTR [eax+68]
 	sub	ecx, 2
 	mov	edx, DWORD PTR _this$[ebp]
-	cmp	ecx, DWORD PTR [edx+32]
+	cmp	ecx, DWORD PTR [edx+56]
 	jae	SHORT $LN4@createSort
 ; Line 368
 	mov	BYTE PTR $T4[ebp], 0
@@ -1426,12 +1426,12 @@ _string$ = 24						; size = 4
 $LN4@createSort:
 ; Line 370
 	mov	eax, DWORD PTR _this$[ebp]
-	mov	ecx, DWORD PTR [eax+44]
+	mov	ecx, DWORD PTR [eax+68]
 	sub	ecx, 2
 	mov	DWORD PTR tv128[ebp], ecx
 	mov	edx, DWORD PTR _this$[ebp]
 	mov	eax, DWORD PTR tv128[ebp]
-	mov	DWORD PTR [edx+44], eax
+	mov	DWORD PTR [edx+68], eax
 	xor	ecx, ecx
 	mov	edx, DWORD PTR tv128[ebp]
 	mov	WORD PTR [edx], cx
@@ -1451,10 +1451,10 @@ $LN2@createSort:
 	je	SHORT $LN3@createSort
 ; Line 374
 	mov	eax, DWORD PTR _this$[ebp]
-	mov	ecx, DWORD PTR [eax+44]
+	mov	ecx, DWORD PTR [eax+68]
 	sub	ecx, 2
 	mov	edx, DWORD PTR _this$[ebp]
-	cmp	ecx, DWORD PTR [edx+32]
+	cmp	ecx, DWORD PTR [edx+56]
 	jae	SHORT $LN5@createSort
 ; Line 376
 	mov	BYTE PTR $T3[ebp], 0
@@ -1466,12 +1466,12 @@ $LN2@createSort:
 $LN5@createSort:
 ; Line 378
 	mov	eax, DWORD PTR _this$[ebp]
-	mov	ecx, DWORD PTR [eax+44]
+	mov	ecx, DWORD PTR [eax+68]
 	sub	ecx, 2
 	mov	DWORD PTR tv142[ebp], ecx
 	mov	edx, DWORD PTR _this$[ebp]
 	mov	eax, DWORD PTR tv142[ebp]
-	mov	DWORD PTR [edx+44], eax
+	mov	DWORD PTR [edx+68], eax
 	mov	ecx, DWORD PTR tv142[ebp]
 	mov	dx, WORD PTR _ligature$[ebp]
 	mov	WORD PTR [ecx], dx
@@ -1585,15 +1585,15 @@ _string$ = 8						; size = 4
 	mov	eax, DWORD PTR _length$[ebp]
 	lea	ecx, DWORD PTR [eax+eax+2]
 	mov	edx, DWORD PTR _this$[ebp]
-	mov	eax, DWORD PTR [edx+36]
+	mov	eax, DWORD PTR [edx+60]
 	sub	eax, ecx
 	mov	ecx, DWORD PTR _this$[ebp]
-	mov	DWORD PTR [ecx+44], eax
+	mov	DWORD PTR [ecx+68], eax
 ; Line 341
 	mov	eax, DWORD PTR _this$[ebp]
 	mov	ecx, DWORD PTR _this$[ebp]
-	mov	edx, DWORD PTR [eax+44]
-	cmp	edx, DWORD PTR [ecx+32]
+	mov	edx, DWORD PTR [eax+68]
+	cmp	edx, DWORD PTR [ecx+56]
 	jae	SHORT $LN4@createSort
 ; Line 344
 	xor	al, al
@@ -1603,7 +1603,7 @@ $LN4@createSort:
 	mov	DWORD PTR _n$[ebp], 0
 ; Line 347
 	mov	eax, DWORD PTR _this$[ebp]
-	mov	ecx, DWORD PTR [eax+44]
+	mov	ecx, DWORD PTR [eax+68]
 	mov	DWORD PTR _uc$[ebp], ecx
 $LN2@createSort:
 ; Line 348
@@ -1717,7 +1717,7 @@ _t$ = 8							; size = 8
 ; Line 191
 	push	4
 	mov	eax, DWORD PTR _this$[ebp]
-	add	eax, 112				; 00000070H
+	add	eax, 136				; 00000088H
 	push	eax
 	mov	ecx, DWORD PTR _this$[ebp]
 	call	?readData@FontCache@touchgfx@@AAEXPAXI@Z ; touchgfx::FontCache::readData
@@ -1736,7 +1736,7 @@ _t$ = 8							; size = 8
 ; Line 194
 	push	2
 	mov	eax, DWORD PTR _this$[ebp]
-	add	eax, 116				; 00000074H
+	add	eax, 140				; 0000008cH
 	push	eax
 	mov	ecx, DWORD PTR _this$[ebp]
 	call	?readData@FontCache@touchgfx@@AAEXPAXI@Z ; touchgfx::FontCache::readData
@@ -1766,14 +1766,14 @@ _t$ = 8							; size = 8
 ; Line 200
 	xor	eax, eax
 	mov	ecx, DWORD PTR _this$[ebp]
-	mov	WORD PTR [ecx+118], ax
+	mov	WORD PTR [ecx+142], ax
 ; Line 201
 	xor	eax, eax
 	mov	ecx, DWORD PTR _this$[ebp]
-	mov	WORD PTR [ecx+124], ax
+	mov	WORD PTR [ecx+148], ax
 ; Line 203
 	mov	eax, DWORD PTR _this$[ebp]
-	mov	ecx, DWORD PTR [eax+44]
+	mov	ecx, DWORD PTR [eax+68]
 	mov	DWORD PTR _string$[ebp], ecx
 ; Line 204
 	xor	eax, eax
@@ -1886,7 +1886,7 @@ $LN10@cacheSorte:
 	mov	esp, ebp
 	pop	ebp
 	ret	8
-	npad	1
+	npad	3
 $LN17@cacheSorte:
 	DD	3
 	DD	$LN16@cacheSorte
@@ -2006,7 +2006,7 @@ $LN2@cacheData:
 	mov	DWORD PTR _p$3[ebp], eax
 ; Line 323
 	mov	eax, DWORD PTR _this$[ebp]
-	mov	ecx, DWORD PTR [eax+112]
+	mov	ecx, DWORD PTR [eax+136]
 	mov	edx, DWORD PTR _gn$[ebp]
 	add	ecx, DWORD PTR [edx]
 	push	ecx
@@ -2093,35 +2093,35 @@ _outOfMemory$ = 24					; size = 4
 $LN2@copyGlyph:
 ; Line 278
 	mov	eax, DWORD PTR _this$[ebp]
-	movzx	ecx, WORD PTR [eax+118]
+	movzx	ecx, WORD PTR [eax+142]
 	mov	edx, DWORD PTR _this$[ebp]
-	movzx	eax, WORD PTR [edx+116]
+	movzx	eax, WORD PTR [edx+140]
 	cmp	ecx, eax
 	jge	SHORT $LN3@copyGlyph
 	mov	eax, DWORD PTR _this$[ebp]
-	movzx	ecx, WORD PTR [eax+124]
+	movzx	ecx, WORD PTR [eax+148]
 	movzx	edx, WORD PTR _unicode$[ebp]
 	cmp	ecx, edx
 	jge	SHORT $LN3@copyGlyph
 ; Line 280
 	push	14					; 0000000eH
 	mov	eax, DWORD PTR _this$[ebp]
-	add	eax, 120				; 00000078H
+	add	eax, 144				; 00000090H
 	push	eax
 	mov	ecx, DWORD PTR _this$[ebp]
 	call	?readData@FontCache@touchgfx@@AAEXPAXI@Z ; touchgfx::FontCache::readData
 ; Line 281
 	mov	eax, DWORD PTR _this$[ebp]
-	mov	cx, WORD PTR [eax+118]
+	mov	cx, WORD PTR [eax+142]
 	add	cx, 1
 	mov	edx, DWORD PTR _this$[ebp]
-	mov	WORD PTR [edx+118], cx
+	mov	WORD PTR [edx+142], cx
 ; Line 282
 	jmp	SHORT $LN2@copyGlyph
 $LN3@copyGlyph:
 ; Line 283
 	mov	eax, DWORD PTR _this$[ebp]
-	movzx	ecx, WORD PTR [eax+124]
+	movzx	ecx, WORD PTR [eax+148]
 	movzx	edx, WORD PTR _unicode$[ebp]
 	cmp	ecx, edx
 	je	SHORT $LN4@copyGlyph
@@ -2131,13 +2131,13 @@ $LN3@copyGlyph:
 $LN4@copyGlyph:
 ; Line 290
 	mov	ecx, DWORD PTR _this$[ebp]
-	add	ecx, 120				; 00000078H
+	add	ecx, 144				; 00000090H
 	call	?width@GlyphNode@touchgfx@@QBEGXZ	; touchgfx::GlyphNode::width
 	movzx	esi, ax
 	add	esi, 1
 	and	esi, -2					; fffffffeH
 	mov	ecx, DWORD PTR _this$[ebp]
-	add	ecx, 120				; 00000078H
+	add	ecx, 144				; 00000090H
 	call	?height@GlyphNode@touchgfx@@QBEGXZ	; touchgfx::GlyphNode::height
 	movzx	eax, ax
 	imul	esi, eax
@@ -2157,7 +2157,7 @@ $LN4@copyGlyph:
 	mov	eax, DWORD PTR _top$[ebp]
 	add	eax, DWORD PTR _requiredMem$[ebp]
 	mov	ecx, DWORD PTR _this$[ebp]
-	cmp	eax, DWORD PTR [ecx+44]
+	cmp	eax, DWORD PTR [ecx+68]
 	jbe	SHORT $LN5@copyGlyph
 ; Line 297
 	mov	eax, DWORD PTR _outOfMemory$[ebp]
@@ -2168,7 +2168,7 @@ $LN4@copyGlyph:
 $LN5@copyGlyph:
 ; Line 301
 	mov	eax, DWORD PTR _this$[ebp]
-	add	eax, 120				; 00000078H
+	add	eax, 144				; 00000090H
 	mov	ecx, DWORD PTR _top$[ebp]
 	mov	edx, DWORD PTR [eax]
 	mov	DWORD PTR [ecx], edx
@@ -2235,7 +2235,7 @@ _outOfMemory$ = 20					; size = 4
 	call	@__CheckForDebuggerJustMyCode@4
 ; Line 251
 	mov	eax, DWORD PTR _this$[ebp]
-	mov	ecx, DWORD PTR [eax+32]
+	mov	ecx, DWORD PTR [eax+56]
 	mov	DWORD PTR _oldTop$[ebp], ecx
 ; Line 252
 	mov	eax, DWORD PTR _outOfMemory$[ebp]
@@ -2247,15 +2247,15 @@ _outOfMemory$ = 20					; size = 4
 	movzx	eax, WORD PTR _unicode$[ebp]
 	push	eax
 	mov	ecx, DWORD PTR _this$[ebp]
-	mov	edx, DWORD PTR [ecx+32]
+	mov	edx, DWORD PTR [ecx+56]
 	push	edx
 	mov	ecx, DWORD PTR _this$[ebp]
 	call	?copyGlyph@FontCache@touchgfx@@AAEPAEPAEGGIAA_N@Z ; touchgfx::FontCache::copyGlyph
 	mov	ecx, DWORD PTR _this$[ebp]
-	mov	DWORD PTR [ecx+32], eax
+	mov	DWORD PTR [ecx+56], eax
 ; Line 254
 	mov	eax, DWORD PTR _this$[ebp]
-	mov	ecx, DWORD PTR [eax+32]
+	mov	ecx, DWORD PTR [eax+56]
 	cmp	ecx, DWORD PTR _oldTop$[ebp]
 	jne	SHORT $LN2@insert
 ; Line 256
@@ -2404,15 +2404,15 @@ _this$ = -8						; size = 4
 	call	@__CheckForDebuggerJustMyCode@4
 ; Line 73
 	mov	eax, DWORD PTR _this$[ebp]
-	cmp	DWORD PTR [eax+40], 0
+	cmp	DWORD PTR [eax+64], 0
 	je	SHORT $LN1@close
 ; Line 75
 	mov	eax, DWORD PTR _this$[ebp]
-	mov	ecx, DWORD PTR [eax+40]
+	mov	ecx, DWORD PTR [eax+64]
 	mov	edx, DWORD PTR _this$[ebp]
 	mov	eax, DWORD PTR [ecx]
 	mov	esi, esp
-	mov	ecx, DWORD PTR [edx+40]
+	mov	ecx, DWORD PTR [edx+64]
 	mov	edx, DWORD PTR [eax+8]
 	call	edx
 	cmp	esi, esp
@@ -2455,15 +2455,15 @@ _this$ = -8						; size = 4
 	call	@__CheckForDebuggerJustMyCode@4
 ; Line 65
 	mov	eax, DWORD PTR _this$[ebp]
-	cmp	DWORD PTR [eax+40], 0
+	cmp	DWORD PTR [eax+64], 0
 	je	SHORT $LN1@open
 ; Line 67
 	mov	eax, DWORD PTR _this$[ebp]
-	mov	ecx, DWORD PTR [eax+40]
+	mov	ecx, DWORD PTR [eax+64]
 	mov	edx, DWORD PTR _this$[ebp]
 	mov	eax, DWORD PTR [ecx]
 	mov	esi, esp
-	mov	ecx, DWORD PTR [edx+40]
+	mov	ecx, DWORD PTR [edx+64]
 	mov	edx, DWORD PTR [eax+4]
 	call	edx
 	cmp	esi, esp
@@ -2862,13 +2862,13 @@ _loadGsubOrContextTable$ = 20				; size = 1
 ; Line 88
 	push	40					; 00000028H
 	mov	eax, DWORD PTR _this$[ebp]
-	add	eax, 48					; 00000030H
+	add	eax, 72					; 00000048H
 	push	eax
 	mov	ecx, DWORD PTR _this$[ebp]
 	call	?readData@FontCache@touchgfx@@AAEXPAXI@Z ; touchgfx::FontCache::readData
 ; Line 89
 	mov	eax, DWORD PTR _this$[ebp]
-	add	eax, 48					; 00000030H
+	add	eax, 72					; 00000048H
 	mov	DWORD PTR _binaryFontData$[ebp], eax
 ; Line 91
 	call	?getFonts@TypedTextDatabase@@YAPAPBVFont@touchgfx@@XZ ; TypedTextDatabase::getFonts
@@ -2886,7 +2886,7 @@ _loadGsubOrContextTable$ = 20				; size = 1
 	movzx	edx, WORD PTR _fontId$[ebp]
 	push	edx
 	mov	eax, DWORD PTR _this$[ebp]
-	add	eax, 48					; 00000030H
+	add	eax, 72					; 00000048H
 	push	eax
 	lea	ecx, DWORD PTR $T2[ebp]
 	call	??0CachedFont@touchgfx@@QAE@PBUBinaryFontData@1@GPAVFontCache@1@PBVGeneratedFont@1@@Z ; touchgfx::CachedFont::CachedFont
@@ -2929,14 +2929,14 @@ $LN10@initialize:
 	mov	DWORD PTR _sizeOfGSUB$7[ebp], eax
 ; Line 101
 	mov	eax, DWORD PTR _this$[ebp]
-	mov	ecx, DWORD PTR [eax+32]
+	mov	ecx, DWORD PTR [eax+56]
 	add	ecx, DWORD PTR _sizeOfGSUB$7[ebp]
 	mov	edx, DWORD PTR _this$[ebp]
-	cmp	ecx, DWORD PTR [edx+36]
+	cmp	ecx, DWORD PTR [edx+60]
 	jae	SHORT $LN3@initialize
 ; Line 103
 	mov	eax, DWORD PTR _this$[ebp]
-	mov	ecx, DWORD PTR [eax+36]
+	mov	ecx, DWORD PTR [eax+60]
 	sub	ecx, DWORD PTR _sizeOfGSUB$7[ebp]
 	mov	DWORD PTR _gsubPosition$6[ebp], ecx
 ; Line 104
@@ -2959,16 +2959,16 @@ $LN10@initialize:
 	call	__RTC_CheckEsp
 ; Line 106
 	mov	eax, DWORD PTR _this$[ebp]
-	mov	ecx, DWORD PTR [eax+36]
+	mov	ecx, DWORD PTR [eax+60]
 	sub	ecx, DWORD PTR _sizeOfGSUB$7[ebp]
 	mov	edx, DWORD PTR _this$[ebp]
-	mov	DWORD PTR [edx+36], ecx
+	mov	DWORD PTR [edx+60], ecx
 ; Line 109
 	mov	eax, DWORD PTR _this$[ebp]
-	mov	ecx, DWORD PTR [eax+36]
+	mov	ecx, DWORD PTR [eax+60]
 	and	ecx, -4					; fffffffcH
 	mov	edx, DWORD PTR _this$[ebp]
-	mov	DWORD PTR [edx+36], ecx
+	mov	DWORD PTR [edx+60], ecx
 ; Line 111
 	jmp	SHORT $LN2@initialize
 $LN3@initialize:
@@ -3004,27 +3004,27 @@ $LN2@initialize:
 	mov	DWORD PTR _sizeTableData$5[ebp], edx
 ; Line 123
 	mov	eax, DWORD PTR _this$[ebp]
-	mov	ecx, DWORD PTR [eax+32]
+	mov	ecx, DWORD PTR [eax+56]
 	mov	edx, DWORD PTR _sizeTableData$5[ebp]
 	lea	eax, DWORD PTR [ecx+edx+32]
 	mov	ecx, DWORD PTR _this$[ebp]
-	cmp	eax, DWORD PTR [ecx+36]
+	cmp	eax, DWORD PTR [ecx+60]
 	jae	$LN6@initialize
 ; Line 126
 	mov	eax, DWORD PTR _this$[ebp]
-	mov	ecx, DWORD PTR [eax+36]
+	mov	ecx, DWORD PTR [eax+60]
 	sub	ecx, 32					; 00000020H
 	mov	edx, DWORD PTR _this$[ebp]
-	mov	DWORD PTR [edx+36], ecx
+	mov	DWORD PTR [edx+60], ecx
 ; Line 128
 	mov	eax, DWORD PTR _this$[ebp]
-	mov	ecx, DWORD PTR [eax+36]
+	mov	ecx, DWORD PTR [eax+60]
 	and	ecx, -4					; fffffffcH
 	mov	edx, DWORD PTR _this$[ebp]
-	mov	DWORD PTR [edx+36], ecx
+	mov	DWORD PTR [edx+60], ecx
 ; Line 130
 	mov	eax, DWORD PTR _this$[ebp]
-	mov	ecx, DWORD PTR [eax+36]
+	mov	ecx, DWORD PTR [eax+60]
 	mov	DWORD PTR _table$4[ebp], ecx
 ; Line 131
 	mov	esi, esp
@@ -3039,21 +3039,21 @@ $LN2@initialize:
 	call	__RTC_CheckEsp
 ; Line 132
 	mov	eax, DWORD PTR _this$[ebp]
-	mov	ecx, DWORD PTR [eax+36]
+	mov	ecx, DWORD PTR [eax+60]
 	sub	ecx, DWORD PTR _sizeTableData$5[ebp]
 	mov	edx, DWORD PTR _this$[ebp]
-	mov	DWORD PTR [edx+36], ecx
+	mov	DWORD PTR [edx+60], ecx
 ; Line 133
 	mov	eax, DWORD PTR _sizeTableData$5[ebp]
 	push	eax
 	mov	ecx, DWORD PTR _this$[ebp]
-	mov	edx, DWORD PTR [ecx+36]
+	mov	edx, DWORD PTR [ecx+60]
 	push	edx
 	mov	ecx, DWORD PTR _this$[ebp]
 	call	?readData@FontCache@touchgfx@@AAEXPAXI@Z ; touchgfx::FontCache::readData
 ; Line 136
 	mov	eax, DWORD PTR _this$[ebp]
-	mov	ecx, DWORD PTR [eax+36]
+	mov	ecx, DWORD PTR [eax+60]
 	mov	DWORD PTR _base$3[ebp], ecx
 ; Line 138
 	mov	eax, 2
@@ -3214,11 +3214,11 @@ _size$ = 12						; size = 4
 ; Line 37
 	mov	eax, DWORD PTR _this$[ebp]
 	mov	ecx, DWORD PTR __memory$[ebp]
-	mov	DWORD PTR [eax+28], ecx
+	mov	DWORD PTR [eax+52], ecx
 ; Line 38
 	mov	eax, DWORD PTR _this$[ebp]
 	mov	ecx, DWORD PTR _size$[ebp]
-	mov	DWORD PTR [eax+24], ecx
+	mov	DWORD PTR [eax+48], ecx
 ; Line 40
 	push	0
 	mov	ecx, DWORD PTR _this$[ebp]
@@ -3260,7 +3260,7 @@ _keepGsubOrContextTable$ = 8				; size = 1
 	mov	ecx, OFFSET __AD4978B8_fontcache@cpp
 	call	@__CheckForDebuggerJustMyCode@4
 ; Line 20
-	push	24					; 00000018H
+	push	48					; 00000030H
 	push	0
 	mov	eax, DWORD PTR _this$[ebp]
 	push	eax
@@ -3269,25 +3269,25 @@ _keepGsubOrContextTable$ = 8				; size = 1
 ; Line 23
 	mov	eax, DWORD PTR _this$[ebp]
 	mov	ecx, DWORD PTR _this$[ebp]
-	mov	edx, DWORD PTR [ecx+28]
-	mov	DWORD PTR [eax+32], edx
+	mov	edx, DWORD PTR [ecx+52]
+	mov	DWORD PTR [eax+56], edx
 ; Line 25
 	movzx	eax, BYTE PTR _keepGsubOrContextTable$[ebp]
 	test	eax, eax
 	jne	SHORT $LN1@clear
 ; Line 28
 	mov	eax, DWORD PTR _this$[ebp]
-	mov	ecx, DWORD PTR [eax+28]
+	mov	ecx, DWORD PTR [eax+52]
 	mov	edx, DWORD PTR _this$[ebp]
-	add	ecx, DWORD PTR [edx+24]
+	add	ecx, DWORD PTR [edx+48]
 	mov	eax, DWORD PTR _this$[ebp]
-	mov	DWORD PTR [eax+36], ecx
+	mov	DWORD PTR [eax+60], ecx
 ; Line 31
 	mov	eax, DWORD PTR _this$[ebp]
-	mov	ecx, DWORD PTR [eax+36]
+	mov	ecx, DWORD PTR [eax+60]
 	and	ecx, -4					; fffffffcH
 	mov	edx, DWORD PTR _this$[ebp]
-	mov	DWORD PTR [edx+36], ecx
+	mov	DWORD PTR [edx+60], ecx
 $LN1@clear:
 ; Line 33
 	pop	edi
@@ -3328,7 +3328,7 @@ __reader$ = 8						; size = 4
 ; Line 45
 	mov	eax, DWORD PTR _this$[ebp]
 	mov	ecx, DWORD PTR __reader$[ebp]
-	mov	DWORD PTR [eax+40], ecx
+	mov	DWORD PTR [eax+64], ecx
 ; Line 46
 	pop	edi
 	pop	esi
@@ -3366,15 +3366,15 @@ _this$ = -8						; size = 4
 	call	@__CheckForDebuggerJustMyCode@4
 ; Line 14
 	mov	eax, DWORD PTR _this$[ebp]
-	mov	DWORD PTR [eax+24], 0
+	mov	DWORD PTR [eax+48], 0
 	mov	eax, DWORD PTR _this$[ebp]
-	mov	DWORD PTR [eax+28], 0
+	mov	DWORD PTR [eax+52], 0
 	mov	eax, DWORD PTR _this$[ebp]
-	mov	DWORD PTR [eax+32], 0
+	mov	DWORD PTR [eax+56], 0
 	mov	eax, DWORD PTR _this$[ebp]
-	mov	DWORD PTR [eax+36], 0
+	mov	DWORD PTR [eax+60], 0
 	mov	eax, DWORD PTR _this$[ebp]
-	mov	DWORD PTR [eax+40], 0
+	mov	DWORD PTR [eax+64], 0
 ; Line 16
 	mov	eax, DWORD PTR _this$[ebp]
 	pop	edi

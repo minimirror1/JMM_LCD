@@ -142,7 +142,7 @@
             "Y": 78,
             "Width": 184,
             "Height": 49,
-            "TextId": "__SingleUse_OR2D",
+            "TextId": "__SingleUse_L0HY",
             "TextRotation": "0",
             "Color": {
               "Red": 255,
@@ -150,6 +150,7 @@
               "Blue": 255
             },
             "Wildcard1": {
+              "TextId": "Num_Large",
               "UseBuffer": true,
               "BufferSize": 10
             }
@@ -190,10 +191,12 @@
               "Blue": 255
             },
             "Wildcard1": {
+              "TextId": "Num_Large",
               "UseBuffer": true,
               "BufferSize": 10
             },
             "Wildcard2": {
+              "TextId": "Num_Large",
               "UseBuffer": true,
               "BufferSize": 10
             }
@@ -203,8 +206,8 @@
             "Name": "textArea1_2",
             "X": 240,
             "Y": 15,
-            "Width": 100,
-            "Height": 37,
+            "Width": 92,
+            "Height": 25,
             "TextId": "__SingleUse_7GSF",
             "TextRotation": "0",
             "Color": {
@@ -227,14 +230,24 @@
           },
           {
             "Type": "TextArea",
-            "Name": "textArea1",
-            "X": 325,
-            "Y": 78,
-            "Width": 100,
-            "Height": 37,
-            "TextId": "__SingleUse_8LPS",
+            "Name": "PValue",
+            "X": 356,
+            "Y": 90,
+            "Width": 40,
+            "Height": 32,
+            "TextId": "__SingleUse_R1XS",
             "TextRotation": "0",
-            "AutoSize": true
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "AutoSize": true,
+            "Wildcard1": {
+              "TextId": "AlphaMode",
+              "UseBuffer": true,
+              "BufferSize": 10
+            }
           }
         ],
         "Interactions": [
@@ -425,6 +438,7 @@
               "Blue": 255
             },
             "Wildcard1": {
+              "TextId": "Num_Default",
               "UseBuffer": true,
               "BufferSize": 10
             }
@@ -454,10 +468,12 @@
               "Blue": 255
             },
             "Wildcard1": {
+              "TextId": "Num_Default",
               "UseBuffer": true,
               "BufferSize": 10
             },
             "Wildcard2": {
+              "TextId": "Num_Default",
               "UseBuffer": true,
               "BufferSize": 10
             }
@@ -475,6 +491,7 @@
               "Blue": 255
             },
             "Wildcard1": {
+              "TextId": "Num_Small",
               "UseBuffer": true,
               "BufferSize": 10
             }

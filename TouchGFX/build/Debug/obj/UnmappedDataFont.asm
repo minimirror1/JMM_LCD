@@ -939,7 +939,7 @@ _TEXT	ENDS
 _TEXT	SEGMENT
 ?getFlashReader@ApplicationFontProvider@@SAPAVFlashDataReader@touchgfx@@XZ PROC ; ApplicationFontProvider::getFlashReader, COMDAT
 ; File d:\stm32_ws\board\jointmanipulator_master\jmm_lcd_v1\jmm_lcd\touchgfx\generated\fonts\include\fonts\applicationfontprovider.hpp
-; Line 38
+; Line 44
 	push	ebp
 	mov	ebp, esp
 	sub	esp, 192				; 000000c0H
@@ -952,9 +952,9 @@ _TEXT	SEGMENT
 	rep stosd
 	mov	ecx, OFFSET __A788EF83_applicationfontprovider@hpp
 	call	@__CheckForDebuggerJustMyCode@4
-; Line 39
+; Line 45
 	xor	eax, eax
-; Line 40
+; Line 46
 	pop	edi
 	pop	esi
 	pop	ebx

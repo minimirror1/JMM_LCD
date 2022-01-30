@@ -30,6 +30,11 @@ public:
      */
     void setTouchable(bool touch);
 
+    Unicode::UnicodeChar* CustomKeyboard::getBuffer()	//210412 PES getBuffer Ckeyboard
+    {
+        return keyboard.getBuffer();
+    }
+
 private:
     /*
      * The size of the buffer that is used by the keyboard.

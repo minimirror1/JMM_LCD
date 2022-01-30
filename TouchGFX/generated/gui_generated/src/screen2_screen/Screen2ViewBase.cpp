@@ -32,7 +32,9 @@ Screen2ViewBase::Screen2ViewBase() :
     posi.setPosition(8, 78, 184, 49);
     posi.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
     posi.setLinespacing(0);
-    posi.setTypedText(touchgfx::TypedText(T___SINGLEUSE_OR2D));
+    Unicode::snprintf(posiBuffer, POSI_SIZE, "%s", touchgfx::TypedText(T_NUM_LARGE).getText());
+    posi.setWildcard(posiBuffer);
+    posi.setTypedText(touchgfx::TypedText(T___SINGLEUSE_L0HY));
 
     toggleButton1.setXY(345, 8);
     toggleButton1.setBitmaps(touchgfx::Bitmap(BITMAP_DARK_TOGGLEBARS_TOGGLE_ROUND_LARGE_BUTTON_OFF_ID), touchgfx::Bitmap(BITMAP_DARK_TOGGLEBARS_TOGGLE_ROUND_LARGE_BUTTON_ON_ID));
@@ -44,6 +46,10 @@ Screen2ViewBase::Screen2ViewBase() :
     id.setPosition(15, 133, 170, 49);
     id.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
     id.setLinespacing(0);
+    touchgfx::Unicode::snprintf(idBuffer1, IDBUFFER1_SIZE, "%s", touchgfx::TypedText(T_NUM_LARGE).getText());
+    id.setWildcard1(idBuffer1);
+    touchgfx::Unicode::snprintf(idBuffer2, IDBUFFER2_SIZE, "%s", touchgfx::TypedText(T_NUM_LARGE).getText());
+    id.setWildcard2(idBuffer2);
     id.setTypedText(touchgfx::TypedText(T___SINGLEUSE_009U));
 
     textArea1_2.setXY(240, 15);
@@ -55,10 +61,13 @@ Screen2ViewBase::Screen2ViewBase() :
     test.setBitmaps(touchgfx::Bitmap(BITMAP_DARK_BUTTONS_ROUND_EDGE_SMALL_ID), touchgfx::Bitmap(BITMAP_DARK_BUTTONS_ROUND_EDGE_SMALL_PRESSED_ID));
     test.setAction(buttonCallback);
 
-    textArea1.setXY(325, 78);
-    textArea1.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
-    textArea1.setLinespacing(0);
-    textArea1.setTypedText(touchgfx::TypedText(T___SINGLEUSE_8LPS));
+    PValue.setXY(356, 90);
+    PValue.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
+    PValue.setLinespacing(0);
+    Unicode::snprintf(PValueBuffer, PVALUE_SIZE, "%s", touchgfx::TypedText(T_ALPHAMODE).getText());
+    PValue.setWildcard(PValueBuffer);
+    PValue.resizeToCurrentText();
+    PValue.setTypedText(touchgfx::TypedText(T___SINGLEUSE_R1XS));
 
     add(__background);
     add(posiProgress);
@@ -68,7 +77,7 @@ Screen2ViewBase::Screen2ViewBase() :
     add(id);
     add(textArea1_2);
     add(test);
-    add(textArea1);
+    add(PValue);
 }
 
 void Screen2ViewBase::setupScreen()
