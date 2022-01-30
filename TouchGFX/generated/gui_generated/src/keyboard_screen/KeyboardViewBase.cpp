@@ -20,7 +20,7 @@ KeyboardViewBase::KeyboardViewBase() :
     cancelButton.setLabelColorPressed(touchgfx::Color::getColorFromRGB(255, 255, 255));
     cancelButton.setAction(buttonCallback);
 
-    okButton.setXY(310, 218);
+    okButton.setXY(420, 212);
     okButton.setBitmaps(touchgfx::Bitmap(BITMAP_DARK_BUTTONS_ROUND_EDGE_ICON_BUTTON_ID), touchgfx::Bitmap(BITMAP_DARK_BUTTONS_ROUND_EDGE_ICON_BUTTON_PRESSED_ID));
     okButton.setLabelText(touchgfx::TypedText(T___SINGLEUSE_IT5X));
     okButton.setLabelColor(touchgfx::Color::getColorFromRGB(255, 255, 255));

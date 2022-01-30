@@ -336,8 +336,8 @@
           {
             "Type": "ButtonWithLabel",
             "Name": "okButton",
-            "X": 310,
-            "Y": 218,
+            "X": 420,
+            "Y": 212,
             "Width": 60,
             "Height": 60,
             "Pressed": "__designer\\Dark_Buttons_Round_Edge_icon_button_pressed.png",

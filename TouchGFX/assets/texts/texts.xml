@@ -25,7 +25,7 @@
     <Text Id="__SingleUse_7GSF" TypographyId="Default" Alignment="Left" Direction="LTR">
       <Translation Language="GB">New Text</Translation>
     </Text>
-    <Text Id="__SingleUse_8MJ9" TypographyId="Display" Alignment="Center" Direction="LTR">
+    <Text Id="__SingleUse_8MJ9" TypographyId="Small" Alignment="Center" Direction="LTR">
       <Translation Language="GB">Cancel</Translation>
     </Text>
     <Text Id="__SingleUse_IT5X" TypographyId="Display" Alignment="Center" Direction="LTR">
