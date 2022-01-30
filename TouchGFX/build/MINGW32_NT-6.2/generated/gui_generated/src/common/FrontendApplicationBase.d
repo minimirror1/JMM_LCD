@@ -82,7 +82,14 @@ build/MINGW32_NT-6.2/generated/gui_generated/src/common/FrontendApplicationBase.
  generated/gui_generated/include/gui_generated/keyboard_screen/KeyboardViewBase.hpp \
  gui/include/gui/keyboard_screen/KeyboardPresenter.hpp \
  ../Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/ButtonWithLabel.hpp \
+ gui/include/gui/common/CustomKeyboard.hpp \
+ ../Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/Keyboard.hpp \
  generated/texts/include/texts/TextKeysAndLanguages.hpp \
+ gui/include/gui/common/KeyboardLayout.hpp \
+ generated/fonts/include/fonts/ApplicationFontProvider.hpp \
+ ../Middlewares/ST/touchgfx/framework/include/touchgfx/FontManager.hpp \
+ generated/images/include/BitmapDatabase.hpp \
+ gui/include/gui/common/KeyboardKeyMapping.hpp \
  ../Middlewares/ST/touchgfx/framework/include/platform/driver/lcd/LCD16bpp.hpp \
  ../Middlewares/ST/touchgfx/framework/include/touchgfx/Color.hpp \
  ../Middlewares/ST/touchgfx/framework/include/touchgfx/lcd/LCD16DebugPrinter.hpp
@@ -253,7 +260,21 @@ gui/include/gui/keyboard_screen/KeyboardPresenter.hpp:
 
 ../Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/ButtonWithLabel.hpp:
 
+gui/include/gui/common/CustomKeyboard.hpp:
+
+../Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/Keyboard.hpp:
+
 generated/texts/include/texts/TextKeysAndLanguages.hpp:
+
+gui/include/gui/common/KeyboardLayout.hpp:
+
+generated/fonts/include/fonts/ApplicationFontProvider.hpp:
+
+../Middlewares/ST/touchgfx/framework/include/touchgfx/FontManager.hpp:
+
+generated/images/include/BitmapDatabase.hpp:
+
+gui/include/gui/common/KeyboardKeyMapping.hpp:
 
 ../Middlewares/ST/touchgfx/framework/include/platform/driver/lcd/LCD16bpp.hpp:
 
