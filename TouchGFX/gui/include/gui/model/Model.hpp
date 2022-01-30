@@ -15,9 +15,18 @@ public:
 
     void tick();
 
+//Presenter1 Call funtion
+    void setOpenSettingView(int gID, int sID);
+
+//Presenter2 Call funtion
+    void setScreenUp();
+
 private:
     int myTimer;
     int testCnt;
+
+    int settingGid;
+    int settingSid;
 
 protected:
     ModelListener* modelListener;

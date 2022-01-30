@@ -11,7 +11,20 @@ public:
     virtual ~Screen2View() {}
     virtual void setupScreen();
     virtual void tearDownScreen();
+
+    void setID_SettingPage(int gID, int sID);
+
+    void setChangePosi(int gID, int sID, int value);
+
 protected:
+
+    int nowPosi;
+    int groupID;
+    int subID;
+
+    void setPosi(int value);
+    void setPosiText(int value);
+    void setPosiProgress(int value);
 };
 
 #endif // SCREEN2VIEW_HPP

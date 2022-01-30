@@ -18,6 +18,14 @@ public:
     virtual ~Monitor_ItemBase() {}
     virtual void initialize();
 
+    /*
+     * Virtual Action Handlers
+     */
+    virtual void callViewSetting()
+    {
+        // Override and implement this function in Monitor_Item
+    }
+
 protected:
     FrontendApplication& application() {
         return *static_cast<FrontendApplication*>(touchgfx::Application::getInstance());

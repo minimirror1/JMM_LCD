@@ -16,3 +16,20 @@ void Screen2Presenter::deactivate()
 {
 
 }
+
+void Screen2Presenter::setScreenUp()
+{
+    model->setScreenUp();
+}
+
+void Screen2Presenter::setID_SettingPage(int gID, int sID)
+{
+    view.setID_SettingPage(gID, sID);
+}
+
+//ModelListener override
+void Screen2Presenter::setChangePosi(int gID, int sID, int value)
+{
+    view.setChangePosi(gID, sID, value);
+}
+

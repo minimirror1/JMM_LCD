@@ -22,3 +22,17 @@ void Model::tick()
 
 	
 }
+
+
+void Model::setOpenSettingView(int gID, int sID)
+{
+	settingGid = gID;
+	settingSid = sID;
+	
+	modelListener->setID_SettingPage(gID, sID);
+}
+
+void Model::setScreenUp()
+{
+	modelListener->setID_SettingPage(settingGid, settingSid);
+}

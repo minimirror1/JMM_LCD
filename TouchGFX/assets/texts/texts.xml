@@ -11,10 +11,10 @@
       <Translation Language="GB">Reverse</Translation>
     </Text>
     <Text Id="__SingleUse_GQGE" TypographyId="Large" Alignment="Center" Direction="LTR">
-      <Translation Language="GB">1-1</Translation>
+      <Translation Language="GB">&lt;value&gt;-&lt;value&gt;</Translation>
     </Text>
     <Text Id="__SingleUse_B2PI" TypographyId="Large" Alignment="Center" Direction="LTR">
-      <Translation Language="GB">2048</Translation>
+      <Translation Language="GB">&lt;value&gt;</Translation>
     </Text>
     <Text Id="Num_Default" TypographyId="Default" Alignment="Center" Direction="LTR">
       <Translation Language="GB" Alignment="Center" Direction="RTL">0</Translation>
@@ -25,10 +25,13 @@
     <Text Id="Num_Small" TypographyId="Small" Alignment="Center" Direction="LTR">
       <Translation Language="GB" Alignment="Center">0</Translation>
     </Text>
+    <Text Id="Num_Large" TypographyId="Large" Alignment="Center" Direction="LTR">
+      <Translation Language="GB" Alignment="Center">0</Translation>
+    </Text>
   </Texts>
   <Typographies>
     <Typography Id="Default" Font="verdana.ttf" Size="20" Bpp="4" FallbackCharacter="?" WildcardCharacterRanges="0-9" />
-    <Typography Id="Large" Font="verdana.ttf" Size="40" Bpp="4" FallbackCharacter="?" />
+    <Typography Id="Large" Font="verdana.ttf" Size="40" Bpp="4" FallbackCharacter="?" WildcardCharacterRanges="0-9" />
     <Typography Id="Small" Font="verdana.ttf" Size="10" Bpp="4" FallbackCharacter="?" WildcardCharacterRanges="0-9" />
   </Typographies>
 </TextDatabase>

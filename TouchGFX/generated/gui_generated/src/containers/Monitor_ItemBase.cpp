@@ -66,10 +66,15 @@ void Monitor_ItemBase::buttonCallbackHandler(const touchgfx::AbstractButton& src
 {
     if (&src == &button1)
     {
-        //Interaction1
+        //chageViewSetting
         //When button1 clicked change screen to Screen2
         //Go to Screen2 with no screen transition
         application().gotoScreen2ScreenNoTransition();
+
+        //callViewSetting
+        //When button1 clicked call virtual function
+        //Call callViewSetting
+        callViewSetting();
     }
 }
 

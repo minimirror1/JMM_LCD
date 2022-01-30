@@ -17,6 +17,11 @@ void Screen1Presenter::deactivate()
 
 }
 
+void Screen1Presenter::setOpenSettingView(int gID, int sID)
+{
+    model->setOpenSettingView(gID, sID);
+}
+
 //ModelListener override
 void Screen1Presenter::setChangePosi(int gID, int sID, int value)
 {

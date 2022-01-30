@@ -64,9 +64,7 @@ TEXT_LOCATION_FLASH_PRAGMA
 KEEP extern const touchgfx::Unicode::UnicodeChar texts_all_languages[] TEXT_LOCATION_FLASH_ATTRIBUTE = {
     0x2, 0x2d, 0x2, 0x0, // @0 "<>-<>"
     0x52, 0x65, 0x76, 0x65, 0x72, 0x73, 0x65, 0x0, // @4 "Reverse"
-    0x32, 0x30, 0x34, 0x38, 0x0, // @12 "2048"
-    0x31, 0x2d, 0x31, 0x0, // @17 "1-1"
-    0x30, 0x0 // @21 "0"
+    0x30, 0x0 // @12 "0"
 };
 TEXT_LOCATION_FLASH_PRAGMA
 KEEP extern uint32_t const indicesGb[] TEXT_LOCATION_FLASH_ATTRIBUTE;

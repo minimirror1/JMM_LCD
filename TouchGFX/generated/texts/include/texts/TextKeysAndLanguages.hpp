@@ -20,6 +20,7 @@ enum TEXTS
     T_NUM_DEFAULT,
     T___SINGLEUSE_ZRUA,
     T_NUM_SMALL,
+    T_NUM_LARGE,
     NUMBER_OF_TEXT_KEYS
 };
 

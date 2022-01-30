@@ -114,7 +114,7 @@
         "Components": [
           {
             "Type": "CircleProgress",
-            "Name": "circleProgress1",
+            "Name": "posiProgress",
             "X": 8,
             "Y": 8,
             "Width": 184,
@@ -137,7 +137,7 @@
           },
           {
             "Type": "TextArea",
-            "Name": "textArea1",
+            "Name": "posi",
             "X": 8,
             "Y": 78,
             "Width": 184,
@@ -148,6 +148,11 @@
               "Red": 255,
               "Green": 255,
               "Blue": 255
+            },
+            "Wildcard1": {
+              "TextId": "Num_Large",
+              "UseBuffer": true,
+              "BufferSize": 10
             }
           },
           {
@@ -173,7 +178,7 @@
           },
           {
             "Type": "TextArea",
-            "Name": "textArea1_1",
+            "Name": "id",
             "X": 15,
             "Y": 133,
             "Width": 170,
@@ -184,6 +189,16 @@
               "Red": 255,
               "Green": 255,
               "Blue": 255
+            },
+            "Wildcard1": {
+              "TextId": "Num_Large",
+              "UseBuffer": true,
+              "BufferSize": 10
+            },
+            "Wildcard2": {
+              "TextId": "Num_Large",
+              "UseBuffer": true,
+              "BufferSize": 10
             }
           },
           {
@@ -323,7 +338,7 @@
         ],
         "Interactions": [
           {
-            "InteractionName": "Interaction1",
+            "InteractionName": "chageViewSetting",
             "Trigger": {
               "Type": "TriggerClicked",
               "TriggerComponent": "button1"
@@ -332,6 +347,17 @@
               "Type": "ActionGotoScreen",
               "ScreenTransitionType": "ScreenTransitionNone",
               "ActionComponent": "Screen2"
+            }
+          },
+          {
+            "InteractionName": "callViewSetting",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "button1"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "callViewSetting"
             }
           }
         ]

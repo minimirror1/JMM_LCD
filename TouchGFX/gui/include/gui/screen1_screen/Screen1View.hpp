@@ -14,8 +14,9 @@ public:
 
     void setCountMonitorItem();
 
-
- //Presenter callback
+//container callback
+    void setOpenSettingView(int gID, int sID);
+//Presenter callback
     void setChangePosi(int gID, int sID, int value);
 private:
     Monitor_Item *monitor_item[10];

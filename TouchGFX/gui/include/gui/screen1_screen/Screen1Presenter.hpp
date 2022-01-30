@@ -27,7 +27,8 @@ public:
 
     virtual ~Screen1Presenter() {};
 
-
+//View Call Function
+    void setOpenSettingView(int gID, int sID);
 //ModelListener override
     void setChangePosi(int gID, int sID, int value);
 

@@ -10,9 +10,10 @@
 #include <touchgfx/widgets/Box.hpp>
 #include <touchgfx/containers/progress_indicators/CircleProgress.hpp>
 #include <touchgfx/widgets/canvas/PainterRGB565Bitmap.hpp>
-#include <touchgfx/widgets/TextArea.hpp>
+#include <touchgfx/widgets/TextAreaWithWildcard.hpp>
 #include <touchgfx/widgets/ToggleButton.hpp>
 #include <touchgfx/widgets/Button.hpp>
+#include <touchgfx/widgets/TextArea.hpp>
 
 class Screen2ViewBase : public touchgfx::View<Screen2Presenter>
 {
@@ -30,13 +31,23 @@ protected:
      * Member Declarations
      */
     touchgfx::Box __background;
-    touchgfx::CircleProgress circleProgress1;
-    touchgfx::PainterRGB565Bitmap circleProgress1Painter;
-    touchgfx::TextArea textArea1;
+    touchgfx::CircleProgress posiProgress;
+    touchgfx::PainterRGB565Bitmap posiProgressPainter;
+    touchgfx::TextAreaWithOneWildcard posi;
     touchgfx::ToggleButton toggleButton1;
     touchgfx::Button button1;
-    touchgfx::TextArea textArea1_1;
+    touchgfx::TextAreaWithTwoWildcards id;
     touchgfx::TextArea textArea1_2;
+
+    /*
+     * Wildcard Buffers
+     */
+    static const uint16_t POSI_SIZE = 10;
+    touchgfx::Unicode::UnicodeChar posiBuffer[POSI_SIZE];
+    static const uint16_t IDBUFFER1_SIZE = 10;
+    touchgfx::Unicode::UnicodeChar idBuffer1[IDBUFFER1_SIZE];
+    static const uint16_t IDBUFFER2_SIZE = 10;
+    touchgfx::Unicode::UnicodeChar idBuffer2[IDBUFFER2_SIZE];
 
 private:
 

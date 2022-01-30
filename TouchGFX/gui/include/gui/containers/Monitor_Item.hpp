@@ -22,6 +22,8 @@ public:
 
     void setPosi_ID(int gID, int sID, int value);
 
+    void callViewSetting();
+
 private:
     int slotID;
     int nowPosi;

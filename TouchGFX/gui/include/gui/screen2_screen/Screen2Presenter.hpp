@@ -27,6 +27,13 @@ public:
 
     virtual ~Screen2Presenter() {};
 
+    void setScreenUp();
+
+//ModelListener override
+    void setID_SettingPage(int gID, int sID);
+
+    void setChangePosi(int gID, int sID, int value);
+
 private:
     Screen2Presenter();
 

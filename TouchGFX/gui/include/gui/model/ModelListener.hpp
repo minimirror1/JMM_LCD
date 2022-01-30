@@ -15,7 +15,10 @@ public:
         model = m;
     }
 
+
     virtual void setChangePosi(int gID, int sID, int value) {}
+
+    virtual void setID_SettingPage(int gID, int sID) {}
 protected:
     Model* model;
 };

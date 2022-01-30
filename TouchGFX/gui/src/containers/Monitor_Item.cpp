@@ -1,4 +1,5 @@
 #include <gui/containers/Monitor_Item.hpp>
+#include <gui/screen1_screen/Screen1View.hpp>
 
 Monitor_Item::Monitor_Item()
 {
@@ -9,7 +10,7 @@ void Monitor_Item::initialize()
 {
     Monitor_ItemBase::initialize();
 
-    setPosi(2048);   
+    setPosi(0);   
 
     setId(5,5);
 }
@@ -44,9 +45,13 @@ void Monitor_Item::setId(int gID, int sID)
 
 void Monitor_Item::setPosi_ID(int gID, int sID, int value)
 {
-
     if ((groupID == gID) && (subID == sID))
         setPosi(value);
+}
+
+void Monitor_Item::callViewSetting()
+{
+    viewPtr->setOpenSettingView(groupID, subID);
 }
 
 void Monitor_Item::setPosiText(int value)
