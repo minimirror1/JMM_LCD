@@ -12,10 +12,14 @@ public:
     virtual void setupScreen();
     virtual void tearDownScreen();
 
-    virtual void KeyboardSeleted(uint8_t value);
     virtual void handleTickEvent();
+    
 
+    virtual void keyBoardSelected(uint8_t value);
+    virtual void filter_value(int value);
     void setID_SettingPage(int gID, int sID);
+
+    void setSettingValue(int lim_min, int lim_max, int map_0, int map_4095, int filter);
 
     void setChangePosi(int gID, int sID, int value);
 

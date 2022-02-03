@@ -1,6 +1,6 @@
 #include <gui/keyboard_screen/KeyboardView.hpp>
 
-extern Unicode::UnicodeChar keyboardBuffer[4][10];
+extern Unicode::UnicodeChar keyboardBuffer[4][30];
 extern uint8_t keyboardSelection;
 extern uint8_t updateFlag;
 
@@ -23,6 +23,9 @@ void KeyboardView::tearDownScreen()
 void KeyboardView::getKeyboardBuffer() 
 {
     Unicode::UnicodeChar* buff = Ckeyboard.getBuffer();
-    Unicode::strncpy(keyboardBuffer[keyboardSelection], buff, Unicode::strlen(buff) + 1);
-    updateFlag |= (1 << keyboardSelection);
+    if (Unicode::strlen(buff) < 5)
+    {
+        Unicode::strncpy(keyboardBuffer[keyboardSelection], buff, Unicode::strlen(buff) + 1);
+        updateFlag |= (1 << keyboardSelection);
+    }
 }

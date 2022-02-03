@@ -25,7 +25,8 @@ void Screen1View::setupScreen()
     {
         monitor_item[i]->setPtr(this);
         monitor_item[i]->setSlotID(i);
-        monitor_item[i]->setId(5, i);
+        //monitor_item[i]->setId(i, i);
+        monitor_item[i]->setId(presenter->getGroupID(i), presenter->getSubID(i));
     }
 
 }

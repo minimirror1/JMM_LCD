@@ -8,7 +8,7 @@ CustomKeyboard::CustomKeyboard() : keyboard(),
     backspacePressed(this, &CustomKeyboard::backspacePressedHandler),
     modePressed(this, &CustomKeyboard::modePressedHandler),
     keyPressed(this, &CustomKeyboard::keyPressedhandler),
-    alphaKeys(true),
+    alphaKeys(false),
     uppercaseKeys(false),
     firstCharacterEntry(false)
 {
@@ -24,7 +24,7 @@ CustomKeyboard::CustomKeyboard() : keyboard(),
     memset(buffer, 0, sizeof(buffer));
     keyboard.setBuffer(buffer, BUFFER_SIZE);
 
-    uppercaseKeys = true;
+    uppercaseKeys = false;
     firstCharacterEntry = true;
 
     modeBtnTextArea.setPosition(5, 196, 56, 40);

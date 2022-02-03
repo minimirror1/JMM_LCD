@@ -21,15 +21,42 @@ void Screen2Presenter::setScreenUp()
 {
     model->setScreenUp();
 }
+//View Call Function
+void Screen2Presenter::setChangeLimitMin(int gID, int sID, int value)
+{
+}
 
+void Screen2Presenter::setChangeLimitMax(int gID, int sID, int value)
+{
+}
+
+void Screen2Presenter::setChangeMap_0(int gID, int sID, int value)
+{
+}
+
+void Screen2Presenter::setChangeMap_4095(int gID, int sID, int value)
+{
+}
+
+void Screen2Presenter::setChangeFIlter(int gID, int sID, int value)
+{
+}
+
+
+
+//ModelListener override
 void Screen2Presenter::setID_SettingPage(int gID, int sID)
 {
     view.setID_SettingPage(gID, sID);
 }
 
-//ModelListener override
 void Screen2Presenter::setChangePosi(int gID, int sID, int value)
 {
     view.setChangePosi(gID, sID, value);
+}
+
+void Screen2Presenter::setSettingValue(int lim_min, int lim_max, int map_0, int map_4095, int filter)
+{
+    view.setSettingValue(lim_min, lim_max, map_0, map_4095, filter);
 }
 

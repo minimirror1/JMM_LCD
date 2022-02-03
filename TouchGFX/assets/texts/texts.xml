@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextDatabase xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="texts.xsd" Version="4.18.0">
+  <Texts>
+    <Text Id="EnteredText" TypographyId="Display" Alignment="Left" Direction="LTR">
+      <Translation Language="GB">&lt;placeholder&gt;</Translation>
+    </Text>
+    <Text Id="NumMode" TypographyId="Mode" Alignment="Center" Direction="LTR">
+      <Translation Language="GB">ABC</Translation>
+    </Text>
+    <Text Id="AlphaMode" TypographyId="Mode" Alignment="Center" Direction="LTR">
+      <Translation Language="GB">123 </Translation>
+    </Text>
+    <Text Id="__SingleUse_VZTJ" TypographyId="Default" Alignment="Center" Direction="LTR">
+      <Translation Language="GB">&lt;value&gt;</Translation>
+    </Text>
+    <Text Id="__SingleUse_V9I0" TypographyId="Default" Alignment="Center" Direction="LTR">
+      <Translation Language="GB">&lt;value&gt;-&lt;value&gt;</Translation>
+    </Text>
+    <Text Id="__SingleUse_QU5N" TypographyId="Small" Alignment="Center" Direction="LTR">
+      <Translation Language="GB">&lt;value&gt;</Translation>
+    </Text>
+    <Text Id="__SingleUse_009U" TypographyId="Large" Alignment="Center" Direction="LTR">
+      <Translation Language="GB">&lt;value&gt;-&lt;value&gt;</Translation>
+    </Text>
+    <Text Id="__SingleUse_7GSF" TypographyId="Default" Alignment="Left" Direction="LTR">
+      <Translation Language="GB">Reverse</Translation>
+    </Text>
+    <Text Id="__SingleUse_8MJ9" TypographyId="Small" Alignment="Center" Direction="LTR">
+      <Translation Language="GB">Cancel</Translation>
+    </Text>
+    <Text Id="__SingleUse_IT5X" TypographyId="Display" Alignment="Center" Direction="LTR">
+      <Translation Language="GB">OK</Translation>
+    </Text>
+    <Text Id="Num_Default" TypographyId="Default" Alignment="Center" Direction="LTR">
+      <Translation Language="GB" Alignment="Center">0000</Translation>
+    </Text>
+    <Text Id="Num_Small" TypographyId="Small" Alignment="Center" Direction="LTR">
+      <Translation Language="GB" Alignment="Center">0</Translation>
+    </Text>
+    <Text Id="Num_Large" TypographyId="Large" Alignment="Center" Direction="LTR">
+      <Translation Language="GB" Alignment="Center">0</Translation>
+    </Text>
+    <Text Id="__SingleUse_L0HY" TypographyId="Large" Alignment="Center" Direction="LTR">
+      <Translation Language="GB">&lt;value&gt;</Translation>
+    </Text>
+    <Text Id="KeyText" TypographyId="Display" Alignment="Center" Direction="LTR">
+      <Translation Language="GB" Alignment="Center">0000</Translation>
+    </Text>
+    <Text Id="__SingleUse_HNW4" TypographyId="Default" Alignment="Left" Direction="LTR">
+      <Translation Language="GB">Limit_min</Translation>
+    </Text>
+    <Text Id="__SingleUse_FHL2" TypographyId="Default" Alignment="Left" Direction="LTR">
+      <Translation Language="GB">Limit_max</Translation>
+    </Text>
+    <Text Id="__SingleUse_PT5J" TypographyId="Default" Alignment="Left" Direction="LTR">
+      <Translation Language="GB">map_0</Translation>
+    </Text>
+    <Text Id="__SingleUse_P9NB" TypographyId="Default" Alignment="Left" Direction="LTR">
+      <Translation Language="GB">map_4095</Translation>
+    </Text>
+    <Text Id="__SingleUse_T8KH" TypographyId="Default" Alignment="Left" Direction="LTR">
+      <Translation Language="GB">Filter</Translation>
+    </Text>
+    <Text Id="__SingleUse_0M3V" TypographyId="Default" Alignment="Center" Direction="LTR">
+      <Translation Language="GB">&lt;value&gt;</Translation>
+    </Text>
+    <Text Id="__SingleUse_EKEO" TypographyId="Default" Alignment="Center" Direction="LTR">
+      <Translation Language="GB">&lt;value&gt;</Translation>
+    </Text>
+    <Text Id="__SingleUse_RCKG" TypographyId="Default" Alignment="Center" Direction="LTR">
+      <Translation Language="GB">&lt;value&gt;</Translation>
+    </Text>
+    <Text Id="__SingleUse_DP9C" TypographyId="Default" Alignment="Left" Direction="LTR">
+      <Translation Language="GB">&lt;value&gt;</Translation>
+    </Text>
+    <Text Id="__SingleUse_6POO" TypographyId="Default" Alignment="Center" Direction="LTR">
+      <Translation Language="GB">&lt;value&gt;</Translation>
+    </Text>
+  </Texts>
+  <Typographies>
+    <Typography Id="Display" Font="RobotoCondensed-Regular.ttf" Size="28" Bpp="4" FallbackCharacter="?" WildcardCharacters="!”&quot;#*%&amp;()'$+-@_, .:;?/~±×÷•º`´{}©£€^®¥_=[]¡¢|\¿&gt;&lt;" WildcardCharacterRanges="a-z,A-Z,0-9" />
+    <Typography Id="Keyboard" Font="RobotoCondensed-Regular.ttf" Size="20" Bpp="4" FallbackCharacter="?" WildcardCharacters="!”&quot;#*%&amp;()'$+-@_, .:;?/~±×÷•º`´{}©£€^®¥_=[]¡¢|\¿&gt;&lt;" WildcardCharacterRanges="a-z,A-Z,0-9" />
+    <Typography Id="Mode" Font="RobotoCondensed-Regular.ttf" Size="24" Bpp="4" />
+    <Typography Id="Default" Font="verdana.ttf" Size="20" Bpp="4" FallbackCharacter="?" WildcardCharacterRanges="0-9" />
+    <Typography Id="Large" Font="verdana.ttf" Size="40" Bpp="4" FallbackCharacter="?" WildcardCharacterRanges="0-9" />
+    <Typography Id="Small" Font="verdana.ttf" Size="10" Bpp="4" FallbackCharacter="?" WildcardCharacterRanges="0-9" />
+  </Typographies>
+</TextDatabase>

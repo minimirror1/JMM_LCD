@@ -764,11 +764,6 @@
 			<locationURI>PARENT-1-PROJECT_LOC/TouchGFX/generated/images/src/__designer/image_Dark_Buttons_Round_Edge_icon_button_pressed.cpp</locationURI>
 		</link>
 		<link>
-			<name>Application/User/generated/image_Dark_Buttons_Round_Edge_small.cpp</name>
-			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/TouchGFX/generated/images/src/__designer/image_Dark_Buttons_Round_Edge_small.cpp</locationURI>
-		</link>
-		<link>
 			<name>Application/User/generated/image_Dark_Buttons_Round_Edge_small_pressed.cpp</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/TouchGFX/generated/images/src/__designer/image_Dark_Buttons_Round_Edge_small_pressed.cpp</locationURI>
@@ -784,6 +779,21 @@
 			<locationURI>PARENT-1-PROJECT_LOC/TouchGFX/generated/images/src/__designer/image_Dark_ProgressIndicators_fill_large_circle_indicator_fill_line_half.cpp</locationURI>
 		</link>
 		<link>
+			<name>Application/User/generated/image_Dark_Slider_Horizontal_Small_Indicators_slider_horizontal_small_round_edge_knob.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/TouchGFX/generated/images/src/__designer/image_Dark_Slider_Horizontal_Small_Indicators_slider_horizontal_small_round_edge_knob.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/generated/image_Dark_Slider_Horizontal_Small_slider_horizontal_small_round_edge_back.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/TouchGFX/generated/images/src/__designer/image_Dark_Slider_Horizontal_Small_slider_horizontal_small_round_edge_back.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/generated/image_Dark_Slider_Horizontal_Small_slider_horizontal_small_round_edge_fill.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/TouchGFX/generated/images/src/__designer/image_Dark_Slider_Horizontal_Small_slider_horizontal_small_round_edge_fill.cpp</locationURI>
+		</link>
+		<link>
 			<name>Application/User/generated/image_Dark_Togglebars_Toggle_round_large_button_Off.cpp</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/TouchGFX/generated/images/src/__designer/image_Dark_Togglebars_Toggle_round_large_button_Off.cpp</locationURI>
@@ -792,6 +802,16 @@
 			<name>Application/User/generated/image_Dark_Togglebars_Toggle_round_large_button_On.cpp</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/TouchGFX/generated/images/src/__designer/image_Dark_Togglebars_Toggle_round_large_button_On.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/generated/image_Round_Edge_Xsmall.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/TouchGFX/generated/images/src/image_Round_Edge_Xsmall.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/generated/image_Round_Edge_Xsmall_pressed.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/TouchGFX/generated/images/src/image_Round_Edge_Xsmall_pressed.cpp</locationURI>
 		</link>
 		<link>
 			<name>Application/User/generated/image_icon_keyboard_even_row.cpp</name>

@@ -1,0 +1,2 @@
+Table_RobotoCondensed_Regular_24_4bpp.cpp:31:223:void __tcf_0()	0	static
+Table_RobotoCondensed_Regular_24_4bpp.cpp:29:26:touchgfx::GeneratedFont& getFont_RobotoCondensed_Regular_24_4bpp()	64	static

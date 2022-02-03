@@ -26,6 +26,7 @@ protected:
      * Member Declarations
      */
     touchgfx::Box __background;
+    touchgfx::Box box1;
     Monitor_Item monitor_Item1;
     Monitor_Item monitor_Item2;
     Monitor_Item monitor_Item3;

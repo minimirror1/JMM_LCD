@@ -1,0 +1,8 @@
+ModelListener.hpp:21:18:virtual void ModelListener::setID_SettingPage(int, int)	0	static
+Screen1Presenter.hpp:28:13:Screen1Presenter::~Screen1Presenter()	0	static
+Screen1Presenter.cpp:10:6:virtual void Screen1Presenter::activate()	0	static
+Screen1Presenter.hpp:28:13:virtual Screen1Presenter::~Screen1Presenter()	8	static
+Screen1Presenter.cpp:26:6:virtual void Screen1Presenter::setChangePosi(int, int, int)	0	static
+Screen1Presenter.hpp:28:13:virtual void* Screen1Presenter::_ZThn4_N16Screen1PresenterD1Ev()	0	static
+Screen1Presenter.cpp:4:1:Screen1Presenter::Screen1Presenter(Screen1View&)	8	static
+Screen1Presenter.cpp:20:6:void Screen1Presenter::setOpenSettingView(int, int)	0	static

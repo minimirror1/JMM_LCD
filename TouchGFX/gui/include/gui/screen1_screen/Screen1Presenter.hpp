@@ -29,6 +29,9 @@ public:
 
 //View Call Function
     void setOpenSettingView(int gID, int sID);
+
+    int getGroupID(int index);
+    int getSubID(int index);
 //ModelListener override
     void setChangePosi(int gID, int sID, int value);
 

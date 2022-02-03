@@ -9,13 +9,17 @@
 
 
 Screen2ViewBase::Screen2ViewBase() :
-    buttonCallback(this, &Screen2ViewBase::buttonCallbackHandler)
+    buttonCallback(this, &Screen2ViewBase::buttonCallbackHandler),
+    sliderValueChangedCallback(this, &Screen2ViewBase::sliderValueChangedCallbackHandler)
 {
 
     touchgfx::CanvasWidgetRenderer::setupBuffer(canvasBuffer, CANVAS_BUFFER_SIZE);
 
     __background.setPosition(0, 0, 480, 272);
     __background.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
+
+    box1.setPosition(0, 0, 480, 272);
+    box1.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
 
     posiProgress.setXY(8, 8);
     posiProgress.setProgressIndicatorPosition(0, 0, 184, 94);
@@ -36,7 +40,7 @@ Screen2ViewBase::Screen2ViewBase() :
     posi.setWildcard(posiBuffer);
     posi.setTypedText(touchgfx::TypedText(T___SINGLEUSE_L0HY));
 
-    toggleButton1.setXY(345, 8);
+    toggleButton1.setXY(331, 8);
     toggleButton1.setBitmaps(touchgfx::Bitmap(BITMAP_DARK_TOGGLEBARS_TOGGLE_ROUND_LARGE_BUTTON_OFF_ID), touchgfx::Bitmap(BITMAP_DARK_TOGGLEBARS_TOGGLE_ROUND_LARGE_BUTTON_ON_ID));
 
     button1.setXY(15, 127);
@@ -52,32 +56,122 @@ Screen2ViewBase::Screen2ViewBase() :
     id.setWildcard2(idBuffer2);
     id.setTypedText(touchgfx::TypedText(T___SINGLEUSE_009U));
 
-    textArea1_2.setXY(240, 15);
-    textArea1_2.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
-    textArea1_2.setLinespacing(0);
-    textArea1_2.setTypedText(touchgfx::TypedText(T___SINGLEUSE_7GSF));
+    reverse_textArea.setXY(226, 15);
+    reverse_textArea.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
+    reverse_textArea.setLinespacing(0);
+    reverse_textArea.setTypedText(touchgfx::TypedText(T___SINGLEUSE_7GSF));
 
-    test.setXY(290, 122);
-    test.setBitmaps(touchgfx::Bitmap(BITMAP_DARK_BUTTONS_ROUND_EDGE_SMALL_ID), touchgfx::Bitmap(BITMAP_DARK_BUTTONS_ROUND_EDGE_SMALL_PRESSED_ID));
-    test.setAction(buttonCallback);
+    map_4095_button.setXY(372, 155);
+    map_4095_button.setBitmaps(touchgfx::Bitmap(BITMAP_ROUND_EDGE_XSMALL_ID), touchgfx::Bitmap(BITMAP_ROUND_EDGE_XSMALL_PRESSED_ID));
+    map_4095_button.setAction(buttonCallback);
+    map_4095_button.setAlpha(100);
 
-    PValue.setXY(356, 90);
-    PValue.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
-    PValue.setLinespacing(0);
-    Unicode::snprintf(PValueBuffer, PVALUE_SIZE, "%s", touchgfx::TypedText(T_ALPHAMODE).getText());
-    PValue.setWildcard(PValueBuffer);
-    PValue.resizeToCurrentText();
-    PValue.setTypedText(touchgfx::TypedText(T___SINGLEUSE_R1XS));
+    map_0_button.setXY(372, 121);
+    map_0_button.setBitmaps(touchgfx::Bitmap(BITMAP_ROUND_EDGE_XSMALL_ID), touchgfx::Bitmap(BITMAP_ROUND_EDGE_XSMALL_PRESSED_ID));
+    map_0_button.setAction(buttonCallback);
+    map_0_button.setAlpha(100);
+
+    limitMax_button.setXY(372, 87);
+    limitMax_button.setBitmaps(touchgfx::Bitmap(BITMAP_ROUND_EDGE_XSMALL_ID), touchgfx::Bitmap(BITMAP_ROUND_EDGE_XSMALL_PRESSED_ID));
+    limitMax_button.setAction(buttonCallback);
+    limitMax_button.setAlpha(100);
+
+    limitMin_button.setXY(372, 53);
+    limitMin_button.setBitmaps(touchgfx::Bitmap(BITMAP_ROUND_EDGE_XSMALL_ID), touchgfx::Bitmap(BITMAP_ROUND_EDGE_XSMALL_PRESSED_ID));
+    limitMin_button.setAction(buttonCallback);
+    limitMin_button.setAlpha(100);
+
+    limitMin_textArea.setXY(226, 55);
+    limitMin_textArea.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
+    limitMin_textArea.setLinespacing(0);
+    limitMin_textArea.setTypedText(touchgfx::TypedText(T___SINGLEUSE_HNW4));
+
+    limitMax_textArea.setXY(226, 90);
+    limitMax_textArea.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
+    limitMax_textArea.setLinespacing(0);
+    limitMax_textArea.setTypedText(touchgfx::TypedText(T___SINGLEUSE_FHL2));
+
+    map_0_textArea.setXY(226, 124);
+    map_0_textArea.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
+    map_0_textArea.setLinespacing(0);
+    map_0_textArea.setTypedText(touchgfx::TypedText(T___SINGLEUSE_PT5J));
+
+    map_4095_textArea.setXY(226, 157);
+    map_4095_textArea.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
+    map_4095_textArea.setLinespacing(0);
+    map_4095_textArea.setTypedText(touchgfx::TypedText(T___SINGLEUSE_P9NB));
+
+    Filter_textArea.setXY(226, 193);
+    Filter_textArea.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
+    Filter_textArea.setLinespacing(0);
+    Filter_textArea.setTypedText(touchgfx::TypedText(T___SINGLEUSE_T8KH));
+
+    slider1.setXY(226, 222);
+    slider1.setBitmaps(touchgfx::Bitmap(BITMAP_DARK_SLIDER_HORIZONTAL_SMALL_SLIDER_HORIZONTAL_SMALL_ROUND_EDGE_BACK_ID), touchgfx::Bitmap(BITMAP_DARK_SLIDER_HORIZONTAL_SMALL_SLIDER_HORIZONTAL_SMALL_ROUND_EDGE_FILL_ID), touchgfx::Bitmap(BITMAP_DARK_SLIDER_HORIZONTAL_SMALL_INDICATORS_SLIDER_HORIZONTAL_SMALL_ROUND_EDGE_KNOB_ID));
+    slider1.setupHorizontalSlider(0, 0, 4, 3, 135);
+    slider1.setValueRange(1, 14);
+    slider1.setValue(1);
+    slider1.setNewValueCallback(sliderValueChangedCallback);
+
+    limitMinVar_textArea.setPosition(372, 55, 85, 30);
+    limitMinVar_textArea.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
+    limitMinVar_textArea.setLinespacing(0);
+    Unicode::snprintf(limitMinVar_textAreaBuffer, LIMITMINVAR_TEXTAREA_SIZE, "%s", touchgfx::TypedText(T_NUM_DEFAULT).getText());
+    limitMinVar_textArea.setWildcard(limitMinVar_textAreaBuffer);
+    limitMinVar_textArea.setTypedText(touchgfx::TypedText(T___SINGLEUSE_6POO));
+
+    limitMaxVar_textArea.setPosition(372, 89, 85, 30);
+    limitMaxVar_textArea.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
+    limitMaxVar_textArea.setLinespacing(0);
+    Unicode::snprintf(limitMaxVar_textAreaBuffer, LIMITMAXVAR_TEXTAREA_SIZE, "%s", touchgfx::TypedText(T_NUM_DEFAULT).getText());
+    limitMaxVar_textArea.setWildcard(limitMaxVar_textAreaBuffer);
+    limitMaxVar_textArea.setTypedText(touchgfx::TypedText(T___SINGLEUSE_0M3V));
+
+    map_0Var_textArea.setPosition(372, 123, 85, 30);
+    map_0Var_textArea.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
+    map_0Var_textArea.setLinespacing(0);
+    Unicode::snprintf(map_0Var_textAreaBuffer, MAP_0VAR_TEXTAREA_SIZE, "%s", touchgfx::TypedText(T_NUM_DEFAULT).getText());
+    map_0Var_textArea.setWildcard(map_0Var_textAreaBuffer);
+    map_0Var_textArea.setTypedText(touchgfx::TypedText(T___SINGLEUSE_EKEO));
+
+    map_4095Var_textArea.setPosition(372, 157, 85, 30);
+    map_4095Var_textArea.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
+    map_4095Var_textArea.setLinespacing(0);
+    Unicode::snprintf(map_4095Var_textAreaBuffer, MAP_4095VAR_TEXTAREA_SIZE, "%s", touchgfx::TypedText(T_NUM_DEFAULT).getText());
+    map_4095Var_textArea.setWildcard(map_4095Var_textAreaBuffer);
+    map_4095Var_textArea.setTypedText(touchgfx::TypedText(T___SINGLEUSE_RCKG));
+
+    FilterVar_textArea.setXY(434, 230);
+    FilterVar_textArea.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
+    FilterVar_textArea.setLinespacing(0);
+    Unicode::snprintf(FilterVar_textAreaBuffer, FILTERVAR_TEXTAREA_SIZE, "%s", touchgfx::TypedText(T_NUM_DEFAULT).getText());
+    FilterVar_textArea.setWildcard(FilterVar_textAreaBuffer);
+    FilterVar_textArea.resizeToCurrentText();
+    FilterVar_textArea.setTypedText(touchgfx::TypedText(T___SINGLEUSE_DP9C));
 
     add(__background);
+    add(box1);
     add(posiProgress);
     add(posi);
     add(toggleButton1);
     add(button1);
     add(id);
-    add(textArea1_2);
-    add(test);
-    add(PValue);
+    add(reverse_textArea);
+    add(map_4095_button);
+    add(map_0_button);
+    add(limitMax_button);
+    add(limitMin_button);
+    add(limitMin_textArea);
+    add(limitMax_textArea);
+    add(map_0_textArea);
+    add(map_4095_textArea);
+    add(Filter_textArea);
+    add(slider1);
+    add(limitMinVar_textArea);
+    add(limitMaxVar_textArea);
+    add(map_0Var_textArea);
+    add(map_4095Var_textArea);
+    add(FilterVar_textArea);
 }
 
 void Screen2ViewBase::setupScreen()
@@ -102,16 +196,63 @@ void Screen2ViewBase::buttonCallbackHandler(const touchgfx::AbstractButton& src)
         //Go to Screen1 with no screen transition
         application().gotoScreen1ScreenNoTransition();
     }
-    else if (&src == &test)
+    else if (&src == &map_4095_button)
     {
-        //testButtonPressed
-        //When test clicked call keyboardSeletedVar on Screen2
+        //map_4095ButtonPressed
+        //When map_4095_button clicked call keyboardSeletedVar on Screen2
+        //Call keyboardSeletedVar
+        keyboardSeletedVar(4);
+
+        //map_4095gotoKeyboard
+        //When map_4095ButtonPressed completed change screen to Keyboard
+        //Go to Keyboard with no screen transition
+        application().gotoKeyboardScreenNoTransition();
+    }
+    else if (&src == &map_0_button)
+    {
+        //map_0ButtonPressed
+        //When map_0_button clicked call keyboardSeletedVar on Screen2
+        //Call keyboardSeletedVar
+        keyboardSeletedVar(3);
+
+        //map_0gotoKeyboard
+        //When map_0ButtonPressed completed change screen to Keyboard
+        //Go to Keyboard with no screen transition
+        application().gotoKeyboardScreenNoTransition();
+    }
+    else if (&src == &limitMax_button)
+    {
+        //limitMaxButtonPressed
+        //When limitMax_button clicked call keyboardSeletedVar on Screen2
+        //Call keyboardSeletedVar
+        keyboardSeletedVar(2);
+
+        //limitMaxgotoKeyboard
+        //When limitMaxButtonPressed completed change screen to Keyboard
+        //Go to Keyboard with no screen transition
+        application().gotoKeyboardScreenNoTransition();
+    }
+    else if (&src == &limitMin_button)
+    {
+        //limitMinButtonPressed
+        //When limitMin_button clicked call keyboardSeletedVar on Screen2
         //Call keyboardSeletedVar
         keyboardSeletedVar(1);
 
-        //gotoKeyboard
-        //When testButtonPressed completed change screen to Keyboard
+        //limitMingotoKeyboard
+        //When limitMinButtonPressed completed change screen to Keyboard
         //Go to Keyboard with no screen transition
         application().gotoKeyboardScreenNoTransition();
+    }
+}
+
+void Screen2ViewBase::sliderValueChangedCallbackHandler(const touchgfx::Slider& src, int value)
+{
+    if (&src == &slider1)
+    {
+        //filterValue
+        //When slider1 value changed call virtual function
+        //Call filter_value
+        filter_value(value);
     }
 }

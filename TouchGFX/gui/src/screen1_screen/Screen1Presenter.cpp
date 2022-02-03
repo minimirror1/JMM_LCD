@@ -22,6 +22,16 @@ void Screen1Presenter::setOpenSettingView(int gID, int sID)
     model->setOpenSettingView(gID, sID);
 }
 
+int Screen1Presenter::getGroupID(int index)
+{
+    return model->getGroupID(index);
+}
+
+int Screen1Presenter::getSubID(int index)
+{
+    return model->getSubID(index);
+}
+
 //ModelListener override
 void Screen1Presenter::setChangePosi(int gID, int sID, int value)
 {

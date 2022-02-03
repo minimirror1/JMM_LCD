@@ -28,11 +28,19 @@ public:
     virtual ~Screen2Presenter() {};
 
     void setScreenUp();
+//View Call Function
+    void setChangeLimitMin(int gID, int sID, int value);
+    void setChangeLimitMax(int gID, int sID, int value);
+    void setChangeMap_0(int gID, int sID, int value);
+    void setChangeMap_4095(int gID, int sID, int value);
+    void setChangeFIlter(int gID, int sID, int value);
 
 //ModelListener override
     void setID_SettingPage(int gID, int sID);
 
     void setChangePosi(int gID, int sID, int value);
+
+    void setSettingValue(int lim_min, int lim_max, int map_0, int map_4095, int filter);
 
 private:
     Screen2Presenter();

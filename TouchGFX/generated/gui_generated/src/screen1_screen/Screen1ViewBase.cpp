@@ -14,6 +14,9 @@ Screen1ViewBase::Screen1ViewBase()
     __background.setPosition(0, 0, 480, 272);
     __background.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
 
+    box1.setPosition(0, 0, 480, 272);
+    box1.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
+
     monitor_Item1.setXY(15, 8);
 
     monitor_Item2.setXY(105, 8);
@@ -35,6 +38,7 @@ Screen1ViewBase::Screen1ViewBase()
     monitor_Item10.setXY(375, 144);
 
     add(__background);
+    add(box1);
     add(monitor_Item1);
     add(monitor_Item2);
     add(monitor_Item3);

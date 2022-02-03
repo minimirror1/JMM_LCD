@@ -14,6 +14,7 @@
 #include <touchgfx/widgets/ToggleButton.hpp>
 #include <touchgfx/widgets/Button.hpp>
 #include <touchgfx/widgets/TextArea.hpp>
+#include <touchgfx/containers/Slider.hpp>
 
 class Screen2ViewBase : public touchgfx::View<Screen2Presenter>
 {
@@ -35,6 +36,11 @@ public:
         // Override and implement this function in Screen2
     }
 
+    virtual void filter_value(int value)
+    {
+        // Override and implement this function in Screen2
+    }
+
 protected:
     FrontendApplication& application() {
         return *static_cast<FrontendApplication*>(touchgfx::Application::getInstance());
@@ -44,15 +50,29 @@ protected:
      * Member Declarations
      */
     touchgfx::Box __background;
+    touchgfx::Box box1;
     touchgfx::CircleProgress posiProgress;
     touchgfx::PainterRGB565Bitmap posiProgressPainter;
     touchgfx::TextAreaWithOneWildcard posi;
     touchgfx::ToggleButton toggleButton1;
     touchgfx::Button button1;
     touchgfx::TextAreaWithTwoWildcards id;
-    touchgfx::TextArea textArea1_2;
-    touchgfx::Button test;
-    touchgfx::TextAreaWithOneWildcard PValue;
+    touchgfx::TextArea reverse_textArea;
+    touchgfx::Button map_4095_button;
+    touchgfx::Button map_0_button;
+    touchgfx::Button limitMax_button;
+    touchgfx::Button limitMin_button;
+    touchgfx::TextArea limitMin_textArea;
+    touchgfx::TextArea limitMax_textArea;
+    touchgfx::TextArea map_0_textArea;
+    touchgfx::TextArea map_4095_textArea;
+    touchgfx::TextArea Filter_textArea;
+    touchgfx::Slider slider1;
+    touchgfx::TextAreaWithOneWildcard limitMinVar_textArea;
+    touchgfx::TextAreaWithOneWildcard limitMaxVar_textArea;
+    touchgfx::TextAreaWithOneWildcard map_0Var_textArea;
+    touchgfx::TextAreaWithOneWildcard map_4095Var_textArea;
+    touchgfx::TextAreaWithOneWildcard FilterVar_textArea;
 
     /*
      * Wildcard Buffers
@@ -63,8 +83,16 @@ protected:
     touchgfx::Unicode::UnicodeChar idBuffer1[IDBUFFER1_SIZE];
     static const uint16_t IDBUFFER2_SIZE = 10;
     touchgfx::Unicode::UnicodeChar idBuffer2[IDBUFFER2_SIZE];
-    static const uint16_t PVALUE_SIZE = 10;
-    touchgfx::Unicode::UnicodeChar PValueBuffer[PVALUE_SIZE];
+    static const uint16_t LIMITMINVAR_TEXTAREA_SIZE = 5;
+    touchgfx::Unicode::UnicodeChar limitMinVar_textAreaBuffer[LIMITMINVAR_TEXTAREA_SIZE];
+    static const uint16_t LIMITMAXVAR_TEXTAREA_SIZE = 5;
+    touchgfx::Unicode::UnicodeChar limitMaxVar_textAreaBuffer[LIMITMAXVAR_TEXTAREA_SIZE];
+    static const uint16_t MAP_0VAR_TEXTAREA_SIZE = 5;
+    touchgfx::Unicode::UnicodeChar map_0Var_textAreaBuffer[MAP_0VAR_TEXTAREA_SIZE];
+    static const uint16_t MAP_4095VAR_TEXTAREA_SIZE = 5;
+    touchgfx::Unicode::UnicodeChar map_4095Var_textAreaBuffer[MAP_4095VAR_TEXTAREA_SIZE];
+    static const uint16_t FILTERVAR_TEXTAREA_SIZE = 10;
+    touchgfx::Unicode::UnicodeChar FilterVar_textAreaBuffer[FILTERVAR_TEXTAREA_SIZE];
 
 private:
 
@@ -72,11 +100,13 @@ private:
      * Callback Declarations
      */
     touchgfx::Callback<Screen2ViewBase, const touchgfx::AbstractButton&> buttonCallback;
+    touchgfx::Callback<Screen2ViewBase, const touchgfx::Slider&, int> sliderValueChangedCallback;
 
     /*
      * Callback Handler Declarations
      */
     void buttonCallbackHandler(const touchgfx::AbstractButton& src);
+    void sliderValueChangedCallbackHandler(const touchgfx::Slider& src, int value);
 
     /*
      * Canvas Buffer Size
