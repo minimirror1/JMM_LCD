@@ -172,3 +172,27 @@ Reason: (4) No device found on target.
 
 !ENTRY com.st.stm32cube.ide.mcu.toolchain.arm-none.oss 2 2 2022-02-03 09:29:50.139
 !MESSAGE Ignored L/STM32F746G_DISCO/Application/User/gui/CustomContainer1.cpp from Makefile generation (invalid resource)
+
+!ENTRY com.st.stm32cube.ide.mcu.toolchain.arm-none.oss 2 2 2022-02-03 14:35:33.873
+!MESSAGE Ignored L/STM32F746G_DISCO/Application/User/generated/CustomContainer1Base.cpp from Makefile generation (invalid resource)
+
+!ENTRY com.st.stm32cube.ide.mcu.toolchain.arm-none.oss 2 2 2022-02-03 14:35:33.922
+!MESSAGE Ignored L/STM32F746G_DISCO/Application/User/generated/image_Dark_ProgressIndicators_bg_medium_circle_indicator_bg_full.cpp from Makefile generation (invalid resource)
+
+!ENTRY com.st.stm32cube.ide.mcu.toolchain.arm-none.oss 2 2 2022-02-03 14:35:33.925
+!MESSAGE Ignored L/STM32F746G_DISCO/Application/User/generated/image_Dark_ProgressIndicators_fill_medium_circle_indicator_fill_full.cpp from Makefile generation (invalid resource)
+
+!ENTRY com.st.stm32cube.ide.mcu.toolchain.arm-none.oss 2 2 2022-02-03 14:35:33.957
+!MESSAGE Ignored L/STM32F746G_DISCO/Application/User/gui/CustomContainer1.cpp from Makefile generation (invalid resource)
+
+!ENTRY com.st.stm32cube.ide.mcu.toolchain.arm-none.oss 2 2 2022-02-03 14:38:39.654
+!MESSAGE Ignored L/STM32F746G_DISCO/Application/User/generated/CustomContainer1Base.cpp from Makefile generation (invalid resource)
+
+!ENTRY com.st.stm32cube.ide.mcu.toolchain.arm-none.oss 2 2 2022-02-03 14:38:39.705
+!MESSAGE Ignored L/STM32F746G_DISCO/Application/User/generated/image_Dark_ProgressIndicators_bg_medium_circle_indicator_bg_full.cpp from Makefile generation (invalid resource)
+
+!ENTRY com.st.stm32cube.ide.mcu.toolchain.arm-none.oss 2 2 2022-02-03 14:38:39.709
+!MESSAGE Ignored L/STM32F746G_DISCO/Application/User/generated/image_Dark_ProgressIndicators_fill_medium_circle_indicator_fill_full.cpp from Makefile generation (invalid resource)
+
+!ENTRY com.st.stm32cube.ide.mcu.toolchain.arm-none.oss 2 2 2022-02-03 14:38:39.747
+!MESSAGE Ignored L/STM32F746G_DISCO/Application/User/gui/CustomContainer1.cpp from Makefile generation (invalid resource)

@@ -41,6 +41,11 @@ public:
         // Override and implement this function in Screen2
     }
 
+    virtual void reverseButton()
+    {
+        // Override and implement this function in Screen2
+    }
+
 protected:
     FrontendApplication& application() {
         return *static_cast<FrontendApplication*>(touchgfx::Application::getInstance());

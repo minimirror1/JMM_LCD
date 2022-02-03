@@ -67,7 +67,8 @@ void Model::setScreenUp()
 			setting[index].limit_max,
 			setting[index].map_0,
 			setting[index].map_4095,
-			5);
+			setting[index].filter,
+			setting[index].reverse);
 	}
 }
 
@@ -113,6 +114,15 @@ void Model::setChangeFIlter(int gID, int sID, int value)
 	if (index < 10)
 	{
 		setting[index].filter = value;
+	}
+}
+
+void Model::setChangeReverse(int gID, int sID, bool value)
+{
+	int index = getIndex(gID, sID);
+	if (index < 10)
+	{
+		setting[index].reverse = value;
 	}
 }
 

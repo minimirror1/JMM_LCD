@@ -42,6 +42,7 @@ Screen2ViewBase::Screen2ViewBase() :
 
     toggleButton1.setXY(331, 8);
     toggleButton1.setBitmaps(touchgfx::Bitmap(BITMAP_DARK_TOGGLEBARS_TOGGLE_ROUND_LARGE_BUTTON_OFF_ID), touchgfx::Bitmap(BITMAP_DARK_TOGGLEBARS_TOGGLE_ROUND_LARGE_BUTTON_ON_ID));
+    toggleButton1.setAction(buttonCallback);
 
     button1.setXY(15, 127);
     button1.setBitmaps(touchgfx::Bitmap(BITMAP_DARK_BUTTONS_ROUND_EDGE_SMALL_PRESSED_ID), touchgfx::Bitmap(BITMAP_DARK_BUTTONS_ROUND_EDGE_SMALL_PRESSED_ID));
@@ -189,7 +190,14 @@ void Screen2ViewBase::keyboardSeletedVar(uint8_t value)
 
 void Screen2ViewBase::buttonCallbackHandler(const touchgfx::AbstractButton& src)
 {
-    if (&src == &button1)
+    if (&src == &toggleButton1)
+    {
+        //reverseButton
+        //When toggleButton1 clicked call virtual function
+        //Call reverseButton
+        reverseButton();
+    }
+    else if (&src == &button1)
     {
         //Interaction1
         //When button1 clicked change screen to Screen1

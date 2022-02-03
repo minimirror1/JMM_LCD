@@ -611,6 +611,17 @@
               "Type": "ActionCustom",
               "FunctionName": "filter_value"
             }
+          },
+          {
+            "InteractionName": "reverseButton",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "toggleButton1"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "reverseButton"
+            }
           }
         ],
         "CustomActions": [

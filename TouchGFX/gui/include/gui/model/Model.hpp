@@ -12,6 +12,7 @@ typedef struct {
     int map_0;
     int map_4095;
     int filter;
+    bool reverse;
 }SettingData_TypeDef;
 
 class Model
@@ -40,6 +41,7 @@ public:
     void setChangeMap_0(int gID, int sID, int value);
     void setChangeMap_4095(int gID, int sID, int value);
     void setChangeFIlter(int gID, int sID, int value);
+    void setChangeReverse(int gID, int sID, bool value);
 
 private:
     int myTimer;

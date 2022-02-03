@@ -1,5 +1,9 @@
 #include <gui/screen2_screen/Screen2View.hpp>
 
+#ifndef SIMULATOR
+#include <stdlib.h>
+#endif
+
 Unicode::UnicodeChar keyboardBuffer[4][30];
 uint8_t keyboardSelection;
 uint8_t updateFlag;
@@ -34,82 +38,116 @@ void Screen2View::keyBoardSelected(uint8_t value)
 void Screen2View::handleTickEvent()
 {
     //static uint8_t backbuf[20] = { 0, };
-    if (Unicode::strlen(keyboardBuffer[0]) > 0)	//PValue¿¡ ´ëÇØ Ckeyboard¿¡¼­ ÀÔ·ÂÇÑ °ªÀÌ ÀÖÀ» °æ¿ì,
+    if (Unicode::strlen(keyboardBuffer[0]) > 0)	//PValueï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Ckeyboardï¿½ï¿½ï¿½ï¿½ ï¿½Ô·ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½,
     {
-        if ((updateFlag & 0x01) == 0x01)// update¸¦ ÇØ¾ßÇÏ´ÂÁö Ã¼Å©.
+        if ((updateFlag & 0x01) == 0x01)// updateï¿½ï¿½ ï¿½Ø¾ï¿½ï¿½Ï´ï¿½ï¿½ï¿½ Ã¼Å©.
         {
-            //memset(limitMinVar_textAreaBuffer, 0, LIMITMINVAR_TEXTAREA_SIZE);	// PValue Widget ÃÊ±âÈ­.
+            //memset(limitMinVar_textAreaBuffer, 0, LIMITMINVAR_TEXTAREA_SIZE);	// PValue Widget ï¿½Ê±ï¿½È­.
             //Unicode::strncpy(limitMinVar_textAreaBuffer, keyboardBuffer[0], Unicode::strlen(keyboardBuffer[0]));
-            //limitMinVar_textArea.invalidate();							//º¯°æµÈ PValue Widget Ãâ·Â.
-            
+            //limitMinVar_textArea.invalidate();							//ï¿½ï¿½ï¿½ï¿½ï¿½ PValue Widget ï¿½ï¿½ï¿½.
 
-            Unicode::snprintf(limitMinVar_textAreaBuffer, LIMITMINVAR_TEXTAREA_SIZE, keyboardBuffer[0]);
+            uint8_t utf8Buff[20];
+            Unicode::toUTF8(keyboardBuffer[0], utf8Buff, 20);	//Unicode(UT16)ï¿½ï¿½ï¿½ï¿½ UT8ï¿½ï¿½ ï¿½ï¿½È¯ ï¿½ï¿½,            
+            int value = atoi((const char*)utf8Buff);
+            if (value > 4095)
+                value = 4095;
+            presenter->setChangeLimitMin(groupID, subID, value);            
+
+            Unicode::snprintf(limitMinVar_textAreaBuffer, LIMITMINVAR_TEXTAREA_SIZE, "%d", value);
             limitMinVar_textArea.setWildcard(limitMinVar_textAreaBuffer);
             limitMinVar_textArea.invalidate();
+
+            
+
             memset(keyboardBuffer[0], 0, 30);
 #if 0
-            memset(PValueBuffer, 0, PVALUE_SIZE);	// PValue Widget ÃÊ±âÈ­.
+            memset(PValueBuffer, 0, PVALUE_SIZE);	// PValue Widget ï¿½Ê±ï¿½È­.
 
             //string --> double(check only number)
-            Unicode::toUTF8(keyboardBuffer[0], backbuf, PVALUE_SIZE);	//Unicode(UT16)¿¡¼­ UT8·Î º¯È¯ ÈÄ,
-            double prPValue = atof((const char*)backbuf);				//double·Î º¯È¯.(¿©±â¿¡¼­ ¼ýÀÚ¸¸ º¯È¯µÊ. ¼ýÀÚ°¡ ¾Æ´Ï¸é ¹«Á¶°Ç 0)
+            Unicode::toUTF8(keyboardBuffer[0], backbuf, PVALUE_SIZE);	//Unicode(UT16)ï¿½ï¿½ï¿½ï¿½ UT8ï¿½ï¿½ ï¿½ï¿½È¯ ï¿½ï¿½,
+            double prPValue = atof((const char*)backbuf);				//doubleï¿½ï¿½ ï¿½ï¿½È¯.(ï¿½ï¿½ï¿½â¿¡ï¿½ï¿½ ï¿½ï¿½ï¿½Ú¸ï¿½ ï¿½ï¿½È¯ï¿½ï¿½. ï¿½ï¿½ï¿½Ú°ï¿½ ï¿½Æ´Ï¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 0)
 
             //double --> string(sprintf)
-            Unicode::snprintf(PValueBuffer, PVALUE_SIZE, "%d", (int)prPValue);	//PValue Widget¿¡ º¯È¯µÈ double °ªÀ» ¹®ÀÚ¿­·Î ÀúÀå.
-            PValue.invalidate();							//º¯°æµÈ PValue Widget Ãâ·Â.
+            Unicode::snprintf(PValueBuffer, PVALUE_SIZE, "%d", (int)prPValue);	//PValue Widgetï¿½ï¿½ ï¿½ï¿½È¯ï¿½ï¿½ double ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ú¿ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½.
+            PValue.invalidate();							//ï¿½ï¿½ï¿½ï¿½ï¿½ PValue Widget ï¿½ï¿½ï¿½.
 #endif
 
-            updateFlag &= ~0x01; // »ó½Ã·Î °°Àº °ªÀ» Ãâ·ÂÇÏ´Â µ¿ÀÛÀ» ¸·±â À§ÇØ.
+            updateFlag &= ~0x01; // ï¿½ï¿½Ã·ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½.
         }
     }
-    else if (Unicode::strlen(keyboardBuffer[1]) > 0)	//PValue¿¡ ´ëÇØ Ckeyboard¿¡¼­ ÀÔ·ÂÇÑ °ªÀÌ ÀÖÀ» °æ¿ì,
+    else if (Unicode::strlen(keyboardBuffer[1]) > 0)	//PValueï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Ckeyboardï¿½ï¿½ï¿½ï¿½ ï¿½Ô·ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½,
     {
-        if ((updateFlag & 0x02) == 0x02)// update¸¦ ÇØ¾ßÇÏ´ÂÁö Ã¼Å©.
+        if ((updateFlag & 0x02) == 0x02)// updateï¿½ï¿½ ï¿½Ø¾ï¿½ï¿½Ï´ï¿½ï¿½ï¿½ Ã¼Å©.
         {
-            //memset(limitMaxVar_textAreaBuffer, 0, LIMITMAXVAR_TEXTAREA_SIZE);	// PValue Widget ÃÊ±âÈ­.
+            //memset(limitMaxVar_textAreaBuffer, 0, LIMITMAXVAR_TEXTAREA_SIZE);	// PValue Widget ï¿½Ê±ï¿½È­.
             //Unicode::strncpy(limitMaxVar_textAreaBuffer, keyboardBuffer[1], Unicode::strlen(keyboardBuffer[1]));
             //limitMaxVar_textArea.invalidate();
             //memset(keyboardBuffer[1], 0, 30);
 
-            Unicode::snprintf(limitMaxVar_textAreaBuffer, LIMITMAXVAR_TEXTAREA_SIZE, keyboardBuffer[1]);
+            uint8_t utf8Buff[20];
+            Unicode::toUTF8(keyboardBuffer[1], utf8Buff, 20);	//Unicode(UT16)ï¿½ï¿½ï¿½ï¿½ UT8ï¿½ï¿½ ï¿½ï¿½È¯ ï¿½ï¿½,            
+            int value = atoi((const char*)utf8Buff);
+            if (value > 4095)
+                value = 4095;
+            presenter->setChangeLimitMax(groupID, subID, value);
+            
+
+            Unicode::snprintf(limitMaxVar_textAreaBuffer, LIMITMAXVAR_TEXTAREA_SIZE, "%d", value);
             limitMaxVar_textArea.setWildcard(limitMaxVar_textAreaBuffer);
-            limitMaxVar_textArea.invalidate();
+            limitMaxVar_textArea.invalidate();            
+
             memset(keyboardBuffer[1], 0, 30);
 
-            updateFlag &= ~0x02; // »ó½Ã·Î °°Àº °ªÀ» Ãâ·ÂÇÏ´Â µ¿ÀÛÀ» ¸·±â À§ÇØ.
+            updateFlag &= ~0x02; // ï¿½ï¿½Ã·ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½.
         }
     }
-    else if (Unicode::strlen(keyboardBuffer[2]) > 0)	//PValue¿¡ ´ëÇØ Ckeyboard¿¡¼­ ÀÔ·ÂÇÑ °ªÀÌ ÀÖÀ» °æ¿ì,
+    else if (Unicode::strlen(keyboardBuffer[2]) > 0)	//PValueï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Ckeyboardï¿½ï¿½ï¿½ï¿½ ï¿½Ô·ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½,
     {
-        if ((updateFlag & 0x04) == 0x04)// update¸¦ ÇØ¾ßÇÏ´ÂÁö Ã¼Å©.
+        if ((updateFlag & 0x04) == 0x04)// updateï¿½ï¿½ ï¿½Ø¾ï¿½ï¿½Ï´ï¿½ï¿½ï¿½ Ã¼Å©.
         {
-            //memset(map_0Var_textAreaBuffer, 0, MAP_0VAR_TEXTAREA_SIZE);	// PValue Widget ÃÊ±âÈ­.
+            //memset(map_0Var_textAreaBuffer, 0, MAP_0VAR_TEXTAREA_SIZE);	// PValue Widget ï¿½Ê±ï¿½È­.
             //Unicode::strncpy(map_0Var_textAreaBuffer, keyboardBuffer[2], Unicode::strlen(keyboardBuffer[2]));
             //map_0Var_textArea.invalidate();
             //memset(keyboardBuffer[2], 0, 30);
 
-            Unicode::snprintf(map_0Var_textAreaBuffer, MAP_0VAR_TEXTAREA_SIZE, keyboardBuffer[2]);
+            uint8_t utf8Buff[20];
+            Unicode::toUTF8(keyboardBuffer[2], utf8Buff, 20);	//Unicode(UT16)ï¿½ï¿½ï¿½ï¿½ UT8ï¿½ï¿½ ï¿½ï¿½È¯ ï¿½ï¿½,            
+            int value = atoi((const char*)utf8Buff);
+            if (value > 4095)
+                value = 4095;
+            presenter->setChangeMap_0(groupID, subID, value);            
+
+            Unicode::snprintf(map_0Var_textAreaBuffer, MAP_0VAR_TEXTAREA_SIZE, "%d", value);
             map_0Var_textArea.setWildcard(map_0Var_textAreaBuffer);
-            map_0Var_textArea.invalidate();
+            map_0Var_textArea.invalidate();            
+
             memset(keyboardBuffer[2], 0, 30);
-            updateFlag &= ~0x04; // »ó½Ã·Î °°Àº °ªÀ» Ãâ·ÂÇÏ´Â µ¿ÀÛÀ» ¸·±â À§ÇØ.
+            updateFlag &= ~0x04; // ï¿½ï¿½Ã·ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½.
         }
     }
-    else if (Unicode::strlen(keyboardBuffer[3]) > 0)	//PValue¿¡ ´ëÇØ Ckeyboard¿¡¼­ ÀÔ·ÂÇÑ °ªÀÌ ÀÖÀ» °æ¿ì,
+    else if (Unicode::strlen(keyboardBuffer[3]) > 0)	//PValueï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Ckeyboardï¿½ï¿½ï¿½ï¿½ ï¿½Ô·ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½,
     {
-        if ((updateFlag & 0x08) == 0x08)// update¸¦ ÇØ¾ßÇÏ´ÂÁö Ã¼Å©.
+        if ((updateFlag & 0x08) == 0x08)// updateï¿½ï¿½ ï¿½Ø¾ï¿½ï¿½Ï´ï¿½ï¿½ï¿½ Ã¼Å©.
         {
-            //memset(map_4095Var_textAreaBuffer, 0, MAP_4095VAR_TEXTAREA_SIZE);	// PValue Widget ÃÊ±âÈ­.
+            //memset(map_4095Var_textAreaBuffer, 0, MAP_4095VAR_TEXTAREA_SIZE);	// PValue Widget ï¿½Ê±ï¿½È­.
             //Unicode::strncpy(map_4095Var_textAreaBuffer, keyboardBuffer[3], Unicode::strlen(keyboardBuffer[3]));
             //map_4095Var_textArea.invalidate();
             //memset(keyboardBuffer[3], 0, 30);
 
-            Unicode::snprintf(map_4095Var_textAreaBuffer, MAP_4095VAR_TEXTAREA_SIZE, keyboardBuffer[3]);
+            uint8_t utf8Buff[20];
+            Unicode::toUTF8(keyboardBuffer[3], utf8Buff, 20);	//Unicode(UT16)ï¿½ï¿½ï¿½ï¿½ UT8ï¿½ï¿½ ï¿½ï¿½È¯ ï¿½ï¿½,            
+            int value = atoi((const char*)utf8Buff);
+            if (value > 4095)
+                value = 4095;
+            presenter->setChangeMap_4095(groupID, subID, value);            
+
+            Unicode::snprintf(map_4095Var_textAreaBuffer, MAP_4095VAR_TEXTAREA_SIZE, "%d", value);
             map_4095Var_textArea.setWildcard(map_4095Var_textAreaBuffer);
-            map_4095Var_textArea.invalidate();
+            map_4095Var_textArea.invalidate();            
+
             memset(keyboardBuffer[3], 0, 30);
 
-            updateFlag &= ~0x08; // »ó½Ã·Î °°Àº °ªÀ» Ãâ·ÂÇÏ´Â µ¿ÀÛÀ» ¸·±â À§ÇØ.
+            updateFlag &= ~0x08; // ï¿½ï¿½Ã·ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½.
         }
     }    
 }
@@ -129,7 +167,7 @@ void Screen2View::setID_SettingPage(int gID, int sID)
 
 }
 
-void Screen2View::setSettingValue(int lim_min, int lim_max, int map_0, int map_4095, int filter)
+void Screen2View::setSettingValue(int lim_min, int lim_max, int map_0, int map_4095, int filter, bool reverse)
 {
     //limit min
     Unicode::snprintf(limitMinVar_textAreaBuffer, LIMITMINVAR_TEXTAREA_SIZE,"%d", lim_min);
@@ -151,9 +189,16 @@ void Screen2View::setSettingValue(int lim_min, int lim_max, int map_0, int map_4
     //filter
     Unicode::snprintf(FilterVar_textAreaBuffer, FILTERVAR_TEXTAREA_SIZE, "%d", filter);
     FilterVar_textArea.setWildcard(FilterVar_textAreaBuffer);
+    float posiX = 0;
+    posiX = (float)slider1.getX() + 20;
+    posiX += ((float)slider1.getWidth()-70) * ((float)slider1.getValue() / 14);
+    FilterVar_textArea.setX((int16_t)posiX);
     FilterVar_textArea.invalidate();
 
     slider1.setValue(filter);
+
+    //reverse
+    toggleButton1.forceState(reverse);
 
 }
 
@@ -186,7 +231,18 @@ void Screen2View::filter_value(int value)
 {
     Unicode::snprintf(FilterVar_textAreaBuffer, FILTERVAR_TEXTAREA_SIZE, "%d", value);
     FilterVar_textArea.setWildcard(FilterVar_textAreaBuffer);
+    float posiX = 0;
+    posiX = (float)slider1.getX() + 20;
+    posiX += ((float)slider1.getWidth() - 70) * ((float)slider1.getValue() / 14);
+    FilterVar_textArea.setX((int16_t)posiX);
     FilterVar_textArea.invalidate();
+    
+    presenter->setChangeFIlter(groupID, subID, value);
+}
+
+void Screen2View::reverseButton()
+{
+    presenter->setChangeReverse(groupID, subID, toggleButton1.getState());
 }
 
 

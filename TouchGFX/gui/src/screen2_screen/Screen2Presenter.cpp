@@ -24,22 +24,32 @@ void Screen2Presenter::setScreenUp()
 //View Call Function
 void Screen2Presenter::setChangeLimitMin(int gID, int sID, int value)
 {
+    model->setChangeLimitMin(gID, sID, value);
 }
 
 void Screen2Presenter::setChangeLimitMax(int gID, int sID, int value)
 {
+    model->setChangeLimitMax(gID, sID, value);
 }
 
 void Screen2Presenter::setChangeMap_0(int gID, int sID, int value)
 {
+    model->setChangeMap_0(gID, sID, value);
 }
 
 void Screen2Presenter::setChangeMap_4095(int gID, int sID, int value)
 {
+    model->setChangeMap_4095(gID, sID, value);
 }
 
 void Screen2Presenter::setChangeFIlter(int gID, int sID, int value)
 {
+    model->setChangeFIlter(gID, sID, value);
+}
+
+void Screen2Presenter::setChangeReverse(int gID, int sID, bool value)
+{
+    model->setChangeReverse(gID, sID, value);
 }
 
 
@@ -55,8 +65,8 @@ void Screen2Presenter::setChangePosi(int gID, int sID, int value)
     view.setChangePosi(gID, sID, value);
 }
 
-void Screen2Presenter::setSettingValue(int lim_min, int lim_max, int map_0, int map_4095, int filter)
+void Screen2Presenter::setSettingValue(int lim_min, int lim_max, int map_0, int map_4095, int filter, bool reverse)
 {
-    view.setSettingValue(lim_min, lim_max, map_0, map_4095, filter);
+    view.setSettingValue(lim_min, lim_max, map_0, map_4095, filter, reverse);
 }
 
