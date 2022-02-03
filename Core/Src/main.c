@@ -20,14 +20,12 @@
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 #include "cmsis_os.h"
-#include "fatfs.h"
 #include "libjpeg.h"
 #include "app_touchgfx.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include <stm32746g_discovery_qspi.h>
-#include <string.h>
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -72,8 +70,6 @@ LTDC_HandleTypeDef hltdc;
 
 QSPI_HandleTypeDef hqspi;
 
-SD_HandleTypeDef hsd1;
-
 UART_HandleTypeDef huart6;
 
 SDRAM_HandleTypeDef hsdram1;
@@ -99,13 +95,6 @@ const osThreadAttr_t videoTask_attributes = {
   .stack_size = 1000 * 4,
   .priority = (osPriority_t) osPriorityLow,
 };
-/* Definitions for sdTask */
-osThreadId_t sdTaskHandle;
-const osThreadAttr_t sdTask_attributes = {
-  .name = "sdTask",
-  .stack_size = 128 * 4,
-  .priority = (osPriority_t) osPriorityNormal,
-};
 /* USER CODE BEGIN PV */
 static FMC_SDRAM_CommandTypeDef Command;
 /* USER CODE END PV */
@@ -121,24 +110,16 @@ static void MX_I2C3_Init(void);
 static void MX_LTDC_Init(void);
 static void MX_QUADSPI_Init(void);
 static void MX_USART6_UART_Init(void);
-static void MX_SDMMC1_SD_Init(void);
 void StartDefaultTask(void *argument);
 extern void TouchGFX_Task(void *argument);
 extern void videoTaskFunc(void *argument);
-void StartSDTask(void *argument);
 
 /* USER CODE BEGIN PFP */
 
-extern uint8_t retSD;    /* Return value for SD */
-extern char SDPath[4];   /* SD logical drive path */
-extern FATFS SDFatFS;    /* File system object for SD logical drive */
-extern FIL SDFile;       /* File object for SD */
-FIL MyFile; /* File object */
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-
 
 /* USER CODE END 0 */
 
@@ -187,11 +168,8 @@ int main(void)
   MX_QUADSPI_Init();
   MX_LIBJPEG_Init();
   MX_USART6_UART_Init();
-  MX_SDMMC1_SD_Init();
-  MX_FATFS_Init();
   MX_TouchGFX_Init();
   /* USER CODE BEGIN 2 */
-
 
   /* USER CODE END 2 */
 
@@ -223,9 +201,6 @@ int main(void)
 
   /* creation of videoTask */
   videoTaskHandle = osThreadNew(videoTaskFunc, NULL, &videoTask_attributes);
-
-  /* creation of sdTask */
-  sdTaskHandle = osThreadNew(StartSDTask, NULL, &sdTask_attributes);
 
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
@@ -260,9 +235,6 @@ void SystemClock_Config(void)
   RCC_ClkInitTypeDef RCC_ClkInitStruct = {0};
   RCC_PeriphCLKInitTypeDef PeriphClkInitStruct = {0};
 
-  /** Configure LSE Drive Capability
-  */
-  HAL_PWR_EnableBkUpAccess();
   /** Configure the main internal regulator output voltage
   */
   __HAL_RCC_PWR_CLK_ENABLE();
@@ -277,7 +249,7 @@ void SystemClock_Config(void)
   RCC_OscInitStruct.PLL.PLLM = 25;
   RCC_OscInitStruct.PLL.PLLN = 400;
   RCC_OscInitStruct.PLL.PLLP = RCC_PLLP_DIV2;
-  RCC_OscInitStruct.PLL.PLLQ = 10;
+  RCC_OscInitStruct.PLL.PLLQ = 2;
   if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
   {
     Error_Handler();
@@ -302,8 +274,7 @@ void SystemClock_Config(void)
     Error_Handler();
   }
   PeriphClkInitStruct.PeriphClockSelection = RCC_PERIPHCLK_LTDC|RCC_PERIPHCLK_USART6
-                              |RCC_PERIPHCLK_I2C3|RCC_PERIPHCLK_SDMMC1
-                              |RCC_PERIPHCLK_CLK48;
+                              |RCC_PERIPHCLK_I2C3;
   PeriphClkInitStruct.PLLSAI.PLLSAIN = 384;
   PeriphClkInitStruct.PLLSAI.PLLSAIR = 5;
   PeriphClkInitStruct.PLLSAI.PLLSAIQ = 2;
@@ -312,8 +283,6 @@ void SystemClock_Config(void)
   PeriphClkInitStruct.PLLSAIDivR = RCC_PLLSAIDIVR_8;
   PeriphClkInitStruct.Usart6ClockSelection = RCC_USART6CLKSOURCE_PCLK2;
   PeriphClkInitStruct.I2c3ClockSelection = RCC_I2C3CLKSOURCE_PCLK1;
-  PeriphClkInitStruct.Clk48ClockSelection = RCC_CLK48SOURCE_PLL;
-  PeriphClkInitStruct.Sdmmc1ClockSelection = RCC_SDMMC1CLKSOURCE_CLK48;
   if (HAL_RCCEx_PeriphCLKConfig(&PeriphClkInitStruct) != HAL_OK)
   {
     Error_Handler();
@@ -535,34 +504,6 @@ static void MX_QUADSPI_Init(void)
 }
 
 /**
-  * @brief SDMMC1 Initialization Function
-  * @param None
-  * @retval None
-  */
-static void MX_SDMMC1_SD_Init(void)
-{
-
-  /* USER CODE BEGIN SDMMC1_Init 0 */
-
-  /* USER CODE END SDMMC1_Init 0 */
-
-  /* USER CODE BEGIN SDMMC1_Init 1 */
-
-  /* USER CODE END SDMMC1_Init 1 */
-  hsd1.Instance = SDMMC1;
-  hsd1.Init.ClockEdge = SDMMC_CLOCK_EDGE_RISING;
-  hsd1.Init.ClockBypass = SDMMC_CLOCK_BYPASS_DISABLE;
-  hsd1.Init.ClockPowerSave = SDMMC_CLOCK_POWER_SAVE_DISABLE;
-  hsd1.Init.BusWide = SDMMC_BUS_WIDE_1B;
-  hsd1.Init.HardwareFlowControl = SDMMC_HARDWARE_FLOW_CONTROL_DISABLE;
-  hsd1.Init.ClockDiv = 2;
-  /* USER CODE BEGIN SDMMC1_Init 2 */
-
-  /* USER CODE END SDMMC1_Init 2 */
-
-}
-
-/**
   * @brief USART6 Initialization Function
   * @param None
   * @retval None
@@ -708,7 +649,6 @@ static void MX_GPIO_Init(void)
 
   /* GPIO Ports Clock Enable */
   __HAL_RCC_GPIOE_CLK_ENABLE();
-  __HAL_RCC_GPIOC_CLK_ENABLE();
   __HAL_RCC_GPIOA_CLK_ENABLE();
   __HAL_RCC_GPIOB_CLK_ENABLE();
   __HAL_RCC_GPIOG_CLK_ENABLE();
@@ -718,18 +658,13 @@ static void MX_GPIO_Init(void)
   __HAL_RCC_GPIOF_CLK_ENABLE();
   __HAL_RCC_GPIOI_CLK_ENABLE();
   __HAL_RCC_GPIOH_CLK_ENABLE();
+  __HAL_RCC_GPIOC_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(LCD_BL_CTRL_GPIO_Port, LCD_BL_CTRL_Pin, GPIO_PIN_SET);
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(LCD_DISP_GPIO_Port, LCD_DISP_Pin, GPIO_PIN_SET);
-
-  /*Configure GPIO pin : uSD_Detect_Pin */
-  GPIO_InitStruct.Pin = uSD_Detect_Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
-  HAL_GPIO_Init(uSD_Detect_GPIO_Port, &GPIO_InitStruct);
 
   /*Configure GPIO pin : LCD_BL_CTRL_Pin */
   GPIO_InitStruct.Pin = LCD_BL_CTRL_Pin;
@@ -767,70 +702,6 @@ void StartDefaultTask(void *argument)
     osDelay(100);
   }
   /* USER CODE END 5 */
-}
-
-/* USER CODE BEGIN Header_StartSDTask */
-/**
-* @brief Function implementing the sdTask thread.
-* @param argument: Not used
-* @retval None
-*/
-/* USER CODE END Header_StartSDTask */
-
-void create_test_file(char *filename) {
-	FIL fp;
-	FRESULT res;
-	uint32_t written_bytes=0;
-	char buf[50];
-	char *p = "FatFs example for STM32F746G-Dicovery!!!\r\n";
-	res = f_open(&fp, (const char*)filename, FA_CREATE_ALWAYS | FA_WRITE);
-	if(res == FR_OK)
-	{
-		sprintf(buf, "%s\r\n", p);
-		f_write(&fp, (const void*)buf, strlen(buf), (unsigned int*)&written_bytes);
-		//printf("%ld bytes written.\r\n", written_bytes);
-		sprintf(buf, "Filename : %s\r\n", filename);
-		f_write(&fp, (const void*)buf, strlen(buf), (unsigned int*)&written_bytes);
-		//printf("%ld bytes written.\r\n", written_bytes);
-		sprintf(buf, "Tick : %ld\r\n", HAL_GetTick());
-		f_write(&fp, (const void*)buf, strlen(buf), (unsigned int*)&written_bytes);
-		//printf("%ld bytes written.\r\n", written_bytes); f_close(&fp);
-	}
-	else
-	{
-		//printf("[ERROR] f_open failed (%d)\r\n", (int)res);
-	}
-}
-
-
-void StartSDTask(void *argument)
-{
-  /* USER CODE BEGIN StartSDTask */
-
-	DSTATUS stat;
-	uint32_t byteswritten; /* File write count */
-
-	if ((stat = disk_initialize((BYTE) 0)) != RES_OK) {
-
-	}
-
-	uint8_t wtext[] = "SD card test in STM32F746G-DISCO board";
-	disk_initialize((BYTE) 0);
-
-	//f_mount(&SDFatFS, (TCHAR const*) SDPath, 0);
-
-	f_open(&SDFile, "Example.txt", FA_CREATE_ALWAYS | FA_WRITE);
-
-	f_write(&SDFile, wtext, sizeof(wtext), (void*) &byteswritten);
-
-	f_close(&SDFile);
-
-  /* Infinite loop */
-  for(;;)
-  {
-    osDelay(100);
-  }
-  /* USER CODE END StartSDTask */
 }
 
 /* MPU Configuration */
