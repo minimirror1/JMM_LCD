@@ -22,42 +22,48 @@ void Screen2Presenter::setScreenUp()
     model->setScreenUp();
 }
 //View Call Function
-void Screen2Presenter::setChangeLimitMin(int gID, int sID, int value)
+void Screen2Presenter::setChangeGid(int index, int gID)
 {
-    model->setChangeLimitMin(gID, sID, value);
+}
+void Screen2Presenter::setChangeSid(int index, int sID)
+{
+}
+void Screen2Presenter::setChangeLimitMin(int index, int value)
+{
+    model->setChangeLimitMin(index, value);
 }
 
-void Screen2Presenter::setChangeLimitMax(int gID, int sID, int value)
+void Screen2Presenter::setChangeLimitMax(int index, int value)
 {
-    model->setChangeLimitMax(gID, sID, value);
+    model->setChangeLimitMax(index, value);
 }
 
-void Screen2Presenter::setChangeMap_0(int gID, int sID, int value)
+void Screen2Presenter::setChangeMap_0(int index, int value)
 {
-    model->setChangeMap_0(gID, sID, value);
+    model->setChangeMap_0(index, value);
 }
 
-void Screen2Presenter::setChangeMap_4095(int gID, int sID, int value)
+void Screen2Presenter::setChangeMap_4095(int index, int value)
 {
-    model->setChangeMap_4095(gID, sID, value);
+    model->setChangeMap_4095(index, value);
 }
 
-void Screen2Presenter::setChangeFIlter(int gID, int sID, int value)
+void Screen2Presenter::setChangeFIlter(int index, int value)
 {
-    model->setChangeFIlter(gID, sID, value);
+    model->setChangeFIlter(index, value);
 }
 
-void Screen2Presenter::setChangeReverse(int gID, int sID, bool value)
+void Screen2Presenter::setChangeReverse(int index, bool value)
 {
-    model->setChangeReverse(gID, sID, value);
+    model->setChangeReverse(index, value);
 }
 
 
 
 //ModelListener override
-void Screen2Presenter::setID_SettingPage(int gID, int sID)
+void Screen2Presenter::setID_SettingPage(int index, int gID, int sID)
 {
-    view.setID_SettingPage(gID, sID);
+    view.setID_SettingPage(index, gID, sID);
 }
 
 void Screen2Presenter::setChangePosi(int gID, int sID, int value)
@@ -65,8 +71,8 @@ void Screen2Presenter::setChangePosi(int gID, int sID, int value)
     view.setChangePosi(gID, sID, value);
 }
 
-void Screen2Presenter::setSettingValue(int lim_min, int lim_max, int map_0, int map_4095, int filter, bool reverse)
+void Screen2Presenter::setSettingValue(int index, int gID, int sID, int lim_min, int lim_max, int map_0, int map_4095, int filter, bool reverse)
 {
-    view.setSettingValue(lim_min, lim_max, map_0, map_4095, filter, reverse);
+    view.setSettingValue(index, gID, sID, lim_min, lim_max, map_0, map_4095, filter, reverse);
 }
 

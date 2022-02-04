@@ -41,9 +41,9 @@ void Screen1View::setCountMonitorItem()
     monitorCnt++;
 }
 
-void Screen1View::setOpenSettingView(int gID, int sID)
+void Screen1View::setOpenSettingView(int index, int gID, int sID)
 {
-    presenter->setOpenSettingView(gID, sID);
+    presenter->setOpenSettingView(index, gID, sID);
 }
 
 void Screen1View::setChangePosi(int gID, int sID, int value)

@@ -14,6 +14,7 @@ Drawable.hpp:683:18:virtual void touchgfx::Drawable::setupDrawChain(const touchg
 Container.hpp:165:23:virtual touchgfx::Drawable* touchgfx::Container::getFirstChild()	0	static
 Widget.hpp:47:18:virtual void touchgfx::Widget::getLastChild(int16_t, int16_t, touchgfx::Drawable**)	0	static
 CustomKeyboard.hpp:25:13:CustomKeyboard::~CustomKeyboard()	0	static
+CustomKeyboard.cpp:87:6:void CustomKeyboard::capslockPressedHandler()	0	static
 Callback.hpp:357:8:touchgfx::Callback<CustomKeyboard, short unsigned int>::~Callback()	0	static
 Callback.hpp:424:8:touchgfx::Callback<CustomKeyboard>::~Callback()	0	static
 Callback.hpp:386:18:void touchgfx::Callback<dest_type, T1, void, void>::execute(T1) [with dest_type = CustomKeyboard; T1 = short unsigned int]	8	static
@@ -24,13 +25,12 @@ TypedText.hpp:65:13:virtual touchgfx::TypedText::~TypedText()	8	static
 Callback.hpp:424:8:virtual touchgfx::Callback<CustomKeyboard>::~Callback()	8	static
 Callback.hpp:357:8:virtual touchgfx::Callback<CustomKeyboard, short unsigned int>::~Callback()	8	static
 CustomKeyboard.hpp:25:13:virtual CustomKeyboard::~CustomKeyboard()	8	static
+CustomKeyboard.cpp:67:6:void CustomKeyboard::backspacePressedHandler()	0	static
+CustomKeyboard.cpp:94:6:void CustomKeyboard::modePressedHandler()	0	static
 Drawable.hpp:394:10:void touchgfx::Drawable::setWidthHeight(int16_t, int16_t)	16	static
 CustomKeyboard.cpp:39:6:void CustomKeyboard::setKeyMappingList()	24	static
-CustomKeyboard.cpp:67:6:void CustomKeyboard::backspacePressedHandler()	16	static
-CustomKeyboard.cpp:86:6:void CustomKeyboard::capslockPressedHandler()	0	static
-CustomKeyboard.cpp:92:6:void CustomKeyboard::modePressedHandler()	0	static
-CustomKeyboard.cpp:109:6:void CustomKeyboard::keyPressedhandler(touchgfx::Unicode::UnicodeChar)	0	static
+CustomKeyboard.cpp:112:6:void CustomKeyboard::keyPressedhandler(touchgfx::Unicode::UnicodeChar)	0	static
 CustomKeyboard.cpp:5:1:CustomKeyboard::CustomKeyboard()	24	static
-CustomKeyboard.cpp:120:6:void CustomKeyboard::setTouchable(bool)	0	static
-CustomKeyboard.cpp:126:23:touchgfx::Unicode::UnicodeChar* CustomKeyboard::getBuffer()	0	static
-CustomKeyboard.cpp:129:1:cpp)	36	static
+CustomKeyboard.cpp:123:6:void CustomKeyboard::setTouchable(bool)	0	static
+CustomKeyboard.cpp:129:23:touchgfx::Unicode::UnicodeChar* CustomKeyboard::getBuffer()	0	static
+CustomKeyboard.cpp:132:1:cpp)	36	static

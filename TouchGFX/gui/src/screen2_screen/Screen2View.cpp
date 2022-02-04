@@ -47,7 +47,7 @@ void Screen2View::handleTickEvent()
             int value = atoi((const char*)utf8Buff);
             if (value > 4095)
                 value = 4095;
-            presenter->setChangeLimitMin(groupID, subID, value);            
+            presenter->setChangeLimitMin(myIndex, value);
 
             Unicode::snprintf(limitMinVar_textAreaBuffer, LIMITMINVAR_TEXTAREA_SIZE, "%d", value);
             limitMinVar_textArea.setWildcard(limitMinVar_textAreaBuffer);
@@ -69,7 +69,7 @@ void Screen2View::handleTickEvent()
             int value = atoi((const char*)utf8Buff);
             if (value > 4095)
                 value = 4095;
-            presenter->setChangeLimitMax(groupID, subID, value);
+            presenter->setChangeLimitMax(myIndex, value);
             
 
             Unicode::snprintf(limitMaxVar_textAreaBuffer, LIMITMAXVAR_TEXTAREA_SIZE, "%d", value);
@@ -91,7 +91,7 @@ void Screen2View::handleTickEvent()
             int value = atoi((const char*)utf8Buff);
             if (value > 4095)
                 value = 4095;
-            presenter->setChangeMap_0(groupID, subID, value);            
+            presenter->setChangeMap_0(myIndex, value);
 
             Unicode::snprintf(map_0Var_textAreaBuffer, MAP_0VAR_TEXTAREA_SIZE, "%d", value);
             map_0Var_textArea.setWildcard(map_0Var_textAreaBuffer);
@@ -111,7 +111,7 @@ void Screen2View::handleTickEvent()
             int value = atoi((const char*)utf8Buff);
             if (value > 4095)
                 value = 4095;
-            presenter->setChangeMap_4095(groupID, subID, value);            
+            presenter->setChangeMap_4095(myIndex, value);
 
             Unicode::snprintf(map_4095Var_textAreaBuffer, MAP_4095VAR_TEXTAREA_SIZE, "%d", value);
             map_4095Var_textArea.setWildcard(map_4095Var_textAreaBuffer);
@@ -135,7 +135,7 @@ void Screen2View::handleTickEvent()
             //model
 
             groupID = value;
-            setID_SettingPage(groupID, subID);
+            setID_SettingPage(myIndex, groupID, subID);
             memset(keyboardBuffer[4], 0, 30);
 
             updateFlag &= ~0x10;
@@ -154,7 +154,7 @@ void Screen2View::handleTickEvent()
         //model
 
         subID = value;
-        setID_SettingPage(groupID, subID);
+        setID_SettingPage(myIndex, groupID, subID);
         memset(keyboardBuffer[5], 0, 30);
 
         updateFlag &= ~0x10;
@@ -162,8 +162,9 @@ void Screen2View::handleTickEvent()
     }
 }
 
-void Screen2View::setID_SettingPage(int gID, int sID)
+void Screen2View::setID_SettingPage(int index, int gID, int sID)
 {
+    myIndex = index;
     groupID = gID;
     subID = sID;
 
@@ -177,7 +178,7 @@ void Screen2View::setID_SettingPage(int gID, int sID)
 
 }
 
-void Screen2View::setSettingValue(int lim_min, int lim_max, int map_0, int map_4095, int filter, bool reverse)
+void Screen2View::setSettingValue(int index, int gID, int sID, int lim_min, int lim_max, int map_0, int map_4095, int filter, bool reverse)
 {
     //limit min
     Unicode::snprintf(limitMinVar_textAreaBuffer, LIMITMINVAR_TEXTAREA_SIZE,"%d", lim_min);
@@ -247,12 +248,12 @@ void Screen2View::filter_value(int value)
     FilterVar_textArea.setX((int16_t)posiX);
     FilterVar_textArea.invalidate();
     
-    presenter->setChangeFIlter(groupID, subID, value);
+    presenter->setChangeFIlter(myIndex, value);
 }
 
 void Screen2View::reverseButton()
 {
-    presenter->setChangeReverse(groupID, subID, toggleButton1.getState());
+    presenter->setChangeReverse(myIndex, toggleButton1.getState());
 }
 
 

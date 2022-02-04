@@ -34,7 +34,7 @@ public:
     void tick();
 
 //Presenter1 Call funtion
-    void setOpenSettingView(int gID, int sID);
+    void setOpenSettingView(int index, int gID, int sID);
 
     int getGroupID(int index);
     int getSubID(int index);
@@ -42,17 +42,20 @@ public:
 //Presenter2 Call funtion
     void setScreenUp();
 
-    void setChangeLimitMin(int gID, int sID, int value);
-    void setChangeLimitMax(int gID, int sID, int value);
-    void setChangeMap_0(int gID, int sID, int value);
-    void setChangeMap_4095(int gID, int sID, int value);
-    void setChangeFIlter(int gID, int sID, int value);
-    void setChangeReverse(int gID, int sID, bool value);
+    void setChangeGid(int index, int gID);
+    void setChangeSid(int index, int sID);
+    void setChangeLimitMin(int index, int value);
+    void setChangeLimitMax(int index, int value);
+    void setChangeMap_0(int index, int value);
+    void setChangeMap_4095(int index, int value);
+    void setChangeFIlter(int index, int value);
+    void setChangeReverse(int index, bool value);
 
 private:
     int myTimer;
     int testCnt;
 
+    int settingIndex;
     int settingGid;
     int settingSid;
 

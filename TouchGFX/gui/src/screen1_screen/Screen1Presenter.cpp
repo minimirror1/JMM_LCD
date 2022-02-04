@@ -17,9 +17,9 @@ void Screen1Presenter::deactivate()
 
 }
 
-void Screen1Presenter::setOpenSettingView(int gID, int sID)
+void Screen1Presenter::setOpenSettingView(int index, int gID, int sID)
 {
-    model->setOpenSettingView(gID, sID);
+    model->setOpenSettingView(index, gID, sID);
 }
 
 int Screen1Presenter::getGroupID(int index)

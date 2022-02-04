@@ -28,7 +28,7 @@ public:
     virtual ~Screen1Presenter() {};
 
 //View Call Function
-    void setOpenSettingView(int gID, int sID);
+    void setOpenSettingView(int index, int gID, int sID);
 
     int getGroupID(int index);
     int getSubID(int index);

@@ -18,15 +18,16 @@ public:
     virtual void keyBoardSelected(uint8_t value);
     virtual void filter_value(int value);
     virtual void reverseButton();
-    void setID_SettingPage(int gID, int sID);
+    void setID_SettingPage(int index, int gID, int sID);
 
-    void setSettingValue(int lim_min, int lim_max, int map_0, int map_4095, int filter, bool reverse);
+    void setSettingValue(int index, int gID, int sID, int lim_min, int lim_max, int map_0, int map_4095, int filter, bool reverse);
 
     void setChangePosi(int gID, int sID, int value);
 
 protected:
 
     int nowPosi;
+    int myIndex;
     int groupID;
     int subID;
 

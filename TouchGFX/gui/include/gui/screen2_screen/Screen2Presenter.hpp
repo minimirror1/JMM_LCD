@@ -29,19 +29,21 @@ public:
 
     void setScreenUp();
 //View Call Function
-    void setChangeLimitMin(int gID, int sID, int value);
-    void setChangeLimitMax(int gID, int sID, int value);
-    void setChangeMap_0(int gID, int sID, int value);
-    void setChangeMap_4095(int gID, int sID, int value);
-    void setChangeFIlter(int gID, int sID, int value);
-    void setChangeReverse(int gID, int sID, bool value);
+    void setChangeGid(int index, int gID);
+    void setChangeSid(int index, int sID);
+    void setChangeLimitMin(int index, int value);
+    void setChangeLimitMax(int index, int value);
+    void setChangeMap_0(int index, int value);
+    void setChangeMap_4095(int index, int value);
+    void setChangeFIlter(int index, int value);
+    void setChangeReverse(int index, bool value);
 
 //ModelListener override
-    void setID_SettingPage(int gID, int sID);
+    void setID_SettingPage(int index, int gID, int sID);
 
     void setChangePosi(int gID, int sID, int value);
 
-    void setSettingValue(int lim_min, int lim_max, int map_0, int map_4095, int filter, bool reverse);
+    void setSettingValue(int index, int gID, int sID, int lim_min, int lim_max, int map_0, int map_4095, int filter, bool reverse);
 
 private:
     Screen2Presenter();

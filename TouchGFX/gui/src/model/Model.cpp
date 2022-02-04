@@ -61,12 +61,13 @@ void Model::tick()
 }
 
 
-void Model::setOpenSettingView(int gID, int sID)
+void Model::setOpenSettingView(int index, int gID, int sID)
 {
+	settingIndex = index;
 	settingGid = gID;
 	settingSid = sID;
 	
-	modelListener->setID_SettingPage(gID, sID);
+	modelListener->setID_SettingPage(index, gID, sID);
 }
 
 int Model::getGroupID(int index)
@@ -87,23 +88,31 @@ int Model::getSubID(int index)
 
 void Model::setScreenUp()
 {
-	modelListener->setID_SettingPage(settingGid, settingSid);
-	int index = getIndex(settingGid, settingSid);
-	if (index < 10)
-	{
-		modelListener->setSettingValue(
-			setting[index].limit_min,
-			setting[index].limit_max,
-			setting[index].map_0,
-			setting[index].map_4095,
-			setting[index].filter,
-			setting[index].reverse);
-	}
+	modelListener->setID_SettingPage(settingIndex, setting[settingIndex].gID, setting[settingIndex].sID);
+	modelListener->setSettingValue(
+		settingIndex,
+		setting[settingIndex].gID,
+		setting[settingIndex].sID,
+		setting[settingIndex].limit_min,
+		setting[settingIndex].limit_max,
+		setting[settingIndex].map_0,
+		setting[settingIndex].map_4095,
+		setting[settingIndex].filter,
+		setting[settingIndex].reverse);
 }
 
-void Model::setChangeLimitMin(int gID, int sID, int value)
+void Model::setChangeGid(int index, int gID)
 {
-	int index = getIndex(gID, sID);
+	setting[index].gID = gID;
+}
+
+void Model::setChangeSid(int index, int sID)
+{
+	setting[index].sID = sID;
+}
+
+void Model::setChangeLimitMin(int index, int value)
+{
 	if (index < 10)
 	{
 		setting[index].limit_min = value;
@@ -114,9 +123,8 @@ void Model::setChangeLimitMin(int gID, int sID, int value)
 	}
 }
 
-void Model::setChangeLimitMax(int gID, int sID, int value)
+void Model::setChangeLimitMax(int index, int value)
 {
-	int index = getIndex(gID, sID);
 	if (index < 10)
 	{
 		setting[index].limit_max = value;
@@ -127,9 +135,8 @@ void Model::setChangeLimitMax(int gID, int sID, int value)
 	}
 }
 
-void Model::setChangeMap_0(int gID, int sID, int value)
+void Model::setChangeMap_0(int index, int value)
 {
-	int index = getIndex(gID, sID);
 	if (index < 10)
 	{
 		setting[index].map_0 = value;
@@ -140,9 +147,8 @@ void Model::setChangeMap_0(int gID, int sID, int value)
 	}
 }
 
-void Model::setChangeMap_4095(int gID, int sID, int value)
+void Model::setChangeMap_4095(int index, int value)
 {
-	int index = getIndex(gID, sID);
 	if (index < 10)
 	{
 		setting[index].map_4095 = value;
@@ -153,9 +159,8 @@ void Model::setChangeMap_4095(int gID, int sID, int value)
 	}
 }
 
-void Model::setChangeFIlter(int gID, int sID, int value)
+void Model::setChangeFIlter(int index, int value)
 {
-	int index = getIndex(gID, sID);
 	if (index < 10)
 	{
 		setting[index].filter = value;
@@ -166,9 +171,8 @@ void Model::setChangeFIlter(int gID, int sID, int value)
 	}
 }
 
-void Model::setChangeReverse(int gID, int sID, bool value)
+void Model::setChangeReverse(int index, bool value)
 {
-	int index = getIndex(gID, sID);
 	if (index < 10)
 	{
 		setting[index].reverse = value;

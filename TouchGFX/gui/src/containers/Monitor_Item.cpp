@@ -51,7 +51,7 @@ void Monitor_Item::setPosi_ID(int gID, int sID, int value)
 
 void Monitor_Item::callViewSetting()
 {
-    viewPtr->setOpenSettingView(groupID, subID);
+    viewPtr->setOpenSettingView(slotID, groupID, subID);
 }
 
 void Monitor_Item::setPosiText(int value)
