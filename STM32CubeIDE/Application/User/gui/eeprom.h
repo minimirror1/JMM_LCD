@@ -106,7 +106,7 @@
 #define PAGE_FULL             ((uint8_t)0x80)
 
 /* Variables' number */
-#define NB_OF_VAR             ((uint16_t)27)
+#define NB_OF_VAR             ((uint16_t)360)
 
 /* Exported types ------------------------------------------------------------*/
 #pragma pack(1)
@@ -120,6 +120,9 @@ typedef struct __EEPemul_TypeDef
 #pragma pack()
 /* Exported macro ------------------------------------------------------------*/
 /* Exported functions ------------------------------------------------------- */
+#ifdef __cplusplus
+extern "C" {
+#endif // __cplusplus
 uint16_t EE_Init(void);
 uint16_t EE_ReadVariable(uint16_t VirtAddress, uint16_t* Data);
 uint16_t EE_WriteVariable(uint16_t VirtAddress, uint16_t Data);
@@ -128,6 +131,10 @@ void EE_emul_Init(uint16_t *startAddr, uint32_t size);
 
 uint16_t EE_WriteStrData(uint16_t *MemberAddr, uint32_t size);
 uint16_t EE_ReadStrData(uint16_t *MemberAddr, uint32_t size);
+uint16_t EE_ReadAllData(uint16_t *MemberAddr, uint32_t size);
+#ifdef __cplusplus
+}
+#endif // __cplusplus
 
 #endif /* __EEPROM_H */
 

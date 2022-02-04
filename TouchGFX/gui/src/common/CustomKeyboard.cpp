@@ -76,34 +76,37 @@ void CustomKeyboard::backspacePressedHandler()
         //Change keymappings if we have reached the first position.
         if (1 == pos)
         {
-            firstCharacterEntry = true;
-            uppercaseKeys = true;
-            setKeyMappingList();
+            //onlynumber
+            //firstCharacterEntry = true;
+            //uppercaseKeys = true;
+            //setKeyMappingList();
         }
     }
 }
 
 void CustomKeyboard::capslockPressedHandler()
 {
-    uppercaseKeys = !uppercaseKeys;
-    setKeyMappingList();
+    //onlynumber
+    //uppercaseKeys = !uppercaseKeys;
+    //setKeyMappingList();
 }
 
 void CustomKeyboard::modePressedHandler()
 {
-    alphaKeys = !alphaKeys;
+    //onlynumber
+    //alphaKeys = !alphaKeys;
 
     // if we have changed back to alpha and still has no chars in the buffer,
     // we show upper case letters.
-    if (firstCharacterEntry && alphaKeys)
-    {
-        uppercaseKeys = true;
-    }
-    else
-    {
-        uppercaseKeys = false;
-    }
-    setKeyMappingList();
+    //if (firstCharacterEntry && alphaKeys)
+    //{
+    //    uppercaseKeys = true;
+    //}
+    //else
+    //{
+    //    uppercaseKeys = false;
+    //}
+    //setKeyMappingList();
 }
 
 void CustomKeyboard::keyPressedhandler(Unicode::UnicodeChar keyChar)

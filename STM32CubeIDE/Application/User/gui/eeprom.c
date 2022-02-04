@@ -838,6 +838,40 @@ uint16_t EE_ReadStrData(uint16_t *MemberAddr, uint32_t size)
 	return 0;
 }
 
+uint16_t EE_ReadAllData(uint16_t *MemberAddr, uint32_t size)
+{
+	uint16_t tempData;
+
+	volatile uint32_t valAddr = (uint32_t)MemberAddr;
+
+	 valAddr -= EE_ctr.startAddr;
+
+	uint32_t cnt = size;
+	uint16_t memcnt = 0;
+	while(cnt)
+	{
+
+		if ((EE_ReadVariable(valAddr, &tempData)) != HAL_OK) {
+			MemberAddr[memcnt] = 0;
+		} else {
+			MemberAddr[memcnt] = tempData;
+		}
+
+
+		memcnt++;
+
+		valAddr++;
+		valAddr++;
+		cnt--;
+		cnt--;
+	}
+/*	else
+	{
+		//미동작?
+	}*/
+	return 0;
+}
+
 /**
   * @}
   */ 

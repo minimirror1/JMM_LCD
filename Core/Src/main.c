@@ -29,7 +29,6 @@
 #include <stm32746g_discovery_qspi.h>
 #include <string.h>
 #include <stdio.h>
-#include "eeprom.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -833,23 +832,9 @@ void StartDefaultTask(void *argument)
 * @param argument: Not used
 * @retval None
 */
-/* Virtual address defined by the user: 0xFFFF value is prohibited */
-uint16_t VirtAddVarTab[NB_OF_VAR];
-uint16_t VarDataTab[NB_OF_VAR] = { 'M', 'a', 't', 'e', 'u', 's', 'z', ' ', 'S', 'a', 'l', 'a', 'm', 'o', 'n', ' ', 'm', 's', 'a', 'l', 'a', 'm', 'o', 'n', '.', 'p', 'l' };
-uint8_t VarDataTabRead[NB_OF_VAR];
-uint16_t VarIndex, VarDataTmp = 0;
 
-//최소 uint 16 사용
-#pragma pack(1)
-typedef struct __EEPemul_Data_TypeDef
-{
-	uint16_t flag;
-	uint32_t encoderSt1_cnt;
 
-}EEPemul_Data_TypeDef;
-#pragma pack()
 
-EEPemul_Data_TypeDef EepData;
 /* USER CODE END Header_StartSDTask */
 void StartSDTask(void *argument)
 {
@@ -858,7 +843,7 @@ void StartSDTask(void *argument)
 	/*eep example*/
 	////
 	////
-#if 1
+#if 0
 		EE_emul_Init((uint16_t *)&EepData.flag,sizeof(EEPemul_Data_TypeDef));
 
 		//EE_WriteStrData((uint16_t *)&EepData.encoderSt1_cnt,sizeof(EepData.encoderSt1_cnt));
@@ -873,7 +858,8 @@ void StartSDTask(void *argument)
 		/* Unlock the Flash Program Erase controller */
 
 		/* EEPROM Init */
-#else
+#endif
+#if 0
 
 	/*eep example*/
 

@@ -1,19 +1,48 @@
-#include <gui/model/Model.hpp>
+﻿#include <gui/model/Model.hpp>
 #include <gui/model/ModelListener.hpp>
 
+#ifndef SIMULATOR
+#include <eeprom.h>
+#include "string.h"
+/* Virtual address defined by the user: 0xFFFF value is prohibited */
+uint16_t VirtAddVarTab[NB_OF_VAR];
+uint16_t VarDataTab[NB_OF_VAR] = { 'M', 'a', 't', 'e', 'u', 's', 'z', ' ', 'S', 'a', 'l', 'a', 'm', 'o', 'n', ' ', 'm', 's', 'a', 'l', 'a', 'm', 'o', 'n', '.', 'p', 'l' };
+uint8_t VarDataTabRead[NB_OF_VAR];
+uint16_t VarIndex, VarDataTmp = 0;
+
+//최소 uint 16 사용
+#if 0
+#pragma pack(1)
+typedef struct __EEPemul_Data_TypeDef
+{
+	uint16_t flag;
+	uint32_t encoderSt1_cnt;
+
+}EEPemul_Data_TypeDef;
+#pragma pack()
+
+EEPemul_Data_TypeDef EepData;
+#endif
+SettingData_TypeDef EepData[10];
+#endif
 Model::Model() : modelListener(0)
 {
-	setting[0].gID = 1;
-	setting[0].sID = 1;
+#ifndef SIMULATOR
+	EE_emul_Init((uint16_t *)&EepData[0].myIndex,sizeof(SettingData_TypeDef)*10);
+	EE_ReadAllData((uint16_t *)&EepData[0].myIndex,sizeof(SettingData_TypeDef)*10);
+	memcpy((uint8_t *)&setting[0].myIndex,(uint8_t *)&EepData[0].myIndex,sizeof(SettingData_TypeDef)*10);
+#endif
+	setID(0, 5, 1);
+	setID(1, 5, 2);
+	setID(2, 5, 3);
+	setID(3, 5, 4);
+	setID(4, 5, 5);
+	setID(5, 5, 6);
+	setID(6, 5, 7);
+	setID(7, 5, 8);
+	setID(8, 5, 9);
+	setID(9, 5, 10);
 
-	setting[1].gID = 1;
-	setting[1].sID = 2;
-
-	setting[2].gID = 5;
-	setting[2].sID = 5;
-
-	setting[3].gID = 1;
-	setting[3].sID = 2;
 }
 
 void Model::tick()
@@ -78,6 +107,10 @@ void Model::setChangeLimitMin(int gID, int sID, int value)
 	if (index < 10)
 	{
 		setting[index].limit_min = value;
+#ifndef SIMULATOR
+		EepData[index].limit_min = value;
+		EE_WriteStrData((uint16_t *)&EepData[index].limit_min,sizeof(EepData[0].limit_min));
+#endif
 	}
 }
 
@@ -87,6 +120,10 @@ void Model::setChangeLimitMax(int gID, int sID, int value)
 	if (index < 10)
 	{
 		setting[index].limit_max = value;
+#ifndef SIMULATOR
+		EepData[index].limit_max = value;
+		EE_WriteStrData((uint16_t *)&EepData[index].limit_max,sizeof(EepData[0].limit_max));
+#endif
 	}
 }
 
@@ -96,6 +133,10 @@ void Model::setChangeMap_0(int gID, int sID, int value)
 	if (index < 10)
 	{
 		setting[index].map_0 = value;
+#ifndef SIMULATOR
+		EepData[index].map_0 = value;
+		EE_WriteStrData((uint16_t *)&EepData[index].map_0,sizeof(EepData[0].map_0));
+#endif
 	}
 }
 
@@ -105,6 +146,10 @@ void Model::setChangeMap_4095(int gID, int sID, int value)
 	if (index < 10)
 	{
 		setting[index].map_4095 = value;
+#ifndef SIMULATOR
+		EepData[index].map_4095 = value;
+		EE_WriteStrData((uint16_t *)&EepData[index].map_4095,sizeof(EepData[0].map_4095));
+#endif
 	}
 }
 
@@ -114,6 +159,10 @@ void Model::setChangeFIlter(int gID, int sID, int value)
 	if (index < 10)
 	{
 		setting[index].filter = value;
+#ifndef SIMULATOR
+		EepData[index].filter = value;
+		EE_WriteStrData((uint16_t *)&EepData[index].filter,sizeof(EepData[0].filter));
+#endif
 	}
 }
 
@@ -123,6 +172,10 @@ void Model::setChangeReverse(int gID, int sID, bool value)
 	if (index < 10)
 	{
 		setting[index].reverse = value;
+#ifndef SIMULATOR
+		EepData[index].reverse = value;
+		EE_WriteStrData((uint16_t *)&EepData[index].reverse,sizeof(EepData[0].reverse));
+#endif
 	}
 }
 
@@ -136,4 +189,15 @@ int Model::getIndex(int gID, int sID)
 		}
 	}
 	return 10;
+}
+void Model::setID(int index, int gID, int sID)
+{
+	setting[index].gID = gID;
+	setting[index].sID = sID;
+#ifndef SIMULATOR
+	EepData[index].gID = gID;
+	EepData[index].sID = sID;
+	EE_WriteStrData((uint16_t*) &EepData[index].gID, sizeof(EepData[0].gID));
+	EE_WriteStrData((uint16_t*) &EepData[index].sID, sizeof(EepData[0].sID));
+#endif
 }

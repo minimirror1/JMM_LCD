@@ -87,7 +87,7 @@ static const Keyboard::KeyMappingList keyMappingListAlphaUpper =
     30
 };
 
-static const Keyboard::KeyMapping keyMappingsNumLower[30] =
+static const Keyboard::KeyMapping keyMappingsNumLower[10] =
 {
     { 1,  49},  // 1
     { 2,  50},  // 2
@@ -99,6 +99,7 @@ static const Keyboard::KeyMapping keyMappingsNumLower[30] =
     { 8,  56},  // 8
     { 9,  57},  // 9
     {10,  48},  // 0
+                /*
     {11,  64},  // @
 
     {12,  35},  // #
@@ -122,12 +123,13 @@ static const Keyboard::KeyMapping keyMappingsNumLower[30] =
     {29,  46},  // .
 
     {30,  32}   // space
+    */
 };
 
 static const Keyboard::KeyMappingList keyMappingListNumLower =
 {
     keyMappingsNumLower,
-    30
+    10
 };
 
 static const Keyboard::KeyMapping keyMappingsNumUpper[30] =

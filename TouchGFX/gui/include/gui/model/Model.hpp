@@ -3,6 +3,9 @@
 
 class ModelListener;
 
+#ifndef SIMULATOR
+#pragma pack(1)
+#endif
 typedef struct {
     int myIndex;
     int gID;
@@ -12,8 +15,11 @@ typedef struct {
     int map_0;
     int map_4095;
     int filter;
-    bool reverse;
+    int reverse;
 }SettingData_TypeDef;
+#ifndef SIMULATOR
+#pragma pack()
+#endif
 
 class Model
 {
@@ -53,6 +59,8 @@ private:
     SettingData_TypeDef setting[10];
 
     int getIndex(int gID, int sID);
+
+    void setID(int index, int gID, int sID);
 
 
 protected:
