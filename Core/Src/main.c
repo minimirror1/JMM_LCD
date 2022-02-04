@@ -20,12 +20,15 @@
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 #include "cmsis_os.h"
+#include "fatfs.h"
 #include "libjpeg.h"
 #include "app_touchgfx.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include <stm32746g_discovery_qspi.h>
+#include <string.h>
+#include <stdio.h>
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -70,6 +73,10 @@ LTDC_HandleTypeDef hltdc;
 
 QSPI_HandleTypeDef hqspi;
 
+SD_HandleTypeDef hsd1;
+DMA_HandleTypeDef hdma_sdmmc1_tx;
+DMA_HandleTypeDef hdma_sdmmc1_rx;
+
 UART_HandleTypeDef huart6;
 
 SDRAM_HandleTypeDef hsdram1;
@@ -95,6 +102,13 @@ const osThreadAttr_t videoTask_attributes = {
   .stack_size = 1000 * 4,
   .priority = (osPriority_t) osPriorityLow,
 };
+/* Definitions for sdTask */
+osThreadId_t sdTaskHandle;
+const osThreadAttr_t sdTask_attributes = {
+  .name = "sdTask",
+  .stack_size = 4096 * 4,
+  .priority = (osPriority_t) osPriorityRealtime,
+};
 /* USER CODE BEGIN PV */
 static FMC_SDRAM_CommandTypeDef Command;
 /* USER CODE END PV */
@@ -110,9 +124,12 @@ static void MX_I2C3_Init(void);
 static void MX_LTDC_Init(void);
 static void MX_QUADSPI_Init(void);
 static void MX_USART6_UART_Init(void);
+static void MX_SDMMC1_SD_Init(void);
+static void MX_DMA_Init(void);
 void StartDefaultTask(void *argument);
 extern void TouchGFX_Task(void *argument);
 extern void videoTaskFunc(void *argument);
+void StartSDTask(void *argument);
 
 /* USER CODE BEGIN PFP */
 
@@ -168,8 +185,13 @@ int main(void)
   MX_QUADSPI_Init();
   MX_LIBJPEG_Init();
   MX_USART6_UART_Init();
+  MX_SDMMC1_SD_Init();
+  MX_FATFS_Init();
+  MX_DMA_Init();
   MX_TouchGFX_Init();
   /* USER CODE BEGIN 2 */
+
+
 
   /* USER CODE END 2 */
 
@@ -201,6 +223,9 @@ int main(void)
 
   /* creation of videoTask */
   videoTaskHandle = osThreadNew(videoTaskFunc, NULL, &videoTask_attributes);
+
+  /* creation of sdTask */
+  sdTaskHandle = osThreadNew(StartSDTask, NULL, &sdTask_attributes);
 
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
@@ -235,6 +260,9 @@ void SystemClock_Config(void)
   RCC_ClkInitTypeDef RCC_ClkInitStruct = {0};
   RCC_PeriphCLKInitTypeDef PeriphClkInitStruct = {0};
 
+  /** Configure LSE Drive Capability
+  */
+  HAL_PWR_EnableBkUpAccess();
   /** Configure the main internal regulator output voltage
   */
   __HAL_RCC_PWR_CLK_ENABLE();
@@ -249,7 +277,7 @@ void SystemClock_Config(void)
   RCC_OscInitStruct.PLL.PLLM = 25;
   RCC_OscInitStruct.PLL.PLLN = 400;
   RCC_OscInitStruct.PLL.PLLP = RCC_PLLP_DIV2;
-  RCC_OscInitStruct.PLL.PLLQ = 2;
+  RCC_OscInitStruct.PLL.PLLQ = 10;
   if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
   {
     Error_Handler();
@@ -274,7 +302,8 @@ void SystemClock_Config(void)
     Error_Handler();
   }
   PeriphClkInitStruct.PeriphClockSelection = RCC_PERIPHCLK_LTDC|RCC_PERIPHCLK_USART6
-                              |RCC_PERIPHCLK_I2C3;
+                              |RCC_PERIPHCLK_I2C3|RCC_PERIPHCLK_SDMMC1
+                              |RCC_PERIPHCLK_CLK48;
   PeriphClkInitStruct.PLLSAI.PLLSAIN = 384;
   PeriphClkInitStruct.PLLSAI.PLLSAIR = 5;
   PeriphClkInitStruct.PLLSAI.PLLSAIQ = 2;
@@ -283,6 +312,8 @@ void SystemClock_Config(void)
   PeriphClkInitStruct.PLLSAIDivR = RCC_PLLSAIDIVR_8;
   PeriphClkInitStruct.Usart6ClockSelection = RCC_USART6CLKSOURCE_PCLK2;
   PeriphClkInitStruct.I2c3ClockSelection = RCC_I2C3CLKSOURCE_PCLK1;
+  PeriphClkInitStruct.Clk48ClockSelection = RCC_CLK48SOURCE_PLL;
+  PeriphClkInitStruct.Sdmmc1ClockSelection = RCC_SDMMC1CLKSOURCE_CLK48;
   if (HAL_RCCEx_PeriphCLKConfig(&PeriphClkInitStruct) != HAL_OK)
   {
     Error_Handler();
@@ -504,6 +535,34 @@ static void MX_QUADSPI_Init(void)
 }
 
 /**
+  * @brief SDMMC1 Initialization Function
+  * @param None
+  * @retval None
+  */
+static void MX_SDMMC1_SD_Init(void)
+{
+
+  /* USER CODE BEGIN SDMMC1_Init 0 */
+
+  /* USER CODE END SDMMC1_Init 0 */
+
+  /* USER CODE BEGIN SDMMC1_Init 1 */
+
+  /* USER CODE END SDMMC1_Init 1 */
+  hsd1.Instance = SDMMC1;
+  hsd1.Init.ClockEdge = SDMMC_CLOCK_EDGE_RISING;
+  hsd1.Init.ClockBypass = SDMMC_CLOCK_BYPASS_DISABLE;
+  hsd1.Init.ClockPowerSave = SDMMC_CLOCK_POWER_SAVE_DISABLE;
+  hsd1.Init.BusWide = SDMMC_BUS_WIDE_1B;
+  hsd1.Init.HardwareFlowControl = SDMMC_HARDWARE_FLOW_CONTROL_DISABLE;
+  hsd1.Init.ClockDiv = 0;
+  /* USER CODE BEGIN SDMMC1_Init 2 */
+  //HAL_SD_Init(&hsd1);
+  /* USER CODE END SDMMC1_Init 2 */
+
+}
+
+/**
   * @brief USART6 Initialization Function
   * @param None
   * @retval None
@@ -535,6 +594,25 @@ static void MX_USART6_UART_Init(void)
   /* USER CODE BEGIN USART6_Init 2 */
 
   /* USER CODE END USART6_Init 2 */
+
+}
+
+/**
+  * Enable DMA controller clock
+  */
+static void MX_DMA_Init(void)
+{
+
+  /* DMA controller clock enable */
+  __HAL_RCC_DMA2_CLK_ENABLE();
+
+  /* DMA interrupt init */
+  /* DMA2_Stream3_IRQn interrupt configuration */
+  HAL_NVIC_SetPriority(DMA2_Stream3_IRQn, 5, 0);
+  HAL_NVIC_EnableIRQ(DMA2_Stream3_IRQn);
+  /* DMA2_Stream6_IRQn interrupt configuration */
+  HAL_NVIC_SetPriority(DMA2_Stream6_IRQn, 5, 0);
+  HAL_NVIC_EnableIRQ(DMA2_Stream6_IRQn);
 
 }
 
@@ -649,6 +727,7 @@ static void MX_GPIO_Init(void)
 
   /* GPIO Ports Clock Enable */
   __HAL_RCC_GPIOE_CLK_ENABLE();
+  __HAL_RCC_GPIOC_CLK_ENABLE();
   __HAL_RCC_GPIOA_CLK_ENABLE();
   __HAL_RCC_GPIOB_CLK_ENABLE();
   __HAL_RCC_GPIOG_CLK_ENABLE();
@@ -658,13 +737,18 @@ static void MX_GPIO_Init(void)
   __HAL_RCC_GPIOF_CLK_ENABLE();
   __HAL_RCC_GPIOI_CLK_ENABLE();
   __HAL_RCC_GPIOH_CLK_ENABLE();
-  __HAL_RCC_GPIOC_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(LCD_BL_CTRL_GPIO_Port, LCD_BL_CTRL_Pin, GPIO_PIN_SET);
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(LCD_DISP_GPIO_Port, LCD_DISP_Pin, GPIO_PIN_SET);
+
+  /*Configure GPIO pin : uSD_Detect_Pin */
+  GPIO_InitStruct.Pin = uSD_Detect_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+  GPIO_InitStruct.Pull = GPIO_PULLUP;
+  HAL_GPIO_Init(uSD_Detect_GPIO_Port, &GPIO_InitStruct);
 
   /*Configure GPIO pin : LCD_BL_CTRL_Pin */
   GPIO_InitStruct.Pin = LCD_BL_CTRL_Pin;
@@ -702,6 +786,118 @@ void StartDefaultTask(void *argument)
     osDelay(100);
   }
   /* USER CODE END 5 */
+}
+
+/* USER CODE BEGIN Header_StartSDTask */
+/**
+* @brief Function implementing the sdTask thread.
+* @param argument: Not used
+* @retval None
+*/
+
+/* USER CODE END Header_StartSDTask */
+void StartSDTask(void *argument)
+{
+  /* USER CODE BEGIN StartSDTask */
+#if 0
+	FRESULT res;
+	uint32_t byteswritten, bytesread;
+	uint8_t wtext[] = "STM32 FATFS works great!";
+	uint8_t rtext[_MAX_SS];
+
+	if(f_mount(&SDFatFS, (TCHAR const*)SDPath, 0) != FR_OK)
+	{
+		Error_Handler();
+	}
+	else
+	{
+//		if(f_mkfs((TCHAR const*)SDPath, FM_ANY, 0, rtext, sizeof(rtext)) != FR_OK)
+//		{
+//			Error_Handler();
+//		}
+//		else
+//		{
+		osDelay(1000);
+			if(f_open(&SDFile, "STM32.TXT", FA_CREATE_ALWAYS | FA_WRITE) != FR_OK)
+			{
+				Error_Handler();
+			}
+			else
+			{
+				osDelay(1000);
+				res = f_write(&SDFile, wtext, strlen((char *)wtext), (void *)&byteswritten);
+				if((byteswritten == 0) || (res != FR_OK))
+				{
+					Error_Handler();
+				}
+				else
+				{
+					//Error_Handler();
+				}
+
+			}
+			osDelay(1000);
+			f_close(&SDFile);
+		//}
+	}
+	osDelay(1000);
+	f_mount(&SDFatFS, (TCHAR const*)NULL, 0);
+#endif
+#if 0
+	volatile FRESULT res;
+
+	uint32_t byteswritten; /* File write count */
+	char wtext[] = "MYSD";
+
+	uint8_t data[10] = {1,2,3,4,5,6,7,8,9,10};
+
+
+
+	disk_initialize((BYTE) 0);
+
+	f_mount(NULL,"",0);
+	f_mount(&SDFatFS, (TCHAR const*) SDPath, 0);
+
+
+	//f_open(&SDFile, "MYTEST.TXT", FA_CREATE_ALWAYS | FA_WRITE | FA_READ);
+	//taskENTER_CRITICAL();
+	res = f_open(&SDFile, "A.TXT", FA_CREATE_ALWAYS | FA_WRITE);
+	//taskEXIT_CRITICAL();
+	if (res != FR_OK )
+	{
+		Error_Handler();
+	}
+	if(res == FR_OK)
+	{
+	//	taskENTER_CRITICAL();
+		//res = f_write(&SDFile, wtext, strlen((char const *)wtext), (void*) &byteswritten);
+		res = f_write(&SDFile, data, 10, (void*) &byteswritten);
+		//taskEXIT_CRITICAL();
+		//taskENTER_CRITICAL();
+		res = f_close(&SDFile);
+		//taskEXIT_CRITICAL();
+	}
+	else
+	{
+		Error_Handler();
+	}
+
+	if(res != FR_OK || byteswritten == 0)
+	{
+		Error_Handler();
+	}
+	//taskENTER_CRITICAL();
+	f_mount(NULL,"",0);
+	//taskEXIT_CRITICAL();
+	//
+#endif
+
+  /* Infinite loop */
+  for(;;)
+  {
+    osDelay(100);
+  }
+  /* USER CODE END StartSDTask */
 }
 
 /* MPU Configuration */
@@ -768,7 +964,10 @@ void Error_Handler(void)
 {
   /* USER CODE BEGIN Error_Handler_Debug */
   /* User can add his own implementation to report the HAL error return state */
+	while(1)
+	{
 
+	}
   /* USER CODE END Error_Handler_Debug */
 }
 
