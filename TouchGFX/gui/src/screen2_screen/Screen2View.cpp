@@ -38,16 +38,12 @@ void Screen2View::keyBoardSelected(uint8_t value)
 void Screen2View::handleTickEvent()
 {
     //static uint8_t backbuf[20] = { 0, };
-    if (Unicode::strlen(keyboardBuffer[0]) > 0)	//PValue�� ���� Ckeyboard���� �Է��� ���� ���� ���,
+    if (Unicode::strlen(keyboardBuffer[0]) > 0)
     {
-        if ((updateFlag & 0x01) == 0x01)// update�� �ؾ��ϴ��� üũ.
+        if ((updateFlag & 0x01) == 0x01)
         {
-            //memset(limitMinVar_textAreaBuffer, 0, LIMITMINVAR_TEXTAREA_SIZE);	// PValue Widget �ʱ�ȭ.
-            //Unicode::strncpy(limitMinVar_textAreaBuffer, keyboardBuffer[0], Unicode::strlen(keyboardBuffer[0]));
-            //limitMinVar_textArea.invalidate();							//����� PValue Widget ���.
-
             uint8_t utf8Buff[20];
-            Unicode::toUTF8(keyboardBuffer[0], utf8Buff, 20);	//Unicode(UT16)���� UT8�� ��ȯ ��,            
+            Unicode::toUTF8(keyboardBuffer[0], utf8Buff, 20);
             int value = atoi((const char*)utf8Buff);
             if (value > 4095)
                 value = 4095;
@@ -60,32 +56,16 @@ void Screen2View::handleTickEvent()
             
 
             memset(keyboardBuffer[0], 0, 30);
-#if 0
-            memset(PValueBuffer, 0, PVALUE_SIZE);	// PValue Widget �ʱ�ȭ.
-
-            //string --> double(check only number)
-            Unicode::toUTF8(keyboardBuffer[0], backbuf, PVALUE_SIZE);	//Unicode(UT16)���� UT8�� ��ȯ ��,
-            double prPValue = atof((const char*)backbuf);				//double�� ��ȯ.(���⿡�� ���ڸ� ��ȯ��. ���ڰ� �ƴϸ� ������ 0)
-
-            //double --> string(sprintf)
-            Unicode::snprintf(PValueBuffer, PVALUE_SIZE, "%d", (int)prPValue);	//PValue Widget�� ��ȯ�� double ���� ���ڿ��� ����.
-            PValue.invalidate();							//����� PValue Widget ���.
-#endif
-
-            updateFlag &= ~0x01; // ��÷� ���� ���� ����ϴ� ������ ���� ����.
+            updateFlag &= ~0x01;
         }
     }
-    else if (Unicode::strlen(keyboardBuffer[1]) > 0)	//PValue�� ���� Ckeyboard���� �Է��� ���� ���� ���,
+    else if (Unicode::strlen(keyboardBuffer[1]) > 0)
     {
-        if ((updateFlag & 0x02) == 0x02)// update�� �ؾ��ϴ��� üũ.
+        if ((updateFlag & 0x02) == 0x02)
         {
-            //memset(limitMaxVar_textAreaBuffer, 0, LIMITMAXVAR_TEXTAREA_SIZE);	// PValue Widget �ʱ�ȭ.
-            //Unicode::strncpy(limitMaxVar_textAreaBuffer, keyboardBuffer[1], Unicode::strlen(keyboardBuffer[1]));
-            //limitMaxVar_textArea.invalidate();
-            //memset(keyboardBuffer[1], 0, 30);
 
             uint8_t utf8Buff[20];
-            Unicode::toUTF8(keyboardBuffer[1], utf8Buff, 20);	//Unicode(UT16)���� UT8�� ��ȯ ��,            
+            Unicode::toUTF8(keyboardBuffer[1], utf8Buff, 20);
             int value = atoi((const char*)utf8Buff);
             if (value > 4095)
                 value = 4095;
@@ -98,20 +78,16 @@ void Screen2View::handleTickEvent()
 
             memset(keyboardBuffer[1], 0, 30);
 
-            updateFlag &= ~0x02; // ��÷� ���� ���� ����ϴ� ������ ���� ����.
+            updateFlag &= ~0x02;
         }
     }
-    else if (Unicode::strlen(keyboardBuffer[2]) > 0)	//PValue�� ���� Ckeyboard���� �Է��� ���� ���� ���,
+    else if (Unicode::strlen(keyboardBuffer[2]) > 0)
     {
-        if ((updateFlag & 0x04) == 0x04)// update�� �ؾ��ϴ��� üũ.
+        if ((updateFlag & 0x04) == 0x04)
         {
-            //memset(map_0Var_textAreaBuffer, 0, MAP_0VAR_TEXTAREA_SIZE);	// PValue Widget �ʱ�ȭ.
-            //Unicode::strncpy(map_0Var_textAreaBuffer, keyboardBuffer[2], Unicode::strlen(keyboardBuffer[2]));
-            //map_0Var_textArea.invalidate();
-            //memset(keyboardBuffer[2], 0, 30);
 
             uint8_t utf8Buff[20];
-            Unicode::toUTF8(keyboardBuffer[2], utf8Buff, 20);	//Unicode(UT16)���� UT8�� ��ȯ ��,            
+            Unicode::toUTF8(keyboardBuffer[2], utf8Buff, 20);
             int value = atoi((const char*)utf8Buff);
             if (value > 4095)
                 value = 4095;
@@ -122,20 +98,16 @@ void Screen2View::handleTickEvent()
             map_0Var_textArea.invalidate();            
 
             memset(keyboardBuffer[2], 0, 30);
-            updateFlag &= ~0x04; // ��÷� ���� ���� ����ϴ� ������ ���� ����.
+            updateFlag &= ~0x04;
         }
     }
-    else if (Unicode::strlen(keyboardBuffer[3]) > 0)	//PValue�� ���� Ckeyboard���� �Է��� ���� ���� ���,
+    else if (Unicode::strlen(keyboardBuffer[3]) > 0)
     {
-        if ((updateFlag & 0x08) == 0x08)// update�� �ؾ��ϴ��� üũ.
+        if ((updateFlag & 0x08) == 0x08)
         {
-            //memset(map_4095Var_textAreaBuffer, 0, MAP_4095VAR_TEXTAREA_SIZE);	// PValue Widget �ʱ�ȭ.
-            //Unicode::strncpy(map_4095Var_textAreaBuffer, keyboardBuffer[3], Unicode::strlen(keyboardBuffer[3]));
-            //map_4095Var_textArea.invalidate();
-            //memset(keyboardBuffer[3], 0, 30);
 
             uint8_t utf8Buff[20];
-            Unicode::toUTF8(keyboardBuffer[3], utf8Buff, 20);	//Unicode(UT16)���� UT8�� ��ȯ ��,            
+            Unicode::toUTF8(keyboardBuffer[3], utf8Buff, 20);
             int value = atoi((const char*)utf8Buff);
             if (value > 4095)
                 value = 4095;
@@ -147,7 +119,7 @@ void Screen2View::handleTickEvent()
 
             memset(keyboardBuffer[3], 0, 30);
 
-            updateFlag &= ~0x08; // ��÷� ���� ���� ����ϴ� ������ ���� ����.
+            updateFlag &= ~0x08;
         }
     }    
 }
