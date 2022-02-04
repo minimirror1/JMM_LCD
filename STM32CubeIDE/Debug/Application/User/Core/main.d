@@ -64,7 +64,8 @@ Application/User/Core/main.o: \
  ../../LIBJPEG/Target/jconfig.h ../../LIBJPEG/Target/jdata_conf.h \
  ../../LIBJPEG/Target/jmorecfg.h ../../TouchGFX/App/app_touchgfx.h \
  ../../Drivers/BSP/STM32746G-Discovery/stm32746g_discovery_qspi.h \
- ../../Drivers/BSP/STM32746G-Discovery/../Components/n25q128a/n25q128a.h
+ ../../Drivers/BSP/STM32746G-Discovery/../Components/n25q128a/n25q128a.h \
+ D:/stm32_ws/board/JointManipulator_Master/JMM_LCD_V1/JMM_LCD/STM32CubeIDE/Application/User/Core/eeprom.h
 
 ../../Core/Inc/main.h:
 
@@ -205,3 +206,5 @@ Application/User/Core/main.o: \
 ../../Drivers/BSP/STM32746G-Discovery/stm32746g_discovery_qspi.h:
 
 ../../Drivers/BSP/STM32746G-Discovery/../Components/n25q128a/n25q128a.h:
+
+D:/stm32_ws/board/JointManipulator_Master/JMM_LCD_V1/JMM_LCD/STM32CubeIDE/Application/User/Core/eeprom.h:

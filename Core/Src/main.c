@@ -29,6 +29,7 @@
 #include <stm32746g_discovery_qspi.h>
 #include <string.h>
 #include <stdio.h>
+#include "eeprom.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -77,6 +78,7 @@ SD_HandleTypeDef hsd1;
 DMA_HandleTypeDef hdma_sdmmc1_tx;
 DMA_HandleTypeDef hdma_sdmmc1_rx;
 
+UART_HandleTypeDef huart1;
 UART_HandleTypeDef huart6;
 
 SDRAM_HandleTypeDef hsdram1;
@@ -126,6 +128,7 @@ static void MX_QUADSPI_Init(void);
 static void MX_USART6_UART_Init(void);
 static void MX_SDMMC1_SD_Init(void);
 static void MX_DMA_Init(void);
+static void MX_USART1_UART_Init(void);
 void StartDefaultTask(void *argument);
 extern void TouchGFX_Task(void *argument);
 extern void videoTaskFunc(void *argument);
@@ -173,7 +176,7 @@ int main(void)
 
   /* USER CODE BEGIN SysInit */
 
-  /* USER CODE END SysInit */
+  /* USER CODE END SysInit *
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
@@ -188,9 +191,9 @@ int main(void)
   MX_SDMMC1_SD_Init();
   MX_FATFS_Init();
   MX_DMA_Init();
+  MX_USART1_UART_Init();
   MX_TouchGFX_Init();
   /* USER CODE BEGIN 2 */
-
 
 
   /* USER CODE END 2 */
@@ -301,15 +304,16 @@ void SystemClock_Config(void)
   {
     Error_Handler();
   }
-  PeriphClkInitStruct.PeriphClockSelection = RCC_PERIPHCLK_LTDC|RCC_PERIPHCLK_USART6
-                              |RCC_PERIPHCLK_I2C3|RCC_PERIPHCLK_SDMMC1
-                              |RCC_PERIPHCLK_CLK48;
+  PeriphClkInitStruct.PeriphClockSelection = RCC_PERIPHCLK_LTDC|RCC_PERIPHCLK_USART1
+                              |RCC_PERIPHCLK_USART6|RCC_PERIPHCLK_I2C3
+                              |RCC_PERIPHCLK_SDMMC1|RCC_PERIPHCLK_CLK48;
   PeriphClkInitStruct.PLLSAI.PLLSAIN = 384;
   PeriphClkInitStruct.PLLSAI.PLLSAIR = 5;
   PeriphClkInitStruct.PLLSAI.PLLSAIQ = 2;
   PeriphClkInitStruct.PLLSAI.PLLSAIP = RCC_PLLSAIP_DIV2;
   PeriphClkInitStruct.PLLSAIDivQ = 1;
   PeriphClkInitStruct.PLLSAIDivR = RCC_PLLSAIDIVR_8;
+  PeriphClkInitStruct.Usart1ClockSelection = RCC_USART1CLKSOURCE_PCLK2;
   PeriphClkInitStruct.Usart6ClockSelection = RCC_USART6CLKSOURCE_PCLK2;
   PeriphClkInitStruct.I2c3ClockSelection = RCC_I2C3CLKSOURCE_PCLK1;
   PeriphClkInitStruct.Clk48ClockSelection = RCC_CLK48SOURCE_PLL;
@@ -563,6 +567,41 @@ static void MX_SDMMC1_SD_Init(void)
 }
 
 /**
+  * @brief USART1 Initialization Function
+  * @param None
+  * @retval None
+  */
+static void MX_USART1_UART_Init(void)
+{
+
+  /* USER CODE BEGIN USART1_Init 0 */
+
+  /* USER CODE END USART1_Init 0 */
+
+  /* USER CODE BEGIN USART1_Init 1 */
+
+  /* USER CODE END USART1_Init 1 */
+  huart1.Instance = USART1;
+  huart1.Init.BaudRate = 115200;
+  huart1.Init.WordLength = UART_WORDLENGTH_8B;
+  huart1.Init.StopBits = UART_STOPBITS_1;
+  huart1.Init.Parity = UART_PARITY_NONE;
+  huart1.Init.Mode = UART_MODE_TX_RX;
+  huart1.Init.HwFlowCtl = UART_HWCONTROL_NONE;
+  huart1.Init.OverSampling = UART_OVERSAMPLING_16;
+  huart1.Init.OneBitSampling = UART_ONE_BIT_SAMPLE_DISABLE;
+  huart1.AdvancedInit.AdvFeatureInit = UART_ADVFEATURE_NO_INIT;
+  if (HAL_UART_Init(&huart1) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /* USER CODE BEGIN USART1_Init 2 */
+
+  /* USER CODE END USART1_Init 2 */
+
+}
+
+/**
   * @brief USART6 Initialization Function
   * @param None
   * @retval None
@@ -794,11 +833,135 @@ void StartDefaultTask(void *argument)
 * @param argument: Not used
 * @retval None
 */
+/* Virtual address defined by the user: 0xFFFF value is prohibited */
+uint16_t VirtAddVarTab[NB_OF_VAR];
+uint16_t VarDataTab[NB_OF_VAR] = { 'M', 'a', 't', 'e', 'u', 's', 'z', ' ', 'S', 'a', 'l', 'a', 'm', 'o', 'n', ' ', 'm', 's', 'a', 'l', 'a', 'm', 'o', 'n', '.', 'p', 'l' };
+uint8_t VarDataTabRead[NB_OF_VAR];
+uint16_t VarIndex, VarDataTmp = 0;
 
+//최소 uint 16 사용
+#pragma pack(1)
+typedef struct __EEPemul_Data_TypeDef
+{
+	uint16_t flag;
+	uint32_t encoderSt1_cnt;
+
+}EEPemul_Data_TypeDef;
+#pragma pack()
+
+EEPemul_Data_TypeDef EepData;
 /* USER CODE END Header_StartSDTask */
 void StartSDTask(void *argument)
 {
   /* USER CODE BEGIN StartSDTask */
+
+	/*eep example*/
+	////
+	////
+#if 1
+		EE_emul_Init((uint16_t *)&EepData.flag,sizeof(EEPemul_Data_TypeDef));
+
+		//EE_WriteStrData((uint16_t *)&EepData.encoderSt1_cnt,sizeof(EepData.encoderSt1_cnt));
+		EE_ReadStrData((uint16_t *)&EepData.encoderSt1_cnt,sizeof(EepData.encoderSt1_cnt));
+
+		//EepData.encoderSt1_cnt = 0x11223344;
+		//EE_WriteStrData((uint16_t *)&EepData.encoderSt1_cnt,sizeof(EepData.encoderSt1_cnt));
+
+		//EepData.flag = 0x1212;
+		//EE_WriteStrData((uint16_t *)&EepData.flag,sizeof(EepData.flag));
+
+		/* Unlock the Flash Program Erase controller */
+
+		/* EEPROM Init */
+#else
+
+	/*eep example*/
+
+		// Fill EEPROM variables addresses
+		for (VarIndex = 1; VarIndex <= NB_OF_VAR; VarIndex++) {
+			VirtAddVarTab[VarIndex - 1] = VarIndex;
+		}
+
+		// Store Values in EEPROM emulation
+		//HAL_UART_Transmit(&huart2, "Store values\n\r", 14, 100);
+
+		//HAL_GPIO_WritePin(LED_GPIO_Port, LED_Pin, GPIO_PIN_RESET);
+		for (VarIndex = 0; VarIndex < NB_OF_VAR; VarIndex++) {
+			 //Sequence 1
+			if ((EE_WriteVariable(VirtAddVarTab[VarIndex], VarDataTab[VarIndex])) != HAL_OK) {
+				Error_Handler();
+			}
+		}
+		//HAL_GPIO_WritePin(LED_GPIO_Port, LED_Pin, GPIO_PIN_SET);
+
+		// Read values
+		//HAL_UART_Transmit(&huart2, "Read values\n\r", 13, 100);
+		// HAL_GPIO_WritePin(LED_GPIO_Port, LED_Pin, GPIO_PIN_RESET);
+		for (VarIndex = 0; VarIndex < NB_OF_VAR; VarIndex++) {
+			if ((EE_ReadVariable(VirtAddVarTab[VarIndex], &VarDataTabRead[VarIndex])) != HAL_OK) {
+				Error_Handler();
+			}
+		}
+		//  HAL_GPIO_WritePin(LED_GPIO_Port, LED_Pin, GPIO_PIN_SET);
+
+		//HAL_UART_Transmit(&huart2, "Read table: ", 12, 100);
+		//HAL_UART_Transmit(&huart2, VarDataTabRead, NB_OF_VAR, 1000);
+		//HAL_UART_Transmit(&huart2, "\n\r", 2, 100);
+
+		// Store revert Values in EEPROM emulation
+		//HAL_UART_Transmit(&huart2, "\n\r", 2, 100);
+		//HAL_UART_Transmit(&huart2, "Store revert values\n\r", 21, 100);
+
+		//  HAL_GPIO_WritePin(LED_GPIO_Port, LED_Pin, GPIO_PIN_RESET);
+		for (VarIndex = 0; VarIndex < NB_OF_VAR; VarIndex++) {
+			 //Sequence 1
+			if ((EE_WriteVariable(VirtAddVarTab[VarIndex], VarDataTab[NB_OF_VAR - VarIndex - 1])) != HAL_OK) {
+				Error_Handler();
+			}
+		}
+	//		HAL_GPIO_WritePin(LED_GPIO_Port, LED_Pin, GPIO_PIN_SET);
+
+	// Read values
+		//HAL_UART_Transmit(&huart2, "Read revert values\n\r", 20, 100);
+		//  HAL_GPIO_WritePin(LED_GPIO_Port, LED_Pin, GPIO_PIN_RESET);
+		for (VarIndex = 0; VarIndex < NB_OF_VAR; VarIndex++) {
+			if ((EE_ReadVariable(VirtAddVarTab[VarIndex], &VarDataTabRead[VarIndex])) != HAL_OK) {
+				Error_Handler();
+			}
+		}
+		// HAL_GPIO_WritePin(LED_GPIO_Port, LED_Pin, GPIO_PIN_SET);
+
+		//HAL_UART_Transmit(&huart2, "Read revert table: ", 19, 100);
+		//HAL_UART_Transmit(&huart2, VarDataTabRead, NB_OF_VAR, 1000);
+		//HAL_UART_Transmit(&huart2, "\n\r", 2, 100);
+
+		// Store Values in EEPROM emulation
+		//HAL_UART_Transmit(&huart2, "\n\r", 2, 100);
+		//HAL_UART_Transmit(&huart2, "Store values\n\r", 14, 100);
+
+		// HAL_GPIO_WritePin(LED_GPIO_Port, LED_Pin, GPIO_PIN_RESET);
+		for (VarIndex = 0; VarIndex < NB_OF_VAR; VarIndex++) {
+			 //Sequence 1
+			if ((EE_WriteVariable(VirtAddVarTab[VarIndex], VarDataTab[VarIndex])) != HAL_OK) {
+				Error_Handler();
+			}
+		}
+		//HAL_GPIO_WritePin(LED_GPIO_Port, LED_Pin, GPIO_PIN_SET);
+
+		// Read values
+		//HAL_UART_Transmit(&huart2, "Read values\n\r", 13, 100);
+		//HAL_GPIO_WritePin(LED_GPIO_Port, LED_Pin, GPIO_PIN_RESET);
+		for (VarIndex = 0; VarIndex < NB_OF_VAR; VarIndex++) {
+			if ((EE_ReadVariable(VirtAddVarTab[VarIndex], &VarDataTabRead[VarIndex])) != HAL_OK) {
+				Error_Handler();
+			}
+		}
+		//HAL_GPIO_WritePin(LED_GPIO_Port, LED_Pin, GPIO_PIN_SET);
+
+		//HAL_UART_Transmit(&huart2, "Read table: ", 12, 100);
+		//HAL_UART_Transmit(&huart2, VarDataTabRead, NB_OF_VAR, 1000);
+		//HAL_UART_Transmit(&huart2, "\n\r", 2, 100);
+#endif
 #if 0
 	FRESULT res;
 	uint32_t byteswritten, bytesread;

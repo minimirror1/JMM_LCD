@@ -61,6 +61,7 @@ extern LTDC_HandleTypeDef hltdc;
 extern DMA_HandleTypeDef hdma_sdmmc1_tx;
 extern DMA_HandleTypeDef hdma_sdmmc1_rx;
 extern SD_HandleTypeDef hsd1;
+extern UART_HandleTypeDef huart1;
 extern UART_HandleTypeDef huart6;
 extern TIM_HandleTypeDef htim6;
 
@@ -163,6 +164,20 @@ void DebugMon_Handler(void)
 /* For the available peripheral interrupt handler names,                      */
 /* please refer to the startup file (startup_stm32f7xx.s).                    */
 /******************************************************************************/
+
+/**
+  * @brief This function handles USART1 global interrupt.
+  */
+void USART1_IRQHandler(void)
+{
+  /* USER CODE BEGIN USART1_IRQn 0 */
+
+  /* USER CODE END USART1_IRQn 0 */
+  HAL_UART_IRQHandler(&huart1);
+  /* USER CODE BEGIN USART1_IRQn 1 */
+
+  /* USER CODE END USART1_IRQn 1 */
+}
 
 /**
   * @brief This function handles SDMMC1 global interrupt.
