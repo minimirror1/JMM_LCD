@@ -127,8 +127,8 @@
           {
             "Type": "CircleProgress",
             "Name": "posiProgress",
-            "X": 8,
-            "Y": 8,
+            "X": 9,
+            "Y": 64,
             "Width": 184,
             "Height": 94,
             "FileNameProgress": "__designer\\Dark_ProgressIndicators_fill_large_circle_indicator_fill_line_half.png",
@@ -150,8 +150,8 @@
           {
             "Type": "TextArea",
             "Name": "posi",
-            "X": 8,
-            "Y": 78,
+            "X": 9,
+            "Y": 134,
             "Width": 184,
             "Height": 49,
             "TextId": "__SingleUse_L0HY",
@@ -181,18 +181,40 @@
           {
             "Type": "Button",
             "Name": "button1",
-            "X": 15,
-            "Y": 127,
-            "Width": 170,
+            "X": 9,
+            "Y": 8,
+            "Width": 48,
+            "Height": 47,
+            "Pressed": "__designer\\Dark_Icons_Home_48.png",
+            "Released": "__designer\\Dark_Icons_Home_48.png"
+          },
+          {
+            "Type": "Button",
+            "Name": "gid_button",
+            "X": 34,
+            "Y": 175,
+            "Width": 60,
             "Height": 60,
-            "Pressed": "__designer\\Dark_Buttons_Round_Edge_small_pressed.png",
-            "Released": "__designer\\Dark_Buttons_Round_Edge_small_pressed.png"
+            "Pressed": "__designer\\Dark_Buttons_Round_Edge_icon_button_pressed.png",
+            "Released": "__designer\\Dark_Buttons_Round_Edge_icon_button.png",
+            "Style": "Style1"
+          },
+          {
+            "Type": "Button",
+            "Name": "sid_button",
+            "X": 106,
+            "Y": 175,
+            "Width": 60,
+            "Height": 60,
+            "Pressed": "__designer\\Dark_Buttons_Round_Edge_icon_button_pressed.png",
+            "Released": "__designer\\Dark_Buttons_Round_Edge_icon_button.png",
+            "Style": "Style1"
           },
           {
             "Type": "TextArea",
             "Name": "id",
-            "X": 15,
-            "Y": 133,
+            "X": 16,
+            "Y": 179,
             "Width": 170,
             "Height": 49,
             "TextId": "__SingleUse_009U",
@@ -621,6 +643,58 @@
             "Action": {
               "Type": "ActionCustom",
               "FunctionName": "reverseButton"
+            }
+          },
+          {
+            "InteractionName": "gidButtonPressed",
+            "HasCompletedTrigger": true,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "gid_button"
+            },
+            "Action": {
+              "Type": "ActionCustom2",
+              "ActionCustomTypeName": "Call Screen2 keyboardSeletedVar",
+              "ParameterValue": "5",
+              "ActionComponent": "Screen2"
+            }
+          },
+          {
+            "InteractionName": "gidgotoKeyboard",
+            "Trigger": {
+              "Type": "TriggerInteractionCompleted",
+              "InteractionToTriggerOn": "gidButtonPressed"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "Keyboard"
+            }
+          },
+          {
+            "InteractionName": "sidButtonPressed",
+            "HasCompletedTrigger": true,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "sid_button"
+            },
+            "Action": {
+              "Type": "ActionCustom2",
+              "ActionCustomTypeName": "Call Screen2 keyboardSeletedVar",
+              "ParameterValue": "6",
+              "ActionComponent": "Screen2"
+            }
+          },
+          {
+            "InteractionName": "sidgotoKeyboard",
+            "Trigger": {
+              "Type": "TriggerInteractionCompleted",
+              "InteractionToTriggerOn": "sidButtonPressed"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "Keyboard"
             }
           }
         ],

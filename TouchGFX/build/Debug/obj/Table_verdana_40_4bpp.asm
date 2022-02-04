@@ -22,6 +22,16 @@ __38A74FC5_table_verdana_40_4bpp@cpp DB 01H
 msvcjmc	ENDS
 CONST	SEGMENT
 ?glyphs_verdana_40_4bpp@@3QBUGlyphNode@touchgfx@@B DD 00H ; glyphs_verdana_40_4bpp
+	DW	020H
+	DB	00H
+	DB	00H
+	DB	00H
+	DB	00H
+	DB	0eH
+	DB	00H
+	DB	00H
+	DB	00H
+	DD	00H
 	DW	02dH
 	DB	0dH
 	DB	04H
@@ -141,6 +151,7 @@ CONST	SEGMENT
 	DB	00H
 	DB	00H
 	DB	00H
+	ORG $+2
 ?unicodes_verdana_40_4bpp@@3QBQBEB DD FLAT:?unicodes_verdana_40_4bpp_0@@3QBEB ; unicodes_verdana_40_4bpp
 CONST	ENDS
 PUBLIC	??1Font@touchgfx@@UAE@XZ			; touchgfx::Font::~Font
@@ -326,7 +337,7 @@ _TEXT	SEGMENT
 __$EHRec$ = -12						; size = 12
 ?getFont_verdana_40_4bpp@@YAAAVGeneratedFont@touchgfx@@XZ PROC ; getFont_verdana_40_4bpp, COMDAT
 ; File d:\stm32_ws\board\jointmanipulator_master\jmm_lcd_v1\jmm_lcd\touchgfx\generated\fonts\src\table_verdana_40_4bpp.cpp
-; Line 35
+; Line 36
 	push	ebp
 	mov	ebp, esp
 	push	-1
@@ -348,7 +359,7 @@ __$EHRec$ = -12						; size = 12
 	mov	DWORD PTR fs:0, eax
 	mov	ecx, OFFSET __38A74FC5_table_verdana_40_4bpp@cpp
 	call	@__CheckForDebuggerJustMyCode@4
-; Line 36
+; Line 37
 	mov	eax, DWORD PTR __tls_index
 	mov	ecx, DWORD PTR fs:__tls_array
 	mov	edx, DWORD PTR [ecx+eax*4]
@@ -373,7 +384,7 @@ __$EHRec$ = -12						; size = 12
 	push	4
 	push	1
 	push	40					; 00000028H
-	push	12					; 0000000cH
+	push	13					; 0000000dH
 	push	OFFSET ?glyphs_verdana_40_4bpp@@3QBUGlyphNode@touchgfx@@B ; glyphs_verdana_40_4bpp
 	mov	ecx, OFFSET ?verdana_40_4bpp@?1??getFont_verdana_40_4bpp@@YAAAVGeneratedFont@touchgfx@@XZ@4V23@A
 	call	??0GeneratedFont@touchgfx@@QAE@PBUGlyphNode@1@GGEEEEEPBQBEPBUKerningNode@1@GGQBGPBUFontContextualFormsTable@1@@Z ; touchgfx::GeneratedFont::GeneratedFont
@@ -385,9 +396,9 @@ __$EHRec$ = -12						; size = 12
 	call	__Init_thread_footer
 	add	esp, 4
 $LN2@getFont_ve:
-; Line 37
-	mov	eax, OFFSET ?verdana_40_4bpp@?1??getFont_verdana_40_4bpp@@YAAAVGeneratedFont@touchgfx@@XZ@4V23@A
 ; Line 38
+	mov	eax, OFFSET ?verdana_40_4bpp@?1??getFont_verdana_40_4bpp@@YAAAVGeneratedFont@touchgfx@@XZ@4V23@A
+; Line 39
 	mov	ecx, DWORD PTR __$EHRec$[ebp]
 	mov	DWORD PTR fs:0, ecx
 	pop	ecx

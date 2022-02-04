@@ -21,7 +21,7 @@ Screen2ViewBase::Screen2ViewBase() :
     box1.setPosition(0, 0, 480, 272);
     box1.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
 
-    posiProgress.setXY(8, 8);
+    posiProgress.setXY(9, 64);
     posiProgress.setProgressIndicatorPosition(0, 0, 184, 94);
     posiProgress.setRange(0, 4095);
     posiProgress.setCenter(92, 94);
@@ -33,7 +33,7 @@ Screen2ViewBase::Screen2ViewBase() :
     posiProgress.setPainter(posiProgressPainter);
     posiProgress.setValue(2048);
 
-    posi.setPosition(8, 78, 184, 49);
+    posi.setPosition(9, 134, 184, 49);
     posi.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
     posi.setLinespacing(0);
     Unicode::snprintf(posiBuffer, POSI_SIZE, "%s", touchgfx::TypedText(T_NUM_LARGE).getText());
@@ -44,11 +44,19 @@ Screen2ViewBase::Screen2ViewBase() :
     toggleButton1.setBitmaps(touchgfx::Bitmap(BITMAP_DARK_TOGGLEBARS_TOGGLE_ROUND_LARGE_BUTTON_OFF_ID), touchgfx::Bitmap(BITMAP_DARK_TOGGLEBARS_TOGGLE_ROUND_LARGE_BUTTON_ON_ID));
     toggleButton1.setAction(buttonCallback);
 
-    button1.setXY(15, 127);
-    button1.setBitmaps(touchgfx::Bitmap(BITMAP_DARK_BUTTONS_ROUND_EDGE_SMALL_PRESSED_ID), touchgfx::Bitmap(BITMAP_DARK_BUTTONS_ROUND_EDGE_SMALL_PRESSED_ID));
+    button1.setXY(9, 8);
+    button1.setBitmaps(touchgfx::Bitmap(BITMAP_DARK_ICONS_HOME_48_ID), touchgfx::Bitmap(BITMAP_DARK_ICONS_HOME_48_ID));
     button1.setAction(buttonCallback);
 
-    id.setPosition(15, 133, 170, 49);
+    gid_button.setXY(34, 175);
+    gid_button.setBitmaps(touchgfx::Bitmap(BITMAP_DARK_BUTTONS_ROUND_EDGE_ICON_BUTTON_ID), touchgfx::Bitmap(BITMAP_DARK_BUTTONS_ROUND_EDGE_ICON_BUTTON_PRESSED_ID));
+    gid_button.setAction(buttonCallback);
+
+    sid_button.setXY(106, 175);
+    sid_button.setBitmaps(touchgfx::Bitmap(BITMAP_DARK_BUTTONS_ROUND_EDGE_ICON_BUTTON_ID), touchgfx::Bitmap(BITMAP_DARK_BUTTONS_ROUND_EDGE_ICON_BUTTON_PRESSED_ID));
+    sid_button.setAction(buttonCallback);
+
+    id.setPosition(16, 179, 170, 49);
     id.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
     id.setLinespacing(0);
     touchgfx::Unicode::snprintf(idBuffer1, IDBUFFER1_SIZE, "%s", touchgfx::TypedText(T_NUM_LARGE).getText());
@@ -156,6 +164,8 @@ Screen2ViewBase::Screen2ViewBase() :
     add(posi);
     add(toggleButton1);
     add(button1);
+    add(gid_button);
+    add(sid_button);
     add(id);
     add(reverse_textArea);
     add(map_4095_button);
@@ -203,6 +213,30 @@ void Screen2ViewBase::buttonCallbackHandler(const touchgfx::AbstractButton& src)
         //When button1 clicked change screen to Screen1
         //Go to Screen1 with no screen transition
         application().gotoScreen1ScreenNoTransition();
+    }
+    else if (&src == &gid_button)
+    {
+        //gidButtonPressed
+        //When gid_button clicked call keyboardSeletedVar on Screen2
+        //Call keyboardSeletedVar
+        keyboardSeletedVar(5);
+
+        //gidgotoKeyboard
+        //When gidButtonPressed completed change screen to Keyboard
+        //Go to Keyboard with no screen transition
+        application().gotoKeyboardScreenNoTransition();
+    }
+    else if (&src == &sid_button)
+    {
+        //sidButtonPressed
+        //When sid_button clicked call keyboardSeletedVar on Screen2
+        //Call keyboardSeletedVar
+        keyboardSeletedVar(6);
+
+        //sidgotoKeyboard
+        //When sidButtonPressed completed change screen to Keyboard
+        //Go to Keyboard with no screen transition
+        application().gotoKeyboardScreenNoTransition();
     }
     else if (&src == &map_4095_button)
     {

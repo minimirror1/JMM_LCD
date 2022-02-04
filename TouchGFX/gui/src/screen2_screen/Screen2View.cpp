@@ -4,7 +4,7 @@
 #include <stdlib.h>
 #endif
 
-Unicode::UnicodeChar keyboardBuffer[4][30];
+Unicode::UnicodeChar keyboardBuffer[6][30];
 uint8_t keyboardSelection;
 uint8_t updateFlag;
 
@@ -122,6 +122,44 @@ void Screen2View::handleTickEvent()
             updateFlag &= ~0x08;
         }
     }    
+    else if (Unicode::strlen(keyboardBuffer[4]) > 0)
+    {
+        if ((updateFlag & 0x10) == 0x10)
+        {
+
+            uint8_t utf8Buff[20];
+            Unicode::toUTF8(keyboardBuffer[4], utf8Buff, 20);
+            int value = atoi((const char*)utf8Buff);
+            if (value > 100)
+                value = 100;
+            //model
+
+            groupID = value;
+            setID_SettingPage(groupID, subID);
+            memset(keyboardBuffer[4], 0, 30);
+
+            updateFlag &= ~0x10;
+        }
+    }
+    else if (Unicode::strlen(keyboardBuffer[5]) > 0)
+    {
+    if ((updateFlag & 0x20) == 0x20)
+    {
+
+        uint8_t utf8Buff[20];
+        Unicode::toUTF8(keyboardBuffer[5], utf8Buff, 20);
+        int value = atoi((const char*)utf8Buff);
+        if (value > 100)
+            value = 100;
+        //model
+
+        subID = value;
+        setID_SettingPage(groupID, subID);
+        memset(keyboardBuffer[5], 0, 30);
+
+        updateFlag &= ~0x10;
+    }
+    }
 }
 
 void Screen2View::setID_SettingPage(int gID, int sID)

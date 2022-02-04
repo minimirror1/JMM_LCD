@@ -20,7 +20,7 @@
       <Translation Language="GB">&lt;value&gt;</Translation>
     </Text>
     <Text Id="__SingleUse_009U" TypographyId="Large" Alignment="Center" Direction="LTR">
-      <Translation Language="GB">&lt;value&gt;-&lt;value&gt;</Translation>
+      <Translation Language="GB">&lt;value&gt; - &lt;value&gt;</Translation>
     </Text>
     <Text Id="__SingleUse_7GSF" TypographyId="Default" Alignment="Left" Direction="LTR">
       <Translation Language="GB">Reverse</Translation>

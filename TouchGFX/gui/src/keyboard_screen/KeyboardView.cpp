@@ -1,6 +1,6 @@
 #include <gui/keyboard_screen/KeyboardView.hpp>
 
-extern Unicode::UnicodeChar keyboardBuffer[4][30];
+extern Unicode::UnicodeChar keyboardBuffer[6][30];
 extern uint8_t keyboardSelection;
 extern uint8_t updateFlag;
 

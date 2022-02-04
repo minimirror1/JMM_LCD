@@ -61,6 +61,8 @@ protected:
     touchgfx::TextAreaWithOneWildcard posi;
     touchgfx::ToggleButton toggleButton1;
     touchgfx::Button button1;
+    touchgfx::Button gid_button;
+    touchgfx::Button sid_button;
     touchgfx::TextAreaWithTwoWildcards id;
     touchgfx::TextArea reverse_textArea;
     touchgfx::Button map_4095_button;

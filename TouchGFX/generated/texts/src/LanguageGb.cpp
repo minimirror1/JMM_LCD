@@ -9,29 +9,29 @@ KEEP extern const uint32_t indicesGb[] TEXT_LOCATION_FLASH_ATTRIBUTE;
 
 TEXT_LOCATION_FLASH_PRAGMA
 KEEP extern const uint32_t indicesGb[] TEXT_LOCATION_FLASH_ATTRIBUTE = {
-    2, // T_EnteredText
-    71, // T_NumMode
-    66, // T_AlphaMode
-    2, // T___SingleUse_VZTJ
-    0, // T___SingleUse_V9I0
-    2, // T___SingleUse_QU5N
+    4, // T_EnteredText
+    77, // T_NumMode
+    72, // T_AlphaMode
+    4, // T___SingleUse_VZTJ
+    6, // T___SingleUse_V9I0
+    4, // T___SingleUse_QU5N
     0, // T___SingleUse_009U
-    33, // T___SingleUse_7GSF
-    41, // T___SingleUse_8MJ9
-    75, // T___SingleUse_IT5X
-    61, // T_Num_Default
-    59, // T_Num_Small
-    59, // T_Num_Large
-    2, // T___SingleUse_L0HY
-    61, // T_KeyText
-    14, // T___SingleUse_HNW4
-    4, // T___SingleUse_FHL2
-    55, // T___SingleUse_PT5J
-    24, // T___SingleUse_P9NB
-    48, // T___SingleUse_T8KH
-    2, // T___SingleUse_0M3V
-    2, // T___SingleUse_EKEO
-    2, // T___SingleUse_RCKG
-    2, // T___SingleUse_DP9C
-    2 // T___SingleUse_6POO
+    39, // T___SingleUse_7GSF
+    47, // T___SingleUse_8MJ9
+    81, // T___SingleUse_IT5X
+    67, // T_Num_Default
+    65, // T_Num_Small
+    65, // T_Num_Large
+    4, // T___SingleUse_L0HY
+    67, // T_KeyText
+    20, // T___SingleUse_HNW4
+    10, // T___SingleUse_FHL2
+    61, // T___SingleUse_PT5J
+    30, // T___SingleUse_P9NB
+    54, // T___SingleUse_T8KH
+    4, // T___SingleUse_0M3V
+    4, // T___SingleUse_EKEO
+    4, // T___SingleUse_RCKG
+    4, // T___SingleUse_DP9C
+    4 // T___SingleUse_6POO
 };
