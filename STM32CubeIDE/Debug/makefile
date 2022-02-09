@@ -22,11 +22,18 @@ RM := rm -rf
 -include Application/User/TouchGFX/target/subdir.mk
 -include Application/User/TouchGFX/App/subdir.mk
 -include Application/User/Startup/subdir.mk
+-include Application/User/Motion_Task/Src/subdir.mk
 -include Application/User/LIBJPEG/Target/subdir.mk
 -include Application/User/LIBJPEG/App/subdir.mk
 -include Application/User/FATFS/Target/subdir.mk
 -include Application/User/FATFS/App/subdir.mk
 -include Application/User/Core/subdir.mk
+-include Application/User/Control_Driver/non_stop_delay/Src/subdir.mk
+-include Application/User/Control_Driver/UART_Parsing/Protocol/Src/subdir.mk
+-include Application/User/Control_Driver/UART_Driver/Src/subdir.mk
+-include Application/User/Control_Driver/CRC/Src/subdir.mk
+-include Application/User/Control_Driver/CAN_Parsing/Src/subdir.mk
+-include Application/User/Control_Driver/CAN_Driver/Src/subdir.mk
 -include objects.mk
 
 ifneq ($(MAKECMDGOALS),clean)

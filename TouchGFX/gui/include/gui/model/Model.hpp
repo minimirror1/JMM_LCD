@@ -3,9 +3,11 @@
 
 class ModelListener;
 
+
 #ifndef SIMULATOR
-#pragma pack(1)
-#endif
+#include "motionManager.h"
+#include "cmsis_os.h"
+#else
 typedef struct {
     int myIndex;
     int gID;
@@ -17,8 +19,6 @@ typedef struct {
     int filter;
     int reverse;
 }SettingData_TypeDef;
-#ifndef SIMULATOR
-#pragma pack()
 #endif
 
 class Model
@@ -60,6 +60,15 @@ private:
     int settingSid;
 
     SettingData_TypeDef setting[10];
+#ifndef SIMULATOR
+
+
+    CtrData_TypeDef ctrMsg;
+    osStatus_t status;
+
+
+    int firstMemSend;
+#endif
 
     int getIndex(int gID, int sID);
 

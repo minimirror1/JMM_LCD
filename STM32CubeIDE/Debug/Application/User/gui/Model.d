@@ -1,6 +1,18 @@
 Application/User/gui/Model.o: \
  D:/stm32_ws/board/JointManipulator_Master/JMM_LCD_V1/JMM_LCD/TouchGFX/gui/src/model/Model.cpp \
  ../../TouchGFX/gui/include/gui/model/Model.hpp \
+ D:/stm32_ws/board/JointManipulator_Master/JMM_LCD_V1/JMM_LCD/STM32CubeIDE/Application/User/Motion_Task/Inc/motionManager.h \
+ ../../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os.h \
+ ../../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h \
+ ../../Core/Inc/FreeRTOSConfig.h \
+ ../../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h \
+ ../../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h \
+ ../../Middlewares/Third_Party/FreeRTOS/Source/include/deprecated_definitions.h \
+ ../../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM7/r0p1/portmacro.h \
+ ../../Middlewares/Third_Party/FreeRTOS/Source/include/mpu_wrappers.h \
+ ../../Middlewares/Third_Party/FreeRTOS/Source/include/task.h \
+ ../../Middlewares/Third_Party/FreeRTOS/Source/include/list.h \
+ ../../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.h \
  ../../TouchGFX/gui/include/gui/model/ModelListener.hpp \
  D:/stm32_ws/board/JointManipulator_Master/JMM_LCD_V1/JMM_LCD/STM32CubeIDE/Application/User/gui/eeprom.h \
  ../../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal.h \
@@ -23,6 +35,7 @@ Application/User/gui/Model.o: \
  ../../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_dma.h \
  ../../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_dma_ex.h \
  ../../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_cortex.h \
+ ../../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_can.h \
  ../../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_crc.h \
  ../../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_crc_ex.h \
  ../../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_dma2d.h \
@@ -45,6 +58,30 @@ Application/User/gui/Model.o: \
  ../../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_uart_ex.h
 
 ../../TouchGFX/gui/include/gui/model/Model.hpp:
+
+D:/stm32_ws/board/JointManipulator_Master/JMM_LCD_V1/JMM_LCD/STM32CubeIDE/Application/User/Motion_Task/Inc/motionManager.h:
+
+../../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os.h:
+
+../../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h:
+
+../../Core/Inc/FreeRTOSConfig.h:
+
+../../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h:
+
+../../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h:
+
+../../Middlewares/Third_Party/FreeRTOS/Source/include/deprecated_definitions.h:
+
+../../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM7/r0p1/portmacro.h:
+
+../../Middlewares/Third_Party/FreeRTOS/Source/include/mpu_wrappers.h:
+
+../../Middlewares/Third_Party/FreeRTOS/Source/include/task.h:
+
+../../Middlewares/Third_Party/FreeRTOS/Source/include/list.h:
+
+../../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.h:
 
 ../../TouchGFX/gui/include/gui/model/ModelListener.hpp:
 
@@ -89,6 +126,8 @@ D:/stm32_ws/board/JointManipulator_Master/JMM_LCD_V1/JMM_LCD/STM32CubeIDE/Applic
 ../../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_dma_ex.h:
 
 ../../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_cortex.h:
+
+../../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_can.h:
 
 ../../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_crc.h:
 

@@ -30,11 +30,18 @@ CPP_DEPS :=
 
 # Every subdirectory with source files must be described here
 SUBDIRS := \
+Application/User/Control_Driver/CAN_Driver/Src \
+Application/User/Control_Driver/CAN_Parsing/Src \
+Application/User/Control_Driver/CRC/Src \
+Application/User/Control_Driver/UART_Driver/Src \
+Application/User/Control_Driver/UART_Parsing/Protocol/Src \
+Application/User/Control_Driver/non_stop_delay/Src \
 Application/User/Core \
 Application/User/FATFS/App \
 Application/User/FATFS/Target \
 Application/User/LIBJPEG/App \
 Application/User/LIBJPEG/Target \
+Application/User/Motion_Task/Src \
 Application/User/Startup \
 Application/User/TouchGFX/App \
 Application/User/TouchGFX/target \

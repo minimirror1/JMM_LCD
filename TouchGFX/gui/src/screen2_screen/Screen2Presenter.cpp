@@ -24,9 +24,11 @@ void Screen2Presenter::setScreenUp()
 //View Call Function
 void Screen2Presenter::setChangeGid(int index, int gID)
 {
+    model->setChangeGid(index, gID);
 }
 void Screen2Presenter::setChangeSid(int index, int sID)
 {
+    model->setChangeSid(index, sID);
 }
 void Screen2Presenter::setChangeLimitMin(int index, int value)
 {

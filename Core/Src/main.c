@@ -26,6 +26,11 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
+#include "motionManager.h"
+
+#include "uart.h"
+#include "uart_datalink.h"
+
 #include <stm32746g_discovery_qspi.h>
 #include <string.h>
 #include <stdio.h>
@@ -62,6 +67,7 @@
 /* USER CODE END PM */
 
 /* Private variables ---------------------------------------------------------*/
+CAN_HandleTypeDef hcan1;
 
 CRC_HandleTypeDef hcrc;
 
@@ -77,8 +83,8 @@ SD_HandleTypeDef hsd1;
 DMA_HandleTypeDef hdma_sdmmc1_tx;
 DMA_HandleTypeDef hdma_sdmmc1_rx;
 
+UART_HandleTypeDef huart7;
 UART_HandleTypeDef huart1;
-UART_HandleTypeDef huart6;
 
 SDRAM_HandleTypeDef hsdram1;
 
@@ -103,15 +109,26 @@ const osThreadAttr_t videoTask_attributes = {
   .stack_size = 1000 * 4,
   .priority = (osPriority_t) osPriorityLow,
 };
-/* Definitions for sdTask */
-osThreadId_t sdTaskHandle;
-const osThreadAttr_t sdTask_attributes = {
-  .name = "sdTask",
+/* Definitions for motionTask */
+osThreadId_t motionTaskHandle;
+const osThreadAttr_t motionTask_attributes = {
+  .name = "motionTask",
   .stack_size = 4096 * 4,
   .priority = (osPriority_t) osPriorityRealtime,
 };
+/* Definitions for settingDataQueue */
+osMessageQueueId_t settingDataQueueHandle;
+const osMessageQueueAttr_t settingDataQueue_attributes = {
+  .name = "settingDataQueue"
+};
+/* Definitions for ctrDataQueue */
+osMessageQueueId_t ctrDataQueueHandle;
+const osMessageQueueAttr_t ctrDataQueue_attributes = {
+  .name = "ctrDataQueue"
+};
 /* USER CODE BEGIN PV */
 static FMC_SDRAM_CommandTypeDef Command;
+uint8_t my_can_id;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -124,14 +141,15 @@ static void MX_FMC_Init(void);
 static void MX_I2C3_Init(void);
 static void MX_LTDC_Init(void);
 static void MX_QUADSPI_Init(void);
-static void MX_USART6_UART_Init(void);
 static void MX_SDMMC1_SD_Init(void);
 static void MX_DMA_Init(void);
 static void MX_USART1_UART_Init(void);
+static void MX_CAN1_Init(void);
+static void MX_UART7_Init(void);
 void StartDefaultTask(void *argument);
 extern void TouchGFX_Task(void *argument);
 extern void videoTaskFunc(void *argument);
-void StartSDTask(void *argument);
+void StartMotionTask(void *argument);
 
 /* USER CODE BEGIN PFP */
 
@@ -175,7 +193,7 @@ int main(void)
 
   /* USER CODE BEGIN SysInit */
 
-  /* USER CODE END SysInit *
+  /* USER CODE END SysInit */
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
@@ -186,14 +204,15 @@ int main(void)
   MX_LTDC_Init();
   MX_QUADSPI_Init();
   MX_LIBJPEG_Init();
-  MX_USART6_UART_Init();
   MX_SDMMC1_SD_Init();
   MX_FATFS_Init();
   MX_DMA_Init();
   MX_USART1_UART_Init();
+  MX_CAN1_Init();
+  MX_UART7_Init();
   MX_TouchGFX_Init();
   /* USER CODE BEGIN 2 */
-
+  //MAL_UART_7_Init();
 
   /* USER CODE END 2 */
 
@@ -201,6 +220,7 @@ int main(void)
   osKernelInitialize();
 
   /* USER CODE BEGIN RTOS_MUTEX */
+
   /* add mutexes, ... */
   /* USER CODE END RTOS_MUTEX */
 
@@ -211,6 +231,13 @@ int main(void)
   /* USER CODE BEGIN RTOS_TIMERS */
   /* start timers, add new ones, ... */
   /* USER CODE END RTOS_TIMERS */
+
+  /* Create the queue(s) */
+  /* creation of settingDataQueue */
+  settingDataQueueHandle = osMessageQueueNew (10, sizeof(SettingDataArr_TypeDef), &settingDataQueue_attributes);
+
+  /* creation of ctrDataQueue */
+  ctrDataQueueHandle = osMessageQueueNew (16, sizeof(CtrData_TypeDef), &ctrDataQueue_attributes);
 
   /* USER CODE BEGIN RTOS_QUEUES */
   /* add queues, ... */
@@ -226,8 +253,8 @@ int main(void)
   /* creation of videoTask */
   videoTaskHandle = osThreadNew(videoTaskFunc, NULL, &videoTask_attributes);
 
-  /* creation of sdTask */
-  sdTaskHandle = osThreadNew(StartSDTask, NULL, &sdTask_attributes);
+  /* creation of motionTask */
+  motionTaskHandle = osThreadNew(StartMotionTask, NULL, &motionTask_attributes);
 
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
@@ -304,7 +331,7 @@ void SystemClock_Config(void)
     Error_Handler();
   }
   PeriphClkInitStruct.PeriphClockSelection = RCC_PERIPHCLK_LTDC|RCC_PERIPHCLK_USART1
-                              |RCC_PERIPHCLK_USART6|RCC_PERIPHCLK_I2C3
+                              |RCC_PERIPHCLK_UART7|RCC_PERIPHCLK_I2C3
                               |RCC_PERIPHCLK_SDMMC1|RCC_PERIPHCLK_CLK48;
   PeriphClkInitStruct.PLLSAI.PLLSAIN = 384;
   PeriphClkInitStruct.PLLSAI.PLLSAIR = 5;
@@ -313,7 +340,7 @@ void SystemClock_Config(void)
   PeriphClkInitStruct.PLLSAIDivQ = 1;
   PeriphClkInitStruct.PLLSAIDivR = RCC_PLLSAIDIVR_8;
   PeriphClkInitStruct.Usart1ClockSelection = RCC_USART1CLKSOURCE_PCLK2;
-  PeriphClkInitStruct.Usart6ClockSelection = RCC_USART6CLKSOURCE_PCLK2;
+  PeriphClkInitStruct.Uart7ClockSelection = RCC_UART7CLKSOURCE_PCLK1;
   PeriphClkInitStruct.I2c3ClockSelection = RCC_I2C3CLKSOURCE_PCLK1;
   PeriphClkInitStruct.Clk48ClockSelection = RCC_CLK48SOURCE_PLL;
   PeriphClkInitStruct.Sdmmc1ClockSelection = RCC_SDMMC1CLKSOURCE_CLK48;
@@ -321,6 +348,43 @@ void SystemClock_Config(void)
   {
     Error_Handler();
   }
+}
+
+/**
+  * @brief CAN1 Initialization Function
+  * @param None
+  * @retval None
+  */
+static void MX_CAN1_Init(void)
+{
+
+  /* USER CODE BEGIN CAN1_Init 0 */
+
+  /* USER CODE END CAN1_Init 0 */
+
+  /* USER CODE BEGIN CAN1_Init 1 */
+
+  /* USER CODE END CAN1_Init 1 */
+  hcan1.Instance = CAN1;
+  hcan1.Init.Prescaler = 16;
+  hcan1.Init.Mode = CAN_MODE_NORMAL;
+  hcan1.Init.SyncJumpWidth = CAN_SJW_1TQ;
+  hcan1.Init.TimeSeg1 = CAN_BS1_7TQ;
+  hcan1.Init.TimeSeg2 = CAN_BS2_1TQ;
+  hcan1.Init.TimeTriggeredMode = DISABLE;
+  hcan1.Init.AutoBusOff = DISABLE;
+  hcan1.Init.AutoWakeUp = DISABLE;
+  hcan1.Init.AutoRetransmission = DISABLE;
+  hcan1.Init.ReceiveFifoLocked = DISABLE;
+  hcan1.Init.TransmitFifoPriority = DISABLE;
+  if (HAL_CAN_Init(&hcan1) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /* USER CODE BEGIN CAN1_Init 2 */
+
+  /* USER CODE END CAN1_Init 2 */
+
 }
 
 /**
@@ -566,6 +630,41 @@ static void MX_SDMMC1_SD_Init(void)
 }
 
 /**
+  * @brief UART7 Initialization Function
+  * @param None
+  * @retval None
+  */
+static void MX_UART7_Init(void)
+{
+
+  /* USER CODE BEGIN UART7_Init 0 */
+
+  /* USER CODE END UART7_Init 0 */
+
+  /* USER CODE BEGIN UART7_Init 1 */
+
+  /* USER CODE END UART7_Init 1 */
+  huart7.Instance = UART7;
+  huart7.Init.BaudRate = 921600;
+  huart7.Init.WordLength = UART_WORDLENGTH_8B;
+  huart7.Init.StopBits = UART_STOPBITS_1;
+  huart7.Init.Parity = UART_PARITY_NONE;
+  huart7.Init.Mode = UART_MODE_TX_RX;
+  huart7.Init.HwFlowCtl = UART_HWCONTROL_NONE;
+  huart7.Init.OverSampling = UART_OVERSAMPLING_16;
+  huart7.Init.OneBitSampling = UART_ONE_BIT_SAMPLE_DISABLE;
+  huart7.AdvancedInit.AdvFeatureInit = UART_ADVFEATURE_NO_INIT;
+  if (HAL_UART_Init(&huart7) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /* USER CODE BEGIN UART7_Init 2 */
+
+  /* USER CODE END UART7_Init 2 */
+
+}
+
+/**
   * @brief USART1 Initialization Function
   * @param None
   * @retval None
@@ -597,41 +696,6 @@ static void MX_USART1_UART_Init(void)
   /* USER CODE BEGIN USART1_Init 2 */
 
   /* USER CODE END USART1_Init 2 */
-
-}
-
-/**
-  * @brief USART6 Initialization Function
-  * @param None
-  * @retval None
-  */
-static void MX_USART6_UART_Init(void)
-{
-
-  /* USER CODE BEGIN USART6_Init 0 */
-
-  /* USER CODE END USART6_Init 0 */
-
-  /* USER CODE BEGIN USART6_Init 1 */
-
-  /* USER CODE END USART6_Init 1 */
-  huart6.Instance = USART6;
-  huart6.Init.BaudRate = 921600;
-  huart6.Init.WordLength = UART_WORDLENGTH_8B;
-  huart6.Init.StopBits = UART_STOPBITS_1;
-  huart6.Init.Parity = UART_PARITY_NONE;
-  huart6.Init.Mode = UART_MODE_TX_RX;
-  huart6.Init.HwFlowCtl = UART_HWCONTROL_NONE;
-  huart6.Init.OverSampling = UART_OVERSAMPLING_16;
-  huart6.Init.OneBitSampling = UART_ONE_BIT_SAMPLE_DISABLE;
-  huart6.AdvancedInit.AdvFeatureInit = UART_ADVFEATURE_NO_INIT;
-  if (HAL_UART_Init(&huart6) != HAL_OK)
-  {
-    Error_Handler();
-  }
-  /* USER CODE BEGIN USART6_Init 2 */
-
-  /* USER CODE END USART6_Init 2 */
 
 }
 
@@ -765,9 +829,9 @@ static void MX_GPIO_Init(void)
 
   /* GPIO Ports Clock Enable */
   __HAL_RCC_GPIOE_CLK_ENABLE();
+  __HAL_RCC_GPIOB_CLK_ENABLE();
   __HAL_RCC_GPIOC_CLK_ENABLE();
   __HAL_RCC_GPIOA_CLK_ENABLE();
-  __HAL_RCC_GPIOB_CLK_ENABLE();
   __HAL_RCC_GPIOG_CLK_ENABLE();
   __HAL_RCC_GPIOJ_CLK_ENABLE();
   __HAL_RCC_GPIOD_CLK_ENABLE();
@@ -802,6 +866,14 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(LCD_DISP_GPIO_Port, &GPIO_InitStruct);
 
+  /*Configure GPIO pins : PC7 PC6 */
+  GPIO_InitStruct.Pin = GPIO_PIN_7|GPIO_PIN_6;
+  GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
+  GPIO_InitStruct.Alternate = GPIO_AF8_USART6;
+  HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
+
 }
 
 /* USER CODE BEGIN 4 */
@@ -826,227 +898,22 @@ void StartDefaultTask(void *argument)
   /* USER CODE END 5 */
 }
 
-/* USER CODE BEGIN Header_StartSDTask */
+/* USER CODE BEGIN Header_StartMotionTask */
 /**
-* @brief Function implementing the sdTask thread.
+* @brief Function implementing the motionTask thread.
 * @param argument: Not used
 * @retval None
 */
-
-
-
-/* USER CODE END Header_StartSDTask */
-void StartSDTask(void *argument)
+/* USER CODE END Header_StartMotionTask */
+__weak void StartMotionTask(void *argument)
 {
-  /* USER CODE BEGIN StartSDTask */
-
-	/*eep example*/
-	////
-	////
-#if 0
-		EE_emul_Init((uint16_t *)&EepData.flag,sizeof(EEPemul_Data_TypeDef));
-
-		//EE_WriteStrData((uint16_t *)&EepData.encoderSt1_cnt,sizeof(EepData.encoderSt1_cnt));
-		EE_ReadStrData((uint16_t *)&EepData.encoderSt1_cnt,sizeof(EepData.encoderSt1_cnt));
-
-		//EepData.encoderSt1_cnt = 0x11223344;
-		//EE_WriteStrData((uint16_t *)&EepData.encoderSt1_cnt,sizeof(EepData.encoderSt1_cnt));
-
-		//EepData.flag = 0x1212;
-		//EE_WriteStrData((uint16_t *)&EepData.flag,sizeof(EepData.flag));
-
-		/* Unlock the Flash Program Erase controller */
-
-		/* EEPROM Init */
-#endif
-#if 0
-
-	/*eep example*/
-
-		// Fill EEPROM variables addresses
-		for (VarIndex = 1; VarIndex <= NB_OF_VAR; VarIndex++) {
-			VirtAddVarTab[VarIndex - 1] = VarIndex;
-		}
-
-		// Store Values in EEPROM emulation
-		//HAL_UART_Transmit(&huart2, "Store values\n\r", 14, 100);
-
-		//HAL_GPIO_WritePin(LED_GPIO_Port, LED_Pin, GPIO_PIN_RESET);
-		for (VarIndex = 0; VarIndex < NB_OF_VAR; VarIndex++) {
-			 //Sequence 1
-			if ((EE_WriteVariable(VirtAddVarTab[VarIndex], VarDataTab[VarIndex])) != HAL_OK) {
-				Error_Handler();
-			}
-		}
-		//HAL_GPIO_WritePin(LED_GPIO_Port, LED_Pin, GPIO_PIN_SET);
-
-		// Read values
-		//HAL_UART_Transmit(&huart2, "Read values\n\r", 13, 100);
-		// HAL_GPIO_WritePin(LED_GPIO_Port, LED_Pin, GPIO_PIN_RESET);
-		for (VarIndex = 0; VarIndex < NB_OF_VAR; VarIndex++) {
-			if ((EE_ReadVariable(VirtAddVarTab[VarIndex], &VarDataTabRead[VarIndex])) != HAL_OK) {
-				Error_Handler();
-			}
-		}
-		//  HAL_GPIO_WritePin(LED_GPIO_Port, LED_Pin, GPIO_PIN_SET);
-
-		//HAL_UART_Transmit(&huart2, "Read table: ", 12, 100);
-		//HAL_UART_Transmit(&huart2, VarDataTabRead, NB_OF_VAR, 1000);
-		//HAL_UART_Transmit(&huart2, "\n\r", 2, 100);
-
-		// Store revert Values in EEPROM emulation
-		//HAL_UART_Transmit(&huart2, "\n\r", 2, 100);
-		//HAL_UART_Transmit(&huart2, "Store revert values\n\r", 21, 100);
-
-		//  HAL_GPIO_WritePin(LED_GPIO_Port, LED_Pin, GPIO_PIN_RESET);
-		for (VarIndex = 0; VarIndex < NB_OF_VAR; VarIndex++) {
-			 //Sequence 1
-			if ((EE_WriteVariable(VirtAddVarTab[VarIndex], VarDataTab[NB_OF_VAR - VarIndex - 1])) != HAL_OK) {
-				Error_Handler();
-			}
-		}
-	//		HAL_GPIO_WritePin(LED_GPIO_Port, LED_Pin, GPIO_PIN_SET);
-
-	// Read values
-		//HAL_UART_Transmit(&huart2, "Read revert values\n\r", 20, 100);
-		//  HAL_GPIO_WritePin(LED_GPIO_Port, LED_Pin, GPIO_PIN_RESET);
-		for (VarIndex = 0; VarIndex < NB_OF_VAR; VarIndex++) {
-			if ((EE_ReadVariable(VirtAddVarTab[VarIndex], &VarDataTabRead[VarIndex])) != HAL_OK) {
-				Error_Handler();
-			}
-		}
-		// HAL_GPIO_WritePin(LED_GPIO_Port, LED_Pin, GPIO_PIN_SET);
-
-		//HAL_UART_Transmit(&huart2, "Read revert table: ", 19, 100);
-		//HAL_UART_Transmit(&huart2, VarDataTabRead, NB_OF_VAR, 1000);
-		//HAL_UART_Transmit(&huart2, "\n\r", 2, 100);
-
-		// Store Values in EEPROM emulation
-		//HAL_UART_Transmit(&huart2, "\n\r", 2, 100);
-		//HAL_UART_Transmit(&huart2, "Store values\n\r", 14, 100);
-
-		// HAL_GPIO_WritePin(LED_GPIO_Port, LED_Pin, GPIO_PIN_RESET);
-		for (VarIndex = 0; VarIndex < NB_OF_VAR; VarIndex++) {
-			 //Sequence 1
-			if ((EE_WriteVariable(VirtAddVarTab[VarIndex], VarDataTab[VarIndex])) != HAL_OK) {
-				Error_Handler();
-			}
-		}
-		//HAL_GPIO_WritePin(LED_GPIO_Port, LED_Pin, GPIO_PIN_SET);
-
-		// Read values
-		//HAL_UART_Transmit(&huart2, "Read values\n\r", 13, 100);
-		//HAL_GPIO_WritePin(LED_GPIO_Port, LED_Pin, GPIO_PIN_RESET);
-		for (VarIndex = 0; VarIndex < NB_OF_VAR; VarIndex++) {
-			if ((EE_ReadVariable(VirtAddVarTab[VarIndex], &VarDataTabRead[VarIndex])) != HAL_OK) {
-				Error_Handler();
-			}
-		}
-		//HAL_GPIO_WritePin(LED_GPIO_Port, LED_Pin, GPIO_PIN_SET);
-
-		//HAL_UART_Transmit(&huart2, "Read table: ", 12, 100);
-		//HAL_UART_Transmit(&huart2, VarDataTabRead, NB_OF_VAR, 1000);
-		//HAL_UART_Transmit(&huart2, "\n\r", 2, 100);
-#endif
-#if 0
-	FRESULT res;
-	uint32_t byteswritten, bytesread;
-	uint8_t wtext[] = "STM32 FATFS works great!";
-	uint8_t rtext[_MAX_SS];
-
-	if(f_mount(&SDFatFS, (TCHAR const*)SDPath, 0) != FR_OK)
-	{
-		Error_Handler();
-	}
-	else
-	{
-//		if(f_mkfs((TCHAR const*)SDPath, FM_ANY, 0, rtext, sizeof(rtext)) != FR_OK)
-//		{
-//			Error_Handler();
-//		}
-//		else
-//		{
-		osDelay(1000);
-			if(f_open(&SDFile, "STM32.TXT", FA_CREATE_ALWAYS | FA_WRITE) != FR_OK)
-			{
-				Error_Handler();
-			}
-			else
-			{
-				osDelay(1000);
-				res = f_write(&SDFile, wtext, strlen((char *)wtext), (void *)&byteswritten);
-				if((byteswritten == 0) || (res != FR_OK))
-				{
-					Error_Handler();
-				}
-				else
-				{
-					//Error_Handler();
-				}
-
-			}
-			osDelay(1000);
-			f_close(&SDFile);
-		//}
-	}
-	osDelay(1000);
-	f_mount(&SDFatFS, (TCHAR const*)NULL, 0);
-#endif
-#if 0
-	volatile FRESULT res;
-
-	uint32_t byteswritten; /* File write count */
-	char wtext[] = "MYSD";
-
-	uint8_t data[10] = {1,2,3,4,5,6,7,8,9,10};
-
-
-
-	disk_initialize((BYTE) 0);
-
-	f_mount(NULL,"",0);
-	f_mount(&SDFatFS, (TCHAR const*) SDPath, 0);
-
-
-	//f_open(&SDFile, "MYTEST.TXT", FA_CREATE_ALWAYS | FA_WRITE | FA_READ);
-	//taskENTER_CRITICAL();
-	res = f_open(&SDFile, "A.TXT", FA_CREATE_ALWAYS | FA_WRITE);
-	//taskEXIT_CRITICAL();
-	if (res != FR_OK )
-	{
-		Error_Handler();
-	}
-	if(res == FR_OK)
-	{
-	//	taskENTER_CRITICAL();
-		//res = f_write(&SDFile, wtext, strlen((char const *)wtext), (void*) &byteswritten);
-		res = f_write(&SDFile, data, 10, (void*) &byteswritten);
-		//taskEXIT_CRITICAL();
-		//taskENTER_CRITICAL();
-		res = f_close(&SDFile);
-		//taskEXIT_CRITICAL();
-	}
-	else
-	{
-		Error_Handler();
-	}
-
-	if(res != FR_OK || byteswritten == 0)
-	{
-		Error_Handler();
-	}
-	//taskENTER_CRITICAL();
-	f_mount(NULL,"",0);
-	//taskEXIT_CRITICAL();
-	//
-#endif
-
+  /* USER CODE BEGIN StartMotionTask */
   /* Infinite loop */
   for(;;)
   {
-    osDelay(100);
+    osDelay(1);
   }
-  /* USER CODE END StartSDTask */
+  /* USER CODE END StartMotionTask */
 }
 
 /* MPU Configuration */

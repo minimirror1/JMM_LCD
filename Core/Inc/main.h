@@ -47,7 +47,7 @@ extern "C" {
 
 /* Exported macro ------------------------------------------------------------*/
 /* USER CODE BEGIN EM */
-
+extern uint8_t my_can_id;
 /* USER CODE END EM */
 
 /* Exported functions prototypes ---------------------------------------------*/
@@ -65,7 +65,20 @@ void Error_Handler(void);
 #define LCD_DISP_Pin GPIO_PIN_12
 #define LCD_DISP_GPIO_Port GPIOI
 /* USER CODE BEGIN Private defines */
+#define FW_VER_STR "0.0.1v"	//최초?��?��
 
+#define BOARD_TYPE	2//JMM
+
+#define CAN1_ENABLE
+
+
+/* CAN QUEUE MEM SIZE --------------------------------------------------------*/
+#define CAN_QUEUE_SIZE_CUSTOM
+#ifdef CAN_QUEUE_SIZE_CUSTOM
+#define MAL_CAN_QUEUE_SIZE	1
+#endif
+
+#define MAL_UART7_MODULE_ENABLED
 /* USER CODE END Private defines */
 
 #ifdef __cplusplus

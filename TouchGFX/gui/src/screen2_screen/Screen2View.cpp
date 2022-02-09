@@ -168,6 +168,9 @@ void Screen2View::setID_SettingPage(int index, int gID, int sID)
     groupID = gID;
     subID = sID;
 
+    presenter->setChangeGid(index, gID);
+    presenter->setChangeSid(index, sID);
+
     Unicode::snprintf(idBuffer1, IDBUFFER1_SIZE, "%d", gID);
     id.setWildcard1(idBuffer1);
     id.invalidate();

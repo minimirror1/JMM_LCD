@@ -10,9 +10,9 @@ void Monitor_Item::initialize()
 {
     Monitor_ItemBase::initialize();
 
-    setPosi(0);   
+    //setPosi(0);
 
-    setId(5,5);
+    //setId(5,5);
 }
 
 void Monitor_Item::setPtr(Screen1View* ptr)

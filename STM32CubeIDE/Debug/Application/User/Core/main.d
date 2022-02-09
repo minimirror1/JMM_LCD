@@ -21,6 +21,7 @@ Application/User/Core/main.o: \
  ../../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_dma.h \
  ../../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_dma_ex.h \
  ../../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_cortex.h \
+ ../../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_can.h \
  ../../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_crc.h \
  ../../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_crc_ex.h \
  ../../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_dma2d.h \
@@ -63,6 +64,9 @@ Application/User/Core/main.o: \
  ../../Middlewares/Third_Party/LibJPEG/include/jpeglib.h \
  ../../LIBJPEG/Target/jconfig.h ../../LIBJPEG/Target/jdata_conf.h \
  ../../LIBJPEG/Target/jmorecfg.h ../../TouchGFX/App/app_touchgfx.h \
+ D:/stm32_ws/board/JointManipulator_Master/JMM_LCD_V1/JMM_LCD/STM32CubeIDE/Application/User/Motion_Task/Inc/motionManager.h \
+ D:/stm32_ws/driver/UART_Driver/Inc/uart.h \
+ D:/stm32_ws/driver/UART_Parsing/Protocol/Inc/uart_datalink.h \
  ../../Drivers/BSP/STM32746G-Discovery/stm32746g_discovery_qspi.h \
  ../../Drivers/BSP/STM32746G-Discovery/../Components/n25q128a/n25q128a.h
 
@@ -107,6 +111,8 @@ Application/User/Core/main.o: \
 ../../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_dma_ex.h:
 
 ../../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_cortex.h:
+
+../../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_can.h:
 
 ../../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_crc.h:
 
@@ -201,6 +207,12 @@ Application/User/Core/main.o: \
 ../../LIBJPEG/Target/jmorecfg.h:
 
 ../../TouchGFX/App/app_touchgfx.h:
+
+D:/stm32_ws/board/JointManipulator_Master/JMM_LCD_V1/JMM_LCD/STM32CubeIDE/Application/User/Motion_Task/Inc/motionManager.h:
+
+D:/stm32_ws/driver/UART_Driver/Inc/uart.h:
+
+D:/stm32_ws/driver/UART_Parsing/Protocol/Inc/uart_datalink.h:
 
 ../../Drivers/BSP/STM32746G-Discovery/stm32746g_discovery_qspi.h:
 

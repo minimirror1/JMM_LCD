@@ -37,6 +37,18 @@ Application/User/generated/Monitor_ItemBase.o: \
  ../../Middlewares/ST/touchgfx/framework/include/mvp/MVPHeap.hpp \
  ../../Middlewares/ST/touchgfx/framework/include/mvp/Presenter.hpp \
  ../../TouchGFX/gui/include/gui/model/Model.hpp \
+ D:/stm32_ws/board/JointManipulator_Master/JMM_LCD_V1/JMM_LCD/STM32CubeIDE/Application/User/Motion_Task/Inc/motionManager.h \
+ ../../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os.h \
+ ../../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h \
+ ../../Core/Inc/FreeRTOSConfig.h \
+ ../../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h \
+ ../../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h \
+ ../../Middlewares/Third_Party/FreeRTOS/Source/include/deprecated_definitions.h \
+ ../../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM7/r0p1/portmacro.h \
+ ../../Middlewares/Third_Party/FreeRTOS/Source/include/mpu_wrappers.h \
+ ../../Middlewares/Third_Party/FreeRTOS/Source/include/task.h \
+ ../../Middlewares/Third_Party/FreeRTOS/Source/include/list.h \
+ ../../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.h \
  ../../Middlewares/ST/touchgfx/framework/include/touchgfx/containers/progress_indicators/CircleProgress.hpp \
  ../../Middlewares/ST/touchgfx/framework/include/touchgfx/containers/progress_indicators/AbstractProgressIndicator.hpp \
  ../../Middlewares/ST/touchgfx/framework/include/touchgfx/EasingEquations.hpp \
@@ -140,6 +152,30 @@ Application/User/generated/Monitor_ItemBase.o: \
 ../../Middlewares/ST/touchgfx/framework/include/mvp/Presenter.hpp:
 
 ../../TouchGFX/gui/include/gui/model/Model.hpp:
+
+D:/stm32_ws/board/JointManipulator_Master/JMM_LCD_V1/JMM_LCD/STM32CubeIDE/Application/User/Motion_Task/Inc/motionManager.h:
+
+../../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os.h:
+
+../../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h:
+
+../../Core/Inc/FreeRTOSConfig.h:
+
+../../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h:
+
+../../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h:
+
+../../Middlewares/Third_Party/FreeRTOS/Source/include/deprecated_definitions.h:
+
+../../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM7/r0p1/portmacro.h:
+
+../../Middlewares/Third_Party/FreeRTOS/Source/include/mpu_wrappers.h:
+
+../../Middlewares/Third_Party/FreeRTOS/Source/include/task.h:
+
+../../Middlewares/Third_Party/FreeRTOS/Source/include/list.h:
+
+../../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.h:
 
 ../../Middlewares/ST/touchgfx/framework/include/touchgfx/containers/progress_indicators/CircleProgress.hpp:
 
