@@ -15,6 +15,7 @@
 
 typedef struct {
     int myIndex;
+    int slideID;
     int gID;
     int sID;
     int limit_min;

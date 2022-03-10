@@ -30,6 +30,7 @@ public:
 //View Call Function
     void setOpenSettingView(int index, int gID, int sID);
 
+    int getSlideID(int index);
     int getGroupID(int index);
     int getSubID(int index);
 //ModelListener override

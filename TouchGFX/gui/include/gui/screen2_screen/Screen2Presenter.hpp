@@ -29,6 +29,7 @@ public:
 
     void setScreenUp();
 //View Call Function
+    void setChangeSlideid(int index, int slideID);
     void setChangeGid(int index, int gID);
     void setChangeSid(int index, int sID);
     void setChangeLimitMin(int index, int value);
@@ -44,6 +45,8 @@ public:
     void setChangePosi(int gID, int sID, int value);
 
     void setSettingValue(int index, int gID, int sID, int lim_min, int lim_max, int map_0, int map_4095, int filter, bool reverse);
+
+    void  setSlideID_SettingPage(int index, int slideID);
 
 private:
     Screen2Presenter();

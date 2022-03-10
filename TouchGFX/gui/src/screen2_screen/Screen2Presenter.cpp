@@ -21,7 +21,13 @@ void Screen2Presenter::setScreenUp()
 {
     model->setScreenUp();
 }
+
 //View Call Function
+
+void Screen2Presenter::setChangeSlideid(int index, int slideID)
+{
+    model->setChangeSlideid(index, slideID);
+}
 void Screen2Presenter::setChangeGid(int index, int gID)
 {
     model->setChangeGid(index, gID);
@@ -77,4 +83,10 @@ void Screen2Presenter::setSettingValue(int index, int gID, int sID, int lim_min,
 {
     view.setSettingValue(index, gID, sID, lim_min, lim_max, map_0, map_4095, filter, reverse);
 }
+
+void Screen2Presenter::setSlideID_SettingPage(int index, int slideID)
+{
+    view.setSlideID_SettingPage(index, slideID);
+}
+
 

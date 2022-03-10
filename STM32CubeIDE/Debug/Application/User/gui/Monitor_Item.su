@@ -11,14 +11,15 @@ Drawable.hpp:568:18:virtual void touchgfx::Drawable::moveTo(int16_t, int16_t)	4	
 Container.hpp:165:23:virtual touchgfx::Drawable* touchgfx::Container::getFirstChild()	0	static
 Monitor_Item.hpp:12:13:Monitor_Item::~Monitor_Item()	0	static
 Monitor_Item.cpp:9:6:virtual void Monitor_Item::initialize()	0	static
-Monitor_Item.cpp:52:6:virtual void Monitor_Item::callViewSetting()	0	static
+Monitor_Item.cpp:56:6:virtual void Monitor_Item::callViewSetting()	0	static
 Monitor_Item.hpp:12:13:virtual Monitor_Item::~Monitor_Item()	8	static
 Monitor_Item.cpp:4:1:Monitor_Item::Monitor_Item()	8	static
 Monitor_Item.cpp:18:6:void Monitor_Item::setPtr(Screen1View*)	0	static
-Monitor_Item.cpp:23:6:void Monitor_Item::setSlotID(int)	16	static
-Monitor_Item.cpp:57:6:void Monitor_Item::setPosiText(int)	16	static
-Monitor_Item.cpp:32:6:void Monitor_Item::setPosi(int)	8	static
-Monitor_Item.cpp:46:6:void Monitor_Item::setPosi_ID(int, int, int)	8	static
-Monitor_Item.cpp:64:6:void Monitor_Item::setPosiProgress(int)	0	static
-Monitor_Item.cpp:69:6:void Monitor_Item::setIDText()	16	static
-Monitor_Item.cpp:39:6:void Monitor_Item::setId(int, int)	0	static
+Monitor_Item.cpp:23:6:void Monitor_Item::setSlotID(int)	0	static
+Monitor_Item.cpp:28:6:void Monitor_Item::setSlideID(int)	16	static
+Monitor_Item.cpp:61:6:void Monitor_Item::setPosiText(int)	16	static
+Monitor_Item.cpp:36:6:void Monitor_Item::setPosi(int)	8	static
+Monitor_Item.cpp:50:6:void Monitor_Item::setPosi_ID(int, int, int)	8	static
+Monitor_Item.cpp:68:6:void Monitor_Item::setPosiProgress(int)	0	static
+Monitor_Item.cpp:73:6:void Monitor_Item::setIDText()	16	static
+Monitor_Item.cpp:43:6:void Monitor_Item::setId(int, int)	0	static

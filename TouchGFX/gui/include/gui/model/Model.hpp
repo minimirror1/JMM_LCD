@@ -10,6 +10,7 @@ class ModelListener;
 #else
 typedef struct {
     int myIndex;
+    int slideID;
     int gID;
     int sID;
     int limit_min;
@@ -36,12 +37,14 @@ public:
 //Presenter1 Call funtion
     void setOpenSettingView(int index, int gID, int sID);
 
+    int getSlideID(int index);
     int getGroupID(int index);
     int getSubID(int index);
 
 //Presenter2 Call funtion
     void setScreenUp();
 
+    void setChangeSlideid(int index, int slideID);
     void setChangeGid(int index, int gID);
     void setChangeSid(int index, int sID);
     void setChangeLimitMin(int index, int value);

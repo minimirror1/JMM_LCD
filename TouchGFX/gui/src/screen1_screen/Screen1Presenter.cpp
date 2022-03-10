@@ -22,6 +22,11 @@ void Screen1Presenter::setOpenSettingView(int index, int gID, int sID)
     model->setOpenSettingView(index, gID, sID);
 }
 
+int Screen1Presenter::getSlideID(int index)
+{
+    return model->getSlideID(index);
+}
+
 int Screen1Presenter::getGroupID(int index)
 {
     return model->getGroupID(index);

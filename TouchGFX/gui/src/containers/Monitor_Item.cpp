@@ -23,8 +23,12 @@ void Monitor_Item::setPtr(Screen1View* ptr)
 void Monitor_Item::setSlotID(int value)
 {
     slotID = value;
+}
 
-    Unicode::snprintf(slotBuffer, SLOT_SIZE, "%d", slotID);
+void Monitor_Item::setSlideID(int value)
+{
+    slideID = value;
+    Unicode::snprintf(slotBuffer, SLOT_SIZE, "%d", value);
     slot.setWildcard(slotBuffer);
     slot.invalidate();
 }

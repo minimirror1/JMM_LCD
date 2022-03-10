@@ -76,6 +76,9 @@
     <Text Id="__SingleUse_6POO" TypographyId="Default" Alignment="Center" Direction="LTR">
       <Translation Language="GB">&lt;value&gt;</Translation>
     </Text>
+    <Text Id="__SingleUse_MPG4" TypographyId="Large" Alignment="Center" Direction="LTR">
+      <Translation Language="GB">&lt;value&gt;</Translation>
+    </Text>
   </Texts>
   <Typographies>
     <Typography Id="Display" Font="RobotoCondensed-Regular.ttf" Size="28" Bpp="4" FallbackCharacter="?" WildcardCharacters="!”&quot;#*%&amp;()'$+-@_, .:;?/~±×÷•º`´{}©£€^®¥_=[]¡¢|\¿&gt;&lt;" WildcardCharacterRanges="a-z,A-Z,0-9" />

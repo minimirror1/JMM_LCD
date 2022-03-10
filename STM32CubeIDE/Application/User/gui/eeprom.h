@@ -106,7 +106,7 @@
 #define PAGE_FULL             ((uint8_t)0x80)
 
 /* Variables' number */
-#define NB_OF_VAR             ((uint16_t)360)
+#define NB_OF_VAR             ((uint16_t)400)
 
 /* Exported types ------------------------------------------------------------*/
 #pragma pack(1)

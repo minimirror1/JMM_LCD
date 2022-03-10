@@ -17,6 +17,8 @@ public:
     //void setName();
 
     void setSlotID(int value);
+
+    void setSlideID(int value);
     
     void setId(int gID, int sID);
 
@@ -25,6 +27,7 @@ public:
     void callViewSetting();
 
 private:
+    int slideID;
     int slotID;
     int nowPosi;
     int groupID;

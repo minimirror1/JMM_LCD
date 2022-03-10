@@ -80,6 +80,8 @@ protected:
     touchgfx::TextAreaWithOneWildcard map_0Var_textArea;
     touchgfx::TextAreaWithOneWildcard map_4095Var_textArea;
     touchgfx::TextAreaWithOneWildcard FilterVar_textArea;
+    touchgfx::Button slide_btn;
+    touchgfx::TextAreaWithOneWildcard slide_id;
 
     /*
      * Wildcard Buffers
@@ -100,6 +102,8 @@ protected:
     touchgfx::Unicode::UnicodeChar map_4095Var_textAreaBuffer[MAP_4095VAR_TEXTAREA_SIZE];
     static const uint16_t FILTERVAR_TEXTAREA_SIZE = 10;
     touchgfx::Unicode::UnicodeChar FilterVar_textAreaBuffer[FILTERVAR_TEXTAREA_SIZE];
+    static const uint16_t SLIDE_ID_SIZE = 10;
+    touchgfx::Unicode::UnicodeChar slide_idBuffer[SLIDE_ID_SIZE];
 
 private:
 

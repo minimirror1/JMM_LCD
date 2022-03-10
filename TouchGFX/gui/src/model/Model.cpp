@@ -68,7 +68,8 @@ void Model::tick()
 #ifndef SIMULATOR
 	status = osMessageQueueGet(ctrDataQueueHandle, &ctrMsg, NULL, 0U); // wait for message
 	if (status == osOK) {
-		modelListener->setChangePosi(ctrMsg.gid, ctrMsg.sid, ctrMsg.posi);
+		if((ctrMsg.gid != 0)&&(ctrMsg.sid != 0))
+			modelListener->setChangePosi(ctrMsg.gid, ctrMsg.sid, ctrMsg.posi);
 	}
 
 	if(firstMemSend != 0)
@@ -91,7 +92,13 @@ void Model::setOpenSettingView(int index, int gID, int sID)
 	
 	modelListener->setID_SettingPage(index, gID, sID);
 }
-
+int Model::getSlideID(int index)
+{
+	if (index < 10)
+		return setting[index].slideID;
+	else
+		return 0;
+}
 int Model::getGroupID(int index)
 {
 	if (index < 10)
@@ -121,6 +128,17 @@ void Model::setScreenUp()
 		setting[settingIndex].map_4095,
 		setting[settingIndex].filter,
 		setting[settingIndex].reverse);
+	modelListener->setSlideID_SettingPage(settingIndex, setting[settingIndex].slideID);
+}
+
+void Model::setChangeSlideid(int index, int slideID)
+{
+	setting[index].slideID = slideID;
+#ifndef SIMULATOR
+	EepData[index].slideID = slideID;
+	EE_WriteStrData((uint16_t*)&EepData[index].slideID, sizeof(EepData[0].slideID));
+	osMessageQueuePut(settingDataQueueHandle, &setting[0], 0U, 0U);
+#endif
 }
 
 void Model::setChangeGid(int index, int gID)

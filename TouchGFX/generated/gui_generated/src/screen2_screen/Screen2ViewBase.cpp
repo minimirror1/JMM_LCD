@@ -158,6 +158,17 @@ Screen2ViewBase::Screen2ViewBase() :
     FilterVar_textArea.resizeToCurrentText();
     FilterVar_textArea.setTypedText(touchgfx::TypedText(T___SINGLEUSE_DP9C));
 
+    slide_btn.setXY(126, 1);
+    slide_btn.setBitmaps(touchgfx::Bitmap(BITMAP_DARK_BUTTONS_ROUND_EDGE_ICON_BUTTON_ID), touchgfx::Bitmap(BITMAP_DARK_BUTTONS_ROUND_EDGE_ICON_BUTTON_PRESSED_ID));
+    slide_btn.setAction(buttonCallback);
+
+    slide_id.setPosition(131, 4, 50, 49);
+    slide_id.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
+    slide_id.setLinespacing(0);
+    Unicode::snprintf(slide_idBuffer, SLIDE_ID_SIZE, "%s", touchgfx::TypedText(T_NUM_LARGE).getText());
+    slide_id.setWildcard(slide_idBuffer);
+    slide_id.setTypedText(touchgfx::TypedText(T___SINGLEUSE_MPG4));
+
     add(__background);
     add(box1);
     add(posiProgress);
@@ -183,6 +194,8 @@ Screen2ViewBase::Screen2ViewBase() :
     add(map_0Var_textArea);
     add(map_4095Var_textArea);
     add(FilterVar_textArea);
+    add(slide_btn);
+    add(slide_id);
 }
 
 void Screen2ViewBase::setupScreen()
@@ -283,6 +296,18 @@ void Screen2ViewBase::buttonCallbackHandler(const touchgfx::AbstractButton& src)
 
         //limitMingotoKeyboard
         //When limitMinButtonPressed completed change screen to Keyboard
+        //Go to Keyboard with no screen transition
+        application().gotoKeyboardScreenNoTransition();
+    }
+    else if (&src == &slide_btn)
+    {
+        //slideButtonPressed
+        //When slide_btn clicked call keyboardSeletedVar on Screen2
+        //Call keyboardSeletedVar
+        keyboardSeletedVar(7);
+
+        //slidegotoKeyboard
+        //When slideButtonPressed completed change screen to Keyboard
         //Go to Keyboard with no screen transition
         application().gotoKeyboardScreenNoTransition();
     }

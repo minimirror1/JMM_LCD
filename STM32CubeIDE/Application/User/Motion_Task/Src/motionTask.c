@@ -40,7 +40,7 @@ void MAL_UART_7_Init(void) {
 }
 void sendSettingData(void) {
 	for (int i = 0; i < 10; i++) {
-
+		txMsg.setting[i].slideid = msg[i].slideID;
 		txMsg.setting[i].gid = msg[i].gID;
 		txMsg.setting[i].sid = msg[i].sID;
 		txMsg.setting[i].reverse = msg[i].reverse;

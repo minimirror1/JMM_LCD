@@ -493,6 +493,37 @@
               "UseBuffer": true,
               "BufferSize": 10
             }
+          },
+          {
+            "Type": "Button",
+            "Name": "slide_btn",
+            "X": 126,
+            "Y": 1,
+            "Width": 60,
+            "Height": 60,
+            "Pressed": "__designer\\Dark_Buttons_Round_Edge_icon_button_pressed.png",
+            "Released": "__designer\\Dark_Buttons_Round_Edge_icon_button.png",
+            "Style": "Style1"
+          },
+          {
+            "Type": "TextArea",
+            "Name": "slide_id",
+            "X": 131,
+            "Y": 4,
+            "Width": 50,
+            "Height": 49,
+            "TextId": "__SingleUse_MPG4",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "Wildcard1": {
+              "TextId": "Num_Large",
+              "UseBuffer": true,
+              "BufferSize": 10
+            }
           }
         ],
         "Interactions": [
@@ -690,6 +721,32 @@
             "Trigger": {
               "Type": "TriggerInteractionCompleted",
               "InteractionToTriggerOn": "sidButtonPressed"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "Keyboard"
+            }
+          },
+          {
+            "InteractionName": "slideButtonPressed",
+            "HasCompletedTrigger": true,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "slide_btn"
+            },
+            "Action": {
+              "Type": "ActionCustom2",
+              "ActionCustomTypeName": "Call Screen2 keyboardSeletedVar",
+              "ParameterValue": "7",
+              "ActionComponent": "Screen2"
+            }
+          },
+          {
+            "InteractionName": "slidegotoKeyboard",
+            "Trigger": {
+              "Type": "TriggerInteractionCompleted",
+              "InteractionToTriggerOn": "slideButtonPressed"
             },
             "Action": {
               "Type": "ActionGotoScreen",
