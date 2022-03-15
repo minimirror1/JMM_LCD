@@ -66,10 +66,19 @@ void Model::tick()
 		//modelListener->setChangePosi(5, 5, testCnt);
 	}
 #ifndef SIMULATOR
-	status = osMessageQueueGet(ctrDataQueueHandle, &ctrMsg, NULL, 0U); // wait for message
+	//status = osMessageQueueGet(ctrDataQueueHandle, &ctrMsg, NULL, 0U); // wait for message
+	status = osMessageQueueGet(ctrDataQueueHandle, &ctrData, NULL, 0U); // wait for message
 	if (status == osOK) {
-		if((ctrMsg.gid != 0)&&(ctrMsg.sid != 0))
-			modelListener->setChangePosi(ctrMsg.gid, ctrMsg.sid, ctrMsg.posi);
+		for(int i = 0; i < 10 ; i++)
+		{
+			if((ctrData.arr[i].gid != 0)&&(ctrData.arr[i].sid != 0))
+			{
+				modelListener->setChangePosi(ctrData.arr[i].gid, ctrData.arr[i].sid, ctrData.arr[i].posi);
+			}
+		}
+
+		//if((ctrMsg.gid != 0)&&(ctrMsg.sid != 0))
+			//modelListener->setChangePosi(ctrMsg.gid, ctrMsg.sid, ctrMsg.posi);
 	}
 
 	if(firstMemSend != 0)
@@ -134,6 +143,19 @@ void Model::setScreenUp()
 void Model::setChangeSlideid(int index, int slideID)
 {
 	setting[index].slideID = slideID;
+
+	for (int i = 0; i < 10; i++) {
+		
+		if( (setting[index].slideID == setting[i].slideID) && (index != i) )
+		{
+			setting[i].slideID = 0;
+
+#ifndef SIMULATOR
+			EepData[i].slideID = 0; 
+			EE_WriteStrData((uint16_t*)&EepData[i].slideID, sizeof(EepData[0].slideID));
+#endif
+		}
+	}
 #ifndef SIMULATOR
 	EepData[index].slideID = slideID;
 	EE_WriteStrData((uint16_t*)&EepData[index].slideID, sizeof(EepData[0].slideID));
@@ -156,7 +178,7 @@ void Model::setChangeSid(int index, int sID)
 	setting[index].sID = sID;
 #ifndef SIMULATOR
 	EepData[index].sID = sID;
-	EE_WriteStrData((uint16_t*)&EepData[index].gID, sizeof(EepData[0].sID));
+	EE_WriteStrData((uint16_t*)&EepData[index].sID, sizeof(EepData[0].sID));
 	osMessageQueuePut(settingDataQueueHandle, &setting[0], 0U, 0U);
 #endif
 }

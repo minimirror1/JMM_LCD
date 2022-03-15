@@ -66,7 +66,10 @@ private:
 #ifndef SIMULATOR
 
 
+    CtrDataArr_TypeDef ctrData;
+    int cnt;
     CtrData_TypeDef ctrMsg;
+
     osStatus_t status;
 
 

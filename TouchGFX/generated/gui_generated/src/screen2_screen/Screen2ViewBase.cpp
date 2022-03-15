@@ -56,13 +56,11 @@ Screen2ViewBase::Screen2ViewBase() :
     sid_button.setBitmaps(touchgfx::Bitmap(BITMAP_DARK_BUTTONS_ROUND_EDGE_ICON_BUTTON_ID), touchgfx::Bitmap(BITMAP_DARK_BUTTONS_ROUND_EDGE_ICON_BUTTON_PRESSED_ID));
     sid_button.setAction(buttonCallback);
 
-    id.setPosition(16, 179, 170, 49);
+    id.setPosition(34, 179, 60, 51);
     id.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
     id.setLinespacing(0);
-    touchgfx::Unicode::snprintf(idBuffer1, IDBUFFER1_SIZE, "%s", touchgfx::TypedText(T_NUM_LARGE).getText());
-    id.setWildcard1(idBuffer1);
-    touchgfx::Unicode::snprintf(idBuffer2, IDBUFFER2_SIZE, "%s", touchgfx::TypedText(T_NUM_LARGE).getText());
-    id.setWildcard2(idBuffer2);
+    Unicode::snprintf(idBuffer, ID_SIZE, "%s", touchgfx::TypedText(T_NUM_LARGE).getText());
+    id.setWildcard(idBuffer);
     id.setTypedText(touchgfx::TypedText(T___SINGLEUSE_009U));
 
     reverse_textArea.setXY(226, 15);
@@ -71,11 +69,13 @@ Screen2ViewBase::Screen2ViewBase() :
     reverse_textArea.setTypedText(touchgfx::TypedText(T___SINGLEUSE_7GSF));
 
     map_4095_button.setXY(372, 155);
+    map_4095_button.setVisible(false);
     map_4095_button.setBitmaps(touchgfx::Bitmap(BITMAP_ROUND_EDGE_XSMALL_ID), touchgfx::Bitmap(BITMAP_ROUND_EDGE_XSMALL_PRESSED_ID));
     map_4095_button.setAction(buttonCallback);
     map_4095_button.setAlpha(100);
 
     map_0_button.setXY(372, 121);
+    map_0_button.setVisible(false);
     map_0_button.setBitmaps(touchgfx::Bitmap(BITMAP_ROUND_EDGE_XSMALL_ID), touchgfx::Bitmap(BITMAP_ROUND_EDGE_XSMALL_PRESSED_ID));
     map_0_button.setAction(buttonCallback);
     map_0_button.setAlpha(100);
@@ -101,21 +101,23 @@ Screen2ViewBase::Screen2ViewBase() :
     limitMax_textArea.setTypedText(touchgfx::TypedText(T___SINGLEUSE_FHL2));
 
     map_0_textArea.setXY(226, 124);
+    map_0_textArea.setVisible(false);
     map_0_textArea.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
     map_0_textArea.setLinespacing(0);
     map_0_textArea.setTypedText(touchgfx::TypedText(T___SINGLEUSE_PT5J));
 
     map_4095_textArea.setXY(226, 157);
+    map_4095_textArea.setVisible(false);
     map_4095_textArea.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
     map_4095_textArea.setLinespacing(0);
     map_4095_textArea.setTypedText(touchgfx::TypedText(T___SINGLEUSE_P9NB));
 
-    Filter_textArea.setXY(226, 193);
+    Filter_textArea.setXY(221, 124);
     Filter_textArea.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
     Filter_textArea.setLinespacing(0);
     Filter_textArea.setTypedText(touchgfx::TypedText(T___SINGLEUSE_T8KH));
 
-    slider1.setXY(226, 222);
+    slider1.setXY(221, 153);
     slider1.setBitmaps(touchgfx::Bitmap(BITMAP_DARK_SLIDER_HORIZONTAL_SMALL_SLIDER_HORIZONTAL_SMALL_ROUND_EDGE_BACK_ID), touchgfx::Bitmap(BITMAP_DARK_SLIDER_HORIZONTAL_SMALL_SLIDER_HORIZONTAL_SMALL_ROUND_EDGE_FILL_ID), touchgfx::Bitmap(BITMAP_DARK_SLIDER_HORIZONTAL_SMALL_INDICATORS_SLIDER_HORIZONTAL_SMALL_ROUND_EDGE_KNOB_ID));
     slider1.setupHorizontalSlider(0, 0, 4, 3, 135);
     slider1.setValueRange(1, 14);
@@ -137,6 +139,7 @@ Screen2ViewBase::Screen2ViewBase() :
     limitMaxVar_textArea.setTypedText(touchgfx::TypedText(T___SINGLEUSE_0M3V));
 
     map_0Var_textArea.setPosition(372, 123, 85, 30);
+    map_0Var_textArea.setVisible(false);
     map_0Var_textArea.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
     map_0Var_textArea.setLinespacing(0);
     Unicode::snprintf(map_0Var_textAreaBuffer, MAP_0VAR_TEXTAREA_SIZE, "%s", touchgfx::TypedText(T_NUM_DEFAULT).getText());
@@ -144,13 +147,14 @@ Screen2ViewBase::Screen2ViewBase() :
     map_0Var_textArea.setTypedText(touchgfx::TypedText(T___SINGLEUSE_EKEO));
 
     map_4095Var_textArea.setPosition(372, 157, 85, 30);
+    map_4095Var_textArea.setVisible(false);
     map_4095Var_textArea.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
     map_4095Var_textArea.setLinespacing(0);
     Unicode::snprintf(map_4095Var_textAreaBuffer, MAP_4095VAR_TEXTAREA_SIZE, "%s", touchgfx::TypedText(T_NUM_DEFAULT).getText());
     map_4095Var_textArea.setWildcard(map_4095Var_textAreaBuffer);
     map_4095Var_textArea.setTypedText(touchgfx::TypedText(T___SINGLEUSE_RCKG));
 
-    FilterVar_textArea.setXY(434, 230);
+    FilterVar_textArea.setXY(429, 161);
     FilterVar_textArea.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
     FilterVar_textArea.setLinespacing(0);
     Unicode::snprintf(FilterVar_textAreaBuffer, FILTERVAR_TEXTAREA_SIZE, "%s", touchgfx::TypedText(T_NUM_DEFAULT).getText());
@@ -168,6 +172,46 @@ Screen2ViewBase::Screen2ViewBase() :
     Unicode::snprintf(slide_idBuffer, SLIDE_ID_SIZE, "%s", touchgfx::TypedText(T_NUM_LARGE).getText());
     slide_id.setWildcard(slide_idBuffer);
     slide_id.setTypedText(touchgfx::TypedText(T___SINGLEUSE_MPG4));
+
+    sid.setPosition(106, 179, 60, 51);
+    sid.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
+    sid.setLinespacing(0);
+    Unicode::snprintf(sidBuffer, SID_SIZE, "%s", touchgfx::TypedText(T_NUM_LARGE).getText());
+    sid.setWildcard(sidBuffer);
+    sid.setTypedText(touchgfx::TypedText(T___SINGLEUSE_ST0P));
+
+    textArea1.setXY(96, 192);
+    textArea1.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
+    textArea1.setLinespacing(0);
+    textArea1.setTypedText(touchgfx::TypedText(T___SINGLEUSE_E9HN));
+
+    resetButton.setXY(420, 212);
+    resetButton.setBitmaps(touchgfx::Bitmap(BITMAP_DARK_BUTTONS_ROUND_ICON_BUTTON_ID), touchgfx::Bitmap(BITMAP_DARK_BUTTONS_ROUND_ICON_BUTTON_PRESSED_ID));
+    resetButton.setLabelText(touchgfx::TypedText(T___SINGLEUSE_L5DU));
+    resetButton.setLabelColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
+    resetButton.setLabelColorPressed(touchgfx::Color::getColorFromRGB(255, 255, 255));
+    resetButton.setAction(buttonCallback);
+
+    resetModal.setBackground(touchgfx::BitmapId(BITMAP_MODAL_BACKGROUND_ID), 90, 36);
+    resetModal.setShadeColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
+    resetModal.setShadeAlpha(150);
+    resetModal.hide();
+
+    resetYesButton.setXY(16, 125);
+    resetYesButton.setBitmaps(touchgfx::Bitmap(BITMAP_DARK_BUTTONS_ROUND_EDGE_ICON_BUTTON_ID), touchgfx::Bitmap(BITMAP_DARK_BUTTONS_ROUND_EDGE_ICON_BUTTON_PRESSED_ID));
+    resetYesButton.setLabelText(touchgfx::TypedText(T___SINGLEUSE_12F5));
+    resetYesButton.setLabelColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
+    resetYesButton.setLabelColorPressed(touchgfx::Color::getColorFromRGB(255, 255, 255));
+    resetYesButton.setAction(buttonCallback);
+    resetModal.add(resetYesButton);
+
+    resetNoButton.setXY(222, 125);
+    resetNoButton.setBitmaps(touchgfx::Bitmap(BITMAP_DARK_BUTTONS_ROUND_EDGE_ICON_BUTTON_ID), touchgfx::Bitmap(BITMAP_DARK_BUTTONS_ROUND_EDGE_ICON_BUTTON_PRESSED_ID));
+    resetNoButton.setLabelText(touchgfx::TypedText(T___SINGLEUSE_ECRH));
+    resetNoButton.setLabelColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
+    resetNoButton.setLabelColorPressed(touchgfx::Color::getColorFromRGB(255, 255, 255));
+    resetNoButton.setAction(buttonCallback);
+    resetModal.add(resetNoButton);
 
     add(__background);
     add(box1);
@@ -196,6 +240,10 @@ Screen2ViewBase::Screen2ViewBase() :
     add(FilterVar_textArea);
     add(slide_btn);
     add(slide_id);
+    add(sid);
+    add(textArea1);
+    add(resetButton);
+    add(resetModal);
 }
 
 void Screen2ViewBase::setupScreen()
@@ -310,6 +358,29 @@ void Screen2ViewBase::buttonCallbackHandler(const touchgfx::AbstractButton& src)
         //When slideButtonPressed completed change screen to Keyboard
         //Go to Keyboard with no screen transition
         application().gotoKeyboardScreenNoTransition();
+    }
+    else if (&src == &resetButton)
+    {
+        //resetButtonPress
+        //When resetButton clicked show resetModal
+        //Show resetModal
+        resetModal.setVisible(true);
+        resetModal.invalidate();
+    }
+    else if (&src == &resetYesButton)
+    {
+        //resetYesButtonPressed
+        //When resetYesButton clicked call virtual function
+        //Call resetYesButtonPressed
+        resetYesButtonPressed();
+    }
+    else if (&src == &resetNoButton)
+    {
+        //resetNoButtonPressed
+        //When resetNoButton clicked hide resetModal
+        //Hide resetModal
+        resetModal.setVisible(false);
+        resetModal.invalidate();
     }
 }
 

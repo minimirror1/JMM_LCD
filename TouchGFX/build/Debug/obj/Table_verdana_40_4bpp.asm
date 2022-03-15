@@ -22,26 +22,6 @@ __383FB200_Table_verdana_40_4bpp@cpp DB 01H
 msvcjmc	ENDS
 CONST	SEGMENT
 ?glyphs_verdana_40_4bpp@@3QBUGlyphNode@touchgfx@@B DD 00H ; glyphs_verdana_40_4bpp
-	DW	020H
-	DB	00H
-	DB	00H
-	DB	00H
-	DB	00H
-	DB	0eH
-	DB	00H
-	DB	00H
-	DB	00H
-	DD	00H
-	DW	02dH
-	DB	0dH
-	DB	04H
-	DB	0fH
-	DB	03H
-	DB	012H
-	DB	00H
-	DB	00H
-	DB	00H
-	DD	01cH
 	DW	030H
 	DB	015H
 	DB	020H
@@ -51,7 +31,7 @@ CONST	SEGMENT
 	DB	00H
 	DB	00H
 	DB	00H
-	DD	017cH
+	DD	0160H
 	DW	031H
 	DB	011H
 	DB	01eH
@@ -61,7 +41,7 @@ CONST	SEGMENT
 	DB	00H
 	DB	00H
 	DB	00H
-	DD	028aH
+	DD	026eH
 	DW	032H
 	DB	014H
 	DB	01fH
@@ -71,7 +51,7 @@ CONST	SEGMENT
 	DB	00H
 	DB	00H
 	DB	00H
-	DD	03c0H
+	DD	03a4H
 	DW	033H
 	DB	014H
 	DB	020H
@@ -81,7 +61,7 @@ CONST	SEGMENT
 	DB	00H
 	DB	00H
 	DB	00H
-	DD	0500H
+	DD	04e4H
 	DW	034H
 	DB	017H
 	DB	01eH
@@ -91,7 +71,7 @@ CONST	SEGMENT
 	DB	00H
 	DB	00H
 	DB	00H
-	DD	0668H
+	DD	064cH
 	DW	035H
 	DB	014H
 	DB	01fH
@@ -101,7 +81,7 @@ CONST	SEGMENT
 	DB	00H
 	DB	00H
 	DB	00H
-	DD	079eH
+	DD	0782H
 	DW	036H
 	DB	016H
 	DB	020H
@@ -111,7 +91,7 @@ CONST	SEGMENT
 	DB	00H
 	DB	00H
 	DB	00H
-	DD	08feH
+	DD	08e2H
 	DW	037H
 	DB	014H
 	DB	01eH
@@ -121,7 +101,7 @@ CONST	SEGMENT
 	DB	00H
 	DB	00H
 	DB	00H
-	DD	0a2aH
+	DD	0a0eH
 	DW	038H
 	DB	015H
 	DB	020H
@@ -131,7 +111,7 @@ CONST	SEGMENT
 	DB	00H
 	DB	00H
 	DB	00H
-	DD	0b8aH
+	DD	0b6eH
 	DW	039H
 	DB	015H
 	DB	020H
@@ -141,7 +121,7 @@ CONST	SEGMENT
 	DB	00H
 	DB	00H
 	DB	00H
-	DD	0ceaH
+	DD	0cceH
 	DW	03fH
 	DB	011H
 	DB	01fH
@@ -331,7 +311,7 @@ _TEXT	SEGMENT
 __$EHRec$ = -12						; size = 12
 ?getFont_verdana_40_4bpp@@YAAAVGeneratedFont@touchgfx@@XZ PROC ; getFont_verdana_40_4bpp, COMDAT
 ; File D:\stm32_ws\board\JointManipulator_Master\JMM_LCD_V1\JMM_LCD\TouchGFX\generated\fonts\src\Table_verdana_40_4bpp.cpp
-; Line 36
+; Line 34
 	push	ebp
 	mov	ebp, esp
 	push	-1
@@ -353,7 +333,7 @@ __$EHRec$ = -12						; size = 12
 	mov	DWORD PTR fs:0, eax
 	mov	ecx, OFFSET __383FB200_Table_verdana_40_4bpp@cpp
 	call	@__CheckForDebuggerJustMyCode@4
-; Line 37
+; Line 35
 	mov	eax, DWORD PTR __tls_index
 	mov	ecx, DWORD PTR fs:__tls_array
 	mov	edx, DWORD PTR [ecx+eax*4]
@@ -378,7 +358,7 @@ __$EHRec$ = -12						; size = 12
 	push	4
 	push	1
 	push	40					; 00000028H
-	push	13					; 0000000dH
+	push	11					; 0000000bH
 	push	OFFSET ?glyphs_verdana_40_4bpp@@3QBUGlyphNode@touchgfx@@B ; glyphs_verdana_40_4bpp
 	mov	ecx, OFFSET ?verdana_40_4bpp@?1??getFont_verdana_40_4bpp@@YAAAVGeneratedFont@touchgfx@@XZ@4V23@A
 	call	??0GeneratedFont@touchgfx@@QAE@PBUGlyphNode@1@GGEEEEEPBQBEPBUKerningNode@1@GGQBGPBUFontContextualFormsTable@1@@Z ; touchgfx::GeneratedFont::GeneratedFont
@@ -390,9 +370,9 @@ __$EHRec$ = -12						; size = 12
 	call	__Init_thread_footer
 	add	esp, 4
 $LN2@getFont_ve:
-; Line 38
+; Line 36
 	mov	eax, OFFSET ?verdana_40_4bpp@?1??getFont_verdana_40_4bpp@@YAAAVGeneratedFont@touchgfx@@XZ@4V23@A
-; Line 39
+; Line 37
 	mov	ecx, DWORD PTR __$EHRec$[ebp]
 	mov	DWORD PTR fs:0, ecx
 	pop	ecx

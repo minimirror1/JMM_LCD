@@ -213,10 +213,10 @@
           {
             "Type": "TextArea",
             "Name": "id",
-            "X": 16,
+            "X": 34,
             "Y": 179,
-            "Width": 170,
-            "Height": 49,
+            "Width": 60,
+            "Height": 51,
             "TextId": "__SingleUse_009U",
             "TextRotation": "0",
             "Color": {
@@ -225,11 +225,6 @@
               "Blue": 255
             },
             "Wildcard1": {
-              "TextId": "Num_Large",
-              "UseBuffer": true,
-              "BufferSize": 10
-            },
-            "Wildcard2": {
               "TextId": "Num_Large",
               "UseBuffer": true,
               "BufferSize": 10
@@ -258,6 +253,7 @@
             "Y": 155,
             "Width": 85,
             "Height": 30,
+            "Visible": false,
             "Pressed": "Round_Edge_Xsmall_pressed.png",
             "Released": "Round_Edge_Xsmall.png",
             "Alpha": 100
@@ -269,6 +265,7 @@
             "Y": 121,
             "Width": 85,
             "Height": 30,
+            "Visible": false,
             "Pressed": "Round_Edge_Xsmall_pressed.png",
             "Released": "Round_Edge_Xsmall.png",
             "Alpha": 100
@@ -334,6 +331,7 @@
             "Y": 124,
             "Width": 69,
             "Height": 25,
+            "Visible": false,
             "TextId": "__SingleUse_PT5J",
             "TextRotation": "0",
             "Color": {
@@ -350,6 +348,7 @@
             "Y": 157,
             "Width": 107,
             "Height": 25,
+            "Visible": false,
             "TextId": "__SingleUse_P9NB",
             "TextRotation": "0",
             "Color": {
@@ -362,8 +361,8 @@
           {
             "Type": "TextArea",
             "Name": "Filter_textArea",
-            "X": 226,
-            "Y": 193,
+            "X": 221,
+            "Y": 124,
             "Width": 51,
             "Height": 25,
             "TextId": "__SingleUse_T8KH",
@@ -378,8 +377,8 @@
           {
             "Type": "Slider",
             "Name": "slider1",
-            "X": 226,
-            "Y": 222,
+            "X": 221,
+            "Y": 153,
             "Width": 193,
             "Height": 40,
             "IsHorizontalSlider": true,
@@ -440,6 +439,7 @@
             "Y": 123,
             "Width": 85,
             "Height": 30,
+            "Visible": false,
             "TextId": "__SingleUse_EKEO",
             "TextRotation": "0",
             "Color": {
@@ -460,6 +460,7 @@
             "Y": 157,
             "Width": 85,
             "Height": 30,
+            "Visible": false,
             "TextId": "__SingleUse_RCKG",
             "TextRotation": "0",
             "Color": {
@@ -476,8 +477,8 @@
           {
             "Type": "TextArea",
             "Name": "FilterVar_textArea",
-            "X": 434,
-            "Y": 230,
+            "X": 429,
+            "Y": 161,
             "Width": 51,
             "Height": 25,
             "TextId": "__SingleUse_DP9C",
@@ -524,6 +525,123 @@
               "UseBuffer": true,
               "BufferSize": 10
             }
+          },
+          {
+            "Type": "TextArea",
+            "Name": "sid",
+            "X": 106,
+            "Y": 179,
+            "Width": 60,
+            "Height": 51,
+            "TextId": "__SingleUse_ST0P",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "Wildcard1": {
+              "TextId": "Num_Large",
+              "UseBuffer": true,
+              "BufferSize": 10
+            }
+          },
+          {
+            "Type": "TextArea",
+            "Name": "textArea1",
+            "X": 96,
+            "Y": 192,
+            "Width": 9,
+            "Height": 25,
+            "TextId": "__SingleUse_E9HN",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "AutoSize": true
+          },
+          {
+            "Type": "ButtonWithLabel",
+            "Name": "resetButton",
+            "X": 420,
+            "Y": 212,
+            "Width": 60,
+            "Height": 60,
+            "Pressed": "__designer\\Dark_Buttons_Round_icon_button_pressed.png",
+            "Released": "__designer\\Dark_Buttons_Round_icon_button.png",
+            "TextId": "__SingleUse_L5DU",
+            "ReleasedColor": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "PressedColor": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "TextRotation": "0"
+          },
+          {
+            "Type": "ModalWindow",
+            "Name": "resetModal",
+            "Width": 480,
+            "Height": 272,
+            "Visible": false,
+            "FileName": "modal_background.png",
+            "ModalX": 90,
+            "ModalY": 36,
+            "ModalWidth": 300,
+            "ModalHeight": 200,
+            "Alpha": 150,
+            "Components": [
+              {
+                "Type": "ButtonWithLabel",
+                "Name": "resetYesButton",
+                "X": 16,
+                "Y": 125,
+                "Width": 60,
+                "Height": 60,
+                "Pressed": "__designer\\Dark_Buttons_Round_Edge_icon_button_pressed.png",
+                "Released": "__designer\\Dark_Buttons_Round_Edge_icon_button.png",
+                "TextId": "__SingleUse_12F5",
+                "ReleasedColor": {
+                  "Red": 255,
+                  "Green": 255,
+                  "Blue": 255
+                },
+                "PressedColor": {
+                  "Red": 255,
+                  "Green": 255,
+                  "Blue": 255
+                },
+                "TextRotation": "0"
+              },
+              {
+                "Type": "ButtonWithLabel",
+                "Name": "resetNoButton",
+                "X": 222,
+                "Y": 125,
+                "Width": 60,
+                "Height": 60,
+                "Pressed": "__designer\\Dark_Buttons_Round_Edge_icon_button_pressed.png",
+                "Released": "__designer\\Dark_Buttons_Round_Edge_icon_button.png",
+                "TextId": "__SingleUse_ECRH",
+                "ReleasedColor": {
+                  "Red": 255,
+                  "Green": 255,
+                  "Blue": 255
+                },
+                "PressedColor": {
+                  "Red": 255,
+                  "Green": 255,
+                  "Blue": 255
+                },
+                "TextRotation": "0"
+              }
+            ]
           }
         ],
         "Interactions": [
@@ -752,6 +870,39 @@
               "Type": "ActionGotoScreen",
               "ScreenTransitionType": "ScreenTransitionNone",
               "ActionComponent": "Keyboard"
+            }
+          },
+          {
+            "InteractionName": "resetButtonPress",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "resetButton"
+            },
+            "Action": {
+              "Type": "ActionShow",
+              "ActionComponent": "resetModal"
+            }
+          },
+          {
+            "InteractionName": "resetNoButtonPressed",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "resetNoButton"
+            },
+            "Action": {
+              "Type": "ActionHide",
+              "ActionComponent": "resetModal"
+            }
+          },
+          {
+            "InteractionName": "resetYesButtonPressed",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "resetYesButton"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "resetYesButtonPressed"
             }
           }
         ],

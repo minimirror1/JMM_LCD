@@ -14,35 +14,7 @@ msvcjmc	SEGMENT
 __51B39CFF_Types@hpp DB 01H
 msvcjmc	ENDS
 CONST	SEGMENT
-?unicodes_verdana_40_4bpp_0@@3QBEB DB 099H		; unicodes_verdana_40_4bpp_0
-	DB	099H
-	DB	099H
-	DB	099H
-	DB	099H
-	DB	099H
-	DB	02H
-	DB	0ffH
-	DB	0ffH
-	DB	0ffH
-	DB	0ffH
-	DB	0ffH
-	DB	0ffH
-	DB	03H
-	DB	0ffH
-	DB	0ffH
-	DB	0ffH
-	DB	0ffH
-	DB	0ffH
-	DB	0ffH
-	DB	03H
-	DB	0ffH
-	DB	0ffH
-	DB	0ffH
-	DB	0ffH
-	DB	0ffH
-	DB	0ffH
-	DB	03H
-	DB	00H
+?unicodes_verdana_40_4bpp_0@@3QBEB DB 00H		; unicodes_verdana_40_4bpp_0
 	DB	00H
 	DB	00H
 	DB	00H

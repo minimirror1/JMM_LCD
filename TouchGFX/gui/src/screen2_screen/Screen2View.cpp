@@ -2,6 +2,7 @@
 
 #ifndef SIMULATOR
 #include <stdlib.h>
+#include <jmorecfg.h>
 #endif
 
 Unicode::UnicodeChar keyboardBuffer[7][30];
@@ -199,13 +200,13 @@ void Screen2View::setID_SettingPage(int index, int gID, int sID)
 	presenter->setChangeGid(index, gID);
 	presenter->setChangeSid(index, sID);
 
-	Unicode::snprintf(idBuffer1, IDBUFFER1_SIZE, "%d", gID);
-	id.setWildcard1(idBuffer1);
+	Unicode::snprintf(idBuffer, ID_SIZE, "%d", gID);
+	id.setWildcard(idBuffer);
 	id.invalidate();
 
-	Unicode::snprintf(idBuffer2, IDBUFFER2_SIZE, "%d", sID);
-	id.setWildcard2(idBuffer2);
-	id.invalidate();
+	Unicode::snprintf(sidBuffer, SID_SIZE, "%d", sID);
+	sid.setWildcard(sidBuffer);
+	sid.invalidate();
 
 }
 
@@ -289,6 +290,28 @@ void Screen2View::reverseButton()
 	presenter->setChangeReverse(myIndex, toggleButton1.getState());
 }
 
+void Screen2View::resetYesButtonPressed() {
+	
+	resetModal.hide();
+
+	//min
+	presenter->setChangeLimitMin(myIndex, 0);
+	Unicode::snprintf(limitMinVar_textAreaBuffer, LIMITMINVAR_TEXTAREA_SIZE, "%d", 0);
+	limitMinVar_textArea.setWildcard(limitMinVar_textAreaBuffer);
+	limitMinVar_textArea.invalidate();
+	//max
+	presenter->setChangeLimitMax(myIndex, 4095);
+	Unicode::snprintf(limitMaxVar_textAreaBuffer, LIMITMAXVAR_TEXTAREA_SIZE, "%d", 4095);
+	limitMaxVar_textArea.setWildcard(limitMaxVar_textAreaBuffer);
+	limitMaxVar_textArea.invalidate();
+
+	toggleButton1.forceState(FALSE);
+	presenter->setChangeReverse(myIndex, toggleButton1.getState());
+
+	slider1.setValue(1);
+
+
+}
 
 
 

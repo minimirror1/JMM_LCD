@@ -58,13 +58,35 @@ uint16_t posi = 0;
 
 CtrData_TypeDef rxData;
 
+CtrDataArr_TypeDef data;
+
+int findIndex(uint8_t gid, uint8_t sid)
+{
+	int i = 0;
+	for ( i = 0; i < 10; i++) {
+		if( ( msg[i].gID == gid)&&(msg[i].sID == sid))
+		{
+			return i;
+		}
+	}
+	return i;
+}
+
 void UART_App_JMM_LCD_MotionOut_Data_RxReq(uint8_t gid, uint8_t sid, uint16_t posi)
 {
-	rxData.gid = gid;
-	rxData.sid = sid;
-	rxData.posi = posi;
+	int index = 0;
+	if( (index = findIndex(gid,sid)) != 10)
+	{
+		data.arr[index].gid = gid;
+		data.arr[index].sid = sid;
+		data.arr[index].posi = posi;
+	}
 
-	osMessageQueuePut(ctrDataQueueHandle, &rxData, 0U, 0U);
+	//rxData.gid = gid;
+	//rxData.sid = sid;
+	//rxData.posi = posi;
+
+	//osMessageQueuePut(ctrDataQueueHandle, &rxData, 0U, 0U);
 }
 /*void UART_CAN_JMS_POSI_DATA_RxReq(CAN_chHeader_TypeDef *pPacket)
 {
@@ -104,6 +126,7 @@ void StartMotionTask(void *argument) {
 	/* USER CODE BEGIN StartMotionTask */
 	uint32_t t_uartRxReset = 0;
 	uint32_t t_pollingTick = 0;
+	uint32_t t_reFlash = 0;
 	uint8_t f_first = RESET;
 	osStatus_t status;
 
@@ -122,6 +145,11 @@ void StartMotionTask(void *argument) {
 			if (t_pollingTick++ > 1000) {
 				t_pollingTick = 0;
 				sendSettingData();
+			}
+			if(t_reFlash ++ > 16)
+			{
+				t_reFlash = 0;
+				osMessageQueuePut(ctrDataQueueHandle, &data, 0U, 0U);
 			}
 		//}
 			if(t_uartRxReset >5000)

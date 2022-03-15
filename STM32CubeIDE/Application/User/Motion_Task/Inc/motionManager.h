@@ -36,6 +36,10 @@ typedef struct {
     int	posi;
 }CtrData_TypeDef;
 
+typedef struct {
+	CtrData_TypeDef arr[10];
+}CtrDataArr_TypeDef;
+
 #ifndef SIMULATOR
 #pragma pack()
 #endif

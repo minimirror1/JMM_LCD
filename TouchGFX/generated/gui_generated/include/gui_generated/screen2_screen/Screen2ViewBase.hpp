@@ -15,6 +15,9 @@
 #include <touchgfx/widgets/Button.hpp>
 #include <touchgfx/widgets/TextArea.hpp>
 #include <touchgfx/containers/Slider.hpp>
+#include <touchgfx/widgets/ButtonWithLabel.hpp>
+#include <touchgfx/containers/ModalWindow.hpp>
+#include <touchgfx/Color.hpp>
 
 class Screen2ViewBase : public touchgfx::View<Screen2Presenter>
 {
@@ -46,6 +49,11 @@ public:
         // Override and implement this function in Screen2
     }
 
+    virtual void resetYesButtonPressed()
+    {
+        // Override and implement this function in Screen2
+    }
+
 protected:
     FrontendApplication& application() {
         return *static_cast<FrontendApplication*>(touchgfx::Application::getInstance());
@@ -63,7 +71,7 @@ protected:
     touchgfx::Button button1;
     touchgfx::Button gid_button;
     touchgfx::Button sid_button;
-    touchgfx::TextAreaWithTwoWildcards id;
+    touchgfx::TextAreaWithOneWildcard id;
     touchgfx::TextArea reverse_textArea;
     touchgfx::Button map_4095_button;
     touchgfx::Button map_0_button;
@@ -82,16 +90,20 @@ protected:
     touchgfx::TextAreaWithOneWildcard FilterVar_textArea;
     touchgfx::Button slide_btn;
     touchgfx::TextAreaWithOneWildcard slide_id;
+    touchgfx::TextAreaWithOneWildcard sid;
+    touchgfx::TextArea textArea1;
+    touchgfx::ButtonWithLabel resetButton;
+    touchgfx::ModalWindow resetModal;
+    touchgfx::ButtonWithLabel resetYesButton;
+    touchgfx::ButtonWithLabel resetNoButton;
 
     /*
      * Wildcard Buffers
      */
     static const uint16_t POSI_SIZE = 10;
     touchgfx::Unicode::UnicodeChar posiBuffer[POSI_SIZE];
-    static const uint16_t IDBUFFER1_SIZE = 10;
-    touchgfx::Unicode::UnicodeChar idBuffer1[IDBUFFER1_SIZE];
-    static const uint16_t IDBUFFER2_SIZE = 10;
-    touchgfx::Unicode::UnicodeChar idBuffer2[IDBUFFER2_SIZE];
+    static const uint16_t ID_SIZE = 10;
+    touchgfx::Unicode::UnicodeChar idBuffer[ID_SIZE];
     static const uint16_t LIMITMINVAR_TEXTAREA_SIZE = 5;
     touchgfx::Unicode::UnicodeChar limitMinVar_textAreaBuffer[LIMITMINVAR_TEXTAREA_SIZE];
     static const uint16_t LIMITMAXVAR_TEXTAREA_SIZE = 5;
@@ -104,6 +116,8 @@ protected:
     touchgfx::Unicode::UnicodeChar FilterVar_textAreaBuffer[FILTERVAR_TEXTAREA_SIZE];
     static const uint16_t SLIDE_ID_SIZE = 10;
     touchgfx::Unicode::UnicodeChar slide_idBuffer[SLIDE_ID_SIZE];
+    static const uint16_t SID_SIZE = 10;
+    touchgfx::Unicode::UnicodeChar sidBuffer[SID_SIZE];
 
 private:
 

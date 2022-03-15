@@ -101,10 +101,12 @@ build/MINGW32_NT-6.2/simulator/main.o: simulator/main.cpp \
  gui/include/gui/screen2_screen/Screen2Presenter.hpp \
  ../Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/ToggleButton.hpp \
  ../Middlewares/ST/touchgfx/framework/include/touchgfx/containers/Slider.hpp \
+ ../Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/ButtonWithLabel.hpp \
+ ../Middlewares/ST/touchgfx/framework/include/touchgfx/containers/ModalWindow.hpp \
+ ../Middlewares/ST/touchgfx/framework/include/touchgfx/Color.hpp \
  gui/include/gui/keyboard_screen/KeyboardView.hpp \
  generated/gui_generated/include/gui_generated/keyboard_screen/KeyboardViewBase.hpp \
  gui/include/gui/keyboard_screen/KeyboardPresenter.hpp \
- ../Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/ButtonWithLabel.hpp \
  gui/include/gui/common/CustomKeyboard.hpp \
  ../Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/Keyboard.hpp \
  generated/texts/include/texts/TextKeysAndLanguages.hpp \
@@ -318,13 +320,17 @@ gui/include/gui/screen2_screen/Screen2Presenter.hpp:
 
 ../Middlewares/ST/touchgfx/framework/include/touchgfx/containers/Slider.hpp:
 
+../Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/ButtonWithLabel.hpp:
+
+../Middlewares/ST/touchgfx/framework/include/touchgfx/containers/ModalWindow.hpp:
+
+../Middlewares/ST/touchgfx/framework/include/touchgfx/Color.hpp:
+
 gui/include/gui/keyboard_screen/KeyboardView.hpp:
 
 generated/gui_generated/include/gui_generated/keyboard_screen/KeyboardViewBase.hpp:
 
 gui/include/gui/keyboard_screen/KeyboardPresenter.hpp:
-
-../Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/ButtonWithLabel.hpp:
 
 gui/include/gui/common/CustomKeyboard.hpp:
 

@@ -859,6 +859,16 @@
 			<locationURI>PARENT-1-PROJECT_LOC/TouchGFX/generated/images/src/__designer/image_Dark_Buttons_Round_Edge_icon_button_pressed.cpp</locationURI>
 		</link>
 		<link>
+			<name>Application/User/generated/image_Dark_Buttons_Round_icon_button.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/TouchGFX/generated/images/src/__designer/image_Dark_Buttons_Round_icon_button.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/generated/image_Dark_Buttons_Round_icon_button_pressed.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/TouchGFX/generated/images/src/__designer/image_Dark_Buttons_Round_icon_button_pressed.cpp</locationURI>
+		</link>
+		<link>
 			<name>Application/User/generated/image_Dark_Icons_Home_48.cpp</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/TouchGFX/generated/images/src/__designer/image_Dark_Icons_Home_48.cpp</locationURI>
@@ -952,6 +962,11 @@
 			<name>Application/User/generated/image_keyboard_space_highlighted.cpp</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/TouchGFX/generated/images/src/image_keyboard_space_highlighted.cpp</locationURI>
+		</link>
+		<link>
+			<name>Application/User/generated/image_modal_background.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/TouchGFX/generated/images/src/image_modal_background.cpp</locationURI>
 		</link>
 		<link>
 			<name>Application/User/generated/image_circle_indicator_bg_line_half.cpp</name>

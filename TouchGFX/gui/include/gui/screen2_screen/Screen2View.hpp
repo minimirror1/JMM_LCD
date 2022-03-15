@@ -18,6 +18,7 @@ public:
     virtual void keyBoardSelected(uint8_t value);
     virtual void filter_value(int value);
     virtual void reverseButton();
+    virtual void resetYesButtonPressed();
 
     void setID_SettingPage(int index, int gID, int sID);
 

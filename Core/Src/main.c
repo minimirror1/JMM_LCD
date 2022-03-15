@@ -237,7 +237,7 @@ int main(void)
   settingDataQueueHandle = osMessageQueueNew (10, sizeof(SettingDataArr_TypeDef), &settingDataQueue_attributes);
 
   /* creation of ctrDataQueue */
-  ctrDataQueueHandle = osMessageQueueNew (16, sizeof(CtrData_TypeDef), &ctrDataQueue_attributes);
+  ctrDataQueueHandle = osMessageQueueNew (64, sizeof(CtrDataArr_TypeDef), &ctrDataQueue_attributes);
 
   /* USER CODE BEGIN RTOS_QUEUES */
   /* add queues, ... */
