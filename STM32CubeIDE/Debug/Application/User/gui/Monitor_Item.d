@@ -81,7 +81,10 @@ Application/User/gui/Monitor_Item.o: \
  ../../Middlewares/ST/touchgfx/framework/include/mvp/View.hpp \
  ../../TouchGFX/gui/include/gui/screen1_screen/Screen1Presenter.hpp \
  ../../TouchGFX/gui/include/gui/model/ModelListener.hpp \
- ../../Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/Box.hpp
+ ../../Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/Box.hpp \
+ ../../Middlewares/ST/touchgfx/framework/include/touchgfx/containers/ModalWindow.hpp \
+ ../../Middlewares/ST/touchgfx/framework/include/touchgfx/Color.hpp \
+ ../../Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/ButtonWithLabel.hpp
 
 ../../TouchGFX/gui/include/gui/containers/Monitor_Item.hpp:
 
@@ -246,3 +249,9 @@ D:/stm32_ws/board/JointManipulator_Master/JMM_LCD_V1/JMM_LCD/STM32CubeIDE/Applic
 ../../TouchGFX/gui/include/gui/model/ModelListener.hpp:
 
 ../../Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/Box.hpp:
+
+../../Middlewares/ST/touchgfx/framework/include/touchgfx/containers/ModalWindow.hpp:
+
+../../Middlewares/ST/touchgfx/framework/include/touchgfx/Color.hpp:
+
+../../Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/ButtonWithLabel.hpp:

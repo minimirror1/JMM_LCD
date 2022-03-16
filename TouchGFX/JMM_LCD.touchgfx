@@ -100,16 +100,112 @@
             "Width": 90,
             "Height": 120,
             "CustomContainerDefinitionName": "Monitor_Item"
+          },
+          {
+            "Type": "ModalWindow",
+            "Name": "checkModalWindow",
+            "Width": 480,
+            "Height": 272,
+            "Visible": false,
+            "FileName": "modal_check_background.png",
+            "ModalX": 90,
+            "ModalY": 36,
+            "ModalWidth": 300,
+            "ModalHeight": 200,
+            "Alpha": 150,
+            "Components": [
+              {
+                "Type": "ButtonWithLabel",
+                "Name": "checkYesButton",
+                "X": 16,
+                "Y": 125,
+                "Width": 60,
+                "Height": 60,
+                "Pressed": "__designer\\Dark_Buttons_Round_Edge_icon_button_pressed.png",
+                "Released": "__designer\\Dark_Buttons_Round_Edge_icon_button.png",
+                "TextId": "__SingleUse_7SKO",
+                "ReleasedColor": {
+                  "Red": 255,
+                  "Green": 255,
+                  "Blue": 255
+                },
+                "PressedColor": {
+                  "Red": 255,
+                  "Green": 255,
+                  "Blue": 255
+                },
+                "TextRotation": "0"
+              },
+              {
+                "Type": "ButtonWithLabel",
+                "Name": "checkNoButton",
+                "X": 222,
+                "Y": 125,
+                "Width": 60,
+                "Height": 60,
+                "Pressed": "__designer\\Dark_Buttons_Round_Edge_icon_button_pressed.png",
+                "Released": "__designer\\Dark_Buttons_Round_Edge_icon_button.png",
+                "TextId": "__SingleUse_T2SW",
+                "ReleasedColor": {
+                  "Red": 255,
+                  "Green": 255,
+                  "Blue": 255
+                },
+                "PressedColor": {
+                  "Red": 255,
+                  "Green": 255,
+                  "Blue": 255
+                },
+                "TextRotation": "0"
+              }
+            ]
           }
         ],
         "Interactions": [
           {
-            "InteractionName": "Interaction1",
+            "InteractionName": "checkNoButtonPressed",
             "Trigger": {
-              "Type": "TriggerClicked"
+              "Type": "TriggerClicked",
+              "TriggerComponent": "checkNoButton"
             },
             "Action": {
-              "Type": "ActionNone"
+              "Type": "ActionHide",
+              "ActionComponent": "checkModalWindow"
+            }
+          },
+          {
+            "InteractionName": "checkYesButtonPressed",
+            "HasCompletedTrigger": true,
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "checkYesButton"
+            },
+            "Action": {
+              "Type": "ActionHide",
+              "ActionComponent": "checkModalWindow"
+            }
+          },
+          {
+            "InteractionName": "checkYesBtnGoToScreen2",
+            "Trigger": {
+              "Type": "TriggerInteractionCompleted",
+              "InteractionToTriggerOn": "checkYesButtonPressed"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "Screen2"
+            }
+          },
+          {
+            "InteractionName": "checkYesButtonOk",
+            "Trigger": {
+              "Type": "TriggerInteractionCompleted",
+              "InteractionToTriggerOn": "checkYesButtonPressed"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "checkYesButtonOk"
             }
           }
         ]
@@ -1103,18 +1199,6 @@
           }
         ],
         "Interactions": [
-          {
-            "InteractionName": "chageViewSetting",
-            "Trigger": {
-              "Type": "TriggerClicked",
-              "TriggerComponent": "button1"
-            },
-            "Action": {
-              "Type": "ActionGotoScreen",
-              "ScreenTransitionType": "ScreenTransitionNone",
-              "ActionComponent": "Screen2"
-            }
-          },
           {
             "InteractionName": "callViewSetting",
             "Trigger": {

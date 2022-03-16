@@ -969,6 +969,11 @@
 			<locationURI>PARENT-1-PROJECT_LOC/TouchGFX/generated/images/src/image_modal_background.cpp</locationURI>
 		</link>
 		<link>
+			<name>Application/User/generated/image_modal_check_background.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/TouchGFX/generated/images/src/image_modal_check_background.cpp</locationURI>
+		</link>
+		<link>
 			<name>Application/User/generated/image_circle_indicator_bg_line_half.cpp</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/TouchGFX/generated/images/src/progress/image_circle_indicator_bg_line_half.cpp</locationURI>

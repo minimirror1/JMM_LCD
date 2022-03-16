@@ -21,6 +21,10 @@ void Screen1View::setupScreen()
     monitor_item[8] = &monitor_Item9;
     monitor_item[9] = &monitor_Item10;
 
+    tempIndex = 0;
+    tempGid = 0;
+    tempSid = 0;
+
     for (int i = 0; i < 10; i++)
     {
         monitor_item[i]->setPtr(this);
@@ -42,8 +46,16 @@ void Screen1View::setCountMonitorItem()
     monitorCnt++;
 }
 
+void Screen1View::checkYesButtonOk()
+{
+    //presenter->setOpenSettingView(tempIndex, tempGid, tempSid);
+
+}
+
 void Screen1View::setOpenSettingView(int index, int gID, int sID)
 {
+    presenter->setCheckPosi();
+    checkModalWindow.show();    
     presenter->setOpenSettingView(index, gID, sID);
 }
 

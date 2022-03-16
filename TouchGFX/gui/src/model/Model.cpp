@@ -30,6 +30,7 @@ SettingData_TypeDef EepData[10];
 #ifndef SIMULATOR
 extern osMessageQueueId_t settingDataQueueHandle;
 extern osMessageQueueId_t ctrDataQueueHandle;
+extern osMessageQueueId_t setSettingViewHandle;
 #endif
 Model::Model() : modelListener(0)
 {
@@ -92,6 +93,15 @@ void Model::tick()
 
 }
 
+#ifndef SIMULATOR
+uint16_t setiingViewTrigger = 1;
+#endif
+void Model::setCheckPosi(void)
+{
+#ifndef SIMULATOR
+	osMessageQueuePut(setSettingViewHandle, &setiingViewTrigger, 0U, 0U);
+#endif
+}
 
 void Model::setOpenSettingView(int index, int gID, int sID)
 {

@@ -15,6 +15,8 @@ public:
 
     void setCountMonitorItem();
 
+    virtual void checkYesButtonOk();
+
 //container callback
     void setOpenSettingView(int index, int gID, int sID);
 //Presenter callback
@@ -22,6 +24,10 @@ public:
 private:
     Monitor_Item *monitor_item[10];
     int monitorCnt;
+
+    int tempIndex;
+    int tempGid;
+    int tempSid;
 
 protected:
 };

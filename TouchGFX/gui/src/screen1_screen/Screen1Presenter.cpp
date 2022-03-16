@@ -17,6 +17,11 @@ void Screen1Presenter::deactivate()
 
 }
 
+void Screen1Presenter::setCheckPosi()
+{
+    model->setCheckPosi();
+}
+
 void Screen1Presenter::setOpenSettingView(int index, int gID, int sID)
 {
     model->setOpenSettingView(index, gID, sID);

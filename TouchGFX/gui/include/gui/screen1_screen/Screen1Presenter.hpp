@@ -28,6 +28,7 @@ public:
     virtual ~Screen1Presenter() {};
 
 //View Call Function
+    void setCheckPosi(void);
     void setOpenSettingView(int index, int gID, int sID);
 
     int getSlideID(int index);

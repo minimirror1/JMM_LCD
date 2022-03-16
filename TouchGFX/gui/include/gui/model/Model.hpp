@@ -35,6 +35,7 @@ public:
     void tick();
 
 //Presenter1 Call funtion
+    void setCheckPosi(void);
     void setOpenSettingView(int index, int gID, int sID);
 
     int getSlideID(int index);

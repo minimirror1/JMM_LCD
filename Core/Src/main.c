@@ -126,6 +126,11 @@ osMessageQueueId_t ctrDataQueueHandle;
 const osMessageQueueAttr_t ctrDataQueue_attributes = {
   .name = "ctrDataQueue"
 };
+/* Definitions for setSettingView */
+osMessageQueueId_t setSettingViewHandle;
+const osMessageQueueAttr_t setSettingView_attributes = {
+  .name = "setSettingView"
+};
 /* USER CODE BEGIN PV */
 static FMC_SDRAM_CommandTypeDef Command;
 uint8_t my_can_id;
@@ -238,6 +243,9 @@ int main(void)
 
   /* creation of ctrDataQueue */
   ctrDataQueueHandle = osMessageQueueNew (64, sizeof(CtrDataArr_TypeDef), &ctrDataQueue_attributes);
+
+  /* creation of setSettingView */
+  setSettingViewHandle = osMessageQueueNew (8, sizeof(uint8_t), &setSettingView_attributes);
 
   /* USER CODE BEGIN RTOS_QUEUES */
   /* add queues, ... */

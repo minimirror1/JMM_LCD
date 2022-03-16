@@ -24,6 +24,7 @@
 
 extern osMessageQueueId_t settingDataQueueHandle;
 extern osMessageQueueId_t ctrDataQueueHandle;
+extern osMessageQueueId_t setSettingViewHandle;
 
 SettingData_TypeDef msg[10];
 UART_JMM_LCD_SettingTypeDef txMsg;
@@ -124,6 +125,7 @@ void UART_CAN_Parsing(CAN_chHeader_TypeDef *pPacket)
 
 void StartMotionTask(void *argument) {
 	/* USER CODE BEGIN StartMotionTask */
+	uint16_t myMsg = 0;
 	uint32_t t_uartRxReset = 0;
 	uint32_t t_pollingTick = 0;
 	uint32_t t_reFlash = 0;
@@ -139,6 +141,11 @@ void StartMotionTask(void *argument) {
 		if (status == osOK) {
 			f_first = SET;
 			sendSettingData();
+		}
+
+		status = osMessageQueueGet(setSettingViewHandle, &myMsg, NULL, 0U); // wait for message
+		if (status == osOK) {
+			UART_App_JMM_On_Setting_View_TxReq();
 		}
 
 		//if (f_first) {

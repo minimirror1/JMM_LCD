@@ -22,7 +22,7 @@ Callback.hpp:396:18:bool touchgfx::Callback<dest_type, T1, void, void>::isValid(
 TypedText.hpp:65:13:virtual touchgfx::TypedText::~TypedText()	8	static
 Callback.hpp:357:8:virtual touchgfx::Callback<Monitor_ItemBase, const touchgfx::AbstractButton&>::~Callback()	8	static
 Monitor_ItemBase.hpp:18:13:virtual Monitor_ItemBase::~Monitor_ItemBase()	8	static
-Monitor_ItemBase.cpp:65:6:void Monitor_ItemBase::buttonCallbackHandler(const touchgfx::AbstractButton&)	8	static
+Monitor_ItemBase.cpp:65:6:void Monitor_ItemBase::buttonCallbackHandler(const touchgfx::AbstractButton&)	0	static
 Drawable.hpp:48:5:touchgfx::Drawable::Drawable()	0	static
 Drawable.hpp:326:10:void touchgfx::Drawable::setXY(int16_t, int16_t)	16	static
 Drawable.hpp:216:10:void touchgfx::Drawable::setPosition(int16_t, int16_t, int16_t, int16_t)	16	static

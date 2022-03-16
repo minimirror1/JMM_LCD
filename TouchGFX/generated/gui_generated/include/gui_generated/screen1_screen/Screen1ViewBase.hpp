@@ -9,6 +9,9 @@
 #include <gui/screen1_screen/Screen1Presenter.hpp>
 #include <touchgfx/widgets/Box.hpp>
 #include <gui/containers/Monitor_Item.hpp>
+#include <touchgfx/containers/ModalWindow.hpp>
+#include <touchgfx/Color.hpp>
+#include <touchgfx/widgets/ButtonWithLabel.hpp>
 
 class Screen1ViewBase : public touchgfx::View<Screen1Presenter>
 {
@@ -16,6 +19,14 @@ public:
     Screen1ViewBase();
     virtual ~Screen1ViewBase() {}
     virtual void setupScreen();
+
+    /*
+     * Virtual Action Handlers
+     */
+    virtual void checkYesButtonOk()
+    {
+        // Override and implement this function in Screen1
+    }
 
 protected:
     FrontendApplication& application() {
@@ -37,8 +48,21 @@ protected:
     Monitor_Item monitor_Item8;
     Monitor_Item monitor_Item9;
     Monitor_Item monitor_Item10;
+    touchgfx::ModalWindow checkModalWindow;
+    touchgfx::ButtonWithLabel checkYesButton;
+    touchgfx::ButtonWithLabel checkNoButton;
 
 private:
+
+    /*
+     * Callback Declarations
+     */
+    touchgfx::Callback<Screen1ViewBase, const touchgfx::AbstractButton&> buttonCallback;
+
+    /*
+     * Callback Handler Declarations
+     */
+    void buttonCallbackHandler(const touchgfx::AbstractButton& src);
 
     /*
      * Canvas Buffer Size
